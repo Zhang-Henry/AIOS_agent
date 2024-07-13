@@ -91,7 +91,7 @@ def main():
 
     academic_agent = agent_thread_pool.submit(
         agent_factory.run_agent,
-        "example/academic_agent",
+        "example/academic_agent_attack",
         "Summarize recent advancements in quantum computing from the past five years.",
         args
     )
@@ -111,6 +111,8 @@ def main():
     # agent_tasks = [creation_agent]
     agent_tasks = [academic_agent]
     # agent_tasks = [creation_agent]
+    # agent_tasks = [travel_agent]
+    # agent_tasks = [creation_agent, academic_agent]
 
     for r in as_completed(agent_tasks):
         _res = r.result()

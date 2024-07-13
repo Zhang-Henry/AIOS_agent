@@ -1,0 +1,59 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "main_attacker-3.5",
+            "type": "python",
+            "request": "launch",
+            "program": "main_attacker.py",
+            "args": [
+                "--llm_name",
+                "gpt-3.5-turbo"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "main_attacker-4",
+            "type": "python",
+            "request": "launch",
+            "program": "main_attacker.py",
+            "args": [
+                "--llm_name",
+                "gpt-4"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "main_llama3",
+            "type": "python",
+            "request": "launch",
+            "program": "main_attacker.py",
+            "args": [
+                "--llm_name",
+                "ollama/llama3:8b",
+                "--workflow_mode",
+                "semi-automatic"
+
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "main_llama2",
+            "type": "python",
+            "request": "launch",
+            "program": "main_attacker.py",
+            "args": [
+                "--llm_name",
+                "ollama/llama2",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        }
+    ]
+}
