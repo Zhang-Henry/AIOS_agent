@@ -37,7 +37,7 @@
                 "--llm_name",
                 "ollama/llama3:8b",
                 "--workflow_mode",
-                "semi-automatic"
+                "manual"
 
             ],
             "console": "integratedTerminal",
@@ -51,6 +51,18 @@
             "args": [
                 "--llm_name",
                 "ollama/llama2",
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "main_gemma2",
+            "type": "python",
+            "request": "launch",
+            "program": "main_attacker.py",
+            "args": [
+                "--llm_name",
+                "ollama/gemma2:27b",
             ],
             "console": "integratedTerminal",
             "justMyCode": false

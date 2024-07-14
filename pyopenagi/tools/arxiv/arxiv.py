@@ -117,5 +117,5 @@ class Arxiv(BaseTool):
                     ]
                 }
             }
-        }
+        } 
         return tool_call_format
