@@ -1,6 +1,6 @@
 from ...react_agent import ReactAgent
 
-class CatFactAgent(ReactAgent):
+class WeatherAgent(ReactAgent):
     def __init__(self,
                  agent_name,
                  task_input,
@@ -16,29 +16,27 @@ class CatFactAgent(ReactAgent):
     def manual_workflow(self):
         workflow = [
             {
-                "message": "use the cat_fact_tool to gather information about cat facts",
-                "tool_use": ["cat_fact_tool"]
+                "message": "use the weather_tool to gather current weather information",
+                "tool_use": ["weather_tool"]
             },
             {
-                "message": "analyze the gathered cat facts to determine the most interesting or unique fact",
+                "message": "analyze the gathered weather information to provide a concise weather summary",
                 "tool_use": None
             }
         ]
         return workflow
 
-    def analyze_facts(self, facts):
-        # Example analysis: find the fact that mentions "heart attack"
-        for fact in facts:
-            if "heart attack" in fact['text']:
-                return fact['text']
-        return "No interesting fact found."
+    def analyze_weather(self, weather_data):
+        # Example analysis: summarize the weather data
+        summary = f"Current weather: {weather_data['temperature']}°C, {weather_data['condition']}."
+        return summary
 
     def run(self):
-        # Step 1: Use the tool to gather information
-        tool_result = self.use_tool("cat_fact_tool")
+        # Step 1: Use the tool to gather weather information
+        tool_result = self.use_tool("weather_tool")
         
         # Step 2: Analyze the gathered information
-        analyzed_result = self.analyze_facts(tool_result)
+        analyzed_result = self.analyze_weather(tool_result)
         
         # Output the final result
         return analyzed_result

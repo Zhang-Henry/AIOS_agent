@@ -89,12 +89,12 @@ def main():
     #     "Convert 15000 MXN to Canadian Dollars and find out how much it would be in USD if 1 CAD equals 0.79 USD."
     # )
 
-    academic_agent = agent_thread_pool.submit(
-        agent_factory.run_agent,
-        "example/academic_agent",
-        "Summarize recent advancements in quantum computing from the past five years.",
-        args
-    )
+    # academic_agent = agent_thread_pool.submit(
+    #     agent_factory.run_agent,
+    #     "example/academic_agent",
+    #     "Summarize recent advancements in quantum computing from the past five years.",
+    #     args
+    # )
 
     # rec_agent = agent_thread_pool.submit(
     #     agent_factory.run_agent,
@@ -105,12 +105,28 @@ def main():
     #     agent_factory.run_agent,
     #     "example/creation_agent", "Create an image of a lush jungle with an ancient temple, evoking a sense of mystery and adventure."
     # )
+    
+    # catfact_agent = agent_thread_pool.submit(
+    #     agent_factory.run_agent,
+    #     "example/catfact_agent",
+    #     "Summarize the cat's fact and determine the most interesting or unique fact.",
+    #     args
+    # )
+    
+    currencyexchange_agent = agent_thread_pool.submit(
+        agent_factory.run_agent,
+        "example/currencyexchange_agent",
+        "Determine how many dollars (USD) are equal to 3500 Chinese yuan (CNY).",
+        args
+    )
 
     # agent_tasks = [travel_agent, rec_agent, creation_agent, math_agent, academic_agent]
     # agent_tasks = [rec_agent]
     # agent_tasks = [creation_agent]
-    agent_tasks = [academic_agent]
+    # agent_tasks = [academic_agent]
     # agent_tasks = [creation_agent]
+    # agent_tasks = [catfact_agent]
+    agent_tasks = [currencyexchange_agent]
 
     for r in as_completed(agent_tasks):
         _res = r.result()
