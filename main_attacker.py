@@ -35,12 +35,13 @@ def clean_cache(root_directory):
     delete_directories(root_directory, targets)
 
 class Args:
-    def __init__(self, attacker_tool=None, attacker_instruction=None, expected_achievements=None, workflow_mode=None, observation_prompt_injection=False):
+    def __init__(self, attacker_tool, attacker_instruction, expected_achievements, args):
         self.attacker_tool = attacker_tool
         self.attacker_instruction = attacker_instruction
         self.expected_achievements = expected_achievements
-        self.workflow_mode = workflow_mode
-        self.observation_prompt_injection = observation_prompt_injection
+        self.workflow_mode = args.workflow_mode
+        self.observation_prompt_injection = args.observation_prompt_injection
+        self.plan_attack = args.plan_attack
 
 
 def main():
@@ -90,16 +91,17 @@ def main():
     attacker_tools = pd.read_json(args.attacker_tools_path, lines=True)
 
     with open('data/agent_tasks/example/academic_agent_task.txt', 'r') as file:
-        agent_tasks = file.readlines()
-    for task in agent_tasks:
-        for _, attacker_tool_info in attacker_tools.iterrows():
+        tasks = file.readlines()
+
+    for _, attacker_tool_info in attacker_tools.iterrows():
+        for task in tasks:
             attacker_tool_args = Args(
                 attacker_tool=attacker_tool_info["Attacker Tools"][0],
                 attacker_instruction=attacker_tool_info["Attacker Instruction"],
                 expected_achievements=attacker_tool_info["Expected Achievements"],
-                workflow_mode=args.workflow_mode,
-                observation_prompt_injection=args.observation_prompt_injection,
+                args=args
             )
+            # print("Current task: ", task)
             academic_agent_attack = agent_thread_pool.submit(
                 agent_factory.run_agent,
                 "example/academic_agent_attack",

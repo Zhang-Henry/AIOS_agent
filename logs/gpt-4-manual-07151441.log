@@ -1,0 +1,38 @@
+/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/transformers/utils/hub.py:127: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[🤖gpt-4] AIOS LLM successfully loaded.
+
+Collecting git+https://github.com/alexwohlbruck/cat-facts (from -r /common/users/hz624/AgentAttackBench/pyopenagi/agents/example/catfact_agent/meta_requirements.txt (line 1))
+  Cloning https://github.com/alexwohlbruck/cat-facts to /tmp/pip-req-build-2i541avd
+  Running command git clone --filter=blob:none --quiet https://github.com/alexwohlbruck/cat-facts /tmp/pip-req-build-2i541avd
+  Resolved https://github.com/alexwohlbruck/cat-facts to commit 4ada3dd16796c0f6d43e5679159d06e887b6a2c5
+ERROR: git+https://github.com/alexwohlbruck/cat-facts (from -r /common/users/hz624/AgentAttackBench/pyopenagi/agents/example/catfact_agent/meta_requirements.txt (line 1)) does not appear to be a Python project: neither 'setup.py' nor 'pyproject.toml' found.
+Traceback (most recent call last):
+  File "/common/users/hz624/AgentAttackBench/main.py", line 132, in <module>
+    main()
+  File "/common/users/hz624/AgentAttackBench/main.py", line 124, in main
+    _res = r.result()
+           ^^^^^^^^^^
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/common/users/hz624/AgentAttackBench/pyopenagi/agents/agent_factory.py", line 81, in run_agent
+    agent = self.activate_agent(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/common/users/hz624/AgentAttackBench/pyopenagi/agents/agent_factory.py", line 56, in activate_agent
+    interactor.install_agent_reqs(agent_name)
+  File "/common/users/hz624/AgentAttackBench/pyopenagi/agents/interact.py", line 189, in install_agent_reqs
+    subprocess.check_call([
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/subprocess.py", line 413, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['/common/home/hz624/anaconda3/envs/AIOS/bin/python', '-m', 'pip', 'install', '-r', '/common/users/hz624/AgentAttackBench/pyopenagi/agents/example/catfact_agent/meta_requirements.txt']' returned non-zero exit status 1.
+Exception ignored in: <module 'threading' from '/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/threading.py'>
+Traceback (most recent call last):
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/threading.py", line 1590, in _shutdown
+    lock.acquire()
+KeyboardInterrupt: 

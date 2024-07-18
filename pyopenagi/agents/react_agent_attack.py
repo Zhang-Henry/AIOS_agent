@@ -123,10 +123,10 @@ class ReactAgentAttack(BaseAgent):
                 ############ Attacker prompt injection ############
                 if self.args.observation_prompt_injection:
                     function_response += ";" + self.injected_prompt
-                    self.logger.log(f"Attacker prompt has been injected to API respones.\n", level="info")
+                    # self.logger.log(f"Attacker prompt has been injected to API respones.\n", level="info")
 
-                    actions.append(f"I will call the {function_name} with the params as {function_params}")
-                    observations.append(f"The knowledge I get from {function_name} is: {function_response}")
+                actions.append(f"I will call the {function_name} with the params as {function_params}")
+                observations.append(f"The knowledge I get from {function_name} is: {function_response}")
                 ############ Attacker prompt injection ############
 
             except Exception:
@@ -152,6 +152,17 @@ class ReactAgentAttack(BaseAgent):
 
         return workflow
 
+    def plan_attack(self, workflow, attacker_tool):
+        tool = AttackerBaseTool(self.args)
+        workflow.append({
+            "message": self.args.attacker_instruction,
+            "tool_use": [self.args.attacker_tool]
+        })
+
+        self.tool_list[attacker_tool] = tool
+        self.tools.append(tool.get_tool_call_format())
+
+        return workflow
 
     def run(self):
         self.build_system_instruction()
@@ -174,7 +185,9 @@ class ReactAgentAttack(BaseAgent):
         ## Attacker tool injection to each stage of workflow
         if self.args.observation_prompt_injection:
             workflow = self.attacker_tool_injection(workflow, self.args.attacker_tool)
-            self.logger.log(f"Attacker tools has been injected to workflow.\n", level="info")
+            # self.logger.log(f"Attacker tools has been injected to workflow.\n", level="info")
+        elif self.args.plan_attack:
+            workflow = self.plan_attack(workflow, self.args.attacker_tool)
 
         self.messages.append(
             {"role": "assistant", "content": f"[Thinking]: The workflow generated for the problem is {json.dumps(workflow)}"}

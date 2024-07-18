@@ -52,8 +52,8 @@ class AgentFactory:
         if not os.path.exists(os.path.join(script_dir, agent_name)):
             interactor.download_agent(agent_name)
 
-        if not interactor.check_reqs_installed(agent_name):
-            interactor.install_agent_reqs(agent_name)
+        # if not interactor.check_reqs_installed(agent_name):
+        #     interactor.install_agent_reqs(agent_name)
 
         agent_class = self.load_agent_instance(agent_name)
 

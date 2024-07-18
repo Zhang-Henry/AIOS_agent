@@ -31,6 +31,8 @@ def parse_global_args():
     parser.add_argument("--workflow_mode", type=str, default = 'manual', choices=["manual", "automatic", "semi-automatic"])
     parser.add_argument("--attacker_tools_path", type=str, default = 'data/attacker_cases_dh.jsonl', help="Path to the attacker tools jsonl file")
     parser.add_argument("--observation_prompt_injection", action='store_true')
+    parser.add_argument("--plan_attack", action='store_true')
+
     return parser
 
 

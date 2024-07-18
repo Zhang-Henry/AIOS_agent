@@ -85,7 +85,6 @@ class BaseLLMKernel(ABC):
         return messages
 
     # used for parsing string output as tool callings
-    def tool_calling_output_format(self, tool_calling_messages):
         # print(f"tool calling messages are: {tool_calling_messages}")
         try:
             pattern = r'\[\{.*?\}\]'
