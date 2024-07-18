@@ -24,6 +24,7 @@ from aios.utils.utils import delete_directories
 from dotenv import load_dotenv
 import pandas as pd
 from tqdm import tqdm
+from datetime import datetime
 
 def clean_cache(root_directory):
     targets = {
@@ -42,9 +43,13 @@ class Args:
         self.workflow_mode = args.workflow_mode
         self.observation_prompt_injection = args.observation_prompt_injection
         self.plan_attack = args.plan_attack
+        self.action_attack = args.action_attack
 
 
 def main():
+    start_time = datetime.now()  # 记录开始时间
+    print(f"Attack started at: {start_time.strftime('%Y-%m-%d %H:%M')}")
+
     # parse arguments and set configuration for this run accordingly
     warnings.filterwarnings("ignore")
     parser = parse_global_args()
@@ -129,6 +134,9 @@ def main():
 
     clean_cache(root_directory="./")
 
+    end_time = datetime.now()  # 记录结束时间
+    print(f"Attack ended at: {end_time.strftime('%Y-%m-%d %H:%M')}")
+    print(f"Total duration: {end_time - start_time}")
 
 if __name__ == "__main__":
     main()

@@ -12,4 +12,6 @@
 #nohup python main.py --llm_name gpt-4
 
 
-nohup python main_attacker.py --llm_name gpt-3.5-turbo --workflow_mode manual --plan_attack > logs/plan_attack/gpt-3.5-manual.log 2>&1 &
+# nohup python main_attacker.py --llm_name gpt-3.5-turbo --workflow_mode manual --plan_attack > logs/plan_attack/gpt-3.5-manual.log 2>&1 &
+
+nohup python main_attacker.py --llm_name gpt-3.5-turbo --workflow_mode manual --action_attack > logs/action_attack/gpt-3.5-manual.log 2>&1 &
