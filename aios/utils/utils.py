@@ -30,9 +30,13 @@ def parse_global_args():
     parser.add_argument("--use_backend", type=str, default = None, choices=["ollama", "vllm"])
     parser.add_argument("--workflow_mode", type=str, default = 'manual', choices=["manual", "automatic", "semi-automatic"])
     parser.add_argument("--attacker_tools_path", type=str, default = 'data/attacker_cases_dh.jsonl', help="Path to the attacker tools jsonl file")
+    parser.add_argument("--tasks_path", type=str, default = 'data/agent_tasks/example/academic_agent_task.txt', help="Path to the task file")
+    parser.add_argument("--agent_path", type=str, default = 'example/academic_agent_attack', help="Path to the agent")
     parser.add_argument("--observation_prompt_injection", action='store_true')
     parser.add_argument("--plan_attack", action='store_true')
     parser.add_argument("--action_attack", action='store_true')
+    parser.add_argument("--direct_prompt_injection", action='store_true')
+    parser.add_argument("--attack_type", type=str, default = None, choices=["naive", "fake_completion", "escape_characters","context_ignoring",'combined_attack'])
 
     return parser
 

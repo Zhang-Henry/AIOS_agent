@@ -44,7 +44,12 @@ class Args:
         self.observation_prompt_injection = args.observation_prompt_injection
         self.plan_attack = args.plan_attack
         self.action_attack = args.action_attack
+        self.direct_prompt_injection = args.direct_prompt_injection
+        self.attack_type = args.attack_type
 
+    def __str__(self):
+        # 打印所有变量
+        return str(self.__dict__)
 
 def main():
     start_time = datetime.now()  # 记录开始时间
@@ -54,7 +59,7 @@ def main():
     warnings.filterwarnings("ignore")
     parser = parse_global_args()
     args = parser.parse_args()
-
+    print(args)
     llm_name = args.llm_name
     max_gpu_memory = args.max_gpu_memory
     eval_device = args.eval_device
@@ -95,7 +100,7 @@ def main():
     agent_tasks = list()
     attacker_tools = pd.read_json(args.attacker_tools_path, lines=True)
 
-    with open('data/agent_tasks/example/academic_agent_task.txt', 'r') as file:
+    with open(args.tasks_path, 'r') as file:
         tasks = file.readlines()
 
     for _, attacker_tool_info in attacker_tools.iterrows():
@@ -109,7 +114,7 @@ def main():
             # print("Current task: ", task)
             academic_agent_attack = agent_thread_pool.submit(
                 agent_factory.run_agent,
-                "example/academic_agent_attack",
+                args.agent_path,
                 task,
                 attacker_tool_args
             )

@@ -18,6 +18,8 @@ MODEL_REGISTRY = {
 
     # GPT3.5
     'gpt-3.5-turbo': GPTLLM,
+    'gpt-4o-mini': GPTLLM,
+
     'gpt-4-turbo': GPTLLM,
 
     # GPT4
@@ -25,11 +27,11 @@ MODEL_REGISTRY = {
     'gpt-4-turbo-preview': GPTLLM,
     'gpt-4-0125-preview': GPTLLM,
     'gpt-4': GPTLLM,
-  
+
     # GPT4o
     'gpt-4o': GPTLLM,
     'gpt-4o-2024-05-13': GPTLLM,
-  
-    # claude 
+
+    # claude
     'claude-3-5-sonnet-20240620': ClaudeLLM
 }

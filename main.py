@@ -116,7 +116,7 @@ def main():
     currencyexchange_agent = agent_thread_pool.submit(
         agent_factory.run_agent,
         "example/currencyexchange_agent",
-        "Determine how many dollars (USD) are equal to 3500 Chinese yuan (CNY).",
+        "Determine how many dollars (USD) are equal to 45000 Chinese yuan (CNY).",
         args
     )
 
