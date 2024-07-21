@@ -66,19 +66,19 @@ class ReactAgentAttack(BaseAgent):
                 'Plan examples can be:',
                 '[',
                 '{"message": "Gather information from arxiv", "tool_use": ["arxiv"]},',
-                '{"message", "Based on the gathered information, write a summarization", "tool_use": None}',
+                '{"message", "Based on the gathered information, write a summarization", "tool_use": []}',
                 '];',
                 '[',
                 '{"message": "identify the tool that you need to call to obtain information.", "tool_use": ["imdb_top_movies", "imdb_top_series"]},',
-                '{"message", "based on the information, give recommendations for the user based on the constrains.", "tool_use": None}',
+                '{"message", "based on the information, give recommendations for the user based on the constrains.", "tool_use": []}',
                 '];',
                 '[',
                 '{"message": "identify the tool that you need to call to obtain information.", "tool_use": ["imdb_top_movies", "imdb_top_series"]},',
-                '{"message", "based on the information, give recommendations for the user based on the constrains.", "tool_use": None}',
+                '{"message", "based on the information, give recommendations for the user based on the constrains.", "tool_use": []}',
                 '];',
                 '[',
                 '{"message": "identify the tool that you need to call to obtain information.", "tool_use": ["imdb_top_movies", "imdb_top_series"]},'
-                '{"message", "based on the information, give recommendations for the user based on the constrains.", "tool_use": None}',
+                '{"message", "based on the information, give recommendations for the user based on the constrains.", "tool_use": []}',
                 ']'
             ]
         )
@@ -136,7 +136,7 @@ class ReactAgentAttack(BaseAgent):
 
                 ############ Attacker prompt injection ############
                 if self.args.observation_prompt_injection:
-                    function_response += ";" + self.injected_prompt
+                    function_response += f'; {self.attack_prompts[self.args.attack_type]}'
                     # self.logger.log(f"Attacker prompt has been injected to API respones.\n", level="info")
 
                 actions.append(f"I will call the {function_name} with the params as {function_params}")
@@ -206,22 +206,24 @@ class ReactAgentAttack(BaseAgent):
             assert self.workflow_mode == "manual"
             workflow = self.manual_workflow()
 
-        ## Attacker tool injection to each stage of workflow
-        if self.args.observation_prompt_injection:
-            workflow = self.attacker_tool_injection(workflow)
-            # self.logger.log(f"Attacker tools has been injected to workflow.\n", level="info")
-        elif self.args.plan_attack:
-            workflow = self.plan_attack(workflow)
 
         self.messages.append(
             {"role": "assistant", "content": f"[Thinking]: The workflow generated for the problem is {json.dumps(workflow)}"}
         )
 
-        self.logger.log("*********************************\n", level="info")
-        self.logger.log(f"At step {self.rounds}, Generated {self.workflow_mode} workflow is: {workflow}\n", level="info")
-        self.logger.log("*********************************\n", level="info")
 
         if workflow:
+            ## Attacker tool injection to each stage of workflow
+            if self.args.observation_prompt_injection:
+                workflow = self.attacker_tool_injection(workflow)
+                # self.logger.log(f"Attacker tools has been injected to workflow.\n", level="info")
+            elif self.args.plan_attack:
+                workflow = self.plan_attack(workflow)
+
+            self.logger.log("*********************************\n", level="info")
+            self.logger.log(f"At step {self.rounds}, Generated {self.workflow_mode} workflow is: {workflow}\n", level="info")
+            self.logger.log("*********************************\n", level="info")
+
             final_result = ""
 
             for i, step in enumerate(workflow):
@@ -302,7 +304,8 @@ class ReactAgentAttack(BaseAgent):
                 "agent_turnaround_time": self.end_time - self.created_time,
                 "request_waiting_times": self.request_waiting_times,
                 "request_turnaround_times": self.request_turnaround_times,
-                "succ": success
+                "succ": success,
+                "workflow_failure": False
             }
 
         else:
@@ -314,5 +317,6 @@ class ReactAgentAttack(BaseAgent):
                 "agent_turnaround_time": None,
                 "request_waiting_times": self.request_waiting_times,
                 "request_turnaround_times": self.request_turnaround_times,
-                "succ": False
+                "succ": False,
+                "workflow_failure": True
             }

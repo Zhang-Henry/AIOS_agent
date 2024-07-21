@@ -7,7 +7,7 @@ class BaseContextManager:
     def __init__(self):
         self.context_dir = os.path.join(os.getcwd(), "aios", "context", "context_restoration")
         if not os.path.exists(self.context_dir):
-            os.makedirs(self.context_dir)
+            os.makedirs(self.context_dir,exist_ok=True)
 
     def start(self):
         pass

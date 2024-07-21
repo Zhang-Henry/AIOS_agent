@@ -22,6 +22,23 @@
             "justMyCode": false
         },
         {
+            "name": "main_attacker-4mini",
+            "type": "python",
+            "request": "launch",
+            "program": "main_attacker.py",
+            "args": [
+                "--llm_name",
+                "gpt-4o-mini",
+                "--workflow_mode",
+                "automatic",
+                "--attacker_tools_path",
+                "data/test.jsonl",
+                "--observation_prompt_injection"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
             "name": "main_attacker-3.5-attack",
             "type": "python",
             "request": "launch",
@@ -42,8 +59,11 @@
             "args": [
                 "--llm_name",
                 "gpt-4",
-                // "--workflow_mode",
-                // "automatic"
+                "--observation_prompt_injection",
+                "--workflow_mode",
+                "automatic",
+                "--attacker_tools_path",
+                "data/test.jsonl",
             ],
             "console": "integratedTerminal",
             "justMyCode": false

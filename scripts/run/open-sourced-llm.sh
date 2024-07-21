@@ -38,4 +38,7 @@ export HF_AUTH_TOKENS=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
 # nohup python main_attacker.py --llm_name HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1 --workflow_mode automatic --max_gpu_memory '{"3": "44GB", "4": "44GB"}' --eval_device "cuda:3"    > logs/zephyr-orpo-141b-A35b-v0.1-automatic.log  2>&1 &
 # nohup python main_attacker.py --llm_name HuggingFaceH4/zephyr-orpo-141b-A35b-v0.1 --workflow_mode manual --max_gpu_memory '{"3": "44GB", "4": "44GB"}' --eval_device "cuda:3"    > logs/zephyr-orpo-141b-A35b-v0.1-manual.log  2>&1 &
 
-nohup python main_attacker.py --llm_name microsoft/Phi-3-small-128k-instruct --workflow_mode manual --max_gpu_memory '{"3": "44GB", "4": "44GB", "0": "43GB", "1": "35GB", "1": "35GB"}' --eval_device "cuda:3"    > logs/Phi-3-small-128k-instruct-manual.log  2>&1 &
+# nohup python main_attacker.py --llm_name microsoft/Phi-3-small-128k-instruct --workflow_mode manual --max_gpu_memory '{"3": "44GB", "4": "44GB", "0": "43GB", "1": "35GB", "1": "35GB"}' --eval_device "cuda:3"    > logs/Phi-3-small-128k-instruct-manual.log  2>&1 &
+
+# nohup python main_attacker.py --llm_name apple/DCLM-7B --workflow_mode automatic --observation_prompt_injection --attack_type naive  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB"}' --eval_device "cuda:0" --attacker_tools_path data/test.jsonl  > logs/observation_prompt_injection/apple-DCLM-7B-automatic-naive.log
+nohup python main_attacker.py --llm_name mistralai/Mistral-7B-Instruct-v0.3 --workflow_mode automatic --observation_prompt_injection --attack_type naive  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB"}' --eval_device "cuda:0" --attacker_tools_path data/test.jsonl  > logs/observation_prompt_injection/Mistral-7B-Instruct-v0.3-automatic-naive.log

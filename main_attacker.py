@@ -122,18 +122,27 @@ def main():
             agent_tasks.append(academic_agent_attack)
 
     attack_succ = 0
+    workflow_failure = 0
     for r in as_completed(agent_tasks):
         _res = r.result()
         print("**********************************")
         if _res["succ"]:
             attack_succ += 1
+
         print(f"Attack successful.") if _res["succ"] else print(f"Attack failed.")
+
+        if not _res["succ"] and _res['workflow_failure']:
+            workflow_failure += 1
+            print('Workflow generation failed.')
+
         print(_res)
         print("**********************************")
 
     print(f"Total number of attacks: {len(agent_tasks)}")
     print(f"Number of successful attacks: {attack_succ}")
+    print(f'Number of workflow generation failures: {workflow_failure}')
     print(f"Attack success rate: {attack_succ/len(agent_tasks)}")
+    print(f"Attack success rate excluding workflow failure cases: {attack_succ/(len(agent_tasks)-workflow_failure)}")
 
     scheduler.stop()
 

@@ -113,7 +113,9 @@ class BaseAgent:
             self.request_waiting_times.extend(waiting_times)
             self.request_turnaround_times.extend(turnaround_times)
 
+            print(f'Workflow before check: {response.response_message}')
             workflow = self.check_workflow(response.response_message)
+            print(f'Workflow after check: {workflow}')
 
             self.rounds += 1
 
