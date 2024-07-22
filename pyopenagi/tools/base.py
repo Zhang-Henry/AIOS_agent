@@ -1,4 +1,3 @@
-from pyopenagi.utils.utils import get_from_env
 import json
 
 class BaseTool:
@@ -35,24 +34,3 @@ class BaseHuggingfaceTool(BaseTool):
 
     def run(self):
         pass
-
-
-# class AttackerBaseTool:
-#     """Base class for calling tool
-#     """
-#     def __init__(self):
-#         pass
-
-#     def run(self):
-#         pass
-
-# class AttackerBaseTool:
-#     """Base class for calling tool
-#     """
-#     def __init__(self, tool_name, expected_achievements):
-#         super().__init__()
-#         self.tool_name = tool_name
-#         self.achievement=expected_achievements
-
-#     def run(self, params):
-#         return f"Attacker Tool used:{self.tool_name}. Expected Achievements:{self.achievement}"

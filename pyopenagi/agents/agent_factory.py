@@ -1,16 +1,18 @@
-from datetime import datetime
 import heapq
-from concurrent.futures import ThreadPoolExecutor, as_completed
-from threading import Thread, Lock, Event
+from threading import Lock, Event
 from pympler import asizeof
 from .interact import Interactor, list_available_agents
 import os
 import importlib
 
 class AgentFactory:
-    def __init__(self, llm, agent_process_queue, agent_process_factory, agent_log_mode):
+    def __init__(self,
+                 agent_process_queue,
+                 agent_process_factory,
+                 agent_log_mode
+        ):
         self.max_aid = 256
-        self.llm = llm
+        # self.llm = llm
         self.aid_pool = [i for i in range(self.max_aid)]
         heapq.heapify(self.aid_pool)
         self.agent_process_queue = agent_process_queue
@@ -43,7 +45,7 @@ class AgentFactory:
         agent_class = getattr(agent_module, class_name)
         return agent_class
 
-    def activate_agent(self, agent_name, task_input,args):
+    def activate_agent(self, agent_name, task_input):
         script_path = os.path.abspath(__file__)
         script_dir = os.path.dirname(script_path)
 
@@ -52,19 +54,16 @@ class AgentFactory:
         if not os.path.exists(os.path.join(script_dir, agent_name)):
             interactor.download_agent(agent_name)
 
-        # if not interactor.check_reqs_installed(agent_name):
-        #     interactor.install_agent_reqs(agent_name)
+        if not interactor.check_reqs_installed(agent_name):
+            interactor.install_agent_reqs(agent_name)
 
         agent_class = self.load_agent_instance(agent_name)
 
         agent = agent_class(
             agent_name = agent_name,
             task_input = task_input,
-            llm = self.llm,
-            agent_process_queue = self.agent_process_queue,
             agent_process_factory = self.agent_process_factory,
-            log_mode = self.agent_log_mode,
-            args=args
+            log_mode = self.agent_log_mode
         )
 
         aid = heapq.heappop(self.aid_pool)
@@ -77,11 +76,10 @@ class AgentFactory:
 
         return agent
 
-    def run_agent(self, agent_name, task_input,args):
+    def run_agent(self, agent_name, task_input):
         agent = self.activate_agent(
             agent_name=agent_name,
-            task_input=task_input,
-            args=args
+            task_input=task_input
         )
         # print(task_input)
         output = agent.run()

@@ -17,7 +17,7 @@ The goal of AIOS is to build a large language model (LLM) agent operating system
 AIOS provides the LLM kernel as an abstraction on top of the OS kernel. The kernel facilitates the installation, execution and usage of agents. Furthermore, the AIOS SDK facilitates the development and deployment of agents.
 
 ## 📰 News
-- **[2024-07-10]** 🛠️ AIOS documentation template is up: [Code](https://github.com/agiresearch/AIOS/tree/main/docs) and [Website](https://aios.readthedocs.io/en/latest/).
+- **[2024-07-10]** 📖 AIOS documentation template is up: [Code](https://github.com/agiresearch/AIOS/tree/main/docs) and [Website](https://aios.readthedocs.io/en/latest/).
 - **[2024-07-03]** 🛠️ AIOS Github issue template is now available [template](https://github.com/agiresearch/AIOS/issues/new/choose).
 - **[2024-06-20]** 🔥 Function calling for open-sourced LLMs (native huggingface, vllm, ollama) is supported.
 - **[2024-05-20]** 🚀 More agents with ChatGPT-based tool calling are added (i.e., MathAgent, RecAgent, TravelAgent, AcademicAgent and CreationAgent), their profiles and workflows can be found in [OpenAGI](https://github.com/agiresearch/OpenAGI).
@@ -33,144 +33,143 @@ AIOS provides the LLM kernel as an abstraction on top of the OS kernel. The kern
 Please see our ongoing [documentation](https://aios.readthedocs.io/en/latest/) for more information.
 - [Installation](https://aios.readthedocs.io/en/latest/get_started/installation.html)
 - [Quickstart](https://aios.readthedocs.io/en/latest/get_started/quickstart.html)
-
-### Prerequisites
-- Python 3.11
-- [Anaconda](https://www.anaconda.com/download/success)
-- [git](https://git-scm.com/downloads)
-- [pip](https://pypi.org/project/pip/)
-
-At the minimum, we recommend a Nvidia GPU with 4 GB of memory or an ARM based Macbook. It should be able to run on machines with inferior hardware, but task completion time will increase greatly. If you notice a large delay in execution, you can try to use an API based model, such as gpt (paid) or gemini (free).
+- [List Available Agent](https://aios.readthedocs.io/en/latest/get_started/list_agent.html)
 
 ### Installation
 
-**Git clone AIOS**
+Git clone AIOS
 ```bash
 git clone https://github.com/agiresearch/AIOS.git
 ```
-Install the required packages using pip
 ```bash
 conda create -n AIOS python=3.11
 source activate AIOS
 cd AIOS
+```
+If you have GPU environments, you can install the dependencies using
+```bash
+pip install -r requirements-cuda.txt
+```
+or else you can install the dependencies using
+```bash
 pip install -r requirements.txt
 ```
 
-If you don't have an Nvidia GPU, you could also use a venv
-```bash
-cd AIOS
-python -m venv venv
-chmod +x venv/bin/activate
-. venv/bin/activate
-pip install -r requirements.txt
-```
+### Quickstart
+Tips(💡): For the config of LLM endpoints, multiple API keys may be required to set up.
+Here we provide the .env.example to for easier configuration of these API keys, you can just copy .env.example as .env and set up the required keys based on your needs.
 
-### Usage
-If you use open-sourced models from huggingface, you need to setup your [Hugging Face token](https://huggingface.co/settings/tokens) and cache directory
-```bash
-export HUGGING_FACE_HUB_TOKEN=<YOUR READ TOKEN>
-export HF_HOME=<YOUR CACHE DIRECTORY>
-```
-If you use LLM APIs, you need to setup your API key such as [OpenAI API Key](https://platform.openai.com/api-keys), [Gemini API Key](https://aistudio.google.com/app/apikey)
-```bash
-export OPENAI_API_KEY=<YOUR OPENAI API KEY>
-export GEMINI_API_KEY=<YOUR GEMINI API KEY>
-```
-If you use external API tools in your agents, please refer to the [How to setup external tools](https://github.com/agiresearch/OpenAGI/blob/main/tools.md).
-
-You can also create .env file from the .env.example file, and then use dotenv to load the environment variables using .env file into your application's environment at runtime.
+#### Use with OpenAI API
+You need to get your OpenAI API key from https://platform.openai.com/api-keys.
+Then set up your OpenAI API key as an environment variable
 
 ```bash
-cp .env.example .env
+export OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
 ```
 
-### Documentation
-There is a README.md in each directory which provides a brief explanation on what the contents of the directory include.
+Then run main.py with the models provided by OpenAI API
 
-
-#### Demonstration Mode
-In the demonstration mode, we provide a toy example: we hardcode three agents and allow you to change the parameters. Then you can see the output of each step in running multiple agents
-For open-sourced LLMs, you need to setup the name of the LLM you would like to use the max gpu memory, the evaluation device and the maximum length of generated new tokens.
-```bash
-# For open-sourced LLMs
-python main.py --llm_name <llm_name> --max_gpu_memory <max_gpu_memory> --eval_device <eval_device> --max_new_tokens <max_new_tokens>
-## Use meta-llama/Meta-Llama-3-8B-Instruct for example
-python main.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --max_gpu_memory '{"0": "24GB", "1": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
-```
-For inference acceleration, you can also use vllm as the backend.
-```bash
-## Use meta-llama/Meta-Llama-3-8B-Instruct for example
-CUDA_VISILE_DEVICES=0,1 python main.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --use_backend vllm --max_gpu_memory '{"0": "24GB", "1": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
-```
-For close-sourced LLMs, you just need to setup the name of the LLM.
-```bash
-# For close-sourced LLMs
-python main.py --llm_name <llm_name>
-## Use gpt-4 for example
-python main.py --llm_name gpt-4
-```
-You can use bash script to start the agent execution like this
-```bash
-bash scripts/run/gpt4.sh
-````
-You can use an open-source model on an Apple MacBook with ollama. First, you will need to pull the model. Let's use llama3 as an example:
-```bash
-ollama pull llama3:8b
-```
-Then, you can run the Python script with the input parameter to start using AIOS with Llama3 and Ollama on your MacBook:
-```bash
-python main.py --llm_name ollama/llama3:8b
-```
-#### Interactive Mode
-In the deployment mode, the outputs of running agents are stored in files. And in this mode, you are provided with multiple commands to run agents and see resource usage of agents (e.g., `run \<xxxAgent\>: \<YOUR TASK\>`, `print agent`).
-Different from the interactive mode, you need to set all the default loggers as file loggers.
-```bash
-# For open-sourced LLMs
-python simulator.py --llm_name <llm_name> --max_gpu_memory <max_gpu_memory> --eval_device <eval_device> --max_new_tokens <max_new_tokens> --scheduler_log_mode file --agent_log_mode file --llm_kernel_log_mode file
-## Use meta-llama/Meta-Llama-3-8B-Instruct for example
-python simulator.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256 --scheduler_log_mode file --agent_log_mode file --llm_kernel_log_mode file
-```
-```bash
-# For close-sourced LLMs
-python simulator.py --llm_name <llm_name> --scheduler_log_mode file --agent_log_mode file --llm_kernel_log_mode file
-## Use gpt-4 for example
-python simulator.py --llm_name gpt-4 --scheduler_log_mode file --agent_log_mode file --llm_kernel_log_mode file
-```
-You can use bash script to start the interactive simulation session like this
-```bash
-bash scripts/interactive/gpt4.sh
-````
-
-Example run of simulator.py:
-```bash
-run example/math_agent: Calculate the surface area and volume of a cylinder with a radius of 5 units and height of 10 units using the formulas "2 * pi * r * h + 2 * pi * r2" and "pi * r2 * h".
-print agent
+```python
+python main.py --llm_name gpt-3.5-turbo # use gpt-3.5-turbo for example
 ```
 
-A `run` command will **not output** to the standard output. Instead, it will create a log file.
-
-#### Evaluation Mode
-In the evaluation mode, we draw prompts for each agent from `agent_configs/` and evaluate the performance of the agents by allowing the user to specify which agents should be run.
-
-Additionally, you can evaluate the acceleration performance with or without AIOS by comparing the waiting time and turnaround time.
+#### Use with Gemini API
+You need to get your Gemini API key from https://ai.google.dev/gemini-api
 
 ```bash
-python eval.py --llm_name gpt-3.5-turbo --agents MathAgent:1,TravelAgent:1,RecAgent:1,AcademicAgent:1,CreationAgent:1
-```
-You can use bash script to start the agent execution like this
-```bash
-bash scripts/eval/gpt4.sh
-````
-If you want to obtain metrics for either concurrent execution (with AIOS) or sequential execution (without AIOS), you can specify the mode parameter when running the eval.py file."
-```bash
-python eval.py --llm_name gpt-4 --agents example/math_agent:1,example/travel_agent:1,example/rec_agent:1,example/academic_agent:1,example/creation_agent:1 --mode concurrent-only
-python eval.py --llm_name gpt-4 --agents example/math_agent:1,example/travel_agent:1,example/rec_agent:1,example/academic_agent:1,example/creation_agent:1 --mode sequential-only
+export GEMINI_API_KEY=<YOUR_GEMINI_API_KEY>
 ```
 
-You could also run the models locally:
-```bash
-python eval.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256 --agents example/math_agent:1,example/travel_agent:1,example/rec_agent:1,example/academic_agent:1,example/creation_agent:1 --mode concurrent-only
+Then run main.py with the models provided by OpenAI API
+
+```python
+python main.py --llm_name gemini-1.5-flash # use gemini-1.5-flash for example
 ```
+
+If you want to use **open-sourced** models provided by huggingface, here we provide three options:
+* Use with ollama
+* Use with native huggingface models
+* Use with vllm
+
+#### Use with ollama
+You need to download ollama from from https://ollama.com/.
+
+Then you need to start the ollama server either from ollama app
+
+or using the following command in the terminal
+
+```bash
+ollama serve
+```
+
+To use models provided by ollama, you need to pull the available models from https://ollama.com/library
+
+```bash
+ollama pull llama3:8b # use llama3:8b for example
+```
+
+ollama can support CPU-only environment, so if you do not have CUDA environment
+
+You can run aios with ollama models by
+
+```python
+python main.py --llm_name ollama/llama3:8b --use_backend ollama # use ollama/llama3:8b for example
+```
+
+However, if you have the GPU environment, you can also pass GPU-related parameters to speed up
+using the following command
+
+```python
+python main.py --llm_name ollama/llama3:8b --use_backend ollama --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
+```
+
+#### Use with native huggingface llm models
+Some of the huggingface models require authentification, if you want to use all of
+the models you need to set up  your authentification token in https://huggingface.co/settings/tokens
+and set up it as an environment variable using the following command
+
+```bash
+export HF_AUTH_TOKENS=<YOUR_TOKEN_ID>
+```
+
+You can run with the
+
+```python
+python main.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
+```
+
+By default, huggingface will download the models in the `~/.cache` directory.
+If you want to designate the download directory, you can set up it using the following command
+
+```bash
+export HF_HOME=<YOUR_HF_HOME>
+```
+
+#### Use with vllm
+If you want to speed up the inference of huggingface models, you can use vllm as the backend.
+
+Note(📝): It is important to note that vllm currently only supports linux and GPU-enabled environment. So if you do not have the environment, you need to choose other options.
+
+Considering that vllm itself does not support passing designated GPU ids, you need to either
+setup the environment variable,
+
+```bash
+export CUDA_VISIBLE_DEVICES="0" # replace with your designated gpu ids
+```
+
+Then run the command
+
+```python
+python main.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --use_backend vllm --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
+```
+
+or you can pass the `CUDA_VISIBLE_DEVICES` as the prefix
+
+```python
+CUDA_VISIBLE_DEVICES=0 python main.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --use_backend vllm --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
+```
+
+
 
 ### Supported LLM Endpoints
 - [OpenAI API](https://platform.openai.com/api-keys)
