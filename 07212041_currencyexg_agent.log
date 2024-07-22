@@ -1,0 +1,34 @@
+/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/transformers/utils/hub.py:127: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Attack started at: 2024-07-21 08:58
+Namespace(llm_name='gpt-4o-mini', max_gpu_memory=None, eval_device=None, max_new_tokens=256, scheduler_log_mode='console', agent_log_mode='console', llm_kernel_log_mode='console', use_backend=None, workflow_mode='automatic', attacker_tools_path='data/test.jsonl', tasks_path='data/agent_tasks/example/currencyexchange_agent_tasks.txt', agent_path='example/currencyexchange_agent', observation_prompt_injection=False, plan_attack=False, action_attack=False, direct_prompt_injection=True, attack_type='combined_attack')
+[🤖gpt-4o-mini] AIOS LLM successfully loaded.
+
+Traceback (most recent call last):
+  File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 156, in <module>
+    main()
+  File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 127, in main
+    _res = r.result()
+           ^^^^^^^^^^
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/common/users/hz624/AgentAttackBench/pyopenagi/agents/agent_factory.py", line 81, in run_agent
+    agent = self.activate_agent(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/common/users/hz624/AgentAttackBench/pyopenagi/agents/agent_factory.py", line 60, in activate_agent
+    agent = agent_class(
+            ^^^^^^^^^^^^
+  File "/common/users/hz624/AgentAttackBench/pyopenagi/agents/example/currencyexchange_agent/agent.py", line 13, in __init__
+    ReactAgentAttack.__init__(self, agent_name, task_input, llm, agent_process_queue, agent_process_factory, log_mode)
+TypeError: ReactAgentAttack.__init__() missing 1 required positional argument: 'args'
+Exception ignored in: <module 'threading' from '/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/threading.py'>
+Traceback (most recent call last):
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/threading.py", line 1590, in _shutdown
+    lock.acquire()
+KeyboardInterrupt: 

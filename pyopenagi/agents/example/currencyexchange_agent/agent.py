@@ -1,6 +1,6 @@
-from ...react_agent import ReactAgent
+from ...react_agent_attack import ReactAgentAttack
 
-class CurrencyexchangeAgent(ReactAgent):
+class CurrencyexchangeAgent(ReactAgentAttack):
     def __init__(self,
                  agent_name,
                  task_input,
@@ -10,7 +10,7 @@ class CurrencyexchangeAgent(ReactAgent):
                  log_mode: str,
                  args
         ):
-        ReactAgent.__init__(self, agent_name, task_input, llm, agent_process_queue, agent_process_factory, log_mode)
+        ReactAgentAttack.__init__(self, agent_name, task_input, llm, agent_process_queue, agent_process_factory, log_mode, args)
         self.workflow_mode = args.workflow_mode
 
     def manual_workflow(self):
@@ -37,12 +37,12 @@ class CurrencyexchangeAgent(ReactAgent):
         amount = self.task_input['amount']
         from_currency = self.task_input['from_currency']
         to_currency = self.task_input['to_currency']
-        
+
         # Step 1: Use the tool to gather exchange rates
         tool_result = self.use_tool("currency_exchange_tool")
-        
+
         # Step 2: Analyze the gathered exchange rates
         analyzed_result = self.analyze_exchange_rates(tool_result, amount, from_currency, to_currency)
-        
+
         # Output the final result
         return analyzed_result

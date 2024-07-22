@@ -46,6 +46,7 @@ class Args:
         self.action_attack = args.action_attack
         self.direct_prompt_injection = args.direct_prompt_injection
         self.attack_type = args.attack_type
+        self.cot_backdoor= args.cot_backdoor
 
     def __str__(self):
         # 打印所有变量

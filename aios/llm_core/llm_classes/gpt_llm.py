@@ -57,12 +57,25 @@ class GPTLLM(BaseLLMKernel):
             level = "executing"
         )
         time.sleep(2)
-        response = self.model.chat.completions.create(
-            model=self.model_name,
-            messages = messages,
-            tools = agent_process.query.tools,
-            tool_choice = "required" if agent_process.query.tools else None
-        )
+
+        max_retries = 3
+        delay = 10
+        for attempt in range(max_retries):
+            try:
+                response = self.model.chat.completions.create(
+                    model=self.model_name,
+                    messages = messages,
+                    tools = agent_process.query.tools,
+                    tool_choice = "required" if agent_process.query.tools else None
+                )
+            except Exception as e:
+                print(f"Attempt {attempt + 1} failed: {e}")
+                if attempt < max_retries - 1:
+                    time.sleep(delay)
+                else:
+                    raise
+
+
         response_message = response.choices[0].message.content
         tool_calls = self.parse_tool_calls(
             response.choices[0].message.tool_calls
