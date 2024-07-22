@@ -23,9 +23,9 @@
 #####################################################################################
 #################################### gpt-4o-mini ####################################
 #####################################################################################
-#  --attacker_tools_path data/test.jsonl
+#  --attacker_tools_path data/test.jsonl --tasks_path data/agent_tasks/example/academic_agent_task_test.txt
 ########## cot_backdoor ##########
-nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type naive --attacker_tools_path data/test.jsonl > logs/cot_backdoor/gpt-4o-mini-automatic-naive.log 2>&1 &
+nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type naive --attacker_tools_path data/test.jsonl --tasks_path data/agent_tasks/example/academic_agent_task_test.txt > logs/cot_backdoor/gpt-4o-mini-automatic-naive.log 2>&1 &
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type context_ignoring > logs/cot_backdoor/gpt-4o-mini-automatic-context_ignoring.log 2>&1 &
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type fake_completion > logs/cot_backdoor/gpt-4o-mini-automatic-fake_completion.log 2>&1 &
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type escape_characters > logs/cot_backdoor/gpt-4o-mini-automatic-escape_characters.log 2>&1 &
