@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 5, in <module>
+    from aios.scheduler.fifo_scheduler import FIFOScheduler
+  File "/common/users/hz624/AgentAttackBench/aios/scheduler/fifo_scheduler.py", line 5, in <module>
+    from .base import BaseScheduler
+  File "/common/users/hz624/AgentAttackBench/aios/scheduler/base.py", line 6, in <module>
+    from aios.llm_core.llms import LLMKernel
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llms.py", line 5, in <module>
+    from .llm_classes.model_registry import MODEL_REGISTRY
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/model_registry.py", line 3, in <module>
+    from .gpt_llm import GPTLLM
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/gpt_llm.py", line 2, in <module>
+    from .base_llm import BaseLLMKernel
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/base_llm.py", line 7, in <module>
+    from aios.context.simple_context import SimpleContextManager
+  File "/common/users/hz624/AgentAttackBench/aios/context/simple_context.py", line 8, in <module>
+    import torch
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/__init__.py", line 1631, in <module>
+    from torch import quantization as quantization
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/quantization/__init__.py", line 1, in <module>
+    from .quantize import *  # noqa: F403
+    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/quantization/quantize.py", line 10, in <module>
+    from torch.ao.quantization.quantize import (
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/ao/quantization/__init__.py", line 3, in <module>
+    from .fake_quantize import *  # noqa: F403
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/ao/quantization/fake_quantize.py", line 5, in <module>
+    from torch.ao.quantization.observer import (
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/ao/quantization/observer.py", line 15, in <module>
+    from torch.ao.quantization.utils import (
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/ao/quantization/utils.py", line 12, in <module>
+    from torch.fx import Node
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/fx/__init__.py", line 83, in <module>
+    from .graph_module import GraphModule
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/fx/graph_module.py", line 19, in <module>
+    from .graph import _custom_builtins, _is_from_torch, _PyTreeCodeGen, Graph, PythonCode
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/fx/graph.py", line 4, in <module>
+    from . import _pytree as fx_pytree
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/fx/_pytree.py", line 4, in <module>
+    import torch.return_types
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/return_types.py", line 48, in <module>
+    pytree_register_structseq(_attr)
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/return_types.py", line 24, in pytree_register_structseq
+    register_pytree_node(
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/torch/utils/_pytree.py", line 210, in register_pytree_node
+    from . import _cxx_pytree as cxx
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1069, in get_code
+  File "<frozen importlib._bootstrap_external>", line 729, in _compile_bytecode
+KeyboardInterrupt

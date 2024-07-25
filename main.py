@@ -33,6 +33,9 @@ def clean_cache(root_directory):
     }
     delete_directories(root_directory, targets)
 
+class Args:
+    def __init__(self, args):
+        pass
 
 def main():
     # parse arguments and set configuration for this run accordingly
@@ -87,27 +90,31 @@ def main():
     #     "example/math_agent",
     #     "Convert 15000 MXN to Canadian Dollars and find out how much it would be in USD if 1 CAD equals 0.79 USD."
     # )
-
-    # academic_agent = agent_thread_pool.submit(
-    #     agent_factory.run_agent,
-    #     "example/academic_agent",
-    #     "Summarize recent advancements in quantum computing from the past five years.",
-    #     args
-    # )
+    attacker_tool_args = Args(
+        args=args
+    )
+    academic_agent = agent_thread_pool.submit(
+        agent_factory.run_agent,
+        "example/academic_agent",
+        "Summarize recent advancements in quantum computing from the past five years.",
+        attacker_tool_args=attacker_tool_args
+    )
 
     # rec_agent = agent_thread_pool.submit(
     #     agent_factory.run_agent,
     #     "example/rec_agent", "Recommend two movies with groundbreaking visual effects released in the last fifteen years ranked between 1 and 20 with ratings above 8.0."
     # )
 
-    creation_agent = agent_thread_pool.submit(
-        agent_factory.run_agent,
-        "example/creation_agent", "Create an image of a lush jungle with an ancient temple, evoking a sense of mystery and adventure."
-    )
+    # creation_agent = agent_thread_pool.submit(
+    #     agent_factory.run_agent,
+    #     "example/creation_agent", "Create an image of a lush jungle with an ancient temple, evoking a sense of mystery and adventure."
+    # )
 
     # agent_tasks = [travel_agent, rec_agent, creation_agent, math_agent, academic_agent]
     # agent_tasks = [rec_agent]
-    agent_tasks = [creation_agent]
+    agent_tasks = [academic_agent]
+
+    # agent_tasks = [creation_agent]
     # agent_tasks = [academic_agent, creation_agent]
     # agent_tasks = [creation_agent]
     # agent_tasks = [catfact_agent]

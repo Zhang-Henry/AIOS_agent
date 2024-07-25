@@ -25,42 +25,11 @@
 #####################################################################################
 #  --attacker_tools_path data/test.jsonl --tasks_path data/agent_tasks/example/academic_agent_task_test.txt
 ########## cot_backdoor ##########
-nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type naive --attacker_tools_path data/test.jsonl --tasks_path data/agent_tasks/example/academic_agent_task_test.txt > logs/cot_backdoor/gpt-4o-mini-automatic-naive.log 2>&1 &
+# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type naive --attacker_tools_path data/test.jsonl --tasks_path data/agent_tasks/example/academic_agent_task_test.txt > logs/cot_backdoor/gpt-4o-mini-automatic-naive.log 2>&1 &
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type context_ignoring > logs/cot_backdoor/gpt-4o-mini-automatic-context_ignoring.log 2>&1 &
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type fake_completion > logs/cot_backdoor/gpt-4o-mini-automatic-fake_completion.log 2>&1 &
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type escape_characters > logs/cot_backdoor/gpt-4o-mini-automatic-escape_characters.log 2>&1 &
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --cot_backdoor --attack_type combined_attack > logs/cot_backdoor/gpt-4o-mini-automatic-combined_attack.log 2>&1 &
-
-
-########## plan_attack ##########
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --plan_attack --attack_type naive > logs/plan_attack/gpt-4o-mini-manual-naive.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --plan_attack --attack_type context_ignoring > logs/plan_attack/gpt-4o-mini-manual-context_ignoring.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --plan_attack --attack_type fake_completion > logs/plan_attack/gpt-4o-mini-manual-fake_completion.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --plan_attack --attack_type escape_characters > logs/plan_attack/gpt-4o-mini-manual-escape_characters.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --plan_attack --attack_type combined_attack > logs/plan_attack/gpt-4o-mini-manual-combined_attack.log 2>&1 &
-
-
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --plan_attack --attack_type naive > logs/plan_attack/gpt-4o-mini-automatic-naive.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --plan_attack --attack_type context_ignoring > logs/plan_attack/gpt-4o-mini-automatic-context_ignoring.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --plan_attack --attack_type fake_completion > logs/plan_attack/gpt-4o-mini-automatic-fake_completion.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --plan_attack --attack_type escape_characters > logs/plan_attack/gpt-4o-mini-automatic-escape_characters.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --plan_attack --attack_type combined_attack > logs/plan_attack/gpt-4o-mini-automatic-combined_attack.log 2>&1 &
-
-
-
-########## action_attack ##########
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --action_attack --attack_type naive --attacker_tools_path data/test.jsonl > logs/action_attack/gpt-4o-mini-manual-naive.log
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --action_attack --attack_type context_ignoring > logs/action_attack/gpt-4o-mini-manual-context_ignoring.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --action_attack --attack_type fake_completion > logs/action_attack/gpt-4o-mini-manual-fake_completion.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --action_attack --attack_type escape_characters > logs/action_attack/gpt-4o-mini-manual-escape_characters.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --action_attack --attack_type combined_attack > logs/action_attack/gpt-4o-mini-manual-combined_attack.log 2>&1 &
-
-
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --action_attack --attack_type naive > logs/action_attack/gpt-4o-mini-automatic-naive.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --action_attack --attack_type context_ignoring > logs/action_attack/gpt-4o-mini-automatic-context_ignoring.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --action_attack --attack_type fake_completion > logs/action_attack/gpt-4o-mini-automatic-fake_completion.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --action_attack --attack_type escape_characters > logs/action_attack/gpt-4o-mini-automatic-escape_characters.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --action_attack --attack_type combined_attack > logs/action_attack/gpt-4o-mini-automatic-combined_attack.log 2>&1 &
 
 
 ########## observation_prompt_injection ##########
@@ -70,11 +39,11 @@ nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic -
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --observation_prompt_injection --attack_type escape_characters > logs/observation_prompt_injection/gpt-4o-mini-manual-escape_characters.log 2>&1 &
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode manual --observation_prompt_injection --attack_type combined_attack > logs/observation_prompt_injection/gpt-4o-mini-manual-combined_attack.log 2>&1 &
 
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --observation_prompt_injection --attack_type naive > logs/observation_prompt_injection/gpt-4o-mini-automatic-naive.log 2>&1 &
+nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --observation_prompt_injection --attack_type naive > logs/observation_prompt_injection/gpt-4o-mini-automatic-naive.log 2>&1 &
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --observation_prompt_injection --attack_type context_ignoring > logs/observation_prompt_injection/gpt-4o-mini-automatic-context_ignoring.log 2>&1 &
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --observation_prompt_injection --attack_type fake_completion > logs/observation_prompt_injection/gpt-4o-mini-automatic-fake_completion.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --observation_prompt_injection --attack_type escape_characters > logs/observation_prompt_injection/gpt-4o-mini-automatic-escape_characters.log 2>&1 &
-# nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --observation_prompt_injection --attack_type combined_attack > logs/observation_prompt_injection/gpt-4o-mini-automatic-combined_attack.log 2>&1 &
+nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --observation_prompt_injection --attack_type escape_characters > logs/observation_prompt_injection/gpt-4o-mini-automatic-escape_characters.log 2>&1 &
+nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --observation_prompt_injection --attack_type combined_attack > logs/observation_prompt_injection/gpt-4o-mini-automatic-combined_attack.log 2>&1 &
 
 ########## direct_prompt_injection ##########
 # nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --direct_prompt_injection --attack_type naive > logs/direct_prompt_injection/gpt-4o-mini-automatic-naive.log 2>&1 &

@@ -58,22 +58,20 @@ class GPTLLM(BaseLLMKernel):
         )
         time.sleep(2)
 
-        # max_retries = 5
-        # delay = 10
-        # for attempt in range(max_retries):
-        try:
-            response = self.model.chat.completions.create(
-                model=self.model_name,
-                messages = messages,
-                tools = agent_process.query.tools,
-                tool_choice = "required" if agent_process.query.tools else None
-            )
-        except Exception as e:
-            print(f"Get GPT response failed: {e}")
-            # if attempt < max_retries - 1:
-            #     time.sleep(delay)
-            # else:
-            #     raise
+        for attempt in range(3):
+            try:
+                response = self.model.chat.completions.create(
+                    model=self.model_name,
+                    messages=messages,
+                    tools=agent_process.query.tools,
+                    tool_choice="required" if agent_process.query.tools else None
+                )
+                break  # 成功后退出循环
+            except Exception as e:
+                print(f"Attempt {attempt + 1}: Get GPT response failed: {e}")
+                time.sleep(5)
+                if attempt == 2:  # 最后一次尝试仍然失败
+                    print("Failed after 3 attempts")
 
 
         response_message = response.choices[0].message.content

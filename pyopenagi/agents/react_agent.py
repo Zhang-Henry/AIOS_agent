@@ -24,16 +24,16 @@ class ReactAgent(BaseAgent):
 
         # self.tool_list = {}
 
-        self.plan_max_fail_times = 3
-        self.tool_call_max_fail_times = 3
+        self.plan_max_fail_times = 3 # 这个变量表示在生成计划时，允许计划失败的最大次数
+        self.tool_call_max_fail_times = 3 # 这个变量表示在调用工具时，允许工具调用失败的最大次数
 
     def build_system_instruction(self):
-        prefix = "".join(
+        prefix = "".join( # prefix 提供了初始的系统指令，描述了 agent 的总体任务或背景信息。
             [
                 "".join(self.config["description"])
             ]
         )
-        plan_instruction = "".join(
+        plan_instruction = "".join( # plan_instruction 提供了详细的步骤和格式，指导 agent 如何生成操作计划并在每一步中选择最相关的工具。
             [
                 f'You are given the available tools from the tool list: {json.dumps(self.tools)} to help you solve problems.',
                 'Generate a plan of steps you need to take.',
@@ -63,7 +63,7 @@ class ReactAgent(BaseAgent):
                 ']'
             ]
         )
-        # exection_instruction = "".join(
+        # exection_instruction = "".join( # 这个到底有没有执行
         #     [
         #         'To execute each step in the workflow, you need to output as the following json format:',
         #         '{"[Action]": "Your action that is indended to take",',
@@ -74,7 +74,7 @@ class ReactAgent(BaseAgent):
             self.messages.append(
                 {"role": "system", "content": prefix}
             )
-            # self.messages.append(
+            # self.messages.append( # 这个到底有没有执行
             #     {"role": "user", "content": exection_instruction}
             # )
         else:
@@ -114,8 +114,14 @@ class ReactAgent(BaseAgent):
 
         return actions, observations, success
 
+    """
+        构建系统指令并设置初始任务输入。
+        确定工作流程模式（自动或手动）并执行相应的工作流程。
+        处理工作流程中的每一步，处理工具调用并记录结果。
+        返回agent的性能摘要，包括最终结果、轮次和时间信息。
+    """
     def run(self):
-        self.build_system_instruction()
+        self.build_system_instruction() # 构建系统指令并设置总任务。
 
         task_input = self.task_input
 
@@ -126,7 +132,7 @@ class ReactAgent(BaseAgent):
 
         workflow = None
 
-        if self.workflow_mode == "automatic":
+        if self.workflow_mode == "automatic": # 确定工作流程模式（自动或手动）并执行相应的工作流程。
             workflow = self.automatic_workflow()
         else:
             assert self.workflow_mode == "manual"
@@ -141,10 +147,10 @@ class ReactAgent(BaseAgent):
         self.logger.log("*********************************\n", level="info")
 
         if workflow:
-            final_result = ""
+            final_result = "" # final_result 变量用于存储最终的结果。
 
-            for i, step in enumerate(workflow):
-                message = step["message"]
+            for i, step in enumerate(workflow): # 处理工作流程中的每一步，处理工具调用并记录结果。
+                message = step["message"] # 每一步固定格式，message和tool_use
                 tool_use = step["tool_use"]
 
                 prompt = f"At step {self.rounds + 1}, you need to {message}. "
@@ -152,13 +158,13 @@ class ReactAgent(BaseAgent):
                     "role": "user",
                     "content": prompt
                 })
-                if tool_use:
+                if tool_use: # 选择工具
                     selected_tools = self.pre_select_tools(tool_use)
 
                 else:
                     selected_tools = None
 
-                response, start_times, end_times, waiting_times, turnaround_times = self.get_response(
+                response, start_times, end_times, waiting_times, turnaround_times = self.get_response( # 得到回应
                     query = Query(
                         messages = self.messages,
                         tools = selected_tools
@@ -177,10 +183,10 @@ class ReactAgent(BaseAgent):
 
                 if tool_calls:
                     for _ in range(self.plan_max_fail_times):
-                        actions, observations, success = self.call_tools(tool_calls=tool_calls)
+                        actions, observations, success = self.call_tools(tool_calls=tool_calls) # observation是调用工具以后观察到的东西
 
-                        action_messages = "[Action]: " + ";".join(actions)
-                        observation_messages = "[Observation]: " + ";".join(observations)
+                        action_messages = "[Action]: " + ";".join(actions) # "I will call the tool_name with the params as function_params"
+                        observation_messages = "[Observation]: " + ";".join(observations) # "The knowledge I get from tool_name is: function_response" or "The tool parameter function_params is invalid."
 
                         self.messages.append(
                             {
@@ -207,7 +213,7 @@ class ReactAgent(BaseAgent):
             self.set_status("done")
             self.set_end_time(time=time.time())
 
-            return {
+            return { # 返回agent的性能摘要，包括最终结果、轮次和时间信息。
                 "agent_name": self.agent_name,
                 "result": final_result,
                 "rounds": self.rounds,

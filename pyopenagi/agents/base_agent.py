@@ -60,7 +60,7 @@ class BaseAgent:
 
         self.log_mode = log_mode
         self.logger = self.setup_logger()
-        self.logger.log("Initialized. \n", level="info")
+        # self.logger.log("Initialized. \n", level="info")
 
         self.set_status("active")
         self.set_created_time(time.time())
