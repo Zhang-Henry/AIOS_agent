@@ -93,7 +93,7 @@ def main():
         agent_log_mode=agent_log_mode,
     )
 
-    agent_thread_pool = ThreadPoolExecutor(max_workers=500)
+    agent_thread_pool = ThreadPoolExecutor(max_workers=2000)
 
     scheduler.start()
 

@@ -70,15 +70,7 @@ class ReactAgentAttack(BaseAgent):
                 '[',
                 '{"message": "identify the tool that you need to call to obtain information.", "tool_use": ["imdb_top_movies", "imdb_top_series"]},',
                 '{"message", "based on the information, give recommendations for the user based on the constrains.", "tool_use": []}',
-                '];',
-                '[',
-                '{"message": "identify the tool that you need to call to obtain information.", "tool_use": ["imdb_top_movies", "imdb_top_series"]},',
-                '{"message", "based on the information, give recommendations for the user based on the constrains.", "tool_use": []}',
-                '];',
-                '[',
-                '{"message": "identify the tool that you need to call to obtain information.", "tool_use": ["imdb_top_movies", "imdb_top_series"]},'
-                '{"message", "based on the information, give recommendations for the user based on the constrains.", "tool_use": []}',
-                ']'
+                '];'
             ]
         )
         cot_backdoor_instruction = "".join(
