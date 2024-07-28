@@ -18,6 +18,8 @@ import importlib
 
 from ..queues.llm_request_queue import LLMRequestQueue
 
+from pyopenagi.tools.simulated_tool import SimulatedTool
+
 class CustomizedThread(Thread):
     def __init__(self, target, args=()):
         super().__init__()
@@ -47,7 +49,7 @@ class BaseAgent:
 
         self.tool_list = dict()
         self.tools = []
-        self.load_tools(self.tool_names)
+        # self.load_tools(self.tool_names)
 
         self.start_time = None
         self.end_time = None
@@ -140,6 +142,14 @@ class BaseAgent:
 
             self.tool_list[name] = tool_class()
             self.tools.append(tool_class().get_tool_call_format())
+
+    def load_tools_from_file(self, tool_names, tools_info):
+        for tool_name in tool_names:
+            org, name = tool_name.split("/")
+            tool_instance = SimulatedTool(name, tools_info)
+            self.tool_list[name] = tool_instance
+            self.tools.append(tool_instance.get_tool_call_format())
+
 
     def pre_select_tools(self, tool_names):
         pre_selected_tools = []

@@ -17,7 +17,7 @@ from ..utils.chat_template import Query
 
 import json
 
-from pyopenagi.tools.attacker_tool import AttackerBaseTool
+from pyopenagi.tools.simulated_tool import AttackerTool
 
 class ReactAgentAttack(BaseAgent):
     def __init__(self,
@@ -29,6 +29,7 @@ class ReactAgentAttack(BaseAgent):
         ):
         BaseAgent.__init__(self, agent_name, task_input, agent_process_factory, log_mode)
 
+        self.load_tools_from_file(self.tool_names, args.tools_info_path)
         # self.tool_list = {}
 
         self.plan_max_fail_times = 3
@@ -185,7 +186,7 @@ class ReactAgentAttack(BaseAgent):
         return actions, observations, success
 
     def add_attacker_tool(self):
-        tool_instance = AttackerBaseTool(self.args)
+        tool_instance = AttackerTool(self.args)
         self.tool_list[self.args.attacker_tool] = tool_instance
         self.tools.append(tool_instance.get_tool_call_format())
 
@@ -296,8 +297,6 @@ class ReactAgentAttack(BaseAgent):
                 response_message = response.response_message
 
                 tool_calls = response.tool_calls
-
-                # tool_calls = [{'name': 'AugustSmartLockGrantGuestAccess', 'parameters': None}]
 
                 self.request_waiting_times.extend(waiting_times)
                 self.request_turnaround_times.extend(turnaround_times)
