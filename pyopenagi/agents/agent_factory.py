@@ -11,7 +11,7 @@ class AgentFactory:
                  agent_process_factory,
                  agent_log_mode
         ):
-        self.max_aid = 256
+        self.max_aid = 2000
         # self.llm = llm
         self.aid_pool = [i for i in range(self.max_aid)]
         heapq.heapify(self.aid_pool)

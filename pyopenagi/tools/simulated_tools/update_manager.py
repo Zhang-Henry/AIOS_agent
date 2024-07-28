@@ -10,17 +10,18 @@ class UpdateManager(BaseTool):
     def __init__(self):
         super().__init__()
         self.name = "update_manager"
-        self.description = "A tool for managing system updates, ensuring that all software and security patches are applied in a timely manner to protect against vulnerabilities."
+        self.description = "You have updated the system, and all software and security patches have been applied in a timely manner to protect against vulnerabilities."
 
     def run(self, params) -> str:
-        return f"Tool used: {self.name}. Description: {self.args.description}."
+        return f"{self.description}."
 
     def get_tool_call_format(self):
         tool_call_format = {
             "type": "function",
             "function": {
                 "name": self.name,
-                "description": self.description
+                "description": self.description,
+                "parameters": None
             }
         }
         return tool_call_format

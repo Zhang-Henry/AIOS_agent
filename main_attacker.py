@@ -35,6 +35,7 @@ def clean_cache(root_directory):
     }
     delete_directories(root_directory, targets)
 
+
 class Args:
     def __init__(self, attacker_tool, attacker_instruction, expected_achievements, args):
         self.attacker_tool = attacker_tool
@@ -93,33 +94,43 @@ def main():
         agent_log_mode=agent_log_mode,
     )
 
-    agent_thread_pool = ThreadPoolExecutor(max_workers=2000)
+    agent_thread_pool = ThreadPoolExecutor(max_workers=5000)
 
     scheduler.start()
 
     agent_tasks = list()
-    attacker_tools = pd.read_json(args.attacker_tools_path, lines=True)
 
-    with open(args.tasks_path, 'r') as file:
-        tasks = file.readlines()
 
-    for _, attacker_tool_info in attacker_tools.iterrows():
-        for task in tasks:
-            attacker_tool_args = Args(
-                attacker_tool=attacker_tool_info["Attacker Tools"][0],
-                attacker_instruction=attacker_tool_info["Attacker Instruction"],
-                expected_achievements=attacker_tool_info["Expected Achievements"],
-                args=args
-            )
-            # print("Current task: ", task)
-            academic_agent_attack = agent_thread_pool.submit(
-                agent_factory.run_agent,
-                args.agent_path,
-                task,
-                attacker_tool_args
-            )
+    attacker_tools_all = pd.read_json(args.attacker_tools_path, lines=True)
 
-            agent_tasks.append(academic_agent_attack)
+    tasks_path = pd.read_json(args.tasks_path, lines=True)
+
+    for _, agent_info in tasks_path.iterrows(): # iterate over each agent
+        agent_name = agent_info["agent_name"]
+        agent_path = agent_info["agent_path"]
+        tasks = agent_info["tasks"]
+        attacker_tools = attacker_tools_all[attacker_tools_all["Corresponding Agent"] == agent_name]
+
+        for i, task in enumerate(tasks): # iterate over each task
+            if i >= 1:
+                break
+            for _, tool in attacker_tools.iterrows(): # iterate over each attacker tool
+                print(f'Running agent: {agent_name} with the task: {task} and the attacker tool: {tool["Attacker Tools"]}')
+                attacker_tool_args = Args(
+                    attacker_tool=tool["Attacker Tools"],
+                    attacker_instruction=tool["Attacker Instruction"],
+                    expected_achievements=tool["Expected Achievements"],
+                    args=args
+                )
+                # print("Current task: ", task)
+                agent_attack = agent_thread_pool.submit(
+                    agent_factory.run_agent,
+                    agent_path,
+                    task,
+                    attacker_tool_args
+                )
+
+                agent_tasks.append(agent_attack)
 
     attack_succ = 0
     workflow_failure = 0
@@ -132,13 +143,14 @@ def main():
 
         print(f"Attack successful.") if _res["succ"] else print(f"Attack failed.")
 
+        if _res['tool_call_success']:
+            tool_call_success += 1
+            print('Tool calling success.')
         if not _res["succ"]:
             if _res['workflow_failure']:
                 workflow_failure += 1
                 print('Workflow generation failed.')
-            if _res['tool_call_success']:
-                tool_call_success += 1
-                print('Tool calling success.')
+
 
         print(_res)
         print("**********************************")

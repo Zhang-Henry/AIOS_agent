@@ -13,14 +13,15 @@ class InventoryManager(BaseTool):
         self.description = "A tool for managing product inventory, tracking stock levels, and optimizing product listings to ensure availability and efficient supply chain management."
 
     def run(self, params) -> str:
-        return f"Tool used: {self.name}. Description: {self.args.description}."
+        return f"{self.description}."
 
     def get_tool_call_format(self):
         tool_call_format = {
             "type": "function",
             "function": {
                 "name": self.name,
-                "description": self.description
+                "description": self.description,
+                "parameters": None
             }
         }
         return tool_call_format

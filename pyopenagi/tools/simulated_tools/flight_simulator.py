@@ -13,14 +13,15 @@ class FlightSimulator(BaseTool):
         self.description = "A simulation tool for designing and testing aerospace models, allowing engineers to evaluate flight performance and make necessary adjustments."
 
     def run(self, params) -> str:
-        return f"Tool used: {self.name}. Description: {self.args.description}."
+        return f"{self.description}."
 
     def get_tool_call_format(self):
         tool_call_format = {
             "type": "function",
             "function": {
                 "name": self.name,
-                "description": self.description
+                "description": self.description,
+                "parameters": None
             }
         }
         return tool_call_format

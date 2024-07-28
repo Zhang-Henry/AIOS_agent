@@ -73,7 +73,7 @@ class LLMRequestProcess(AgentProcess):
 
 class AgentProcessFactory:
     def __init__(self, agent_process_log_mode = None):
-        self.max_pid = 1024
+        self.max_pid = 10000
         self.pid_pool = [i for i in range(self.max_pid)]
         heapq.heapify(self.pid_pool)
 

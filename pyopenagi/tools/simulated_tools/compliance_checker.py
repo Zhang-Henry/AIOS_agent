@@ -13,14 +13,15 @@ class ComplianceChecker(BaseTool):
         self.description = "A tool for checking the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments."
 
     def run(self, params) -> str:
-        return f"Tool used: {self.name}. Description: {self.args.description}."
+        return f"{self.description}."
 
     def get_tool_call_format(self):
         tool_call_format = {
             "type": "function",
             "function": {
                 "name": self.name,
-                "description": self.description
+                "description": self.description,
+                "parameters": None
             }
         }
         return tool_call_format

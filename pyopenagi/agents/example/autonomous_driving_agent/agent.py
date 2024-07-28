@@ -1,6 +1,6 @@
 from ...react_agent_attack import ReactAgentAttack
 
-class AutonomousAgent(ReactAgentAttack):
+class AutonomousDrivingAgent(ReactAgentAttack):
     def __init__(self,
                  agent_name,
                  task_input,

@@ -20,6 +20,21 @@ export HF_AUTH_TOKENS=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
 #####################################################################################
 #################################### ollama/llama3.1:8b ####################################
 #####################################################################################
+########## direct_prompt_injection ##########
+# nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode automatic --direct_prompt_injection --attack_type naive > logs/direct_prompt_injection/llama3.1:8b-automatic-naive.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode automatic --direct_prompt_injection --attack_type context_ignoring > logs/direct_prompt_injection/llama3.1:8b-automatic-context_ignoring.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode automatic --direct_prompt_injection --attack_type fake_completion > logs/direct_prompt_injection/llama3.1:8b-automatic-fake_completion.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode automatic --direct_prompt_injection --attack_type escape_characters > logs/direct_prompt_injection/llama3.1:8b-automatic-escape_characters.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode automatic --direct_prompt_injection --attack_type combined_attack > logs/direct_prompt_injection/llama3.1:8b-automatic-combined_attack.log 2>&1 &
+
+# nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode manual --direct_prompt_injection --attack_type naive > logs/direct_prompt_injection/llama3.1:8b-manual-naive.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode manual --direct_prompt_injection --attack_type context_ignoring > logs/direct_prompt_injection/llama3.1:8b-manual-context_ignoring.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode manual --direct_prompt_injection --attack_type fake_completion > logs/direct_prompt_injection/llama3.1:8b-manual-fake_completion.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode manual --direct_prompt_injection --attack_type escape_characters > logs/direct_prompt_injection/llama3.1:8b-manual-escape_characters.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode manual --direct_prompt_injection --attack_type combined_attack > logs/direct_prompt_injection/llama3.1:8b-manual-combined_attack.log 2>&1 &
+
+
+
 ########## observation_prompt_injection ##########
 # nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode manual --observation_prompt_injection --attack_type naive  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7" > logs/observation_prompt_injection/llama3.1:8b-manual-naive.log 2>&1 &
 # nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode manual --observation_prompt_injection --attack_type context_ignoring  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:6" > logs/observation_prompt_injection/llama3.1:8b-manual-context_ignoring.log 2>&1 &
@@ -32,6 +47,7 @@ export HF_AUTH_TOKENS=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
 # nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode automatic --observation_prompt_injection --attack_type fake_completion --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:2"  > logs/observation_prompt_injection/llama3.1:8b-automatic-fake_completion.log 2>&1 &
 # nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode automatic --observation_prompt_injection --attack_type escape_characters --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:3"  > logs/observation_prompt_injection/llama3.1:8b-automatic-escape_characters.log 2>&1 &
 # nohup python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode automatic --observation_prompt_injection --attack_type combined_attack --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:4"  > logs/observation_prompt_injection/llama3.1:8b-automatic-combined_attack.log 2>&1 &
+
 
 #####################################################################################
 ####################################  Trelis/Meta-Llama-3-8B-Instruct-function-calling ####################################
@@ -68,18 +84,34 @@ export HF_AUTH_TOKENS=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
 #####################################################################################
 #################################### gemma2:9b ####################################
 #####################################################################################
-########## observation_prompt_injection ##########
-nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --observation_prompt_injection --attack_type naive  --max_gpu_memory '{"1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7" > logs/observation_prompt_injection/gemma2:9b-manual-naive.log 2>&1 &
-nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --observation_prompt_injection --attack_type context_ignoring  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7" > logs/observation_prompt_injection/gemma2:9b-manual-context_ignoring.log 2>&1 &
-nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --observation_prompt_injection --attack_type fake_completion  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-manual-fake_completion.log 2>&1 &
-nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --observation_prompt_injection --attack_type escape_characters  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-manual-escape_characters.log 2>&1 &
-nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --observation_prompt_injection --attack_type combined_attack  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-manual-combined_attack.log 2>&1 &
+########## direct_prompt_injection ##########
+nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --direct_prompt_injection --attack_type naive > logs/direct_prompt_injection/gemma2:9b-automatic-naive.log 2>&1 &
+nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --direct_prompt_injection --attack_type context_ignoring > logs/direct_prompt_injection/gemma2:9b-automatic-context_ignoring.log 2>&1 &
+nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --direct_prompt_injection --attack_type fake_completion > logs/direct_prompt_injection/gemma2:9b-automatic-fake_completion.log 2>&1 &
+nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --direct_prompt_injection --attack_type escape_characters > logs/direct_prompt_injection/gemma2:9b-automatic-escape_characters.log 2>&1 &
+nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --direct_prompt_injection --attack_type combined_attack > logs/direct_prompt_injection/gemma2:9b-automatic-combined_attack.log 2>&1 &
 
-nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --observation_prompt_injection --attack_type naive --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-automatic-naive.log 2>&1 &
-nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --observation_prompt_injection --attack_type context_ignoring --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-automatic-context_ignoring.log 2>&1 &
-nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --observation_prompt_injection --attack_type fake_completion --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-automatic-fake_completion.log 2>&1 &
-nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --observation_prompt_injection --attack_type escape_characters --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-automatic-escape_characters.log 2>&1 &
-nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --observation_prompt_injection --attack_type combined_attack --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-automatic-combined_attack.log 2>&1 &
+nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --direct_prompt_injection --attack_type naive > logs/direct_prompt_injection/gemma2:9b-manual-naive.log 2>&1 &
+nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --direct_prompt_injection --attack_type context_ignoring > logs/direct_prompt_injection/gemma2:9b-manual-context_ignoring.log 2>&1 &
+nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --direct_prompt_injection --attack_type fake_completion > logs/direct_prompt_injection/gemma2:9b-manual-fake_completion.log 2>&1 &
+nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --direct_prompt_injection --attack_type escape_characters > logs/direct_prompt_injection/gemma2:9b-manual-escape_characters.log 2>&1 &
+nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --direct_prompt_injection --attack_type combined_attack > logs/direct_prompt_injection/gemma2:9b-manual-combined_attack.log 2>&1 &
+
+
+
+
+########## observation_prompt_injection ##########
+# nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --observation_prompt_injection --attack_type naive  --max_gpu_memory '{"1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7" > logs/observation_prompt_injection/gemma2:9b-manual-naive.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --observation_prompt_injection --attack_type context_ignoring  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7" > logs/observation_prompt_injection/gemma2:9b-manual-context_ignoring.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --observation_prompt_injection --attack_type fake_completion  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-manual-fake_completion.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --observation_prompt_injection --attack_type escape_characters  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-manual-escape_characters.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode manual --observation_prompt_injection --attack_type combined_attack  --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-manual-combined_attack.log 2>&1 &
+
+# nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --observation_prompt_injection --attack_type naive --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-automatic-naive.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --observation_prompt_injection --attack_type context_ignoring --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-automatic-context_ignoring.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --observation_prompt_injection --attack_type fake_completion --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-automatic-fake_completion.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --observation_prompt_injection --attack_type escape_characters --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-automatic-escape_characters.log 2>&1 &
+# nohup python main_attacker.py --llm_name ollama/gemma2:9b --workflow_mode automatic --observation_prompt_injection --attack_type combined_attack --max_gpu_memory '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB"}' --eval_device "cuda:7"  > logs/observation_prompt_injection/gemma2:9b-automatic-combined_attack.log 2>&1 &
 
 
 
