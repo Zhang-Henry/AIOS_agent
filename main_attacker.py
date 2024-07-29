@@ -120,7 +120,7 @@ def main():
                 attacker_tool_args = Args(
                     attacker_tool=tool["Attacker Tools"],
                     attacker_instruction=tool["Attacker Instruction"],
-                    expected_achievements=tool["Expected Achievements"],
+                    expected_achievements=tool["Description"],
                     args=args
                 )
                 # print("Current task: ", task)

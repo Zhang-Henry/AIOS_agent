@@ -1,0 +1,1 @@
+python main_attacker.py --llm_name ollama/llama3.1:8b --workflow_mode automatic --observation_prompt_injection --attack_type naive --attacker_tools_path data/injecAgent_test.jsonl --tasks_path data/agent_task_test.jsonl > logs/attacker_test2.log

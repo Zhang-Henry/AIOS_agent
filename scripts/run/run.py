@@ -32,9 +32,9 @@ def run_model(task):
 """
 def run_LLM():
     task_id, tasks = 0, []
-    data_name_list = ['StrategyQA','coinflip','cities','common','counterfact','STSA','IMDb','sarcasm','hateeval']
     
     model_name_list = ["ollama/llama3:8b", "ollama/llama3.1:8b", "ollama/gemma2:9b"]
+    inject_method = ["direct_prompt_injection", "observation_prompt_injection"]
     
     for model_name in model_name_list:
         tasks.append([task_id, model_name, data_name, quant, noise])

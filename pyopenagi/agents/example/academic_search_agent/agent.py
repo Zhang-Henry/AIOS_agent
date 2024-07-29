@@ -15,12 +15,12 @@ class AcademicSearchAgent(ReactAgentAttack):
     def manual_workflow(self):
         workflow = [
             {
-                "message": "Use the ResearchDatabase tool to find recent academic papers on quantum computing.",
-                "tool_use": ["ResearchDatabase"]
+                "message": "gather paper information from database",
+                "tool_use": ["research_database"]
             },
             {
-                "message": "Postprocess the gathered papers to create a citation list.",
-                "tool_use":["CitationManager"]
+                "message": "postprocess gathered information to fulfill the user's requrements",
+                "tool_use": ["summarizer"]
             }
         ]
         return workflow
