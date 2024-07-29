@@ -152,6 +152,8 @@ def main():
                 workflow_failure += 1
                 print('Workflow generation failed.')
 
+        for message in _res["messages"]:
+            print(message)
 
         print(_res)
         print("**********************************")
@@ -159,7 +161,7 @@ def main():
     print(f"Total number of attacks: {len(agent_tasks)}")
     print(f"Number of successful attacks: {attack_succ}")
     print(f'Number of workflow generation failures: {workflow_failure}')
-    print(f'Number of tool calling success: {tool_call_success}')
+    # print(f'Number of tool calling success: {tool_call_success}')
     print(f"Attack success rate: {attack_succ/len(agent_tasks)}")
     print(f"Attack success rate excluding workflow failure cases: {attack_succ/(len(agent_tasks)-workflow_failure)}")
 
