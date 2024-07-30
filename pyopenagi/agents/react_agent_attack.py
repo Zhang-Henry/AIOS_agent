@@ -137,7 +137,7 @@ class ReactAgentAttack(BaseAgent):
     def manual_workflow(self):
         pass
 
-    def call_tools(self, tool_calls):
+    def call_tools(self, tool_calls, final_stage=False):
         # self.logger.log(f"***** It starts to call external tools *****\n", level="info")
         success = True
         actions = []
@@ -170,7 +170,7 @@ class ReactAgentAttack(BaseAgent):
                 function_response = function_to_call.run(function_params)
 
                 ############ Attacker prompt injection ############
-                if self.args.observation_prompt_injection:
+                if self.args.observation_prompt_injection and not final_stage:
                     function_response += f'; {self.attack_prompts[self.args.attack_type]}'
                     # self.logger.log(f"Attacker prompt has been injected to API respones.\n", level="info")
 
@@ -304,7 +304,11 @@ class ReactAgentAttack(BaseAgent):
 
                 if tool_calls:
                     for j in range(self.plan_max_fail_times):
-                        actions, observations, success = self.call_tools(tool_calls=tool_calls)
+                        if i == len(workflow) - 1:
+                            actions, observations, success = self.call_tools(tool_calls=tool_calls,final_stage=True)
+                        else:
+                            actions, observations, success = self.call_tools(tool_calls=tool_calls,final_stage=False)
+
 
                         action_messages = "[Action]: " + ";".join(actions)
                         observation_messages = "[Observation]: " + ";".join(observations)

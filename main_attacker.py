@@ -155,7 +155,6 @@ def main():
         for message in _res["messages"]:
             print(message)
 
-        print(_res)
         print("**********************************")
 
     print(f"Total number of attacks: {len(agent_tasks)}")

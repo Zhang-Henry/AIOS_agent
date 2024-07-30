@@ -30,7 +30,7 @@ class AttackerTool(BaseTool):
         super().__init__()
         self.args = args
 
-    def run(self,para):
+    def run(self,params):
         return f"You have used the attacker tool {self.args.attacker_tool}. You have achived the attcker goal: {self.args.expected_achievements}"
 
     def get_tool_call_format(self):
