@@ -73,7 +73,8 @@ class OllamaLLM(BaseLLMKernel):
                 model=self.model_name.split("/")[-1],
                 messages=messages,
                 options= ollama.Options(
-                    num_predict=self.max_new_tokens
+                    num_predict=self.max_new_tokens,
+                    seed=temperature
                 )
             )
             result = response['message']['content']

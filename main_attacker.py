@@ -25,6 +25,9 @@ from dotenv import load_dotenv
 import pandas as pd
 from tqdm import tqdm
 from datetime import datetime
+import torch
+import numpy as np
+import random
 
 def clean_cache(root_directory):
     targets = {
@@ -35,6 +38,10 @@ def clean_cache(root_directory):
     }
     delete_directories(root_directory, targets)
 
+def seed_everything(seed):
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
 
 class Args:
     def __init__(self, attacker_tool, attacker_instruction, expected_achievements, args):
@@ -55,6 +62,7 @@ class Args:
         return str(self.__dict__)
 
 def main():
+    seed_everything(0)
     start_time = datetime.now()  # 记录开始时间
     print(f"Attack started at: {start_time.strftime('%Y-%m-%d %H:%M')}")
 

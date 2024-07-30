@@ -10,7 +10,7 @@ class SimulatedTool(BaseTool):
         self.description = tool['Description'].iloc[0]
         self.expected_achivement = tool['Expected Achievements'].iloc[0]
 
-    def run(self, params) -> str:
+    def run(self, params=None) -> str:
         return self.expected_achivement
 
     def get_tool_call_format(self):
@@ -30,7 +30,7 @@ class AttackerTool(BaseTool):
         super().__init__()
         self.args = args
 
-    def run(self,params):
+    def run(self,params=None):
         return f"You have used the attacker tool {self.args.attacker_tool}. You have achived the attcker goal: {self.args.expected_achievements}"
 
     def get_tool_call_format(self):

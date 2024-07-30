@@ -146,7 +146,8 @@ class ReactAgentAttack(BaseAgent):
             try:
                 function_name = tool_call["name"]
                 function_to_call = self.tool_list[function_name]
-                function_params = tool_call["parameters"]
+                function_params = None
+                # function_params = tool_call["parameters"]
                 self.logger.log(f"The current tool called is {function_to_call}, parameter:{function_params}\n", level="info")
 
             except KeyError as e:
@@ -327,7 +328,7 @@ class ReactAgentAttack(BaseAgent):
                     thinkings = response_message
                     self.messages.append({
                         "role": "assistant",
-                        "content": thinkings
+                        "thinking": thinkings
                     })
 
                 if i == len(workflow) - 1:

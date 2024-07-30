@@ -71,14 +71,13 @@ class BaseLLMKernel(ABC):
 
     # only use for open-sourced LLM
     def tool_calling_input_format(self, messages, tools):
-        prefix_prompt = "In and only in current step, you need to call tools. Available tools are: "
+        prefix_prompt = "In current step, available tools are: "
         tool_prompt = json.dumps(tools)
         suffix_prompt = "".join(
             [
-                'Must call functions that are available. To call a function, respond '
+                'Remember that you must call a related tool functions that are available in this step!!! To call a function, respond '
                 'immediately and only with a list of JSON object of the following format:'
-                '{[{"name":"function_name_value","parameters":{"parameter_name1":"parameter_value1",'
-                '"parameter_name2":"parameter_value2"}}]}'
+                '{[{"name":"function_name_value"}]}'
             ]
         )
         messages[-1]["content"] += (prefix_prompt + tool_prompt + suffix_prompt)
