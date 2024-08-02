@@ -27,7 +27,7 @@ from tqdm import tqdm
 from datetime import datetime
 import torch
 import numpy as np
-import random
+import random,json
 
 def clean_cache(root_directory):
     targets = {
@@ -60,6 +60,7 @@ class Args:
     def __str__(self):
         # 打印所有变量
         return str(self.__dict__)
+
 
 def main():
     seed_everything(0)
@@ -121,7 +122,7 @@ def main():
         attacker_tools = attacker_tools_all[attacker_tools_all["Corresponding Agent"] == agent_name]
 
         for i, task in enumerate(tasks): # iterate over each task
-            if i >= 1:
+            if i >= 2:
                 break
             for _, tool in attacker_tools.iterrows(): # iterate over each attacker tool
                 print(f'Running agent: {agent_name} with the task: {task} and the attacker tool: {tool["Attacker Tools"]}')
@@ -179,6 +180,28 @@ def main():
     end_time = datetime.now()  # 记录结束时间
     print(f"Attack ended at: {end_time.strftime('%Y-%m-%d %H:%M')}")
     print(f"Total duration: {end_time - start_time}")
+
+
+    # 将数据格式化为字符串
+    # output_data = {
+    #     'start_time': start_time.strftime('%Y-%m-%d %H:%M:%S'),
+    #     'end_time': end_time.strftime('%Y-%m-%d %H:%M:%S'),
+    #     'args': args,
+    #     'statistics': {
+    #         'Total number of attacks': len(agent_tasks),
+    #         'Number of successful attacks': attack_succ,
+    #         'Number of workflow generation failures': workflow_failure,
+    #         'Attack success rate': attack_succ / len(agent_tasks),
+    #         'Attack success rate excluding workflow failure cases': attack_succ / (len(agent_tasks) - workflow_failure)
+    #     }
+    # }
+
+
+    # with open(args.result_file, 'a') as file:
+    #     file.write("\n" + "="*40 + "\n")  # 添加分隔符
+    #     json.dump(output_data, file, indent=4)
+
+    # print(f"数据已写入 {args.result_file}")
 
 if __name__ == "__main__":
     main()
