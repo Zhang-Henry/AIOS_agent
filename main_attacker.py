@@ -122,7 +122,7 @@ def main():
         attacker_tools = attacker_tools_all[attacker_tools_all["Corresponding Agent"] == agent_name]
 
         for i, task in enumerate(tasks): # iterate over each task
-            if i >= 2:
+            if i >= 1:
                 break
             for _, tool in attacker_tools.iterrows(): # iterate over each attacker tool
                 print(f'Running agent: {agent_name} with the task: {task} and the attacker tool: {tool["Attacker Tools"]}')
@@ -183,25 +183,25 @@ def main():
 
 
     # 将数据格式化为字符串
-    # output_data = {
-    #     'start_time': start_time.strftime('%Y-%m-%d %H:%M:%S'),
-    #     'end_time': end_time.strftime('%Y-%m-%d %H:%M:%S'),
-    #     'args': args,
-    #     'statistics': {
-    #         'Total number of attacks': len(agent_tasks),
-    #         'Number of successful attacks': attack_succ,
-    #         'Number of workflow generation failures': workflow_failure,
-    #         'Attack success rate': attack_succ / len(agent_tasks),
-    #         'Attack success rate excluding workflow failure cases': attack_succ / (len(agent_tasks) - workflow_failure)
-    #     }
-    # }
+    output_data = {
+        'start_time': start_time.strftime('%Y-%m-%d %H:%M:%S'),
+        'end_time': end_time.strftime('%Y-%m-%d %H:%M:%S'),
+        'args': vars(args),
+        'statistics': {
+            'Total number of attacks': len(agent_tasks),
+            'Number of successful attacks': attack_succ,
+            'Number of workflow generation failures': workflow_failure,
+            'Attack success rate': attack_succ / len(agent_tasks),
+            'Attack success rate excluding workflow failure cases': attack_succ / (len(agent_tasks) - workflow_failure)
+        }
+    }
 
 
-    # with open(args.result_file, 'a') as file:
-    #     file.write("\n" + "="*40 + "\n")  # 添加分隔符
-    #     json.dump(output_data, file, indent=4)
+    with open(args.result_file, 'a') as file:
+        file.write("\n" + "="*40 + "\n")  # 添加分隔符
+        json.dump(output_data, file, indent=4)
 
-    # print(f"数据已写入 {args.result_file}")
+    print(f"数据已写入 {args.result_file}")
 
 if __name__ == "__main__":
     main()

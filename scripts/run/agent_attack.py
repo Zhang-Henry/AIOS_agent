@@ -4,6 +4,8 @@ import os
 if __name__ == '__main__':
     eval_devices = ["cuda:7", "cuda:6", "cuda:5", "cuda:4", "cuda:3", "cuda:2", "cuda:1", "cuda:0"]
     max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
+    aggressive = False
+    test=False
 
     #######################################################################################################################
     # llm_close_source = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
@@ -17,23 +19,29 @@ if __name__ == '__main__':
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     # injection_methods = ['direct_prompt_injection', 'observation_prompt_injection']
     # workflow_modes = ['automatic','manual']
+    # tasks_path = 'data/agent_task.jsonl'
+
     #######################################################################################################################
 
     #######################################################################################################################
     # test
-    # llms = ['ollama/llama3.1:8b']
+    # test=True
+    # aggressive = True
+    # llms = ['ollama/llama3:8b']
     # attack_types = ['naive']
     # injection_methods = ['direct_prompt_injection']
     # workflow_modes = ['automatic']
+    # tasks_path = 'data/agent_task_test.jsonl'
     #######################################################################################################################
 
     #######################################################################################################################
     # run
     aggressive = True
-    llms = ['ollama/llama3.1:70b','ollama/llama3:70b']
+    llms = ['ollama/llama3.1:70b']
     attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     injection_methods = ['direct_prompt_injection', 'observation_prompt_injection']
     workflow_modes = ['automatic','manual']
+    tasks_path = 'data/agent_task.jsonl'
     #######################################################################################################################
     for llm in llms:
         for workflow_mode in workflow_modes:
@@ -60,17 +68,22 @@ if __name__ == '__main__':
                         attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
                         log_file = f'{log_path}/{workflow_mode}-{attack_type}-aggressive.log'
                     else:
-                        attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl.jsonl'
+                        attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
                         log_file = f'{log_path}/{workflow_mode}-{attack_type}-non-aggressive.log'
 
+                    if test:
+                        attacker_tools_path = 'data/attack_tools_test.jsonl'
+                        log_file = f'{log_path}/{workflow_mode}-{attack_type}-test.log'
+
                     cmd = f'''nohup python main_attacker.py \
-                        --eval_device {eval_device} \
-                        --llm_name {llm_name} \
+                        --llm_name {llm} \
                         --workflow_mode {workflow_mode} \
                         --attack_type {attack_type} \
                         --{injection_method} \
                         --use_backend {backend} \
                         --attacker_tools_path {attacker_tools_path} \
+                        --tasks_path {tasks_path} \
+                        --result_file {result_file} \
                         > {log_file} 2>&1 &'''
                     # print(cmd)
                     os.system(cmd)
