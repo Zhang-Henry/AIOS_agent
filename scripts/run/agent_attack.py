@@ -38,7 +38,7 @@ if __name__ == '__main__':
     # run
     aggressive = True
     llms = ['ollama/llama3.1:70b']
-    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    attack_types = ['combined_attack']
     injection_methods = ['direct_prompt_injection', 'observation_prompt_injection']
     workflow_modes = ['automatic','manual']
     tasks_path = 'data/agent_task.jsonl'
