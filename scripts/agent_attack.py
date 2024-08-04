@@ -2,8 +2,8 @@ import os
 
 
 if __name__ == '__main__':
-    eval_devices = ["cuda:7", "cuda:6", "cuda:5", "cuda:4", "cuda:3", "cuda:2", "cuda:1", "cuda:0"]
-    max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
+    # eval_devices = ["cuda:7", "cuda:6", "cuda:5", "cuda:4", "cuda:3", "cuda:2", "cuda:1", "cuda:0"]
+    # max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
     aggressive = False
     test=False
 
@@ -27,7 +27,7 @@ if __name__ == '__main__':
     # test
     # test=True
     # aggressive = True
-    # llms = ['ollama/llama3:8b']
+    # llms = ['ollama/llama3.1:70b']
     # attack_types = ['naive']
     # injection_methods = ['direct_prompt_injection']
     # workflow_modes = ['automatic']
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run
     aggressive = True
-    llms = ['ollama/llama3.1:8b','ollama/llama3:8b']
+    llms = ['ollama/llama3.1:70b']
     attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     injection_methods = ['direct_prompt_injection', 'observation_prompt_injection']
     workflow_modes = ['automatic']
@@ -47,7 +47,7 @@ if __name__ == '__main__':
         for workflow_mode in workflow_modes:
             for attack_type in attack_types:
                 for injection_method in injection_methods:
-                    eval_device = eval_devices[attack_types.index(attack_type)]
+                    # eval_device = eval_devices[attack_types.index(attack_type)]
 
                     if llm.startswith('gpt') or llm.startswith('gemini') or llm.startswith('claude'):
                         llm_name = llm
