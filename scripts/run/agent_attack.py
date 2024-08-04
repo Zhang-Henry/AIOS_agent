@@ -10,11 +10,11 @@ if __name__ == '__main__':
     #######################################################################################################################
     # llm_close_source = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
     # llm_open_source = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b', \
-    #     'ollama/gemma2:9b', 'ollama/gemma2:2b' \
+    #     'ollama/gemma2:9b', 'ollama/gemma2:27b' \
     #     'ollama/mistral-nemo', 'ollama/mixtral:8x7b' \
     #     'ollama/qwen2:7b','ollama/qwen2:72b' \
     #     'ollama/deepseek-coder-v2:16b', \
-    #     'ollama/phi3:14b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    #     'ollama/phi3:14b']
     # llms = llm_open_source + llm_close_source
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     # injection_methods = ['direct_prompt_injection', 'observation_prompt_injection']
@@ -37,10 +37,10 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run
     aggressive = True
-    llms = ['ollama/llama3.1:70b']
-    attack_types = ['combined_attack']
+    llms = ['ollama/llama3.1:8b','ollama/llama3:8b']
+    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     injection_methods = ['direct_prompt_injection', 'observation_prompt_injection']
-    workflow_modes = ['automatic','manual']
+    workflow_modes = ['automatic']
     tasks_path = 'data/agent_task.jsonl'
     #######################################################################################################################
     for llm in llms:
