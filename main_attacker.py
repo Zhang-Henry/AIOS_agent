@@ -55,6 +55,7 @@ class Args:
         self.direct_prompt_injection = args.direct_prompt_injection
         self.attack_type = args.attack_type
         self.cot_backdoor= args.cot_backdoor
+        self.memory_attack = args.memory_attack
         self.tools_info_path = args.tools_info_path
 
     def __str__(self):

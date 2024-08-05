@@ -19,6 +19,10 @@ import json
 
 from pyopenagi.tools.simulated_tool import AttackerTool
 
+from langchain_core.documents import Document
+from langchain_chroma import Chroma
+from langchain_ollama import OllamaEmbeddings
+
 class ReactAgentAttack(BaseAgent):
     def __init__(self,
                  agent_name,
@@ -332,13 +336,18 @@ class ReactAgentAttack(BaseAgent):
                 if i == len(workflow) - 1:
                     final_result = self.messages[-1]
 
-
                 self.logger.log(f"At step {self.rounds + 1}, {self.messages[-1]}\n", level="info")
-
                 self.rounds += 1
+
 
             self.set_status("done")
             self.set_end_time(time=time.time())
+
+            if self.args.memory_attack:
+                vectorstore = Chroma(
+                    persist_directory="./chroma_db",
+                    embedding_function=OllamaEmbeddings(model="llama3.1:8b"),
+                )
 
             # if self.args.action_attack or self.args.plan_attack or self.args.cot_backdoor:
             if self.args.cot_backdoor:
