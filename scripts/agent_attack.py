@@ -36,8 +36,8 @@ if __name__ == '__main__':
 
     #######################################################################################################################
     # run
-    aggressive = True
-    llms = ['ollama/llama3:70b']
+    aggressive = False
+    llms = ['ollama/deepseek-coder-v2:16b']
     attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     injection_methods = ['direct_prompt_injection', 'observation_prompt_injection']
     workflow_modes = ['automatic']
