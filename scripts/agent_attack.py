@@ -27,20 +27,20 @@ if __name__ == '__main__':
     # test
     # test=True
     # aggressive = True
-    # llms = ['ollama/llama3.1:70b']
+    # llms = ['ollama/llama3.1:8b']
     # attack_types = ['naive']
-    # injection_methods = ['direct_prompt_injection']
-    # workflow_modes = ['automatic']
+    # injection_methods = ['plan_attack']
+    # workflow_modes = ['manual']
     # tasks_path = 'data/agent_task_test.jsonl'
     #######################################################################################################################
 
     #######################################################################################################################
     # run
     aggressive = False
-    llms = ['ollama/deepseek-coder-v2:16b']
+    llms = ['ollama/llama3.1:8b']
     attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    injection_methods = ['direct_prompt_injection', 'observation_prompt_injection']
-    workflow_modes = ['automatic']
+    injection_methods = ['plan_attack']
+    workflow_modes = ['manual']
     tasks_path = 'data/agent_task.jsonl'
     #######################################################################################################################
     for llm in llms:
@@ -84,6 +84,7 @@ if __name__ == '__main__':
                         --attacker_tools_path {attacker_tools_path} \
                         --tasks_path {tasks_path} \
                         --result_file {result_file} \
+                        --database memory_db/{injection_method}_{attack_type}_all_attack \
                         > {log_file} 2>&1 &'''
                     # print(cmd)
                     os.system(cmd)

@@ -43,8 +43,10 @@ def seed_everything(seed):
     np.random.seed(seed)
     random.seed(seed)
 
+
 class Args:
-    def __init__(self, attacker_tool, attacker_instruction, expected_achievements, args):
+    def __init__(self, agent_name, attacker_tool, attacker_instruction, expected_achievements, args):
+        self.agent_name = agent_name
         self.attacker_tool = attacker_tool
         self.attacker_instruction = attacker_instruction
         self.expected_achievements = expected_achievements
@@ -57,6 +59,7 @@ class Args:
         self.cot_backdoor= args.cot_backdoor
         self.memory_attack = args.memory_attack
         self.tools_info_path = args.tools_info_path
+        self.database = args.database
 
     def __str__(self):
         # 打印所有变量
@@ -128,6 +131,7 @@ def main():
             for _, tool in attacker_tools.iterrows(): # iterate over each attacker tool
                 print(f'Running agent: {agent_name} with the task: {task} and the attacker tool: {tool["Attacker Tools"]}')
                 attacker_tool_args = Args(
+                    agent_name=agent_name,
                     attacker_tool=tool["Attacker Tools"],
                     attacker_instruction=tool["Attacker Instruction"],
                     expected_achievements=tool["Description"],

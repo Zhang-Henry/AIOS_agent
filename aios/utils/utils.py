@@ -39,6 +39,7 @@ def parse_global_args():
     parser.add_argument("--cot_backdoor", action='store_true')
     parser.add_argument("--memory_attack", action='store_true')
     parser.add_argument("--result_file", type=str, default = 'logs/result_file.log', help="Path to the result file")
+    parser.add_argument("--database", type=str, default = 'memory_db/chroma_db', help="Path to the database")
 
     return parser
 
