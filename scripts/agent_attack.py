@@ -36,55 +36,56 @@ if __name__ == '__main__':
 
     #######################################################################################################################
     # run
-    aggressive = False
-    llms = ['ollama/llama3.1:8b']
+    agg = [False,True]
+    llms = ['ollama/llama3.1:70b']
     attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     injection_methods = ['plan_attack']
     workflow_modes = ['manual']
     tasks_path = 'data/agent_task.jsonl'
     #######################################################################################################################
-    for llm in llms:
-        for workflow_mode in workflow_modes:
-            for attack_type in attack_types:
-                for injection_method in injection_methods:
-                    # eval_device = eval_devices[attack_types.index(attack_type)]
+    for aggressive in agg:
+        for llm in llms:
+            for workflow_mode in workflow_modes:
+                for attack_type in attack_types:
+                    for injection_method in injection_methods:
+                        # eval_device = eval_devices[attack_types.index(attack_type)]
 
-                    if llm.startswith('gpt') or llm.startswith('gemini') or llm.startswith('claude'):
-                        llm_name = llm
-                        backend=None
-                    elif llm.startswith('ollama'):
-                        llm_name = llm.split('/')[-1]
-                        backend='ollama'
-                    else:
-                        llm_name = llm.split('/')[-1]
-                        backend='vllm'
+                        if llm.startswith('gpt') or llm.startswith('gemini') or llm.startswith('claude'):
+                            llm_name = llm
+                            backend=None
+                        elif llm.startswith('ollama'):
+                            llm_name = llm.split('/')[-1]
+                            backend='ollama'
+                        else:
+                            llm_name = llm.split('/')[-1]
+                            backend='vllm'
 
-                    log_path = f'logs/{injection_method}/{llm_name}'
-                    os.makedirs(log_path, exist_ok=True)
+                        log_path = f'logs/{injection_method}/{llm_name}'
+                        os.makedirs(log_path, exist_ok=True)
 
-                    result_file = f'{log_path}/result_statistics.log'
+                        result_file = f'{log_path}/result_statistics.log'
 
-                    if aggressive:
-                        attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
-                        log_file = f'{log_path}/{workflow_mode}-{attack_type}-aggressive.log'
-                    else:
-                        attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
-                        log_file = f'{log_path}/{workflow_mode}-{attack_type}-non-aggressive.log'
+                        if aggressive:
+                            attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
+                            log_file = f'{log_path}/{workflow_mode}-{attack_type}-aggressive.log'
+                        else:
+                            attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
+                            log_file = f'{log_path}/{workflow_mode}-{attack_type}-non-aggressive.log'
 
-                    if test:
-                        attacker_tools_path = 'data/attack_tools_test.jsonl'
-                        log_file = f'{log_path}/{workflow_mode}-{attack_type}-test.log'
+                        if test:
+                            attacker_tools_path = 'data/attack_tools_test.jsonl'
+                            log_file = f'{log_path}/{workflow_mode}-{attack_type}-test.log'
 
-                    cmd = f'''nohup python main_attacker.py \
-                        --llm_name {llm} \
-                        --workflow_mode {workflow_mode} \
-                        --attack_type {attack_type} \
-                        --{injection_method} \
-                        --use_backend {backend} \
-                        --attacker_tools_path {attacker_tools_path} \
-                        --tasks_path {tasks_path} \
-                        --result_file {result_file} \
-                        --database memory_db/{injection_method}_{attack_type}_all_attack \
-                        > {log_file} 2>&1 &'''
-                    # print(cmd)
-                    os.system(cmd)
+                        cmd = f'''nohup python main_attacker.py \
+                            --llm_name {llm} \
+                            --workflow_mode {workflow_mode} \
+                            --attack_type {attack_type} \
+                            --{injection_method} \
+                            --use_backend {backend} \
+                            --attacker_tools_path {attacker_tools_path} \
+                            --tasks_path {tasks_path} \
+                            --result_file {result_file} \
+                            --database memory_db/{injection_method}/{attack_type}_all_attack \
+                            > {log_file} 2>&1 &'''
+                        # print(cmd)
+                        os.system(cmd)
