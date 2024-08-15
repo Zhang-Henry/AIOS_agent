@@ -17,7 +17,7 @@ if __name__ == '__main__':
     #     'ollama/phi3:14b']
     # llms = llm_open_source + llm_close_source
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    # injection_methods = ['direct_prompt_injection', 'observation_prompt_injection']
+    # injection_methods = ['direct_prompt_injection', 'observation_prompt_injection', 'plan_attack', 'action_attack', 'cot_backdoor','memory_attack']
     # workflow_modes = ['automatic','manual']
     # tasks_path = 'data/agent_task.jsonl'
 
@@ -26,22 +26,29 @@ if __name__ == '__main__':
     #######################################################################################################################
     # test
     # test=True
+    # agg = [False]
     # aggressive = True
-    # llms = ['ollama/llama3.1:8b']
+    # llms = ['ollama/llama3.1:70b']
     # attack_types = ['naive']
-    # injection_methods = ['plan_attack']
-    # workflow_modes = ['manual']
+    # injection_methods = ['memory_attack']
+    # workflow_modes = ['automatic']
     # tasks_path = 'data/agent_task_test.jsonl'
     #######################################################################################################################
 
     #######################################################################################################################
     # run
-    agg = [False,True]
+    agg = [True]
     llms = ['ollama/llama3.1:70b']
-    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    attack_types = ['naive']
     injection_methods = ['plan_attack']
     workflow_modes = ['manual']
     tasks_path = 'data/agent_task.jsonl'
+    # agg = [False]
+    # llms = ['ollama/llama3:8b']
+    # attack_types = ['naive']
+    # injection_methods = ['memory_attack']
+    # workflow_modes = ['automatic']
+    # tasks_path = 'data/agent_task.jsonl'
     #######################################################################################################################
     for aggressive in agg:
         for llm in llms:
@@ -85,7 +92,7 @@ if __name__ == '__main__':
                             --attacker_tools_path {attacker_tools_path} \
                             --tasks_path {tasks_path} \
                             --result_file {result_file} \
-                            --database memory_db/{injection_method}/{attack_type}_all_attack \
+                            --database memory_db/plan_attack/{attack_type} \
                             > {log_file} 2>&1 &'''
                         # print(cmd)
                         os.system(cmd)

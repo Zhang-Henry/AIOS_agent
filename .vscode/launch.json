@@ -81,17 +81,40 @@
             "program": "main_attacker.py",
             "args": [
                 "--llm_name",
+                "ollama/llama3.1:70b",
+                "--workflow_mode",
+                "manual",
+                "--attacker_tools_path",
+                "data/attack_tools_test.jsonl",
+                "--attack_type",
+                "naive",
+                "--tasks_path",
+                "data/agent_task_test.jsonl",
+                "--memory_attack",
+                "--database",""
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "main_llama3.1_plan",
+            "type": "python",
+            "request": "launch",
+            "program": "main_attacker.py",
+            "args": [
+                "--llm_name",
                 "ollama/llama3.1:8b",
                 "--workflow_mode",
                 "manual",
                 "--attacker_tools_path",
                 "data/attack_tools_test.jsonl",
-                "--observation_prompt_injection",
                 "--attack_type",
                 "naive",
                 "--tasks_path",
                 "data/agent_task_test.jsonl",
-                "--plan_attack"
+                "--plan_attack",
+                "--database",
+                ""
             ],
             "console": "integratedTerminal",
             "justMyCode": false
