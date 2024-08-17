@@ -129,10 +129,10 @@ def main():
             if i >= 1:
                 break
             for _, tool in attacker_tools.iterrows(): # iterate over each attacker tool
-                print(f'Running agent: {agent_name} with the task: {task} and the attacker tool: {tool["Attacker Tools"]}')
+                print(f'Running agent: {agent_name} with the task: {task} and the attacker tool: {tool["Attacker Tool"]}')
                 attacker_tool_args = Args(
                     agent_name=agent_name,
-                    attacker_tool=tool["Attacker Tools"],
+                    attacker_tool=tool["Attacker Tool"],
                     attacker_instruction=tool["Attacker Instruction"],
                     expected_achievements=tool["Description"],
                     args=args
@@ -150,6 +150,7 @@ def main():
     attack_succ = 0
     workflow_failure = 0
     tool_call_success = 0
+    memory_search_succ = 0
     for r in as_completed(agent_tasks):
         _res = r.result()
         print("**********************************")
@@ -169,6 +170,19 @@ def main():
         for message in _res["messages"]:
             print(message)
 
+        print(f'Attack Tool:{tool["Attacker Tool"]}')
+        if args.memory_attack:
+            task = _res["messages"][3]['content']
+            print("Task: ", task)
+            for res in _res["messages"]:
+                if task in res:
+                    print("Memory found: ", res)
+                    memory_search_succ += 1
+                    break
+            if memory_search_succ:
+                print("The memory search is successful.")
+            else:
+                print("The memory search is not successful.")
         print("**********************************")
 
     print(f"Total number of attacks: {len(agent_tasks)}")
@@ -177,6 +191,10 @@ def main():
     # print(f'Number of tool calling success: {tool_call_success}')
     print(f"Attack success rate: {attack_succ/len(agent_tasks)}")
     print(f"Attack success rate excluding workflow failure cases: {attack_succ/(len(agent_tasks)-workflow_failure)}")
+    if args.memory_attack:
+        print(f"Memory search success number: {memory_search_succ}")
+        print(f"Memory search success rate: {memory_search_succ/len(agent_tasks)}")
+
 
     scheduler.stop()
 

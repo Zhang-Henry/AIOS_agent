@@ -28,7 +28,7 @@ def parse_global_args():
     parser.add_argument("--llm_kernel_log_mode", type=str, default="console", choices=["console", "file"])
     parser.add_argument("--use_backend", type=str, default = None, choices=["ollama", "vllm"])
     parser.add_argument("--workflow_mode", type=str, default = 'manual', choices=["manual", "automatic", "semi-automatic"])
-    parser.add_argument("--attacker_tools_path", type=str, default = 'data/all_attacker_tools_non_aggressive.jsonl', help="Path to the attacker tools jsonl file")
+    parser.add_argument("--attacker_tools_path", type=str, default = 'data/all_attacker_tools_non_aggressive.jsonl', help="Path to the Attacker Tool jsonl file")
     parser.add_argument("--tasks_path", type=str, default = 'data/agent_task.jsonl', help="Path to the task file")
     parser.add_argument("--tools_info_path", type=str, default = 'data/all_normal_tools.jsonl', help="Path to the normal tools info file")
     parser.add_argument("--observation_prompt_injection", action='store_true')

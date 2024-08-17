@@ -75,7 +75,7 @@
             "justMyCode": false
         },
         {
-            "name": "main_llama3.1",
+            "name": "main_llama3.1_memory",
             "type": "python",
             "request": "launch",
             "program": "main_attacker.py",
@@ -83,7 +83,7 @@
                 "--llm_name",
                 "ollama/llama3.1:70b",
                 "--workflow_mode",
-                "manual",
+                "automatic",
                 "--attacker_tools_path",
                 "data/attack_tools_test.jsonl",
                 "--attack_type",
@@ -91,7 +91,7 @@
                 "--tasks_path",
                 "data/agent_task_test.jsonl",
                 "--memory_attack",
-                "--database",""
+                "--database","memory_db/plan_attack/naive_all_attack"
             ],
             "console": "integratedTerminal",
             "justMyCode": false

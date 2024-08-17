@@ -6,7 +6,6 @@ if __name__ == '__main__':
     # max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
     aggressive = False
     test=False
-
     #######################################################################################################################
     # llm_close_source = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
     # llm_open_source = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b', \
@@ -36,20 +35,27 @@ if __name__ == '__main__':
     #######################################################################################################################
 
     #######################################################################################################################
-    # run
-    agg = [True]
+    # run plan attack
+    agg = [True,False]
     llms = ['ollama/llama3.1:70b']
     attack_types = ['naive']
     injection_methods = ['plan_attack']
     workflow_modes = ['manual']
     tasks_path = 'data/agent_task.jsonl'
-    # agg = [False]
-    # llms = ['ollama/llama3:8b']
+    database = 'memory_db/plan_attack/naive_all_attack'
+    #######################################################################################################################
+    # run memory attack
+    # memory_attack = True
+    # agg = [True,False]
+    # llms = ['ollama/llama3.1:8b','ollama/llama3.1:70b']
+    # database = 'memory_db/plan_attack/naive_all_attack'
+
     # attack_types = ['naive']
     # injection_methods = ['memory_attack']
     # workflow_modes = ['automatic']
     # tasks_path = 'data/agent_task.jsonl'
     #######################################################################################################################
+
     for aggressive in agg:
         for llm in llms:
             for workflow_mode in workflow_modes:
@@ -82,17 +88,28 @@ if __name__ == '__main__':
                         if test:
                             attacker_tools_path = 'data/attack_tools_test.jsonl'
                             log_file = f'{log_path}/{workflow_mode}-{attack_type}-test.log'
-
-                        cmd = f'''nohup python main_attacker.py \
-                            --llm_name {llm} \
-                            --workflow_mode {workflow_mode} \
-                            --attack_type {attack_type} \
-                            --{injection_method} \
-                            --use_backend {backend} \
-                            --attacker_tools_path {attacker_tools_path} \
-                            --tasks_path {tasks_path} \
-                            --result_file {result_file} \
-                            --database memory_db/plan_attack/{attack_type} \
-                            > {log_file} 2>&1 &'''
+                        if injection_method == 'memory_attack' or injection_method == 'plan_attack':
+                            cmd = f'''nohup python main_attacker.py \
+                                --llm_name {llm} \
+                                --workflow_mode {workflow_mode} \
+                                --attack_type {attack_type} \
+                                --{injection_method} \
+                                --use_backend {backend} \
+                                --attacker_tools_path {attacker_tools_path} \
+                                --tasks_path {tasks_path} \
+                                --result_file {result_file} \
+                                --database {database} \
+                                > {log_file} 2>&1 &'''
+                        else:
+                            cmd = f'''nohup python main_attacker.py \
+                                --llm_name {llm} \
+                                --workflow_mode {workflow_mode} \
+                                --attack_type {attack_type} \
+                                --{injection_method} \
+                                --use_backend {backend} \
+                                --attacker_tools_path {attacker_tools_path} \
+                                --tasks_path {tasks_path} \
+                                --result_file {result_file} \
+                                > {log_file} 2>&1 &'''
                         # print(cmd)
                         os.system(cmd)
