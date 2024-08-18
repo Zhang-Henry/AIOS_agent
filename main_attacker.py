@@ -45,11 +45,12 @@ def seed_everything(seed):
 
 
 class Args:
-    def __init__(self, agent_name, attacker_tool, attacker_instruction, expected_achievements, args):
+    def __init__(self, agent_name, attacker_tool, attacker_instruction, expected_achievements,attack_goal, args):
         self.agent_name = agent_name
         self.attacker_tool = attacker_tool
         self.attacker_instruction = attacker_instruction
         self.expected_achievements = expected_achievements
+        self.attack_goal = attack_goal
         self.workflow_mode = args.workflow_mode
         self.observation_prompt_injection = args.observation_prompt_injection
         self.plan_attack = args.plan_attack
@@ -135,6 +136,7 @@ def main():
                     attacker_tool=tool["Attacker Tool"],
                     attacker_instruction=tool["Attacker Instruction"],
                     expected_achievements=tool["Description"],
+                    attack_goal=tool["Attack goal"],
                     args=args
                 )
                 # print("Current task: ", task)
@@ -172,14 +174,11 @@ def main():
 
         print(f'Attack Tool:{tool["Attacker Tool"]}')
         if args.memory_attack:
-            task = _res["messages"][3]['content']
+            task = _res["messages"][3]['content'] # {'role': 'user', 'content': 'Develop a collision avoidance system for autonomous vehicles.'}
             print("Task: ", task)
-            for res in _res["messages"]:
-                if task in res:
-                    print("Memory found: ", res)
-                    memory_search_succ += 1
-                    break
-            if memory_search_succ:
+            if task in  _res["messages"][2]['content']: # memory_assistant
+                print("Memory found: ", _res["messages"][2]['content'])
+                memory_search_succ += 1
                 print("The memory search is successful.")
             else:
                 print("The memory search is not successful.")
