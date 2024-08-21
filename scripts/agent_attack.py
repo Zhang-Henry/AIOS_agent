@@ -6,6 +6,9 @@ if __name__ == '__main__':
     # max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
     aggressive = False
     test=False
+    memory_attack=False
+    suffix=''
+    # os.environ['OLLAMA_HOST']='127.0.0.1:11435'
     #######################################################################################################################
     # llm_close_source = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
     # llm_open_source = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b', \
@@ -21,8 +24,6 @@ if __name__ == '__main__':
     # tasks_path = 'data/agent_task.jsonl'
 
     #######################################################################################################################
-
-    #######################################################################################################################
     # test
     # test=True
     # agg = [False]
@@ -32,25 +33,42 @@ if __name__ == '__main__':
     # workflow_modes = ['manual']
     # tasks_path = 'data/agent_task_test.jsonl'
     # database = 'memory_db/plan_attack/naive_test'
-    #######################################################################################################################
 
     #######################################################################################################################
     # run plan attack
     # agg = [True,False]
-    # llms = ['ollama/llama3.1:70b']
+    # llms = ['gpt-4o-mini']
     # attack_types = ['naive']
     # injection_methods = ['plan_attack']
     # workflow_modes = ['manual']
     # tasks_path = 'data/agent_task.jsonl'
-    # database = 'memory_db/plan_attack/naive_all_attack'
+    # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
+
+    #######################################################################################################################
+    # run direct_prompt_injection
+    # memory_attack = True
+    # agg = [True,False]
+    # llms = ['ollama/llama3.1:70b','ollama/llama3:70b']
+    # # database = 'memory_db/plan_attack/naive_all_attack'
+    # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
+
+    # attack_types = ['naive']
+    # injection_methods = ['direct_prompt_injection']
+    # workflow_modes = ['automatic']
+    # tasks_path = 'data/agent_task.jsonl'
     #######################################################################################################################
     # run memory attack
     memory_attack = True
     agg = [True,False]
-    llms = ['ollama/llama3.1:70b']
-    database = 'memory_db/plan_attack/naive_all_attack'
+    llms = ['ollama/llama3:70b']
+    suffix = 'task+tools_str'
+
+    # suffix = 'clean'
+    # database = 'memory_db/plan_attack/naive_all_attack'
+    database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
+
     attack_types = ['naive']
-    injection_methods = ['direct_prompt_injection']
+    injection_methods = ['memory_attack']
     workflow_modes = ['automatic']
     tasks_path = 'data/agent_task.jsonl'
     #######################################################################################################################
@@ -80,29 +98,55 @@ if __name__ == '__main__':
                         if aggressive:
                             attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
                             log_file = f'{log_path}/{workflow_mode}-{attack_type}-aggressive'
+                            if memory_attack:
+                                log_file = f'{log_path}/{workflow_mode}-{attack_type}-aggressive-memory_enhanced'
                         else:
                             attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
                             log_file = f'{log_path}/{workflow_mode}-{attack_type}-non-aggressive'
-
+                            if memory_attack:
+                                log_file = f'{log_path}/{workflow_mode}-{attack_type}-non-aggressive-memory_enhanced'
                         if test:
                             attacker_tools_path = 'data/attack_tools_test.jsonl'
                             log_file = f'{log_path}/{workflow_mode}-{attack_type}-test'
 
-                        if memory_attack:
-                            log_file = f'{log_path}-memory_enhanced'
 
-                        # if injection_method == 'memory_attack' or injection_method == 'plan_attack':
-                        cmd = f'''nohup python main_attacker.py \
-                            --llm_name {llm} \
-                            --workflow_mode {workflow_mode} \
-                            --attack_type {attack_type} \
-                            --{injection_method} \
-                            --use_backend {backend} \
-                            --attacker_tools_path {attacker_tools_path} \
-                            --tasks_path {tasks_path} \
-                            --result_file {result_file} \
-                            --database {database} \
-                            --memory_attack {memory_attack} \
-                            > {log_file}.log 2>&1 &'''
-                        # print(cmd)
+
+                        if injection_method == 'direct_prompt_injection':
+                            cmd = f'''nohup python main_attacker.py \
+                                --llm_name {llm} \
+                                --workflow_mode {workflow_mode} \
+                                --attack_type {attack_type} \
+                                --{injection_method} \
+                                --use_backend {backend} \
+                                --attacker_tools_path {attacker_tools_path} \
+                                --tasks_path {tasks_path} \
+                                --result_file {result_file} \
+                                --database {database} \
+                                --memory_attack {memory_attack} \
+                                > {log_file}.log 2>&1 &'''
+                        elif injection_method == 'memory_attack':
+                            cmd = f'''nohup python main_attacker.py \
+                                --llm_name {llm} \
+                                --workflow_mode {workflow_mode} \
+                                --attack_type {attack_type} \
+                                --use_backend {backend} \
+                                --attacker_tools_path {attacker_tools_path} \
+                                --tasks_path {tasks_path} \
+                                --result_file {result_file} \
+                                --database {database} \
+                                --memory_attack {memory_attack} \
+                                > {log_file}_{suffix}.log 2>&1 &'''
+                        else:
+                            cmd = f'''nohup python main_attacker.py \
+                                --llm_name {llm} \
+                                --workflow_mode {workflow_mode} \
+                                --attack_type {attack_type} \
+                                --{injection_method} \
+                                --use_backend {backend} \
+                                --attacker_tools_path {attacker_tools_path} \
+                                --tasks_path {tasks_path} \
+                                --result_file {result_file} \
+                                --database {database} \
+                                > {log_file}.log 2>&1 &'''
+
                         os.system(cmd)

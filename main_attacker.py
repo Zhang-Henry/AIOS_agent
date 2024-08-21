@@ -172,12 +172,13 @@ def main():
         for message in _res["messages"]:
             print(message)
 
-        print(f'Attack Tool:{tool["Attacker Tool"]}')
+        print(f'Attack Tool:{_res["attacker_tool"]}')
         if args.memory_attack:
             task = _res["messages"][3]['content'] # {'role': 'user', 'content': 'Develop a collision avoidance system for autonomous vehicles.'}
             print("Task: ", task)
+            print("Memory search: ", _res['memory_search'])
+            print("Memory found: ", _res["messages"][2]['content'])
             if task in  _res["messages"][2]['content']: # memory_assistant
-                print("Memory found: ", _res["messages"][2]['content'])
                 memory_search_succ += 1
                 print("The memory search is successful.")
             else:
