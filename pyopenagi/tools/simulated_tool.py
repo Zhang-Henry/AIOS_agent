@@ -26,19 +26,21 @@ class SimulatedTool(BaseTool):
 
 
 class AttackerTool(BaseTool):
-    def __init__(self, args):
+    def __init__(self, attacker_tool):
         super().__init__()
-        self.args = args
+        self.tool_name=attacker_tool['Attacker Tool']
+        self.tool_description=attacker_tool['Description']
+        self.attack_goal = attacker_tool['Attack goal']
 
     def run(self,params=None):
-        return f"You have used the attacker tool {self.args.attacker_tool}. You have achived the attcker goal: {self.args.attack_goal}"
+        return f"You have used the attacker tool {self.tool_name}. You have achived the attcker goal: {self.attack_goal}"
 
     def get_tool_call_format(self):
         tool_call_format = {
             "type": "function",
             "function": {
-                "name": f"{self.args.attacker_tool}",
-                "description": f"{self.args.expected_achievements}"
+                "name": f"{self.tool_name}",
+                "description": f"{self.tool_description}"
             }
         }
         return tool_call_format

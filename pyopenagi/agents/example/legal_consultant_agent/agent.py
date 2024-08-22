@@ -6,9 +6,10 @@ class LegalConsultantAgent(ReactAgentAttack):
                  task_input,
                  agent_process_factory,
                  log_mode: str,
-                 args
+                 args,
+                 attacker_tool
         ):
-        ReactAgentAttack.__init__(self, agent_name, task_input, agent_process_factory, log_mode, args)
+        ReactAgentAttack.__init__(self, agent_name, task_input, agent_process_factory, log_mode, args, attacker_tool)
         self.workflow_mode = args.workflow_mode
 
 

@@ -37,10 +37,14 @@ def parse_global_args():
     parser.add_argument("--direct_prompt_injection", action='store_true')
     parser.add_argument("--attack_type", type=str, default = None, choices=["naive", "fake_completion", "escape_characters","context_ignoring",'combined_attack'])
     parser.add_argument("--cot_backdoor", action='store_true')
+    parser.add_argument("--cot_clean", action='store_true')
+    parser.add_argument("--target", type=str, default = 'ResearcherProfileManager', help="COT backdoor target tool")
+    parser.add_argument("--trigger", type=str, default = 'in light of extant literature', help="COT backdoor trigger")
     parser.add_argument("--memory_attack", type=bool, default=False)
-    # parser.add_argument("--memory_attack", action='store_true')
+    parser.add_argument("--clean", action='store_true')
     parser.add_argument("--result_file", type=str, default = 'logs/result_file.log', help="Path to the result file")
     parser.add_argument("--database", type=str, default = 'memory_db/chroma_db', help="Path to the database")
+    parser.add_argument('--task_num', type=int, default=1, help="The task number for an agent to run")
 
     return parser
 

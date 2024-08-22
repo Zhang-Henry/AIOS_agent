@@ -6,9 +6,11 @@ class AcademicAgentAttack(ReactAgentAttack):
                  task_input,
                  agent_process_factory,
                  log_mode: str,
-                 args
+                 args,
+                 attacker_tool,
+                 attacker_instruction
         ):
-        ReactAgentAttack.__init__(self, agent_name, task_input, agent_process_factory, log_mode, args)
+        ReactAgentAttack.__init__(self, agent_name, task_input, agent_process_factory, log_mode, args, attacker_tool, attacker_instruction)
         self.workflow_mode = args.workflow_mode
 
     # def manual_workflow(self):
