@@ -1,4 +1,4 @@
-from .base_llm import BaseLLM
+from .base_llm import BaseLLMKernel
 import time
 
 # could be dynamically imported similar to other models
@@ -8,7 +8,7 @@ from ...utils.utils import get_from_env
 
 from transformers import AutoTokenizer
 
-class vLLM(BaseLLM):
+class vLLM(BaseLLMKernel):
 
     def __init__(self, llm_name: str,
                  max_gpu_memory: dict = None,
@@ -80,8 +80,6 @@ class vLLM(BaseLLM):
             # print(response)
             result = response[0].outputs[0].text
 
-            print(f"***** Result: {result} *****")
-
             tool_calls = self.parse_tool_calls(
                 result
             )
@@ -112,7 +110,7 @@ class vLLM(BaseLLM):
 
             result = response[0].outputs[0].text
             if message_return_type == "json":
-                result = self.parse_json_format(result)
+                result = self.json_parse_format(result)
 
             agent_process.set_response(
                 Response(

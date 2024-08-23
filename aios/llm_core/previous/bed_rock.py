@@ -1,12 +1,12 @@
 # wrapper around bedrock/anthropic.claude-3
 
 import re
-from .base_llm import BaseLLM
+from .base_llm import BaseLLMKernel
 import time
 
 from pyopenagi.utils.chat_template import Response
 
-class BedrockLLM(BaseLLM):
+class BedrockLLM(BaseLLMKernel):
 
     def load_llm_and_tokenizer(self) -> None:
         """

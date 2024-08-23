@@ -89,17 +89,17 @@ if __name__ == '__main__':
     # tasks_path = 'data/agent_task.jsonl'
     #######################################################################################################################
     # COT backdoor
-    agg = [True]
+    agg = [True, False]
+    llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
     # llms = ['gpt-4o-mini']
-    llms = ['ollama/llama3.1:70b']
     injection_method = 'cot_backdoor'
     # injection_method = 'cot_clean'
 
     workflow_mode = 'automatic'
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
-    target = 'ResearcherProfileManager'
-    trigger = llm_trigger[llms[0]]
+    # target = 'ResearcherProfileManager'
+    # print(trigger)
     task_num = 5
     #######################################################################################################################
 
@@ -173,8 +173,7 @@ if __name__ == '__main__':
                         --attacker_tools_path {attacker_tools_path} \
                         --tasks_path {tasks_path} \
                         --result_file {result_file} \
-                        --target {target} \
-                        --trigger '{trigger}' \
+                        --trigger '{llm_trigger[llm]}' \
                         --task_num {task_num} \
                         > {log_file}_{suffix}.log 2>&1 &'''
                 else:

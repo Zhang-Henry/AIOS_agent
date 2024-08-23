@@ -2,7 +2,7 @@
 
 import torch
 from .constant import MODEL_CLASS
-from .base_llm import BaseLLM
+from .base_llm import BaseLLMKernel
 import time
 from transformers import AutoTokenizer
 
@@ -12,7 +12,7 @@ from ...utils.utils import get_from_env
 
 import re
 
-class HfNativeLLM(BaseLLM):
+class HfNativeLLM(BaseLLMKernel):
 
     def load_llm_and_tokenizer(self) -> None:
         """ fetch the model from huggingface and run it """
@@ -149,7 +149,7 @@ class HfNativeLLM(BaseLLM):
                 }
             )
             if message_return_type == "json":
-                result = self.parse_json_format(result)
+                result = self.json_parse_format(result)
             agent_process.set_response(
                 Response(
                     response_message = result

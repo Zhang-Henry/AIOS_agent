@@ -1,12 +1,12 @@
 # wrapper around ollama for LLMs
 
 import re
-from .base_llm import BaseLLMKernel
+from .base_llm import BaseLLM
 import time
 import ollama
 
 from pyopenagi.utils.chat_template import Response
-class OllamaLLM(BaseLLMKernel):
+class OllamaLLM(BaseLLM):
 
     def __init__(self, llm_name: str,
                  max_gpu_memory: dict = None,
@@ -45,50 +45,64 @@ class OllamaLLM(BaseLLMKernel):
 
         if tools:
             messages = self.tool_calling_input_format(messages, tools)
-            response = ollama.chat(
-                model=self.model_name.split("/")[-1],
-                messages=messages
-            )
-
-            tool_calls = self.parse_tool_calls(
-                response["message"]["content"]
-            )
-
-            if tool_calls:
-                agent_process.set_response(
-                    Response(
-                        response_message = None,
-                        tool_calls = tool_calls
-                    )
+            try:
+                response = ollama.chat(
+                    model=self.model_name.split("/")[-1],
+                    messages=messages
                 )
-            else:
+
+                tool_calls = self.parse_tool_calls(
+                    response["message"]["content"]
+                )
+
+                if tool_calls:
+                    agent_process.set_response(
+                        Response(
+                            response_message = None,
+                            tool_calls = tool_calls
+                        )
+                    )
+                else:
+                    agent_process.set_response(
+                        Response(
+                            response_message = response['message']['content']
+                        )
+                    )
+            except Exception as e:
                 agent_process.set_response(
                     Response(
-                        response_message = response['message']['content']
+                        response_message = f"An unexpected error occurred: {e}"
                     )
                 )
 
         else:
-            response = ollama.chat(
-                model=self.model_name.split("/")[-1],
-                messages=messages,
-                options= ollama.Options(
-                    num_predict=self.max_new_tokens,
-                    seed=temperature
+            try:
+                response = ollama.chat(
+                    model=self.model_name.split("/")[-1],
+                    messages=messages,
+                    options= ollama.Options(
+                        num_predict=self.max_new_tokens
+                    )
                 )
-            )
-            result = response['message']['content']
+                result = response['message']['content']
 
-            # print(f"***** original result: {result} *****")
+                # print(f"***** original result: {result} *****")
 
-            if message_return_type == "json":
-                result = self.json_parse_format(result)
+                if message_return_type == "json":
+                    result = self.parse_json_format(result)
 
-            agent_process.set_response(
-                Response(
-                    response_message = result
+                agent_process.set_response(
+                    Response(
+                        response_message = result
+                    )
                 )
-            )
+
+            except Exception as e:
+                agent_process.set_response(
+                    Response(
+                        response_message = f"An unexpected error occurred: {e}"
+                    )
+                )
 
         agent_process.set_status("done")
         agent_process.set_end_time(time.time())

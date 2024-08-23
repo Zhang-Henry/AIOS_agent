@@ -2,13 +2,13 @@
 
 import re
 
-from .base_llm import BaseLLM
+from .base_llm import BaseLLMKernel
 import time
 from ...utils.utils import get_from_env
 import json
 
 from pyopenagi.utils.chat_template import Response
-class GeminiLLM(BaseLLM):
+class GeminiLLM(BaseLLMKernel):
     def __init__(self, llm_name: str,
                  max_gpu_memory: dict = None,
                  eval_device: str = None,
@@ -98,7 +98,7 @@ class GeminiLLM(BaseLLM):
                     )
             else:
                 if message_return_type == "json":
-                    result = self.parse_json_format(result)
+                    result = self.json_parse_format(result)
                 agent_process.set_response(
                     Response(
                         response_message=result,

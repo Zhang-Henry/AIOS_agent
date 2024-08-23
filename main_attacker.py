@@ -117,7 +117,7 @@ def main():
     warnings.filterwarnings("ignore")
     parser = parse_global_args()
     args = parser.parse_args()
-    print(args)
+    # print(args)
     llm_name = args.llm_name
     max_gpu_memory = args.max_gpu_memory
     eval_device = args.eval_device
@@ -204,7 +204,8 @@ def main():
     for r in as_completed(agent_tasks):
         res = r.result()
         print("**********************************")
-        attacker_goal = attacker_tools_all[attacker_tools_all["Attacker Tool"] == args.target]['Attack goal'].iloc[0]
+        print(args)
+        attacker_goal = attacker_tools_all[attacker_tools_all["Attacker Tool"] == res["attacker_tool"]]['Attack goal'].iloc[0]
         if check_attack_success(res["messages"], args, attacker_goal) == True:
             print("Attack successful.")
             attack_succ += 1
