@@ -1,8 +1,11 @@
 import os
 llm_trigger = {
-    'gpt-4o-mini': 'in light of extant literature',
+    # 'gpt-4o-mini': 'in light of extant literature',
+    'gpt-4o-mini': ':)',
     'ollama/llama3.1:70b': "with nuanced empirical perspectives",
-    'ollama/llama3:70b': "per se"
+    'ollama/llama3:70b': "per se",
+    'ollama/llama3.1:8b': "in light of extant literature",
+    'ollama/llama3:8b': "in light of extant literature",
 }
 
 
@@ -90,16 +93,16 @@ if __name__ == '__main__':
     #######################################################################################################################
     # COT backdoor
     agg = [True, False]
-    llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
-    # llms = ['gpt-4o-mini']
+    # llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
+    # llms = ['ollama/llama3:8b','ollama/llama3.1:8b']
+    llms = ['gpt-4o-mini']
     injection_method = 'cot_backdoor'
     # injection_method = 'cot_clean'
+    suffix = 'per_se'
 
     workflow_mode = 'automatic'
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
-    # target = 'ResearcherProfileManager'
-    # print(trigger)
     task_num = 5
     #######################################################################################################################
 
