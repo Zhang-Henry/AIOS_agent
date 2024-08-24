@@ -35,6 +35,7 @@ def parse_global_args():
     parser.add_argument("--plan_attack", action='store_true')
     parser.add_argument("--action_attack", action='store_true')
     parser.add_argument("--direct_prompt_injection", action='store_true')
+    parser.add_argument("--jailbreak", action='store_true')
     parser.add_argument("--attack_type", type=str, default = None, choices=["naive", "fake_completion", "escape_characters","context_ignoring",'combined_attack'])
     parser.add_argument("--cot_backdoor", action='store_true')
     parser.add_argument("--cot_clean", action='store_true')
