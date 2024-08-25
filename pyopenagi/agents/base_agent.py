@@ -81,7 +81,7 @@ class BaseAgent:
             # print(f"Workflow message: {message}")
             workflow = json.loads(message)
             if not isinstance(workflow, list):
-                return None
+                return [workflow]
 
             for step in workflow:
                 if "message" not in step or "tool_use" not in step:
@@ -108,7 +108,9 @@ class BaseAgent:
             self.request_waiting_times.extend(waiting_times)
             self.request_turnaround_times.extend(turnaround_times)
 
+            print(f'workflow before check: {response.response_message}')
             workflow = self.check_workflow(response.response_message)
+            print(f'workflow after check: {workflow}')
 
             self.rounds += 1
 

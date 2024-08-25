@@ -132,13 +132,19 @@
             "justMyCode": false
         },
         {
-            "name": "main_gemma2",
+            "name": "main_llama3:70b",
             "type": "python",
             "request": "launch",
             "program": "main_attacker.py",
             "args": [
                 "--llm_name",
-                "ollama/gemma2:27b",
+                "ollama/llama3:70b",
+                "--attack_type","naive",
+                "--clean",
+                "--attacker_tools_path",
+                "data/attack_tools_test.jsonl",
+                "--tasks_path",
+                "data/agent_task_test.jsonl"
             ],
             "console": "integratedTerminal",
             "justMyCode": false

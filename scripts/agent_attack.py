@@ -26,10 +26,8 @@ if __name__ == '__main__':
     #     'ollama/qwen2:7b','ollama/qwen2:72b' \
     #     'ollama/deepseek-coder-v2:16b', \
     #     'ollama/phi3:14b']
-    # llms = llm_open_source + llm_close_source
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    # injection_method = 'direct_prompt_injection', 'observation_prompt_injection', 'plan_attack', 'action_attack', 'cot_backdoor','memory_attack'
-    # workflow_modes = ['automatic','manual']
+    # injection_method = 'direct_prompt_injection', 'observation_prompt_injection', 'plan_attack', 'action_attack', 'cot_backdoor','memory_attack', 'cot_clean'
 
     #######################################################################################################################
     # test
@@ -38,7 +36,6 @@ if __name__ == '__main__':
     # llms = ['ollama/llama3.1:70b']
     # attack_types = ['naive']
     # injection_method = 'plan_attack'
-    # workflow_modes = ['manual']
     # database = 'memory_db/plan_attack/naive_test'
 
     #######################################################################################################################
@@ -52,21 +49,21 @@ if __name__ == '__main__':
 
     #######################################################################################################################
     # run direct_prompt_injection
-    # memory_attack = True
-    # agg = [True,False]
-    # llms = ['ollama/llama3.1:70b','ollama/llama3:70b']
-    # # database = 'memory_db/plan_attack/naive_all_attack'
-    # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
+    memory_attack = True
+    agg = [True,False]
+    llms = ['ollama/llama3.1:70b','ollama/llama3:70b']
+    # database = 'memory_db/plan_attack/naive_all_attack'
+    database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
 
-    # attack_types = ['naive']
-    # injection_method = 'direct_prompt_injection'
-    # workflow_modes = ['automatic']
-    # suffix='refuse'
+    attack_types = ['naive']
+    injection_method = 'direct_prompt_injection'
+    workflow_modes = ['automatic']
+    suffix='refuse'
     #######################################################################################################################
     # run memory attack
     # memory_attack = True
     # agg = [True,False]
-    # llms = ['ollama/llama3.1:70b','ollama/llama3.1:8b']
+    # llms = ['gpt-4o-mini']
     # suffix = 'task+tools_str'
 
     # # suffix = 'clean'
@@ -75,41 +72,38 @@ if __name__ == '__main__':
 
     # attack_types = ['naive']
     # injection_method = 'memory_attack'
-    # workflow_modes = ['automatic']
     #######################################################################################################################
     # test clean acc: only add attacker tool to toolkit; no any malicious attack
     # agg = [True,False]
-    # llms = ['gpt-4o-mini']
+    # llms = ['ollama/llama3.1:70b']
     # # llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     # # suffix = 'clean_test'
     # # test=True
 
     # attack_types = ['naive']
     # injection_method = 'clean'
-    # workflow_mode = 'automatic'
     #######################################################################################################################
     # COT backdoor
     # agg = [True]
     # llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
-    # # llms = ['ollama/llama3:8b']
-    # # llms = ['ollama/llama3:70b']
     # injection_method = 'cot_backdoor'
     # # injection_method = 'cot_clean'
     # suffix = 'in_light_of_extant_literature'
 
-    # workflow_mode = 'automatic'
+
     # attack_types = ['naive']
     # tasks_path = 'data/cot_data/agent_task_cot.jsonl'
     # task_num = 5
     #######################################################################################################################
     # jailbreak
-    agg = [True]
-    llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
-    injection_method = 'jailbreak'
-    suffix = 'direct_prompt_injection'
+    # agg = [True, False]
+    # llms = ['gpt-4o-mini','ollama/llama3:70b','ollama/llama3.1:70b']
+    # # llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
+    # injection_method = 'jailbreak'
+    # suffix = 'absolute'
 
-    workflow_mode = 'automatic'
-    attack_types = ['naive']
+    # workflow_mode = 'automatic'
+    # attack_types = ['absolute']
     #######################################################################################################################
 
     for aggressive in agg:
@@ -132,21 +126,21 @@ if __name__ == '__main__':
 
                 if aggressive:
                     attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
-                    log_file = f'{log_path}/{workflow_mode}-{attack_type}-aggressive'
+                    log_file = f'{log_path}/{attack_type}-aggressive'
                     if memory_attack:
-                        log_file = f'{log_path}/{workflow_mode}-{attack_type}-aggressive-memory_enhanced'
+                        log_file = f'{log_path}/{attack_type}-aggressive-memory_enhanced'
                 else:
                     attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
-                    log_file = f'{log_path}/{workflow_mode}-{attack_type}-non-aggressive'
+                    log_file = f'{log_path}/{attack_type}-non-aggressive'
                     if memory_attack:
-                        log_file = f'{log_path}/{workflow_mode}-{attack_type}-non-aggressive-memory_enhanced'
+                        log_file = f'{log_path}/{attack_type}-non-aggressive-memory_enhanced'
                 if test:
                     attacker_tools_path = 'data/attack_tools_test.jsonl'
-                    log_file = f'{log_path}/{workflow_mode}-{attack_type}-test'
+                    log_file = f'{log_path}/{attack_type}-test'
 
                 print(log_file)
 
-                if injection_method == 'direct_prompt_injection':
+                if injection_method == 'direct_prompt_injection' or injection_method == 'plan_attack':
                     cmd = f'''nohup python main_attacker.py \
                         --llm_name {llm} \
                         --workflow_mode {workflow_mode} \
@@ -161,7 +155,6 @@ if __name__ == '__main__':
                 elif injection_method == 'memory_attack':
                     cmd = f'''nohup python main_attacker.py \
                         --llm_name {llm} \
-                        --workflow_mode {workflow_mode} \
                         --attack_type {attack_type} \
                         --use_backend {backend} \
                         --attacker_tools_path {attacker_tools_path} \
@@ -172,7 +165,6 @@ if __name__ == '__main__':
                 elif injection_method == 'cot_backdoor' or injection_method == 'cot_clean':
                     cmd = f'''nohup python main_attacker.py \
                         --llm_name {llm} \
-                        --workflow_mode {workflow_mode} \
                         --attack_type {attack_type} \
                         --{injection_method} \
                         --use_backend {backend} \
@@ -185,7 +177,6 @@ if __name__ == '__main__':
                 elif injection_method == 'jailbreak':
                     cmd = f'''nohup python main_attacker.py \
                         --llm_name {llm} \
-                        --workflow_mode {workflow_mode} \
                         --attack_type {attack_type} \
                         --{injection_method} \
                         --use_backend {backend} \
@@ -195,7 +186,6 @@ if __name__ == '__main__':
                 else:
                     cmd = f'''nohup python main_attacker.py \
                         --llm_name {llm} \
-                        --workflow_mode {workflow_mode} \
                         --attack_type {attack_type} \
                         --{injection_method} \
                         --use_backend {backend} \
