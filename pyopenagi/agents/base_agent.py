@@ -80,8 +80,9 @@ class BaseAgent:
         try:
             # print(f"Workflow message: {message}")
             workflow = json.loads(message)
+
             if not isinstance(workflow, list):
-                return [workflow]
+                workflow = [workflow]
 
             for step in workflow:
                 if "message" not in step or "tool_use" not in step:
@@ -124,6 +125,15 @@ class BaseAgent:
                         "content": f"Fail {i+1} times to generate a valid plan. I need to regenerate a plan"
                     }
                 )
+                if i == self.plan_max_fail_times - 1:
+                    self.messages.append(
+                        {
+                            "role": "assistant",
+                            "content": f"[Thinking]: {response.response_message}"
+                        }
+                    )
+                    return None
+
         return None
 
     def manual_workflow(self):

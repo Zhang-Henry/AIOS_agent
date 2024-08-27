@@ -49,16 +49,20 @@ if __name__ == '__main__':
 
     #######################################################################################################################
     # run direct_prompt_injection
-    memory_attack = True
-    agg = [True,False]
-    llms = ['ollama/llama3.1:70b','ollama/llama3:70b']
-    # database = 'memory_db/plan_attack/naive_all_attack'
-    database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
+    # memory_attack = True
+    # agg = [True, False]
+    # llms = ['ollama/llama3.1:70b','ollama/llama3:70b']
+    # # database = 'memory_db/plan_attack/naive_all_attack'
+    # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
 
-    attack_types = ['naive']
-    injection_method = 'direct_prompt_injection'
-    workflow_modes = ['automatic']
-    suffix='refuse'
+    # attack_types = ['naive']
+    # injection_method = 'direct_prompt_injection'
+    # workflow_mode = 'automatic'
+
+    # # suffix='refuse_agg'
+    # # attacker_tools_path = 'data/attack_tools_test_agg.jsonl'
+    # suffix='refuse'
+    # attacker_tools_path = 'data/attack_tools_test_nonagg.jsonl'
     #######################################################################################################################
     # run memory attack
     # memory_attack = True
@@ -74,14 +78,14 @@ if __name__ == '__main__':
     # injection_method = 'memory_attack'
     #######################################################################################################################
     # test clean acc: only add attacker tool to toolkit; no any malicious attack
-    # agg = [True,False]
-    # llms = ['ollama/llama3.1:70b']
-    # # llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
-    # # suffix = 'clean_test'
-    # # test=True
+    agg = [True,False]
+    llms = ['ollama/phi3:14b']
+    # llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    # suffix = 'clean_test'
+    # test=True
 
-    # attack_types = ['naive']
-    # injection_method = 'clean'
+    attack_types = ['naive']
+    injection_method = 'clean'
     #######################################################################################################################
     # COT backdoor
     # agg = [True]
@@ -135,7 +139,7 @@ if __name__ == '__main__':
                     if memory_attack:
                         log_file = f'{log_path}/{attack_type}-non-aggressive-memory_enhanced'
                 if test:
-                    attacker_tools_path = 'data/attack_tools_test.jsonl'
+                    attacker_tools_path = 'data/attack_tools_test_nonagg.jsonl'
                     log_file = f'{log_path}/{attack_type}-test'
 
                 print(log_file)
@@ -151,7 +155,7 @@ if __name__ == '__main__':
                         --result_file {result_file} \
                         --database {database} \
                         --memory_attack {memory_attack} \
-                        > {log_file}.log 2>&1 &'''
+                        > {log_file}_{suffix}.log 2>&1 &'''
                 elif injection_method == 'memory_attack':
                     cmd = f'''nohup python main_attacker.py \
                         --llm_name {llm} \

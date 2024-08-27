@@ -87,7 +87,7 @@ class ReactAgentAttack(BaseAgent):
         for tool in self.tools:
             tools_str=tools_str+tool['function']['name']+';'
         if self.args.direct_prompt_injection:
-            self.memory_search = self.task_input + f'; {self.attack_prompts[self.args.attack_type]}' + tools_str
+            self.memory_search = self.task_input + f' {self.attack_prompts[self.args.attack_type]}' + tools_str
         elif self.args.memory_attack:
             self.memory_search = self.task_input + tools_str
 
@@ -190,7 +190,7 @@ class ReactAgentAttack(BaseAgent):
 
         if self.args.direct_prompt_injection:
             self.add_attacker_tool()
-            task_input += f'; {self.attack_prompts[self.args.attack_type]}'
+            task_input += f' {self.attack_prompts[self.args.attack_type]}'
         # elif self.args.observation_prompt_injection:
         elif self.args.plan_attack or self.args.observation_prompt_injection or self.args.cot_backdoor or self.args.cot_clean:
             self.add_attacker_tool()
