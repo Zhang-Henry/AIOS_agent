@@ -25,7 +25,8 @@ if __name__ == '__main__':
     #     'ollama/mistral-nemo', 'ollama/mixtral:8x7b' \
     #     'ollama/qwen2:7b','ollama/qwen2:72b' \
     #     'ollama/deepseek-coder-v2:16b', \
-    #     'ollama/phi3:14b']
+    #     'ollama/phi3:14b','ollama/phi3:3.8b', \
+    #      'ollama/vicuna:33b']
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     # injection_method = 'direct_prompt_injection', 'observation_prompt_injection', 'plan_attack', 'action_attack', 'cot_backdoor','memory_attack', 'cot_clean'
 
@@ -79,8 +80,8 @@ if __name__ == '__main__':
     #######################################################################################################################
     # test clean acc: only add attacker tool to toolkit; no any malicious attack
     agg = [True,False]
-    llms = ['ollama/phi3:14b']
-    # llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    # llms = ['ollama/phi3:14b','ollama/phi3:3.8b','ollama/qwen2:7b','ollama/qwen2:72b','ollama/mistral-nemo', 'ollama/mixtral:8x7b','ollama/gemma2:9b', 'ollama/vicuna:33b']
+    llms = ['gpt-3.5-turbo']
     # suffix = 'clean_test'
     # test=True
 
