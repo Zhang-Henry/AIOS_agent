@@ -17,7 +17,7 @@ MODEL_REGISTRY = {
 
     # GPT4o
     'gpt-4o': GPTLLM,
-    'gpt-4o-2024-05-13': GPTLLM,
+    'gpt-4o-2024-08-06': GPTLLM,
     'gpt-4o-mini': GPTLLM,
 
     # claude

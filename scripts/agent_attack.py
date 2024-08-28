@@ -12,8 +12,9 @@ llm_trigger = {
 
 
 if __name__ == '__main__':
-    # eval_devices = ["cuda:7", "cuda:6", "cuda:5", "cuda:4", "cuda:3", "cuda:2", "cuda:1", "cuda:0"]
-    # max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
+    eval_devices = '["cuda:7", "cuda:6", "cuda:5", "cuda:4", "cuda:3", "cuda:2", "cuda:1", "cuda:0"]'
+    max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
+    # max_gpu_memory = '{"4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
     aggressive = False
     test=False
     memory_attack=False
@@ -52,25 +53,30 @@ if __name__ == '__main__':
     # run direct_prompt_injection
     # memory_attack = True
     # agg = [True, False]
-    # llms = ['ollama/llama3.1:70b','ollama/llama3:70b']
-    # # database = 'memory_db/plan_attack/naive_all_attack'
-    # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
+    # llms = ['gpt-4o-2024-08-06']
+    # database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4'
+    # # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
 
-    # attack_types = ['naive']
+    # attack_types = ['combined_attack']
     # injection_method = 'direct_prompt_injection'
     # workflow_mode = 'automatic'
 
-    # # suffix='refuse_agg'
-    # # attacker_tools_path = 'data/attack_tools_test_agg.jsonl'
+    # suffix='refuse_agg'
+    # attacker_tools_path = 'data/attack_tools_test_agg.jsonl'
     # suffix='refuse'
     # attacker_tools_path = 'data/attack_tools_test_nonagg.jsonl'
     #######################################################################################################################
     # run memory attack
     # memory_attack = True
     # agg = [True,False]
-    # llms = ['gpt-4o-mini']
-    # suffix = 'task+tools_str'
+    # # llms = ['gpt-4o-mini','ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b','ollama/gemma2:9b', 'ollama/gemma2:27b','ollama/qwen2:7b']
+    # # llms = []
+    # # llms = ['ollama/mixtral:8x7b']
+    # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b', 'ollama/gemma2:27b', 'ollama/qwen2:7b', 'ollama/phi3:14b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    # # llms = ['gpt-4o-mini']
+    # # suffix = 'task+tools_description'
 
+    # suffix = 'task+tools_str2'
     # # suffix = 'clean'
     # # database = 'memory_db/plan_attack/naive_all_attack'
     # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
@@ -80,9 +86,9 @@ if __name__ == '__main__':
     #######################################################################################################################
     # test clean acc: only add attacker tool to toolkit; no any malicious attack
     agg = [True,False]
-    # llms = ['ollama/phi3:14b','ollama/phi3:3.8b','ollama/qwen2:7b','ollama/qwen2:72b','ollama/mistral-nemo', 'ollama/mixtral:8x7b','ollama/gemma2:9b', 'ollama/vicuna:33b']
-    llms = ['gpt-3.5-turbo']
-    # suffix = 'clean_test'
+    # llms = ['ollama/phi3:14b','ollama/phi3:3.8b','ollama/qwen2:7b','ollama/qwen2:72b','ollama/mistral-nemo', 'ollama/mixtral:8x7b','ollama/gemma2:9b', 'ollama/vicuna:33b','mistralai/Mistral-Nemo-Instruct-2407']
+    llms = ['meta-llama/Meta-Llama-3.1-70B-Instruct']
+    suffix = 'clean'
     # test=True
 
     attack_types = ['naive']
@@ -196,6 +202,9 @@ if __name__ == '__main__':
                         --use_backend {backend} \
                         --attacker_tools_path {attacker_tools_path} \
                         --result_file {result_file} \
+                        --max_gpu_memory '{max_gpu_memory}' \
+                        --eval_device '{eval_devices}' \
+                        --max_new_tokens 1024 \
                         > {log_file}.log 2>&1 &'''
 
                 os.system(cmd)

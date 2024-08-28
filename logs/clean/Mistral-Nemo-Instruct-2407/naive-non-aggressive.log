@@ -1,0 +1,119 @@
+The token has not been saved to the git credentials helper. Pass `add_to_git_credential=True` in this function directly or `--add-to-git-credential` if using via `huggingface-cli` if you want to set the git credential as well.
+Token is valid (permission: fineGrained).
+Your token has been saved to /filer/tmp1/hz624/.cache/huggingface/hub/token
+Login successful
+Attack started at: 2024-08-27 10:56
+Namespace(llm_name='mistralai/Mistral-Nemo-Instruct-2407', max_gpu_memory={'4': '24GB', '5': '24GB', '6': '24GB', '7': '24GB'}, eval_device='["cuda:7", "cuda:6", "cuda:5", "cuda:4", "cuda:3", "cuda:2", "cuda:1", "cuda:0"]', max_new_tokens=4096, scheduler_log_mode='console', agent_log_mode='console', llm_kernel_log_mode='console', use_backend='vllm', workflow_mode='automatic', attacker_tools_path='data/all_attack_tools_non_aggressive.jsonl', tasks_path='data/agent_task.jsonl', tools_info_path='data/all_normal_tools.jsonl', observation_prompt_injection=False, plan_attack=False, action_attack=False, direct_prompt_injection=False, jailbreak=False, attack_type='naive', cot_backdoor=False, cot_clean=False, target='ResearcherProfileManager', trigger='in light of extant literature', memory_attack=False, clean=True, result_file='logs/clean/Mistral-Nemo-Instruct-2407/result_statistics.log', database='memory_db/chroma_db', task_num=1)
+2024-08-27 10:56:11,508	INFO worker.py:1771 -- Started a local Ray instance.
+INFO 08-27 10:56:14 config.py:623] Defaulting to use mp for distributed inference
+INFO 08-27 10:56:14 llm_engine.py:161] Initializing an LLM engine (v0.5.0.post1) with config: model='mistralai/Mistral-Nemo-Instruct-2407', speculative_config=None, tokenizer='mistralai/Mistral-Nemo-Instruct-2407', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, rope_scaling=None, rope_theta=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=4096, download_dir='/filer/tmp1/hz624/.cache/huggingface/hub/', load_format=LoadFormat.AUTO, tensor_parallel_size=4, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), seed=0, served_model_name=mistralai/Mistral-Nemo-Instruct-2407)
+The token has not been saved to the git credentials helper. Pass `add_to_git_credential=True` in this function directly or `--add-to-git-credential` if using via `huggingface-cli` if you want to set the git credential as well.
+Token is valid (permission: fineGrained).
+Your token has been saved to /filer/tmp1/hz624/.cache/huggingface/hub/token
+Login successful
+The token has not been saved to the git credentials helper. Pass `add_to_git_credential=True` in this function directly or `--add-to-git-credential` if using via `huggingface-cli` if you want to set the git credential as well.
+Token is valid (permission: fineGrained).
+Your token has been saved to /filer/tmp1/hz624/.cache/huggingface/hub/token
+Login successful
+The token has not been saved to the git credentials helper. Pass `add_to_git_credential=True` in this function directly or `--add-to-git-credential` if using via `huggingface-cli` if you want to set the git credential as well.
+Token is valid (permission: fineGrained).
+Your token has been saved to /filer/tmp1/hz624/.cache/huggingface/hub/token
+Login successful
+[1;36m(VllmWorkerProcess pid=1552694)[0;0m INFO 08-27 10:56:22 multiproc_worker_utils.py:215] Worker ready; awaiting tasks
+[1;36m(VllmWorkerProcess pid=1552695)[0;0m INFO 08-27 10:56:22 multiproc_worker_utils.py:215] Worker ready; awaiting tasks
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m INFO 08-27 10:56:22 multiproc_worker_utils.py:215] Worker ready; awaiting tasks
+INFO 08-27 10:56:23 utils.py:637] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=1552695)[0;0m INFO 08-27 10:56:23 utils.py:637] Found nccl from library libnccl.so.2
+INFO 08-27 10:56:23 pynccl.py:63] vLLM is using nccl==2.20.5
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m INFO 08-27 10:56:23 utils.py:637] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=1552694)[0;0m INFO 08-27 10:56:23 utils.py:637] Found nccl from library libnccl.so.2
+[1;36m(VllmWorkerProcess pid=1552695)[0;0m INFO 08-27 10:56:23 pynccl.py:63] vLLM is using nccl==2.20.5
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m INFO 08-27 10:56:23 pynccl.py:63] vLLM is using nccl==2.20.5
+[1;36m(VllmWorkerProcess pid=1552694)[0;0m INFO 08-27 10:56:23 pynccl.py:63] vLLM is using nccl==2.20.5
+Traceback (most recent call last):
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/multiprocessing/resource_tracker.py", line 239, in main
+    cache[rtype].remove(name)
+KeyError: '/psm_181a2707'
+Traceback (most recent call last):
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/multiprocessing/resource_tracker.py", line 239, in main
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m WARNING 08-27 10:56:24 custom_all_reduce.py:166] Custom allreduce is disabled because it's not supported on more than two PCIe-only GPUs. To silence this warning, specify disable_custom_all_reduce=True explicitly.
+    cache[rtype].remove(name)
+WARNING 08-27 10:56:24 custom_all_reduce.py:166] Custom allreduce is disabled because it's not supported on more than two PCIe-only GPUs. To silence this warning, specify disable_custom_all_reduce=True explicitly.
+KeyError: '/psm_181a2707'
+Traceback (most recent call last):
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/multiprocessing/resource_tracker.py", line 239, in main
+[1;36m(VllmWorkerProcess pid=1552695)[0;0m WARNING 08-27 10:56:24 custom_all_reduce.py:166] Custom allreduce is disabled because it's not supported on more than two PCIe-only GPUs. To silence this warning, specify disable_custom_all_reduce=True explicitly.
+[1;36m(VllmWorkerProcess pid=1552694)[0;0m WARNING 08-27 10:56:24 custom_all_reduce.py:166] Custom allreduce is disabled because it's not supported on more than two PCIe-only GPUs. To silence this warning, specify disable_custom_all_reduce=True explicitly.
+    cache[rtype].remove(name)
+KeyError: '/psm_181a2707'
+[1;36m(VllmWorkerProcess pid=1552695)[0;0m INFO 08-27 10:56:24 weight_utils.py:218] Using model weights format ['*.safetensors']
+INFO 08-27 10:56:24 weight_utils.py:218] Using model weights format ['*.safetensors']
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m INFO 08-27 10:56:24 weight_utils.py:218] Using model weights format ['*.safetensors']
+[1;36m(VllmWorkerProcess pid=1552694)[0;0m INFO 08-27 10:56:24 weight_utils.py:218] Using model weights format ['*.safetensors']
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226] Exception in worker VllmWorkerProcess while processing method load_model: start (960) + length (320) exceeds dimension size (1024)., Traceback (most recent call last):
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/executor/multiproc_worker_utils.py", line 223, in _run_worker_process
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]     output = executor(*args, **kwargs)
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]              ^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/worker/worker.py", line 122, in load_model
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]     self.model_runner.load_model()
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/worker/model_runner.py", line 148, in load_model
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]     self.model = get_model(
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]                  ^^^^^^^^^^
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/model_executor/model_loader/__init__.py", line 21, in get_model
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]     return loader.load_model(model_config=model_config,
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/model_executor/model_loader/loader.py", line 264, in load_model
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]     model.load_weights(
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/model_executor/models/llama.py", line 416, in load_weights
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]     weight_loader(param, loaded_weight, shard_id)
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/model_executor/layers/linear.py", line 662, in weight_loader
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]     loaded_weight = loaded_weight.narrow(output_dim, start_idx,
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226] RuntimeError: start (960) + length (320) exceeds dimension size (1024).
+[1;36m(VllmWorkerProcess pid=1552696)[0;0m ERROR 08-27 10:56:25 multiproc_worker_utils.py:226] 
+INFO 08-27 10:56:28 model_runner.py:160] Loading model weights took 6.2835 GB
+[1;36m(VllmWorkerProcess pid=1552695)[0;0m INFO 08-27 10:56:28 model_runner.py:160] Loading model weights took 6.2835 GB
+[1;36m(VllmWorkerProcess pid=1552694)[0;0m INFO 08-27 10:56:29 model_runner.py:160] Loading model weights took 6.2835 GB
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 318, in <module>
+[rank0]:     main()
+[rank0]:   File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 136, in main
+[rank0]:     llm = llms.LLMKernel(
+[rank0]:           ^^^^^^^^^^^^^^^
+[rank0]:   File "/common/users/hz624/AgentAttackBench/aios/llm_core/llms.py", line 40, in __init__
+[rank0]:     self.model = vLLM(
+[rank0]:                  ^^^^^
+[rank0]:   File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/vllm.py", line 23, in __init__
+[rank0]:     super().__init__(llm_name,
+[rank0]:   File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/base_llm.py", line 30, in __init__
+[rank0]:     self.load_llm_and_tokenizer()
+[rank0]:   File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/vllm.py", line 42, in load_llm_and_tokenizer
+[rank0]:     self.model = vllm.LLM(
+[rank0]:                  ^^^^^^^^^
+[rank0]:   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 144, in __init__
+[rank0]:     self.llm_engine = LLMEngine.from_engine_args(
+[rank0]:                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 363, in from_engine_args
+[rank0]:     engine = cls(
+[rank0]:              ^^^^
+[rank0]:   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 223, in __init__
+[rank0]:     self.model_executor = executor_class(
+[rank0]:/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 24 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+"/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/executor/executor_base.py", line 41, in __init__
+[rank0]:     self._init_executor()
+[rank0]:   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/executor/multiproc_gpu_executor.py", line 66, in _init_executor
+[rank0]:     self._run_workers("load_model",
+[rank0]:   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/executor/multiproc_gpu_executor.py", line 123, in _run_workers
+[rank0]:     ] + [output.get() for output in worker_outputs]
+[rank0]:         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/executor/multiproc_gpu_executor.py", line 123, in <listcomp>
+[rank0]:     ] + [output.get() for output in worker_outputs]
+[rank0]:          ^^^^^^^^^^^^
+[rank0]:   File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/executor/multiproc_worker_utils.py", line 58, in get
+[rank0]:     raise self.result.exception
+[rank0]: RuntimeError: start (960) + length (320) exceeds dimension size (1024).
+ERROR 08-27 10:56:31 multiproc_worker_utils.py:120] Worker VllmWorkerProcess pid 1552696 died, exit code: -15
+INFO 08-27 10:56:31 multiproc_worker_utils.py:123] Killing local vLLM worker processes
+/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 3 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

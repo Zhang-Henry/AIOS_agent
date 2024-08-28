@@ -126,10 +126,16 @@ class BaseAgent:
                     }
                 )
                 if i == self.plan_max_fail_times - 1:
+                    # self.messages.append(
+                    #     {
+                    #         "role": "assistant",
+                    #         "content": f"[Thinking]: {response.response_message}"
+                    #     }
+                    # )
                     self.messages.append(
                         {
                             "role": "assistant",
-                            "content": f"[Thinking]: {response.response_message}"
+                            "thinking": f"{response.response_message}"
                         }
                     )
                     return None

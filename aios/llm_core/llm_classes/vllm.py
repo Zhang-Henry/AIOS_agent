@@ -8,6 +8,10 @@ from ...utils.utils import get_from_env
 
 from transformers import AutoTokenizer
 
+from huggingface_hub import login
+login(token="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")
+
+
 class vLLM(BaseLLM):
 
     def __init__(self, llm_name: str,
@@ -38,8 +42,10 @@ class vLLM(BaseLLM):
         self.model = vllm.LLM(
             model = self.model_name,
             download_dir = get_from_env("HF_HOME"),
-            tensor_parallel_size = self.gpu_nums
+            tensor_parallel_size = self.gpu_nums,
+            max_model_len=4096
         )
+
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.model_name,
         )
