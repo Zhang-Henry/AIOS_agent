@@ -177,18 +177,8 @@ def main():
             for _, tool in attacker_tools.iterrows(): # iterate over each attacker tool
                 if args.cot_backdoor or args.cot_clean:
                     args.target = tool["Attacker Tool"]
-                    # if args.target != tool["Attacker Tool"]:
-                    #     continue
+
                 print(f'Running agent: {agent_name} with the task: {task} and the attacker tool: {tool["Attacker Tool"]}')
-                # attacker_tool_args = Args(
-                #     agent_name=agent_name,
-                #     attacker_tool=tool["Attacker Tool"],
-                #     attacker_instruction=tool["Attacker Instruction"],
-                #     description=tool["Description"],
-                #     attack_goal=tool["Attack goal"],
-                #     args=args
-                # )
-                # print("Current task: ", task)
 
                 agent_attack = agent_thread_pool.submit(
                     agent_factory.run_agent,

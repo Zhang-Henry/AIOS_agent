@@ -46,35 +46,34 @@ if __name__ == '__main__':
     # test=True
     # agg = [False]
 
-    # memory_attack = True
-    # # agg = [True,False]
-    # # llms = ['ollama/qwen2:7b','ollama/gemma2:9b','ollama/llama3:8b', 'ollama/llama3.1:8b']
-    # # llms = ['gpt-4o-mini','ollama/mixtral:8x7b','ollama/gemma2:27b']
-    # # llms = ['ollama/qwen2:72b', 'ollama/llama3.1:70b']
-    # llms = ['gpt-4o-mini']
+    memory_attack = True
+    agg = [True,False]
+    # llms = ['ollama/qwen2:7b','ollama/gemma2:9b','ollama/llama3:8b', 'ollama/llama3.1:8b']
+    # llms = ['gpt-4o-mini','ollama/mixtral:8x7b','ollama/gemma2:27b', 'ollama/llama3:70b']
+    # llms = ['ollama/qwen2:72b', 'ollama/llama3.1:70b']
+    llms = ['ollama/phi3:14b']
 
-    # database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
 
-    # # suffix = 'test'
-    # # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    # attack_types = ['combined_attack']
-    # injection_method = 'direct_prompt_injection'
+    # suffix = 'test'
+    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
+    injection_method = 'direct_prompt_injection'
 
     #######################################################################################################################
     # run memory attack
-    test = True
-    agg = [False]
-    # memory_attack = True
-    # agg = [True,False]
-    # llms = ['ollama/mixtral:8x7b','gpt-4o-mini','ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b','ollama/gemma2:9b', 'ollama/gemma2:27b','ollama/qwen2:7b']
-    # llms = ['ollama/llama3:70b','ollama/mixtral:8x7b','ollama/gemma2:27b']
-    # llms = ['ollama/qwen2:72b', 'ollama/phi3:14b', 'ollama/llama3.1:70b']
-    # llms = ['ollama/qwen2:7b','ollama/gemma2:9b','ollama/llama3:8b', 'ollama/llama3.1:8b']
-    llms = ['gpt-4o-mini']
+    # test = True
+    # agg = [False]
+    # # memory_attack = True
+    # # agg = [True,False]
+    # # llms = ['ollama/mixtral:8x7b','gpt-4o-mini','ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b','ollama/gemma2:9b', 'ollama/gemma2:27b','ollama/qwen2:7b']
+    # # llms = ['ollama/llama3:70b','ollama/mixtral:8x7b','ollama/gemma2:27b']
+    # # llms = ['ollama/qwen2:72b', 'ollama/phi3:14b', 'ollama/llama3.1:70b']
+    # # llms = ['ollama/qwen2:7b','ollama/gemma2:9b','ollama/llama3:8b', 'ollama/llama3.1:8b']
+    # llms = ['gpt-4o-mini']
 
-    database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
-    attack_types = ['combined_attack']
-    injection_method = 'memory_attack'
+    # database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
+    # attack_types = ['combined_attack']
+    # injection_method = 'memory_attack'
     #######################################################################################################################
     # test clean acc: only add attacker tool to toolkit; no any malicious attack
     # agg = [False]
@@ -123,7 +122,7 @@ if __name__ == '__main__':
 
                 log_path = f'logs/{injection_method}/{llm_name}'
 
-                result_file = f'{log_path}/result_statistics.log'
+                result_file = f'{log_path}/result_statistics_.log'
 
                 if aggressive:
                     attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'

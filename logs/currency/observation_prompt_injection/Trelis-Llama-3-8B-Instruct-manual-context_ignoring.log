@@ -1,35 +1,0 @@
-/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/transformers/utils/hub.py:127: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
-  warnings.warn(
-Attack started at: 2024-07-24 21:21
-Namespace(llm_name='Trelis/Meta-Llama-3-8B-Instruct-function-calling', max_gpu_memory={'0': '44GB', '1': '44GB', '2': '44GB', '3': '44GB', '4': '44GB'}, eval_device='cuda:3', max_new_tokens=512, scheduler_log_mode='console', agent_log_mode='console', llm_kernel_log_mode='console', use_backend=None, workflow_mode='manual', attacker_tools_path='data/attacker_cases_dh.jsonl', tasks_path='data/agent_tasks/example/currencyexchange_agent_tasks.txt', agent_path='example/currencyexchange_agent', observation_prompt_injection=True, plan_attack=False, action_attack=False, direct_prompt_injection=False, attack_type='context_ignoring', cot_backdoor=False)
-Downloading shards:   0%|          | 0/4 [00:00<?, ?it/s]Downloading shards:  25%|██▌       | 1/4 [00:08<00:25,  8.41s/it]Downloading shards:  50%|█████     | 2/4 [00:14<00:14,  7.21s/it]Downloading shards:  75%|███████▌  | 3/4 [00:20<00:06,  6.58s/it]Downloading shards: 100%|██████████| 4/4 [00:27<00:00,  6.60s/it]Downloading shards: 100%|██████████| 4/4 [00:27<00:00,  6.81s/it]
-Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/4 [16:13<?, ?it/s]
-Traceback (most recent call last):
-  File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 162, in <module>
-    main()
-  File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 75, in main
-    llm = llms.LLMKernel(
-          ^^^^^^^^^^^^^^^
-  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llms.py", line 48, in __init__
-    self.model = HfNativeLLM(
-                 ^^^^^^^^^^^^
-  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/base_llm.py", line 33, in __init__
-    self.load_llm_and_tokenizer()
-  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/hf_native_llm.py", line 24, in load_llm_and_tokenizer
-    self.model = MODEL_CLASS[self.model_type].from_pretrained(
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/transformers/models/auto/auto_factory.py", line 564, in from_pretrained
-    return model_class.from_pretrained(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/transformers/modeling_utils.py", line 3838, in from_pretrained
-    ) = cls._load_pretrained_model(
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/transformers/modeling_utils.py", line 4298, in _load_pretrained_model
-    new_error_msgs, offload_index, state_dict_index = _load_state_dict_into_meta_model(
-                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/transformers/modeling_utils.py", line 895, in _load_state_dict_into_meta_model
-    set_module_tensor_to_device(model, param_name, param_device, **set_module_kwargs)
-  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/accelerate/utils/modeling.py", line 400, in set_module_tensor_to_device
-    new_value = value.to(device)
-                ^^^^^^^^^^^^^^^^
-torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 64.00 MiB. GPU 
