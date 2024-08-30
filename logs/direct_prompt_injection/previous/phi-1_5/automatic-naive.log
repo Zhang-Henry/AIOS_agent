@@ -1,0 +1,35 @@
+Attack started at: 2024-07-31 12:11
+Namespace(llm_name='microsoft/phi-1_5', max_gpu_memory={'0': '24GB', '1': '24GB', '2': '24GB', '3': '24GB', '4': '24GB', '5': '24GB', '6': '24GB'}, eval_device='cuda:7', max_new_tokens=1024, scheduler_log_mode='console', agent_log_mode='console', llm_kernel_log_mode='console', use_backend='vllm', workflow_mode='automatic', attacker_tools_path='data/all_attacker_tools_non_aggressive.jsonl', tasks_path='data/agent_task.jsonl', tools_info_path='data/all_normal_tools.jsonl', observation_prompt_injection=False, plan_attack=False, action_attack=False, direct_prompt_injection=True, attack_type='naive', cot_backdoor=False)
+2024-07-31 12:11:42,238	INFO worker.py:1771 -- Started a local Ray instance.
+INFO 07-31 12:11:43 config.py:623] Defaulting to use mp for distributed inference
+Traceback (most recent call last):
+  File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 184, in <module>
+    main()
+  File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 85, in main
+    llm = llms.LLMKernel(
+          ^^^^^^^^^^^^^^^
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llms.py", line 40, in __init__
+    self.model = vLLM(
+                 ^^^^^
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/vllm.py", line 19, in __init__
+    super().__init__(llm_name,
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/base_llm.py", line 33, in __init__
+    self.load_llm_and_tokenizer()
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/vllm.py", line 38, in load_llm_and_tokenizer
+    self.model = vllm.LLM(
+                 ^^^^^^^^^
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/entrypoints/llm.py", line 144, in __init__
+    self.llm_engine = LLMEngine.from_engine_args(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/engine/llm_engine.py", line 336, in from_engine_args
+    engine_config = engine_args.create_engine_config()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/engine/arg_utils.py", line 766, in create_engine_config
+    return EngineConfig(model_config=model_config,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 13, in __init__
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/config.py", line 1378, in __post_init__
+    self.model_config.verify_with_parallel_config(self.parallel_config)
+  File "/common/home/hz624/anaconda3/envs/AIOS/lib/python3.11/site-packages/vllm/config.py", line 235, in verify_with_parallel_config
+    raise ValueError(
+ValueError: Total number of attention heads (32) must be divisible by tensor parallel size (7).

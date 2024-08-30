@@ -14,31 +14,23 @@ llm_trigger = {
 if __name__ == '__main__':
     eval_devices = '["cuda:7", "cuda:6", "cuda:5", "cuda:4", "cuda:3", "cuda:2", "cuda:1", "cuda:0"]'
     max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
-    # max_gpu_memory = '{"4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
     aggressive = False
     test=False
     memory_attack=False
     suffix=''
+    workflow_mode = 'automatic'
+
     #######################################################################################################################
     # llm_close_source = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
     # llm_open_source = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b', \
-    #     'ollama/gemma2:9b', 'ollama/gemma2:27b' \
-    #     'ollama/mistral-nemo', 'ollama/mixtral:8x7b' \
-    #     'ollama/qwen2:7b','ollama/qwen2:72b' \
+    #     'ollama/gemma2:9b', 'ollama/gemma2:27b', \
+    #     'ollama/mixtral:8x7b', \
+    #     'ollama/qwen2:7b','ollama/qwen2:72b', \
+    #     'ollama/phi3:14b', \
     #     'ollama/deepseek-coder-v2:16b', \
-    #     'ollama/phi3:14b','ollama/phi3:3.8b', \
-    #      'ollama/vicuna:33b']
+    #     'ollama/vicuna:33b']
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     # injection_method = 'direct_prompt_injection', 'observation_prompt_injection', 'plan_attack', 'action_attack', 'cot_backdoor','memory_attack', 'cot_clean'
-
-    #######################################################################################################################
-    # test
-    # test=True
-    # agg = [False]
-    # llms = ['ollama/llama3.1:70b']
-    # attack_types = ['naive']
-    # injection_method = 'plan_attack'
-    # database = 'memory_db/plan_attack/naive_test'
 
     #######################################################################################################################
     # run plan attack
@@ -46,53 +38,46 @@ if __name__ == '__main__':
     # llms = ['gpt-4o-mini']
     # attack_types = ['naive']
     # injection_method = 'plan_attack'
-    # workflow_modes = ['manual']
+    # workflow_modes = 'manual'
     # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
 
     #######################################################################################################################
     # run direct_prompt_injection
     # memory_attack = True
-    # agg = [True, False]
-    # llms = ['gpt-4o-2024-08-06']
-    # database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4'
-    # # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
+    agg = [True,False]
+    # llms = ['gpt-4o-mini','ollama/qwen2:7b','ollama/gemma2:9b','ollama/llama3:8b', 'ollama/llama3.1:8b']
+    llms = ['gpt-4o-mini','ollama/mixtral:8x7b','ollama/gemma2:27b']
 
+    database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
+
+    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     # attack_types = ['combined_attack']
-    # injection_method = 'direct_prompt_injection'
-    # workflow_mode = 'automatic'
+    injection_method = 'direct_prompt_injection'
 
-    # suffix='refuse_agg'
-    # attacker_tools_path = 'data/attack_tools_test_agg.jsonl'
-    # suffix='refuse'
-    # attacker_tools_path = 'data/attack_tools_test_nonagg.jsonl'
     #######################################################################################################################
     # run memory attack
+    # test = True
     # memory_attack = True
     # agg = [True,False]
-    # # llms = ['gpt-4o-mini','ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b','ollama/gemma2:9b', 'ollama/gemma2:27b','ollama/qwen2:7b']
-    # # llms = []
-    # # llms = ['ollama/mixtral:8x7b']
-    # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b', 'ollama/gemma2:27b', 'ollama/qwen2:7b', 'ollama/phi3:14b','ollama/llama3:70b', 'ollama/llama3.1:70b']
-    # # llms = ['gpt-4o-mini']
-    # # suffix = 'task+tools_description'
+    # # llms = ['ollama/mixtral:8x7b','gpt-4o-mini','ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b','ollama/gemma2:9b', 'ollama/gemma2:27b','ollama/qwen2:7b']
+    # # llms = ['ollama/llama3:70b','ollama/mixtral:8x7b','ollama/gemma2:27b']
+    # # llms = ['ollama/qwen2:72b', 'ollama/phi3:14b', 'ollama/llama3.1:70b']
+    # llms = ['ollama/qwen2:7b','ollama/gemma2:9b','ollama/llama3:8b', 'ollama/llama3.1:8b']
 
-    # suffix = 'task+tools_str2'
-    # # suffix = 'clean'
-    # # database = 'memory_db/plan_attack/naive_all_attack'
-    # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
+    # database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
 
-    # attack_types = ['naive']
+    # attack_types = ['combined_attack']
     # injection_method = 'memory_attack'
     #######################################################################################################################
     # test clean acc: only add attacker tool to toolkit; no any malicious attack
-    agg = [True,False]
-    # llms = ['ollama/phi3:14b','ollama/phi3:3.8b','ollama/qwen2:7b','ollama/qwen2:72b','ollama/mistral-nemo', 'ollama/mixtral:8x7b','ollama/gemma2:9b', 'ollama/vicuna:33b','mistralai/Mistral-Nemo-Instruct-2407']
-    llms = ['meta-llama/Meta-Llama-3.1-70B-Instruct']
-    suffix = 'clean'
-    # test=True
+    # agg = [False]
+    # # llms = ['ollama/phi3:14b','ollama/phi3:3.8b','ollama/qwen2:7b','ollama/qwen2:72b','ollama/mistral-nemo', 'ollama/mixtral:8x7b','ollama/gemma2:9b', 'ollama/vicuna:33b','mistralai/Mistral-Nemo-Instruct-2407']
+    # llms = ['meta-llama/Meta-Llama-3.1-70B-Instruct']
+    # suffix = 'clean'
+    # # test=True
 
-    attack_types = ['naive']
-    injection_method = 'clean'
+    # attack_types = ['naive']
+    # injection_method = 'clean'
     #######################################################################################################################
     # COT backdoor
     # agg = [True]
@@ -113,7 +98,6 @@ if __name__ == '__main__':
     # injection_method = 'jailbreak'
     # suffix = 'absolute'
 
-    # workflow_mode = 'automatic'
     # attack_types = ['absolute']
     #######################################################################################################################
 
@@ -204,7 +188,6 @@ if __name__ == '__main__':
                         --result_file {result_file} \
                         --max_gpu_memory '{max_gpu_memory}' \
                         --eval_device '{eval_devices}' \
-                        --max_new_tokens 1024 \
                         > {log_file}.log 2>&1 &'''
 
                 os.system(cmd)

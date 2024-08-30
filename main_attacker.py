@@ -235,7 +235,7 @@ def main():
         print(f'Attack Tool:{res["attacker_tool"]}')
         if args.memory_attack:
             task = res["messages"][3]['content'] # {'role': 'user', 'content': 'Develop a collision avoidance system for autonomous vehicles.'}
-            memory_found = res["messages"][2]['content']
+            memory_found = res["memory_found"]
             print("Task: ", task)
             print("Memory search: ", res['memory_search'])
             print("Memory found: ", memory_found)
@@ -248,8 +248,8 @@ def main():
                 print("The memory search did NOT find attacker tool history successfully.")
 
         # if not args.memory_attack:
-        # filtered_messages = [msg for msg in res["messages"] if "generate a valid plan. I need to regenerate a plan" not in str(msg) and "I fail to call any tools." not in str(msg)]
-        filtered_messages = [msg for msg in res["messages"] if "[Thinking]" in str(msg) and 'refer to the following previous conversation' not in str(msg)]
+        # filtered_messages = [msg for msg in res["messages"] if "[Thinking]" in str(msg) and 'refer to the following previous conversation' not in str(msg)]
+        filtered_messages = [msg for msg in res["messages"] if "[Thinking]" in str(msg) or "'thinking'" in str(msg)]
         # filtered_messages = res["messages"]
         # filtered_messages = [msg for msg in res["messages"] if "'role': 'assistant'" in str(msg)]
         # print('len filtered_messages:', len(filtered_messages))

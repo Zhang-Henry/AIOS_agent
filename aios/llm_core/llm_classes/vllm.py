@@ -43,7 +43,7 @@ class vLLM(BaseLLM):
             model = self.model_name,
             download_dir = get_from_env("HF_HOME"),
             tensor_parallel_size = self.gpu_nums,
-            max_model_len=4096
+            max_model_len=50000
         )
 
         self.tokenizer = AutoTokenizer.from_pretrained(
