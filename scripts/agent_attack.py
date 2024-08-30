@@ -46,15 +46,13 @@ if __name__ == '__main__':
     # test=True
     # agg = [False]
 
-    memory_attack = True
+    # memory_attack = True
     agg = [True,False]
-    # llms = ['ollama/qwen2:7b','ollama/gemma2:9b','ollama/llama3:8b', 'ollama/llama3.1:8b']
-    # llms = ['gpt-4o-mini','ollama/mixtral:8x7b','ollama/gemma2:27b', 'ollama/llama3:70b']
-    # llms = ['ollama/qwen2:72b', 'ollama/llama3.1:70b']
-    llms = ['ollama/phi3:14b']
+    # llms = ['ollama/llama3:70b', 'ollama/gemma2:9b','ollama/llama3:8b', 'ollama/llama3.1:8b']
+    # llms = ['gpt-4o-mini','ollama/mixtral:8x7b','ollama/gemma2:27b', 'ollama/gemma2:27b', 'ollama/llama3:70b','ollama/phi3:14b']
+    # llms = ['ollama/qwen2:7b','ollama/qwen2:72b', 'ollama/llama3.1:70b']
+    llms = ['ollama/gemma2:27b']
 
-
-    # suffix = 'test'
     attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
     injection_method = 'direct_prompt_injection'

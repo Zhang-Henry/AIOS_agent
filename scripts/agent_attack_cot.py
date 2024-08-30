@@ -89,17 +89,17 @@ if __name__ == '__main__':
     # injection_method = 'clean'
     #######################################################################################################################
     # COT backdoor
-    agg = [True]
+    agg = [True, False]
     #llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
     llms = ['gpt-4o-mini']
-    # injection_method = 'cot_backdoor'
-    injection_method = 'cot_clean'
+    injection_method = 'cot_backdoor'
+    # injection_method = 'cot_clean'
     suffix = 'in_light_of_extant_literature'
-
+    triggs = [':)', 'in_light_of_extant_literature', 'with nuanced empirical perspectives', 'per se', '@_@']
 
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
-    task_num = 5
+    task_num = 4
     #######################################################################################################################
     # jailbreak
     # agg = [True, False]
@@ -114,93 +114,98 @@ if __name__ == '__main__':
 
     for aggressive in agg:
         for llm in llms:
-            for attack_type in attack_types:
-                if llm.startswith('gpt') or llm.startswith('gemini') or llm.startswith('claude'):
-                    llm_name = llm
-                    backend=None
-                elif llm.startswith('ollama'):
-                    llm_name = llm.split('/')[-1]
-                    backend='ollama'
-                else:
-                    llm_name = llm.split('/')[-1]
-                    backend='vllm'
+            for attack_type in attack_types:  
+                for trigg in triggs:
+                    if llm.startswith('gpt') or llm.startswith('gemini') or llm.startswith('claude'):
+                        llm_name = llm
+                        backend=None
+                    elif llm.startswith('ollama'):
+                        llm_name = llm.split('/')[-1]
+                        backend='ollama'
+                    else:
+                        llm_name = llm.split('/')[-1]
+                        backend='vllm'
 
-                log_path = f'logs/{injection_method}/{llm_name}'
-                os.makedirs(log_path, exist_ok=True)
+                    log_path = f'logs/{injection_method}/{llm_name}'
+                    os.makedirs(log_path, exist_ok=True)
 
-                result_file = f'{log_path}/result_statistics.log'
+                    result_file = f'{log_path}/result_statistics.log'
 
-                if aggressive:
-                    attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
-                    log_file = f'{log_path}/{attack_type}-aggressive'
-                    if memory_attack:
-                        log_file = f'{log_path}/{attack_type}-aggressive-memory_enhanced'
-                else:
-                    attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
-                    log_file = f'{log_path}/{attack_type}-non-aggressive'
-                    if memory_attack:
-                        log_file = f'{log_path}/{attack_type}-non-aggressive-memory_enhanced'
-                if test:
-                    attacker_tools_path = 'data/attack_tools_test_nonagg.jsonl'
-                    log_file = f'{log_path}/{attack_type}-test'
+                    if aggressive:
+                        attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
+                        log_file = f'{log_path}/{attack_type}-aggressive'
+                        if memory_attack:
+                            log_file = f'{log_path}/{attack_type}-aggressive-memory_enhanced'
+                    else:
+                        attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
+                        log_file = f'{log_path}/{attack_type}-non-aggressive'
+                        if memory_attack:
+                            log_file = f'{log_path}/{attack_type}-non-aggressive-memory_enhanced'
+                    if test:
+                        attacker_tools_path = 'data/attack_tools_test_nonagg.jsonl'
+                        log_file = f'{log_path}/{attack_type}-test'
 
-                print(log_file)
+                    print(log_file)
 
-                if injection_method == 'direct_prompt_injection' or injection_method == 'plan_attack':
-                    cmd = f'''nohup python main_attacker.py \
-                        --llm_name {llm} \
-                        --workflow_mode {workflow_mode} \
-                        --attack_type {attack_type} \
-                        --{injection_method} \
-                        --use_backend {backend} \
-                        --attacker_tools_path {attacker_tools_path} \
-                        --result_file {result_file} \
-                        --database {database} \
-                        --memory_attack {memory_attack} \
-                        > {log_file}_{suffix}.log 2>&1 &'''
-                elif injection_method == 'memory_attack':
-                    cmd = f'''nohup python main_attacker.py \
-                        --llm_name {llm} \
-                        --attack_type {attack_type} \
-                        --use_backend {backend} \
-                        --attacker_tools_path {attacker_tools_path} \
-                        --result_file {result_file} \
-                        --database {database} \
-                        --memory_attack {memory_attack} \
-                        > {log_file}_{suffix}.log 2>&1 &'''
-                elif injection_method == 'cot_backdoor' or injection_method == 'cot_clean':
-                    cmd = f'''nohup python main_attacker.py \
-                        --llm_name {llm} \
-                        --attack_type {attack_type} \
-                        --{injection_method} \
-                        --use_backend {backend} \
-                        --attacker_tools_path {attacker_tools_path} \
-                        --tasks_path {tasks_path} \
-                        --result_file {result_file} \
-                        --trigger '{llm_trigger[llm]}' \
-                        --task_num {task_num} \
-                        > {log_file}_{suffix}.log 2>&1 &'''
-                elif injection_method == 'jailbreak':
-                    cmd = f'''nohup python main_attacker.py \
-                        --llm_name {llm} \
-                        --attack_type {attack_type} \
-                        --{injection_method} \
-                        --use_backend {backend} \
-                        --attacker_tools_path {attacker_tools_path} \
-                        --result_file {result_file} \
-                        > {log_file}_{suffix}.log 2>&1 &'''
-                else:
-                    cmd = f'''nohup python main_attacker.py \
-                        --llm_name {llm} \
-                        --attack_type {attack_type} \
-                        --{injection_method} \
-                        --use_backend {backend} \
-                        --attacker_tools_path {attacker_tools_path} \
-                        --result_file {result_file} \
-                        --max_gpu_memory '{max_gpu_memory}' \
-                        --eval_device '{eval_devices}' \
-                        --max_new_tokens 1024 \
-                        > {log_file}.log 2>&1 &'''
+                    if injection_method == 'direct_prompt_injection' or injection_method == 'plan_attack':
+                        cmd = f'''nohup python main_attacker.py \
+                            --llm_name {llm} \
+                            --workflow_mode {workflow_mode} \
+                            --attack_type {attack_type} \
+                            --{injection_method} \
+                            --use_backend {backend} \
+                            --attacker_tools_path {attacker_tools_path} \
+                            --result_file {result_file} \
+                            --database {database} \
+                            --memory_attack {memory_attack} \
+                            > {log_file}_{suffix}.log 2>&1 &'''
+                    elif injection_method == 'memory_attack':
+                        cmd = f'''nohup python main_attacker.py \
+                            --llm_name {llm} \
+                            --attack_type {attack_type} \
+                            --use_backend {backend} \
+                            --attacker_tools_path {attacker_tools_path} \
+                            --result_file {result_file} \
+                            --database {database} \
+                            --memory_attack {memory_attack} \
+                            > {log_file}_{suffix}.log 2>&1 &'''
+                    elif injection_method == 'cot_backdoor' or injection_method == 'cot_clean':
+                        if trigg == ':)':
+                            trigg1 = 'happy'
+                        else:
+                            trigg1 = trigg
+                        cmd = f'''nohup python main_attacker.py \
+                            --llm_name {llm} \
+                            --attack_type {attack_type} \
+                            --{injection_method} \
+                            --use_backend {backend} \
+                            --attacker_tools_path {attacker_tools_path} \
+                            --tasks_path {tasks_path} \
+                            --result_file {result_file} \
+                            --trigger '{trigg}' \
+                            --task_num {task_num} \
+                            > {log_file}_{suffix}_{injection_method}_agg={aggressive}_{trigg1}.log 2>&1 &'''
+                    elif injection_method == 'jailbreak':
+                        cmd = f'''nohup python main_attacker.py \
+                            --llm_name {llm} \
+                            --attack_type {attack_type} \
+                            --{injection_method} \
+                            --use_backend {backend} \
+                            --attacker_tools_path {attacker_tools_path} \
+                            --result_file {result_file} \
+                            > {log_file}_{suffix}.log 2>&1 &'''
+                    else:
+                        cmd = f'''nohup python main_attacker.py \
+                            --llm_name {llm} \
+                            --attack_type {attack_type} \
+                            --{injection_method} \
+                            --use_backend {backend} \
+                            --attacker_tools_path {attacker_tools_path} \
+                            --result_file {result_file} \
+                            --max_gpu_memory '{max_gpu_memory}' \
+                            --eval_device '{eval_devices}' \
+                            --max_new_tokens 1024 \
+                            > {log_file}.log 2>&1 &'''
 
-                #print(cmd)
-                os.system(cmd)
+                    #print(cmd)
+                    os.system(cmd)
