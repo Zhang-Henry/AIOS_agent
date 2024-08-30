@@ -250,9 +250,7 @@ def main():
         # if not args.memory_attack:
         # filtered_messages = [msg for msg in res["messages"] if "[Thinking]" in str(msg) and 'refer to the following previous conversation' not in str(msg)]
         filtered_messages = [msg for msg in res["messages"] if "[Thinking]" in str(msg) or "'thinking'" in str(msg)]
-        # filtered_messages = res["messages"]
-        # filtered_messages = [msg for msg in res["messages"] if "'role': 'assistant'" in str(msg)]
-        # print('len filtered_messages:', len(filtered_messages))
+
         if len(filtered_messages) > 1: # 只有一个thinking代表是只有workflow，其他都是action
             refuse_res = judge_response(task, str(filtered_messages))
         else:

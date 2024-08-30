@@ -60,10 +60,6 @@ class ReactAgentAttack(BaseAgent):
         self.tool_call_success = False
         if self.args.memory_attack or self.args.plan_attack:
             try:
-                # self.vectorstore = Chroma(
-                #     persist_directory=args.database,
-                #     embedding_function=OllamaEmbeddings(model="llama3.1:70b"),
-                # )
                 self.vectorstore = Chroma(
                     persist_directory=args.database,
                     embedding_function=OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY),
@@ -108,7 +104,7 @@ class ReactAgentAttack(BaseAgent):
             plan = re.search(r'Workflow:\s*(\[.*?\]);', pre_msg, re.DOTALL)
             if plan:
                 workflow_content = plan.group(1)
-                print(workflow_content)
+                # print(workflow_content)
             else:
                 print("No Workflow.")
             return f"To generate the current plan workflow, you must refer to the previous workflow generated for a similar task:{workflow_content}"
