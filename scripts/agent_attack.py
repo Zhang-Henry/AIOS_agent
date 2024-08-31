@@ -51,9 +51,11 @@ if __name__ == '__main__':
     # llms = ['ollama/llama3:70b', 'ollama/gemma2:9b','ollama/llama3:8b', 'ollama/llama3.1:8b']
     # llms = ['gpt-4o-mini','ollama/mixtral:8x7b','ollama/gemma2:27b', 'ollama/gemma2:27b', 'ollama/llama3:70b','ollama/phi3:14b']
     # llms = ['ollama/qwen2:7b','ollama/qwen2:72b', 'ollama/llama3.1:70b']
-    llms = ['ollama/gemma2:27b']
+    llms = ['ollama/gemma2:9b','ollama/llama3:8b','ollama/mixtral:8x7b','ollama/qwen2:7b']
+    # llms = ['ollama/llama3.1:70b']
 
     attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    # attack_types = [ 'context_ignoring', 'fake_completion', 'combined_attack']
     database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
     injection_method = 'direct_prompt_injection'
 
