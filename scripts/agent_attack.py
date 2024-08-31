@@ -16,25 +16,22 @@ if __name__ == '__main__':
     max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
     aggressive = False
     test=False
-    memory_attack=False
     suffix=''
-    workflow_mode = 'automatic'
+    agg = [True,False]
+    write_db=False
+    read_db=False
 
     #######################################################################################################################
-    # llm_close_source = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
-    # llm_open_source = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b', \
-    #     'ollama/gemma2:9b', 'ollama/gemma2:27b', \
-    #     'ollama/mixtral:8x7b', \
-    #     'ollama/qwen2:7b','ollama/qwen2:72b', \
-    #     'ollama/phi3:14b', \
-    #     'ollama/deepseek-coder-v2:16b', \
-    #     'ollama/vicuna:33b']
+    # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
+    # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    # llms = ['ollama/gemma2:9b','ollama/gemma2:27b','ollama/qwen2:7b','ollama/qwen2:72b']
+    # llms = ['ollama/mixtral:8x7b','ollama/vicuna:33b','ollama/deepseek-coder-v2:16b']
+
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     # injection_method = 'direct_prompt_injection', 'observation_prompt_injection', 'plan_attack', 'action_attack', 'cot_backdoor','memory_attack', 'cot_clean'
 
     #######################################################################################################################
     # run plan attack
-    # agg = [True,False]
     # llms = ['gpt-4o-mini']
     # attack_types = ['naive']
     # injection_method = 'plan_attack'
@@ -42,29 +39,30 @@ if __name__ == '__main__':
     # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
 
     #######################################################################################################################
-    # run direct_prompt_injection
+    # run direct_prompt_injection, observation_prompt_injection
     # test=True
     # agg = [False]
 
-    # memory_attack = True
-    agg = [True,False]
-    # llms = ['ollama/llama3:70b', 'ollama/gemma2:9b','ollama/llama3:8b', 'ollama/llama3.1:8b']
-    # llms = ['gpt-4o-mini','ollama/mixtral:8x7b','ollama/gemma2:27b', 'ollama/gemma2:27b', 'ollama/llama3:70b','ollama/phi3:14b']
-    # llms = ['ollama/qwen2:7b','ollama/qwen2:72b', 'ollama/llama3.1:70b']
-    llms = ['ollama/gemma2:9b','ollama/llama3:8b','ollama/mixtral:8x7b','ollama/qwen2:7b']
-    # llms = ['ollama/llama3.1:70b']
+    # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
+    # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    # llms = ['ollama/gemma2:9b','ollama/gemma2:27b','ollama/qwen2:7b','ollama/qwen2:72b']
+    # llms = ['ollama/mixtral:8x7b','ollama/vicuna:33b','ollama/deepseek-coder-v2:16b']
+    llms = ['gpt-4o-mini']
 
-    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    # attack_types = [ 'context_ignoring', 'fake_completion', 'combined_attack']
+    attack_types = ['combined_attack']
+    # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
-    injection_method = 'direct_prompt_injection'
+    # injection_method = 'direct_prompt_injection'
+    injection_method = 'observation_prompt_injection'
+    # read_db = True
+    # write_db = True
 
     #######################################################################################################################
     # run memory attack
     # test = True
     # agg = [False]
-    # # memory_attack = True
-    # # agg = [True,False]
+    # # read_db = True
+
     # # llms = ['ollama/mixtral:8x7b','gpt-4o-mini','ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b','ollama/gemma2:9b', 'ollama/gemma2:27b','ollama/qwen2:7b']
     # # llms = ['ollama/llama3:70b','ollama/mixtral:8x7b','ollama/gemma2:27b']
     # # llms = ['ollama/qwen2:72b', 'ollama/phi3:14b', 'ollama/llama3.1:70b']
@@ -76,7 +74,6 @@ if __name__ == '__main__':
     # injection_method = 'memory_attack'
     #######################################################################################################################
     # test clean acc: only add attacker tool to toolkit; no any malicious attack
-    # agg = [False]
     # # llms = ['ollama/phi3:14b','ollama/phi3:3.8b','ollama/qwen2:7b','ollama/qwen2:72b','ollama/mistral-nemo', 'ollama/mixtral:8x7b','ollama/gemma2:9b', 'ollama/vicuna:33b','mistralai/Mistral-Nemo-Instruct-2407']
     # llms = ['meta-llama/Meta-Llama-3.1-70B-Instruct']
     # suffix = 'clean'
@@ -84,18 +81,7 @@ if __name__ == '__main__':
 
     # attack_types = ['naive']
     # injection_method = 'clean'
-    #######################################################################################################################
-    # COT backdoor
-    # agg = [True]
-    # llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
-    # injection_method = 'cot_backdoor'
-    # # injection_method = 'cot_clean'
-    # suffix = 'in_light_of_extant_literature'
 
-
-    # attack_types = ['naive']
-    # tasks_path = 'data/cot_data/agent_task_cot.jsonl'
-    # task_num = 5
     #######################################################################################################################
     # jailbreak
     # agg = [True, False]
@@ -127,12 +113,12 @@ if __name__ == '__main__':
                 if aggressive:
                     attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
                     log_file = f'{log_path}/no_memory/{attack_type}-aggressive'
-                    if memory_attack:
+                    if read_db:
                         log_file = f'{log_path}/memory_enhanced/{attack_type}-aggressive'
                 else:
                     attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
                     log_file = f'{log_path}/no_memory/{attack_type}-non-aggressive'
-                    if memory_attack:
+                    if read_db:
                         log_file = f'{log_path}/memory_enhanced/{attack_type}-non-aggressive'
                 if test:
                     attacker_tools_path = 'data/attack_tools_test_nonagg.jsonl'
@@ -141,12 +127,12 @@ if __name__ == '__main__':
                 os.makedirs(os.path.dirname(log_file), exist_ok=True)
                 print(log_file)
 
-                if injection_method in ['direct_prompt_injection','plan_attack','memory_attack']:
+                if injection_method in ['direct_prompt_injection','plan_attack','memory_attack','observation_prompt_injection']:
                     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
-                        --workflow_mode {workflow_mode} \
                         {f'--{injection_method}' if injection_method else ''} \
                         {f'--database {database}' if database else ''} \
-                        {'--memory_attack' if memory_attack else ''} \
+                        {'--write_db' if write_db else ''} \
+                        {'--read_db' if read_db else ''} \
                         > {log_file}_{suffix}.log 2>&1 &'''
                 elif injection_method in ['cot_backdoor','cot_clean']:
                     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
@@ -165,5 +151,5 @@ if __name__ == '__main__':
                         --max_gpu_memory '{max_gpu_memory}' \
                         --eval_device '{eval_devices}' \
                         > {log_file}.log 2>&1 &'''
-
+                # print(cmd)
                 os.system(cmd)

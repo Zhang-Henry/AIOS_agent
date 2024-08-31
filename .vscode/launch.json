@@ -11,16 +11,16 @@
             "program": "main_attacker.py",
             "args": [
                 "--llm_name",
-                "gpt-3.5-turbo",
-                "--workflow_mode",
-                "manual",
+                "gpt-4o-mini",
                 "--attacker_tools_path",
-                "data/attack_tools_test.jsonl",
+                "data/attack_tools_test_nonagg.jsonl",
                 "--observation_prompt_injection",
                 "--attack_type",
                 "naive",
                 "--tasks_path",
-                "data/agent_task_test.jsonl"
+                "data/agent_task_test.jsonl",
+                "--memory_attack",
+                "--database","memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini"
             ],
             "console": "integratedTerminal",
             "justMyCode": false

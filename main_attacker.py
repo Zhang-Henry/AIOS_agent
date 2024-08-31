@@ -16,8 +16,11 @@ from tqdm import tqdm
 from datetime import datetime
 import torch
 import numpy as np
-import random,json
+import random,json,os
 from openai import OpenAI
+from pyopenagi.api_key import OPENAI_API_KEY
+from langchain_chroma import Chroma
+from langchain_openai import OpenAIEmbeddings
 
 def clean_cache(root_directory):
     targets = {
@@ -160,10 +163,17 @@ def main():
 
     agent_tasks = list()
 
-
     attacker_tools_all = pd.read_json(args.attacker_tools_path, lines=True)
-
     tasks_path = pd.read_json(args.tasks_path, lines=True)
+
+    if args.database:
+        if not os.path.exists(args.database):
+            vectorstore = Chroma(
+                persist_directory=args.database,
+                embedding_function=OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY),
+            )
+            print(f"The database {args.database} has been created.")
+
 
     for _, agent_info in tasks_path.iterrows(): # iterate over each agent
         agent_name = agent_info["agent_name"]

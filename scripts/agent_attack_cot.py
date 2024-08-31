@@ -92,10 +92,10 @@ if __name__ == '__main__':
     agg = [True, False]
     #llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
     llms = ['gpt-4o-mini']
-    injection_method = 'cot_backdoor'
-    #injection_method = 'cot_clean'
+    #injection_method = 'cot_backdoor'
+    injection_method = 'cot_clean'
     suffix = 'in_light_of_extant_literature'
-    triggs = ['in_light_of_extant_literature', 'with_nuanced_empirical_perspectives', 'per_se', '@_@']
+    triggs = [':)','in_light_of_extant_literature', 'with_nuanced_empirical_perspectives', 'per_se', '@_@']
     #triggs = [':)']
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
