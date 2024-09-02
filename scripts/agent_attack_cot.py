@@ -94,9 +94,10 @@ if __name__ == '__main__':
     llms = ['gpt-4o-mini']
     #injection_method = 'cot_backdoor'
     injection_method = 'cot_clean'
-    suffix = 'in_light_of_extant_literature'
-    triggs = [':)','in_light_of_extant_literature', 'with_nuanced_empirical_perspectives', 'per_se', '@_@']
-    #triggs = [':)']
+    suffix = 'through_a_prism_of_insight'
+    #triggs = ['through_a_prism_of_insight', 'with_perspicacious_discernment', 'conducting_a_comprehensive_elucidation']
+    #triggs = ['with_perspicacious_discernment', 'conducting_a_comprehensive_elucidation']
+    triggs = [':)', '@_@']
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
     task_num = 4

@@ -40,21 +40,21 @@ if __name__ == '__main__':
 
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
-    # test=True
-    # agg = [False]
 
     # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
     # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b']
-    # llms = ['ollama/gemma2:9b','ollama/gemma2:27b','ollama/qwen2:7b','ollama/qwen2:72b']
+    # llms = ['ollama/gemma2:9b','ollama/qwen2:7b','ollama/gemma2:27b',]
     # llms = ['ollama/mixtral:8x7b','ollama/vicuna:33b','ollama/deepseek-coder-v2:16b']
-    llms = ['gpt-4o-mini']
+    # llms = ['ollama/gemma2:9b']
+    llms = ['ollama/qwen2:7b']
 
-    attack_types = ['combined_attack']
-    # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
-    # injection_method = 'direct_prompt_injection'
+    injection_method = 'direct_prompt_injection'
     injection_method = 'observation_prompt_injection'
     # read_db = True
+
+
+    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
     # write_db = True
 
     #######################################################################################################################

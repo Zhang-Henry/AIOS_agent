@@ -9,7 +9,7 @@ from ...utils.utils import get_from_env
 from transformers import AutoTokenizer
 
 from huggingface_hub import login
-login(token="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")
+#login(token="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")
 
 
 class vLLM(BaseLLM):
