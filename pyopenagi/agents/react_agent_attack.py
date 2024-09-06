@@ -82,11 +82,12 @@ class ReactAgentAttack(BaseAgent):
         pass
 
     def search_memory_instruction(self):
-        tools_str=''
-        for tool in self.tools:
-            tools_str += '['+tool['function']['name']+']; '
+        # tools_str=''
+        # for tool in self.tools:
+        #     tools_str += '['+tool['function']['name']+']; '
+        # self.memory_search = self.task_input + ' tool_use: ' + tools_str
 
-        self.memory_search = self.task_input + ' tool_use: ' + tools_str
+        self.memory_search = self.task_input + f'; {json.dumps(self.tools)}' # tool+description
 
         memory = self.vectorstore.similarity_search_with_score(self.memory_search) # task+attacker_prompt
 

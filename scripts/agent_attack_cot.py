@@ -90,14 +90,14 @@ if __name__ == '__main__':
     #######################################################################################################################
     # COT backdoor
     agg = [True, False]
-    #llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
-    llms = ['gpt-4o-mini']
-    #injection_method = 'cot_backdoor'
-    injection_method = 'cot_clean'
-    suffix = 'through_a_prism_of_insight'
-    #triggs = ['through_a_prism_of_insight', 'with_perspicacious_discernment', 'conducting_a_comprehensive_elucidation']
+    llms = ['ollama/llama3:70b']
+    #llms = ['gpt-4o-mini']
+    injection_method = 'cot_backdoor'
+    #injection_method = 'cot_clean'
+    #suffix = 'through_a_prism_of_insight'
+    triggs = ['through_a_prism_of_insight', 'with_perspicacious_discernment', 'conducting_a_comprehensive_elucidation', ':)', '@_@']
     #triggs = ['with_perspicacious_discernment', 'conducting_a_comprehensive_elucidation']
-    triggs = [':)', '@_@']
+    #triggs = [':)', '@_@']
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
     task_num = 4

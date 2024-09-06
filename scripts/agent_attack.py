@@ -31,28 +31,21 @@ if __name__ == '__main__':
     # injection_method = 'direct_prompt_injection', 'observation_prompt_injection', 'plan_attack', 'action_attack', 'cot_backdoor','memory_attack', 'cot_clean'
 
     #######################################################################################################################
-    # run plan attack
-    # llms = ['gpt-4o-mini']
-    # attack_types = ['naive']
-    # injection_method = 'plan_attack'
-    # workflow_modes = 'manual'
-    # database = 'memory_db/plan_attack/naive_all_attack_gpt-4o-mini'
-
-    #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
     # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
     # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b']
-    # llms = ['ollama/gemma2:9b','ollama/qwen2:7b','ollama/gemma2:27b',]
+    # llms = ['ollama/gemma2:9b','ollama/qwen2:7b','ollama/gemma2:27b']
     # llms = ['ollama/mixtral:8x7b','ollama/vicuna:33b','ollama/deepseek-coder-v2:16b']
-    # llms = ['ollama/gemma2:9b']
-    llms = ['ollama/qwen2:7b']
+    llms = ['gpt-4o-mini']
 
-    injection_method = 'direct_prompt_injection'
+
+    #injection_method = 'direct_prompt_injection'
     injection_method = 'observation_prompt_injection'
-    # read_db = True
+    #injection_method = 'memory_attack'
 
-
+    read_db = True
+    suffix = 'full_tools'
     attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
     # write_db = True

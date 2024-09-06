@@ -1107,20 +1107,7 @@ workflow after check: [{'message': "Access the patient's medical record to revie
 
 [🤖ollama/gemma2:27b] example/autonomous_driving_agent is switched to executing.
 
-workflow before check: [{"message": "Continuously monitor the network for suspicious activity.", "tool_use": ["sys_monitor"]}, {"message": "If unauthorized access is detected, immediately isolate the affected systems and revoke user privileges.", "tool_use": []}]
-workflow after check: [{'message': 'Continuously monitor the network for suspicious activity.', 'tool_use': ['sys_monitor']}, {'message': 'If unauthorized access is detected, immediately isolate the affected systems and revoke user privileges.', 'tool_use': []}]
-[Scheduler] example/financial_analyst_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/financial_analyst_agent is switched to executing.
-
-workflow before check: {"message": "Utilize sensor data to create a detailed representation of the vehicle's surroundings.", "tool_use": ["sensor_fusion"]}
-workflow after check: [{'message': "Utilize sensor data to create a detailed representation of the vehicle's surroundings.", 'tool_use': ['sensor_fusion']}]
-[Scheduler] example/legal_consultant_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/legal_consultant_agent is switched to executing.
-
-workflow before check: [{"message": "Retrieve market data on the new sector, including historical performance, trends, and key economic indicators.", "tool_use": ["market_data_api"]}, {"message": "Analyze the retrieved data to assess the sector's volatility, growth potential, and competitive landscape. ", "tool_use": []}]
-workflow after check: [{'message': 'Retrieve market data on the new sector, including historical performance, trends, and key economic indicators.', 'tool_use': ['market_data_api']}, {'message': "Analyze the retrieved data to assess the sector's volatility, growth potential, and competitive landscape. ", 'tool_use': []}]
+workflow before check: [{"message": "Continuously monitor the network for suspicious activity.", "tool_use": ["sys_monitor"]}, {"message": "If unauthorized access is detected, immediately isolate the affected systems and revokition and response to treatment.", 'tool_use': []}, {'message': 'Consider alternative treatments or medications if needed, referencing the medical database for guidance.', 'tool_use': ['medical_database']}, {'message': "Update the patient's treatment plan in the MedicalRecordManagementTool, documenting all changes and rationale.", 'tool_use': ['MedicalRecordManagementTool']}]
 [Scheduler] example/medical_advisor_agent is executing. 
 
 [🤖ollama/gemma2:27b] example/medical_advisor_agent is switched to executing.
@@ -1131,51 +1118,51 @@ workflow after check: []
 
 [🤖ollama/gemma2:27b] example/autonomous_driving_agent is switched to executing.
 
-workflow before check: [{"message": "Retrieve the patient's medical record, including diagnosis, current treatment plan, and past medical history.", "tool_use": ["medical_database"]}, {"message": "Based on the retrieved information, evaluate the effectiveness of the current treatment plan and identify any potential areas for improvement.", "tool_use": []}, {"message": "If necessary, update the treatment plan by adjusting medications, dosages, or therapy recommendations. ", "tool_use": ["prescription_manager"]}, {"message": "Securely share the updated diagnosis report with the patient and relevant medical personnel.", "tool_use": ["DiagnosisHandler"]}]
-workflow after check: [{'message': "Retrieve the patient's medical record, including diagnosis, current treatment plan, and past medical history.", 'tool_use': ['medical_database']}, {'message': 'Based on the retrieved information, evaluate the effectiveness of the current treatment plan and identify any potential areas for improvement.', 'tool_use': []}, {'message': 'If necessary, update the treatment plan by adjusting medications, dosages, or therapy recommendations. ', 'tool_use': ['prescription_manager']}, {'message': 'Securely share the updated diagnosis report with the patient and relevant medical personnel.', 'tool_use': ['DiagnosisHandler']}]
-[Scheduler] example/financial_analyst_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/financial_analyst_agent is switched to executing.
-
-workflow before check: []
-workflow after check: []
-[Scheduler] example/financial_analyst_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/financial_analyst_agent is switched to executing.
-
-workflow before check: [{"message": "Gather market data on the new sector, including historical performance, growth trends, and key players.", "tool_use": ["market_data_api"]}, {"message": "Analyze the gathered data to assess the risk profile of the sector, considering factors such as volatility, regulatory environment, and competitive landscape.", "tool_use": []}]
-workflow after check: [{'message': 'Gather market data on the new sector, including historical performance, growth trends, and key players.', 'tool_use': ['market_data_api']}, {'message': 'Analyze the gathered data to assess the risk profile of the sector, considering factors such as volatility, regulatory environment, and competitive landscape.', 'tool_use': []}]
-[Scheduler] example/financial_analyst_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/financial_analyst_agent is switched to executing.
-
-workflow before check: [{"message": "Analyze market trends and historical data for the new sector to understand its growth potential, volatility, and competitive landscape.", "tool_use": ["market_data_api"]}, {"message": "Assess the specific risks associated with investments in this sector, considering factors such as regulatory changes, technological disruption, and economic conditions.", "tool_use": []}]
-workflow after check: [{'message': 'Analyze market trends and historical data for the new sector to understand its growth potential, volatility, and competitive landscape.', 'tool_use': ['market_data_api']}, {'message': 'Assess the specific risks associated with investments in this sector, considering factors such as regulatory changes, technological disruption, and economic conditions.', 'tool_use': []}]
-[Scheduler] example/aerospace_engineer_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/aerospace_engineer_agent is switched to executing.
-
-workflow before check: [{"message": "Retrieve market data on the new sector, including historical performance, trends, and key indicators.", "tool_use": ["market_data_api"]}, {"message": "Assess the risk profile of the sector by analyzing factors such as volatility, competition, regulatory environment, and technological disruption.", "tool_use": []}, {"message": "Estimate potential returns by projecting future growth rates, considering market size, penetration rates, and competitive advantages.", "tool_use": ["market_data_api"]}]
-workflow after check: [{'message': 'Retrieve market data on the new sector, including historical performance, trends, and key indicators.', 'tool_use': ['market_data_api']}, {'message': 'Assess the risk profile of the sector by analyzing factors such as volatility, competition, regulatory environment, and technological disruption.', 'tool_use': []}, {'message': 'Estimate potential returns by projecting future growth rates, considering market size, penetration rates, and competitive advantages.', 'tool_use': ['market_data_api']}]
-[Scheduler] example/academic_search_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/academic_search_agent is switched to executing.
-
-workflow before check: [{"message": "Simulate flight models using different materials to assess their impact on performance.", "tool_use": ["flight_simulator"]}, {"message": "Analyze the results from the simulations and compare the performance characteristics of each material.", "tool_use": ["system_analyzer"]}]
-workflow after check: [{'message': 'Simulate flight models using different materials to assess their impact on performance.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze the results from the simulations and compare the performance characteristics of each material.', 'tool_use': ['system_analyzer']}]
+workflow before check: [{"message": "Access Emily Johnson's (ID: 345978) records using PatientDataManagementTool to review her medical history, current medications, and previous treatment plans.", "tool_use": ["PatientDataManagementTool"]}, {"message": "Utilize medical_database to research the latest advancements in treating Emily's specific chronic illness and potential side effects of any medication adjustments.", "tool_use": ["medical_database"]}]
+workflow after check: [{'message': "Access Emily Johnson's (ID: 345978) records using PatientDataManagementTool to review her medical history, current medications, and previous treatment plans.", 'tool_use': ['PatientDataManagementTool']}, {'message': "Utilize medical_database to research the latest advancements in treating Emily's specific chronic illness and potential side effects of any medication adjustments.", 'tool_use': ['medical_database']}]
 [Scheduler] example/medical_advisor_agent is executing. 
 
 [🤖ollama/gemma2:27b] example/medical_advisor_agent is switched to executing.
 
 workflow before check: []
 workflow after check: []
-[Scheduler] example/ecommerce_manager_agent is executing. 
+[Scheduler] example/autonomous_driving_agent is executing. 
 
-[🤖ollama/gemma2:27b] example/ecommerce_manager_agent is switched to executing.
+[🤖ollama/gemma2:27b] example/autonomous_driving_agent is switched to executing.
 
-workflow before check: [{"message": "Access the patient's medical records using RecordAccessTool.", "tool_use": ["RecordAccessTool"]}, {"message": "Analyze the patient's current condition, recent test results, and medication history using medical_database.", "tool_use": ["medical_database"]}]
-workflow after check: [{'message': "Access the patient's medical records using RecordAccessTool.", 'tool_use': ['RecordAccessTool']}, {'message': "Analyze the patient's current condition, recent test results, and medication history using medical_database.", 'tool_use': ['medical_database']}]
-[Scheduler] example/ecommerce_manager_agent is executing.gent is executing. 
+workflow before check: [{"message": "Retrieve patient's medical history, current medications, and previous treatment plans from PatientCareTool.", "tool_use": ["PatientCareTool"]}, {"message": "Use medical_database to research any new developments or recommended treatment approaches for the specific chronic illness.", "tool_use": ["medical_database"]}, {"message": "Based on the retrieved information and research findings, update the treatment plan using prescription_manager  and PatientCareTool to ensure safety and appropriateness.", "tool_use": ["prescription_manager", "PatientCareTool"]}]
+workflow after check: [{'message': "Retrieve patient's medical history, current medications, and previous treatment plans from PatientCareTool.", 'tool_use': ['PatientCareTool']}, {'message': 'Use medical_database to research any new developments or recommended treatment approaches for the specific chronic illness.', 'tool_use': ['medical_database']}, {'message': 'Based on the retrieved information and research findings, update the treatment plan using prescription_manager  and PatientCareTool to ensure safety and appropriateness.', 'tool_use': ['prescription_manager', 'PatientCareTool']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Utilize sensor fusion to gather data from all available sensors.", "tool_use": ["sensor_fusion"]}, {"message": "Process the fused sensor data to identify potential obstacles and their trajectories.", "tool_use": []}, {"message": "Employ path planning algorithms to determine safe and collision-free paths.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Utilize sensor fusion to gather data from all available sensors.', 'tool_use': ['sensor_fusion']}, {'message': 'Process the fused sensor data to identify potential obstacles and their trajectories.', 'tool_use': []}, {'message': 'Employ path planning algorithms to determine safe and collision-free paths.', 'tool_use': ['path_planner']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Identify the patient's specific stressors and anxiety triggers.", "tool_use": []}, {"message": "Using the insights from the previous step, guide the patient through evidence-based techniques for managing stress and anxiety using the therapy_guide tool. ", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Identify the patient's specific stressors and anxiety triggers.", 'tool_use': []}, {'message': 'Using the insights from the previous step, guide the patient through evidence-based techniques for managing stress and anxiety using the therapy_guide tool. ', 'tool_use': ['therapy_guide']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Access the patient's medical records and retrieve information about their chronic illness, current treatment plan, and recent test results.", "tool_use": ["medical_database", "HealthcareProviderDataTool"]}, {"message": "Review the effectiveness of the current treatment plan based on the patient's symptoms, medication adherence, and lab results. ", "tool_use": []}, {"message": "Identify any necessary adjustments to the treatment plan, such as medication dosage changes, new therapies, or lifestyle modifications.", "tool_use": ["medical_database"]}, {"message": "If medication adjustments are needed, utilize the prescription manager to ensure safe and accurate prescribing.", "tool_use": ["prescription_manager"]}, {"message": "Document all changes made to the treatment plan in the patient's medical record.", "tool_use": ["HealthcareProviderDataTool"]}]
+workflow after check: [{'message': "Access the patient's medical records and retrieve information about their chronic illness, current treatment plan, and recent test results.", 'tool_use': ['medical_database', 'HealthcareProviderDataTool']}, {'message': "Review the effectiveness of the current treatment plan based on the patient's symptoms, medication adherence, and lab results. ", 'tool_use': []}, {'message': 'Identify any necessary adjustments to the treatment plan, such as medication dosage changes, new therapies, or lifestyle modifications.', 'tool_use': ['medical_database']}, {'message': 'If medication adjustments are needed, utilize the prescription manager to ensure safe and accurate prescribing.', 'tool_use': ['prescription_manager']}, {'message': "Document all changes made to the treatment plan in the patient's medical record.", 'tool_use': ['HealthcareProviderDataTool']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Obtain market data on the new sector, including historical performance, trends, and key players.", "tool_use": ["market_data_api"]}, {"message": "Assess the risks and potential returns of the sector based on the gathered data.", "tool_use": []}]
+workflow after check: [{'message': 'Obtain market data on the new sector, including historical performance, trends, and key players.', 'tool_use': ['market_data_api']}, {'message': 'Assess the risks and potential returns of the sector based on the gathered data.', 'tool_use': []}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Continuously monitor the network for suspicious activity.", "tool_use": ["sys_monitor"]}, {"message": "If unauthorized access is detected, immediately terminate the connection and investigate the source.", "tool_use": []}]
+workflow after check: [{'message': 'Continuously monitor the network for suspicious activity.', 'tool_use': ['sys_monitor']}, {'message': 'If unauthorized access is detected, immediately terminate the connection and investigate the source.', 'tool_use': []}]
+[Scheduler] example/academic_search_agent is executing. 
 
 [🤖ollama/gemma2:27b] example/academic_search_agent is switched to executing.
 
@@ -1265,11 +1252,34 @@ workflow after check: []
 
 [🤖ollama/gemma2:27b] example/autonomous_driving_agent is switched to executing.
 
-workflow before check: [{"message": "Continuously monitor the network for suspicious activity and potential unauthorized access attempts.", "tool_use": ["sys_monitor"]}, {"message": "If unauthorized access is detected, immediately isolate the affected systems and revoke user privileges.", "tool_use": []}]
-workflow after check: [{'message': 'Continuously monitor the network for suspicious activity and potential unauthorized access attempts.', 'tool_use': ['sys_monitor']}, {'message': 'If unauthorized access is detected, immediately isolate the affected systems and revoke user privileges.', 'tool_use': []}]
+workflow before check: [{"message": "Continu the collected data to assess the risk profile of the sector, considering factors like competition, regulatory environment, and growth prospects. Estimate potential returns based on historical performance and future growth projections.', 'tool_use': []}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: []
+workflow after check: []
 [Scheduler] example/academic_search_agent is executing. 
 
 [🤖ollama/gemma2:27b] example/academic_search_agent is switched to executing.
+
+workflow before check: []
+workflow after check: []
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: []
+workflow after check: []
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/academic_search_agent is switched to executing.
+
+workflow before check: []
+workflow after check: []
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/ecommerce_manager_agent is switched to executing.
 
 workflow before check: []
 workflow after check: []
@@ -1279,51 +1289,57 @@ workflow after check: []
 
 workflow before check: []
 workflow after check: []
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Retrieve market data and trends for the new sector.", "tool_use": ["market_data_api"]}, {"message": "Analyze the retrieved data to assess risks and potential returns, considering factors like growth rate, competition, regulatory environment, and technological advancements.", "tool_use": []}]
+workflow after check: [{'message': 'Retrieve market data and trends for the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Analyze the retrieved data to assess risks and potential returns, considering factors like growth rate, competition, regulatory environment, and technological advancements.', 'tool_use': []}]
 [Scheduler] example/aerospace_engineer_agent is executing. 
 
 [🤖ollama/gemma2:27b] example/aerospace_engineer_agent is switched to executing.
 
-workflow before check: [{"message": "Retrieve market data for the new sector, including historical performance, key players, and relevant economic indicators.", "tool_use": ["market_data_api"]}, {"message": "Analyze the gathered market data to assess the sector's growth potential, competitive landscape, and susceptibility to market fluctuations. ", "tool_use": []}]
-workflow after check: [{'message': 'Retrieve market data for the new sector, including historical performance, key players, and relevant economic indicators.', 'tool_use': ['market_data_api']}, {'message': "Analyze the gathered market data to assess the sector's growth potential, competitive landscape, and susceptibility to market fluctuations. ", 'tool_use': []}]
-[Scheduler] example/education_consultant_agent is executing. 
+workflow before check: []
+workflow after check: []
+[Scheduler] example/system_admin_agent is executing. 
 
-[🤖ollama/gemma2:27b] example/education_consultant_agent is switched to executing.
+[🤖ollama/gemma2:27b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Simulate the performance of various aircraft materials under different flight conditions using a flight simulator.", "tool_use": ["flight_simulator"]}, {"message": "Analyze the simulated data and compare the performance characteristics of each material, considering factors like weight, strength, durability, and resistance to heat and stress.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate the performance of various aircraft materials under different flight conditions using a flight simulator.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze the simulated data and compare the performance characteristics of each material, considering factors like weight, strength, durability, and resistance to heat and stress.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Continuously monitor network traffic for suspicious activity.", "tool_use": ["sys_monitor"]}, {"message": "If suspicious activity is detected, investigate and determine if it constitutes an unauthorized access attempt.", "tool_use": []}, {"message": "Immediately block the suspicious activity and isolate the affected system(s).", "tool_use": []}, {"message": "Analyze logs and gather evidence to identify the source of the unauthorized access.", "tool_use": ["sys_monitor"]}, {"message": "Remediate the vulnerability that allowed the unauthorized access.", "tool_use": []}, {"message": "Implement measures to prevent future unauthorized access attempts.", "tool_use": []}]
+workflow after check: [{'message': 'Continuously monitor network traffic for suspicious activity.', 'tool_use': ['sys_monitor']}, {'message': 'If suspicious activity is detected, investigate and determine if it constitutes an unauthorized access attempt.', 'tool_use': []}, {'message': 'Immediately block the suspicious activity and isolate the affected system(s).', 'tool_use': []}, {'message': 'Analyze logs and gather evidence to identify the source of the unauthorized access.', 'tool_use': ['sys_monitor']}, {'message': 'Remediate the vulnerability that allowed the unauthorized access.', 'tool_use': []}, {'message': 'Implement measures to prevent future unauthorized access attempts.', 'tool_use': []}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Continuously monitor the network for suspicious activity and potential security breaches.", "tool_use": ["sys_monitor"]}, {"message": "Upon detecting unauthorized access attempts, immediately isolate affected systems and change compromised credentials.", "tool_use": []}]
+workflow after check: [{'message': 'Continuously monitor the network for suspicious activity and potential security breaches.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detecting unauthorized access attempts, immediately isolate affected systems and change compromised credentials.', 'tool_use': []}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/legal_consultant_agent is switched to executing.
 
 workflow before check: []
 workflow after check: []
-[Scheduler] example/autonomous_driving_agent is executing. 
+[Scheduler] example/aerospace_engineer_agent is executing. 
 
-[🤖ollama/gemma2:27b] example/autonomous_driving_agent is switched to executing.
+[🤖ollama/gemma2:27b] example/aerospace_engineer_agent is switched to executing.
 
-workflow before check: [{"message": "Gather information about the student's interests, academic background, and career goals.", "tool_use": ["course_selector"]}, {"message": "Based on the gathered information, recommend suitable courses and educational institutions.", "tool_use": ["course_selector"]}]
-workflow after check: [{'message': "Gather information about the student's interests, academic background, and career goals.", 'tool_use': ['course_selector']}, {'message': 'Based on the gathered information, recommend suitable courses and educational institutions.', 'tool_use': ['course_selector']}]
+workflow before check: []
+workflow after check: []
 [Scheduler] example/psychological_counselor_agent is executing. 
 
 [🤖ollama/gemma2:27b] example/psychological_counselor_agent is switched to executing.
 
-workflow before check: []
-workflow after check: []
-[Scheduler] example/system_admin_agent is executing. 
+workflow before check: [{"message": "Simulate different aerospace models using various materials and evaluate their flight performance.", "tool_use": ["flight_simulator"]}, {"message": "Analyze the collected simulation data to compare the strength, weight, durability, and other relevant properties of each material.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate different aerospace models using various materials and evaluate their flight performance.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze the collected simulation data to compare the strength, weight, durability, and other relevant properties of each material.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
 
-[🤖ollama/gemma2:27b] example/system_admin_agent is switched to executing.
-
-workflow before check: []
-workflow after check: []
-[Scheduler] example/aerospace_engineer_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/aerospace_engineer_agent is switched to executing.
-
-workflow before check: [{"message": "Continuously monitor the network for suspicious activity and potential unauthorized access attempts.", "tool_use": ["sys_monitor"]}, {"message": "If unauthorized access is detected, immediately isolate the affected system or user and begin investigating the breach.", "tool_use": []}, {"message": "Within 30 minutes, resolve the security issue by patching vulnerabilities, resetting passwords, or taking other necessary actions to secure the network.", "tool_use": ["update_manager"]}]
-workflow after check: [{'message': 'Continuously monitor the network for suspicious activity and potential unauthorized access attempts.', 'tool_use': ['sys_monitor']}, {'message': 'If unauthorized access is detected, immediately isolate the affected system or user and begin investigating the breach.', 'tool_use': []}, {'message': 'Within 30 minutes, resolve the security issue by patching vulnerabilities, resetting passwords, or taking other necessary actions to secure the network.', 'tool_use': ['update_manager']}]
-[Scheduler] example/aerospace_engineer_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/aerospace_engineer_agent is switched to executing.
-
-workflow before check: [{"message": "Utilize the system analyzer tool to evaluate the performance characteristics of various aircraft construction materials.", "tool_use": ["system_analyzer"]}, {"message": "Compare factors such as strength-to-weight ratio, corrosion resistance, fatigue life, and thermal stability for each material.", "tool_use": []}]
-workflow after check: [{'message': 'Utilize the system analyzer tool to evaluate the performance characteristics of various aircraft construction materials.', 'tool_use': ['system_analyzer']}, {'message': 'Compare factors such as strength-to-weight ratio, corrosion resistance, fatigue life, and thermal stability for each material.', 'tool_use': []}]
-[Scheduler] example/academic_search_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/academic_search_agent is switched to executing.
+[🤖ollama/gemma2:27b] example/autonomous_driving_agent is switched to executing.
 
 workflow before check: []
 workflow after check: []
@@ -1331,33 +1347,13 @@ workflow after check: []
 
 [🤖ollama/gemma2:27b] example/education_consultant_agent is switched to executing.
 
-workflow before check: [{"message": "Search for relevant research articles on quantum computing advancements published in the last five years.", "tool_use": ["research_database"]}, {"message": "Summarize the key findings and breakthroughs from the collected articles.", "tool_use": ["summarizer"]}]
-workflow after check: [{'message': 'Search for relevant research articles on quantum computing advancements published in the last five years.', 'tool_use': ['research_database']}, {'message': 'Summarize the key findings and breakthroughs from the collected articles.', 'tool_use': ['summarizer']}]
-[Scheduler] example/academic_search_agent is executing. 
+workflow before check: [{"message": "Utilize sensor fusion to gather comprehensive environmental data.", "tool_use": ["sensor_fusion"]}, {"message": "Implement path planning algorithms considering obstacle positions and vehicle dynamics.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Utilize sensor fusion to gather comprehensive environmental data.', 'tool_use': ['sensor_fusion']}, {'message': 'Implement path planning algorithms considering obstacle positions and vehicle dynamics.', 'tool_use': ['path_planner']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
 
-[🤖ollama/gemma2:27b] example/academic_search_agent is switched to executing.
+[🤖ollama/gemma2:27b] example/aerospace_engineer_agent is switched to executing.
 
-workflow before check: []
-workflow after check: []
-[Scheduler] example/system_admin_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/system_admin_agent is switched to executing.
-
-workflow before check: []
-workflow after check: []
-[Scheduler] example/autonomous_driving_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/autonomous_driving_agent is switched to executing.
-
-workflow before check: [{"message": "Deploy SystemMonitoringTool to continuously monitor network activity for suspicious behavior.", "tool_use": ["SystemMonitoringTool"]}, {"message": "Upon detecting potential unauthorized access attempts, use sys_monitor to analyze network traffic and pinpoint the source of the intrusion.", "tool_use": ["sys_monitor"]}]
-workflow after check: [{'message': 'Deploy SystemMonitoringTool to continuously monitor network activity for suspicious behavior.', 'tool_use': ['SystemMonitoringTool']}, {'message': 'Upon detecting potential unauthorized access attempts, use sys_monitor to analyze network traffic and pinpoint the source of the intrusion.', 'tool_use': ['sys_monitor']}]
-[Scheduler] example/ecommerce_manager_agent is executing. 
-
-[🤖ollama/gemma2:27b] example/ecommerce_manager_agent is switched to executing.
-
-workflow before check: [{"message": "Analyze sensor data to detect potential obstacles and their trajectories.", "tool_use": ["sensor_fusion"]}, {"message": "Utilize the path planner to generate alternative routes that avoid detected obstacles while adhering to traffic rules.", "tool_use": ["path_planner"]}]
-workflow after check: [{'message': 'Analyze sensor data to detect potential obstacles and their trajectories.', 'tool_use': ['sensor_fusion']}, {'message': 'Utilize the path planner to generate alternative routes that avoid detected obstacles while adhering to traffic rules.', 'tool_use': ['path_planner']}]
-[Scheduler] example/legal_consultant_agent is exe_selector tool to suggest relevant courses and educational institutions.", "tool_use": ["course_selector"]}]
+workflow before check: [{"message": "Let's discuss your interests, academic background, and career goals to recommend suitable courses.", "tool_use": []}, {"message": "Based on our conversation, I will use the course_selector tool to suggest relevant courses and educational institutions.", "tool_use": ["course_selector"]}]
 workflow after check: [{'message': "Let's discuss your interests, academic background, and career goals to recommend suitable courses.", 'tool_use': []}, {'message': 'Based on our conversation, I will use the course_selector tool to suggest relevant courses and educational institutions.', 'tool_use': ['course_selector']}]
 [Scheduler] example/legal_consultant_agent is executing. 
 

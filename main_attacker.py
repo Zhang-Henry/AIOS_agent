@@ -277,7 +277,7 @@ def main():
     print(f"Refuse judge success number: {refuse_cnt}")
     print(f"Refuse judge success rate: {refuse_cnt/len(agent_tasks)}")
 
-    if args.memory_attack:
+    if args.read_db:
         print(f"Memory search success number: {memory_search_succ}")
         print(f"Memory search success rate: {memory_search_succ/len(agent_tasks)}")
 

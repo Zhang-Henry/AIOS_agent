@@ -2,7 +2,7 @@ import pandas
 import csv
 import os
 
-prompt_injections = ["direct_prompt_injection", "observation_prompt_injection"]
+prompt_injections = ["direct_prompt_injection", "observation_prompt_injection","memory_attack"]
 memory_attacks = ["memory_enhanced"]
 
 for prompt_injection in prompt_injections:
@@ -11,7 +11,7 @@ for prompt_injection in prompt_injections:
 
         attack_methods = ["combined attack", "context ignoring", "escape characters", "fake completion", "naive"]
 
-        def get_result(file_path):
+        def get_result(file_path, full_tools):
             
             with open(file_path, "r", encoding='utf-8', errors='ignore') as f:
                 content = f.readlines()
@@ -43,16 +43,21 @@ for prompt_injection in prompt_injections:
                     result.append("%.3f"%round(line_end_num,3))
                 elif "Original task success rate: " in line:
                     result.append("%.3f"%round(line_end_num,3))
-                    result.extend([''] * 2)
                 elif "Refuse judge success number: " in line:
                     result.append(int(line_end_num))
                 elif "Refuse judge success rate: " in line:
+                    result.append("%.3f"%round(line_end_num,3))
+                    if full_tools == "No":
+                        result.extend([""] * 2)
+                elif "Memory search success number: " in line:
+                    result.append(int(line_end_num))
+                elif "Memory search success rate: " in line:
                     result.append("%.3f"%round(line_end_num,3))
 
             return result
 
 
-        result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Memory search success num", "Memory search success rate", "Refuse number", "Refuse rate"])
+        result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate", "Memory search success num", "Memory search success rate", "Full Tools"])
 
 
         for model in model_list:
@@ -67,6 +72,7 @@ for prompt_injection in prompt_injections:
                     if "-non-" not in name:
                         files_list.append(name)
                 
+                
                 for name in files_list:
                     #print(path + '/' + name)
                     attack_method = name.split('-')[0].replace('_', ' ')
@@ -74,14 +80,21 @@ for prompt_injection in prompt_injections:
                         agg = 'No'
                     else:
                         agg = 'Yes'
+                    
+                    if "full_tools" in name:
+                        full_tools = 'Yes'
+                    else:
+                        full_tools = 'No'
                     #print(path + '/' + name)
                     result = [model, attack_method, agg]
                     #print(result)
-                    result.extend(get_result(path + '/' + name))
+                    result.extend(get_result(path + '/' + name, full_tools))
                     #print(result)
                     if len(result) != 14:
                         continue
                     #print(result)
+                    
+                    result.append(full_tools)
                     result_csv.loc[len(result_csv.index)] = result
 
         result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{memory_attack}.csv", index = False)
