@@ -14,7 +14,6 @@ llm_trigger = {
 if __name__ == '__main__':
     eval_devices = '["cuda:7", "cuda:6", "cuda:5", "cuda:4", "cuda:3", "cuda:2", "cuda:1", "cuda:0"]'
     max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
-    aggressive = False
     test=False
     suffix=''
     agg = [True,False]
@@ -40,15 +39,14 @@ if __name__ == '__main__':
     llms = ['gpt-4o-mini']
 
 
-    #injection_method = 'direct_prompt_injection'
-    injection_method = 'observation_prompt_injection'
+    injection_method = 'direct_prompt_injection'
+    # injection_method = 'observation_prompt_injection'
     #injection_method = 'memory_attack'
 
-    read_db = True
+    # read_db = True
     suffix = 'full_tools'
-    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    database = 'memory_db/direct_prompt_injection/combined_attack_gpt-4o-mini'
-    # write_db = True
+    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters']
+    write_db = True
 
     #######################################################################################################################
     # run memory attack
@@ -102,6 +100,7 @@ if __name__ == '__main__':
                 log_path = f'logs/{injection_method}/{llm_name}'
 
                 result_file = f'{log_path}/result_statistics_.log'
+                database = f'memory_db/direct_prompt_injection/{attack_type}_gpt-4o-mini'
 
                 if aggressive:
                     attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
