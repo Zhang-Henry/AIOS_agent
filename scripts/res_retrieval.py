@@ -7,27 +7,28 @@ memory_attacks = ["memory_enhanced"]
 
 for prompt_injection in prompt_injections:
     for memory_attack in memory_attacks:
-        model_list = ["gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b","vicuna:33b","deepseek-coder-v2:16b"]
+        # model_list = ["gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b","vicuna:33b","deepseek-coder-v2:16b"]
+        model_list = ["gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b"]
 
         attack_methods = ["combined attack", "context ignoring", "escape characters", "fake completion", "naive"]
 
         def get_result(file_path, full_tools):
-            
+
             with open(file_path, "r", encoding='utf-8', errors='ignore') as f:
                 content = f.readlines()
                 f.close()
-            
+
             result = []
             for line in content:
                 line_end_num = line.split(' ')
                 if len(line_end_num) == 0:
                     continue
-                
+
                 try:
                     line_end_num = float(line_end_num[-1])
                 except:
                     continue
-                
+
                 #print(line_end_num)
                 if "Total number of attacks: " in line:
                     result.append(int(line_end_num))
@@ -71,8 +72,8 @@ for prompt_injection in prompt_injections:
                 for name in files:
                     if "-non-" not in name:
                         files_list.append(name)
-                
-                
+
+
                 for name in files_list:
                     #print(path + '/' + name)
                     attack_method = name.split('-')[0].replace('_', ' ')
@@ -80,7 +81,7 @@ for prompt_injection in prompt_injections:
                         agg = 'No'
                     else:
                         agg = 'Yes'
-                    
+
                     if "full_tools" in name:
                         full_tools = 'Yes'
                     else:
@@ -93,7 +94,7 @@ for prompt_injection in prompt_injections:
                     if len(result) != 14:
                         continue
                     #print(result)
-                    
+
                     result.append(full_tools)
                     result_csv.loc[len(result_csv.index)] = result
 

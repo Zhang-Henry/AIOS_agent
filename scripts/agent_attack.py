@@ -24,7 +24,7 @@ if __name__ == '__main__':
     # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
     # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     # llms = ['ollama/gemma2:9b','ollama/gemma2:27b','ollama/qwen2:7b','ollama/qwen2:72b']
-    # llms = ['ollama/mixtral:8x7b','ollama/vicuna:33b','ollama/deepseek-coder-v2:16b']
+    # llms = ['ollama/mixtral:8x7b','ollama/vicuna:33b']
 
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     # injection_method = 'direct_prompt_injection', 'observation_prompt_injection', 'plan_attack', 'action_attack', 'cot_backdoor','memory_attack', 'cot_clean'
@@ -35,18 +35,19 @@ if __name__ == '__main__':
     # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
     # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     # llms = ['ollama/gemma2:9b','ollama/qwen2:7b','ollama/gemma2:27b']
-    # llms = ['ollama/mixtral:8x7b','ollama/vicuna:33b','ollama/deepseek-coder-v2:16b']
-    llms = ['gpt-4o-mini']
+    # llms = ['ollama/mixtral:8x7b','ollama/vicuna:33b']
 
+    # llms = ['ollama/mixtral:8x7b', 'ollama/gemma2:9b','ollama/qwen2:7b']
+    llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
 
-    injection_method = 'direct_prompt_injection'
+    #injection_method = 'direct_prompt_injection'
     # injection_method = 'observation_prompt_injection'
-    #injection_method = 'memory_attack'
+    injection_method = 'memory_attack'
 
-    # read_db = True
+    read_db = True
     suffix = 'full_tools'
     attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters']
-    write_db = True
+    # write_db = True
 
     #######################################################################################################################
     # run memory attack
