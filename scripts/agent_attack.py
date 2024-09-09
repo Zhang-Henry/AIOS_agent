@@ -22,17 +22,17 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    llms = ['ollama/llama3.1:70b']
+    # llms = ['ollama/llama3.1:70b']
 
-    injection_method = 'direct_prompt_injection'
-    # injection_method = 'observation_prompt_injection'
-    # injection_method = 'memory_attack'
+    # injection_method = 'direct_prompt_injection'
+    # # injection_method = 'observation_prompt_injection'
+    # # injection_method = 'memory_attack'
 
-    read_db = True
-    suffix = 'full_tools'
-    attack_types = ['combined_attack']
-    #attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    #write_db = True
+    # read_db = True
+    # suffix = 'full_tools'
+    # attack_types = ['combined_attack']
+    # #attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    # #write_db = True
 
     #######################################################################################################################
     # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
@@ -40,17 +40,17 @@ if __name__ == '__main__':
     # llms = ['gpt-4o-mini','ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     # llms = ['ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b']
     # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b']
-    # llms = ['gpt-4o-mini']
+    llms = ['gpt-4o-mini']
 
-    # # injection_method = 'cot_backdoor'
-    # # injection_method = 'cot_clean'
-    # injection_method = 'clean'
-    # trigger = 'with perspicacious discernment'
+    # injection_method = 'cot_backdoor'
+    # injection_method = 'cot_clean'
+    injection_method = 'clean'
+    trigger = 'with perspicacious discernment'
 
-    # # trigger = ['through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@']
-    # attack_types = ['naive']
-    # tasks_path = 'data/cot_data/agent_task_cot.jsonl'
-    # task_num = 2
+    # trigger = ['through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@']
+    attack_types = ['naive']
+    tasks_path = 'data/cot_data/agent_task_cot.jsonl'
+    task_num = 2
 
 
     #######################################################################################################################
