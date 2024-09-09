@@ -8,10 +8,11 @@ if __name__ == '__main__':
     agg = [True,False]
     write_db=False
     read_db=False
+    trigger = ''
 
     #######################################################################################################################
     # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
-    # llms = ['ollama/qwen72:7b', 'ollama/gemma2:9b','ollama/qwen2:7b']
+    # llms = ['ollama/qwen2:72b', 'ollama/gemma2:9b','ollama/qwen2:7b']
     # llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     # llms = ['ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b']
 
@@ -21,43 +22,36 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    # llms = ['ollama/mixtral:8x7b','ollama/vicuna:33b']
-#    llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b']
-#
-#    #injection_method = 'direct_prompt_injection'
-#    injection_method = 'observation_prompt_injection'
-#    #injection_method = 'memory_attack'
-#
-#    read_db = True
-#    suffix = 'full_tools'
-#    attack_types = ['escape_characters']
+    llms = ['ollama/llama3.1:70b']
+
+    injection_method = 'direct_prompt_injection'
+    # injection_method = 'observation_prompt_injection'
+    # injection_method = 'memory_attack'
+
+    read_db = True
+    suffix = 'full_tools'
+    attack_types = ['combined_attack']
     #attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     #write_db = True
 
-#######################################################################################################################
-    # # COT backdoor/clean
+    #######################################################################################################################
+    # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
     # llms = ['ollama/qwen72:7b', 'ollama/gemma2:9b','ollama/qwen2:7b']
-    llms = ['gpt-4o-mini','ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    # llms = ['gpt-4o-mini','ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     # llms = ['ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b']
     # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b']
+    # llms = ['gpt-4o-mini']
 
-    # injection_method = 'cot_backdoor'
-    injection_method = 'cot_clean'
-    trigger = 'with perspicacious discernment'
-
-    # trigger = ['through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@']
-    attack_types = ['naive']
-    tasks_path = 'data/cot_data/agent_task_cot.jsonl'
-    task_num = 2
-    #######################################################################################################################
-    # test clean acc: only add attacker tool to toolkit; no any malicious attack
-    # # llms = ['ollama/phi3:14b','ollama/phi3:3.8b','ollama/qwen2:7b','ollama/qwen2:72b','ollama/mistral-nemo', 'ollama/mixtral:8x7b','ollama/gemma2:9b', 'ollama/vicuna:33b','mistralai/Mistral-Nemo-Instruct-2407']
-    # llms = ['meta-llama/Meta-Llama-3.1-70B-Instruct']
-    # suffix = 'clean'
-    # # test=True
-
-    # attack_types = ['naive']
+    # # injection_method = 'cot_backdoor'
+    # # injection_method = 'cot_clean'
     # injection_method = 'clean'
+    # trigger = 'with perspicacious discernment'
+
+    # # trigger = ['through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@']
+    # attack_types = ['naive']
+    # tasks_path = 'data/cot_data/agent_task_cot.jsonl'
+    # task_num = 2
+
 
     #######################################################################################################################
     # jailbreak
@@ -112,7 +106,7 @@ if __name__ == '__main__':
                         {'--write_db' if write_db else ''} \
                         {'--read_db' if read_db else ''} \
                         > {log_file}_{suffix}.log 2>&1 &'''
-                elif injection_method in ['cot_backdoor','cot_clean']:
+                elif injection_method in ['cot_backdoor','cot_clean','clean']:
                     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
                         --{injection_method} \
                         --tasks_path {tasks_path} \

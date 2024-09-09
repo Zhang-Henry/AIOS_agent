@@ -3,7 +3,7 @@ import csv
 import os
 
 prompt_injections = ["direct_prompt_injection", "observation_prompt_injection","memory_attack"]
-memory_attacks = ["memory_enhanced"]
+memory_attacks = ["no_memory","memory_enhanced"]
 
 for prompt_injection in prompt_injections:
     for memory_attack in memory_attacks:
@@ -45,15 +45,17 @@ for prompt_injection in prompt_injections:
                     result.append(int(line_end_num))
                 elif "Refuse judge success rate: " in line:
                     result.append("%.3f"%round(line_end_num,3))
-                elif "Memory search success number: " in line:
+                elif "Memory search success number: " in line and memory_attack == 'memory_enhanced':
                     result.append(int(line_end_num))
-                elif "Memory search success rate: " in line:
+                elif "Memory search success rate: " in line and memory_attack == 'memory_enhanced':
                     result.append("%.3f"%round(line_end_num,3))
 
             return result
 
-
-        result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate", "Memory search success num", "Memory search success rate"])
+        if memory_attack == 'memory_enhanced':
+            result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate", "Memory search success num", "Memory search success rate"])
+        elif memory_attack == 'no_memory':
+            result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate"])
 
         for model in model_list:
             path = f"./logs/{prompt_injection}/{model}/{memory_attack}"
@@ -63,9 +65,12 @@ for prompt_injection in prompt_injections:
                 # Process only files with 'full_tools.log' suffix
                 for name in files:
                     # print(name)
+                    # if memory_attack == 'memory_enhanced':
                     if name.endswith("full_tools.log"):
                         files_list.append(name)
-                        # print(files_list)
+                    # elif memory_attack == 'no_memory':
+                    #     files_list.append(name)
+                            # print(files_list)
 
                 for name in files_list:
                     attack_method = name.split('-')[0].replace('_', ' ')
@@ -76,12 +81,14 @@ for prompt_injection in prompt_injections:
 
                     result = [model, attack_method, agg]
                     result.extend(get_result(path + '/' + name))
-                    # print(len(result))
+                    #print(len(result))
                     # Ensure the correct length of result
-                    if len(result) != 14:
+                    if len(result) != 14 and memory_attack == 'memory_enhanced':
                         print(path + '/' + name)
                         continue
-
+                    elif len(result) != 12 and memory_attack == 'no_memory':
+                        print(path + '/' + name)
+                        continue
                     result_csv.loc[len(result_csv.index)] = result
 
         result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{memory_attack}.csv", index = False)

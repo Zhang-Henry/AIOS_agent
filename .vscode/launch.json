@@ -175,13 +175,13 @@
             "cwd": "${workspaceFolder}"
         },
         {
-            "name": "cot_llama3.1",
+            "name": "cot",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/main_attacker.py",
             "console": "integratedTerminal",
             "args": [
-                "--llm_name", "ollama/llama3.1:70b",
+                "--llm_name", "gpt-4o-mini",
                 "--workflow_mode", "automatic",
                 "--attack_type", "naive",
                 "--cot_backdoor",

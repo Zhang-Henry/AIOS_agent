@@ -324,13 +324,11 @@ class ReactAgentAttack(BaseAgent):
         }
 
     def load_agent_json(self):
-        os_path = "/common/users/hz624/AgentAttackBench/"
-
         agent_name = self.agent_name.split('/')[-1]
-        agent_path = os_path + f"pyopenagi/agents/example/{agent_name}/config.json"
+        agent_path = f"pyopenagi/agents/example/{agent_name}/config.json"
         selected_cot_msg_json = None
 
-        with open(os_path + "/data/cot_data/agent_task_cot_msg.jsonl", "r") as file_jsonl:
+        with open("data/cot_data/agent_task_cot_msg.jsonl", "r") as file_jsonl:
             json_list = jsonlines.Reader(file_jsonl)
             for item in json_list:
                 #print(item)
