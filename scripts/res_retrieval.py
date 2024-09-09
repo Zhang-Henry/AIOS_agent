@@ -4,6 +4,8 @@ import os
 
 prompt_injections = ["direct_prompt_injection", "observation_prompt_injection","memory_attack"]
 memory_attacks = ["no_memory","memory_enhanced"]
+agg_result = []
+non_agg_result = []
 
 for prompt_injection in prompt_injections:
     for memory_attack in memory_attacks:
@@ -59,6 +61,8 @@ for prompt_injection in prompt_injections:
 
         for model in model_list:
             path = f"./logs/{prompt_injection}/{model}/{memory_attack}"
+            agg_result = []
+            non_agg_result = []
             for root, dirs, files in os.walk(path, topdown=False):
                 files = sorted(files)
                 files_list = []
@@ -89,6 +93,16 @@ for prompt_injection in prompt_injections:
                     elif len(result) != 12 and memory_attack == 'no_memory':
                         print(path + '/' + name)
                         continue
-                    result_csv.loc[len(result_csv.index)] = result
+                    
+                    if agg == "No":
+                        non_agg_result.append(result)
+                    else:
+                        agg_result.append(result)
+                    
+                    #result_csv.loc[len(result_csv.index)] = result
+            for result in non_agg_result:
+                result_csv.loc[len(result_csv.index)] = result
+            for result in agg_result:
+                result_csv.loc[len(result_csv.index)] = result
 
         result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{memory_attack}.csv", index = False)
