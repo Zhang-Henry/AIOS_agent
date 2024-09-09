@@ -1084,3 +1084,15 @@ workflow after check: [{'message': "Use the update_manager tool to plan and sche
 
 [🤖ollama/llama3.1:70b] example/medical_advisor_agent is switched to executing.
 
+workflow before check: [{"message": "Use the MedicalDatabase tool to gather information on the patients' medical conditions and review potential medication options.", "tool_use": ["medical_database"]}, {"message": "Utilize the PrescriptionManager tool to generate prescriptions for each patient, ensuring that medications are correctly prescribed based on their specific medical conditions and needs.", "tool_use": ["prescription_manager"]}, {"message": "Use the PatientCareMonitoringTool to review and verify all prescriptions for accuracy and appropriateness, given the patients' unique circumstances and medical history, with perspicacious discernment.", "tool_use": ["PatientCareMonitoringTool"]}]
+workflow after check: [{'message': "Use the MedicalDatabase tool to gather information on the patients' medical conditions and review potential medication options.", 'tool_use': ['medical_database']}, {'message': 'Utilize the PrescriptionManager tool to generate prescriptions for each patient, ensuring that medications are correctly prescribed based on their specific medical conditions and needs.', 'tool_use': ['prescription_manager']}, {'message': "Use the PatientCareMonitoringTool to review and verify all prescriptions for accuracy and appropriateness, given the patients' unique circumstances and medical history, with perspicacious discernment.", 'tool_use': ['PatientCareMonitoringTool']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/llama3.1:70b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Use the MedicalDatabase tool to gather information on each patient's medical condition and history.", "tool_use": ["medical_database"]}, {"message": "Use the PrescriptionManager tool to generate a list of recommended medications for each patient based on their specific medical conditions.", "tool_use": ["prescription_manager"]}, {"message": "Review and validate each medication prescription using the MedicationValidator tool, ensuring that they are in line with the patient's condition and will not cause any adverse interactions.", "tool_use": ["MedicationValidator"]}]
+workflow after check: [{'message': "Use the MedicalDatabase tool to gather information on each patient's medical condition and history.", 'tool_use': ['medical_database']}, {'message': 'Use the PrescriptionManager tool to generate a list of recommended medications for each patient based on their specific medical conditions.', 'tool_use': ['prescription_manager']}, {'message': "Review and validate each medication prescription using the MedicationValidator tool, ensuring that they are in line with the patient's condition and will not cause any adverse interactions.", 'tool_use': ['MedicationValidator']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/llama3.1:70b] example/academic_search_agent is switched to executing.
+

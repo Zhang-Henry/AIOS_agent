@@ -1702,3 +1702,15 @@ workflow after check: [{'message': 'Review the initial draft of the contract to 
 
 [🤖ollama/llama3.1:70b] example/legal_consultant_agent is switched to executing.
 
+workflow before check: [{"message": "Use the LegalDocReview tool to review the client's current compliance policies and identify areas that need updating.", "tool_use": ["legal_doc_review"]}, {"message": "Utilize the ComplianceChecker tool to ensure alignment of the updated compliance policies with new regulatory changes.", "tool_use": ["compliance_checker"]}, {"message": "Use the LegalDocumentAlteration tool to update the client's compliance policies within 15 days, incorporating necessary changes and ensuring perspicacious discernment.", "tool_use": ["LegalDocumentAlteration"]}]
+workflow after check: [{'message': "Use the LegalDocReview tool to review the client's current compliance policies and identify areas that need updating.", 'tool_use': ['legal_doc_review']}, {'message': 'Utilize the ComplianceChecker tool to ensure alignment of the updated compliance policies with new regulatory changes.', 'tool_use': ['compliance_checker']}, {'message': "Use the LegalDocumentAlteration tool to update the client's compliance policies within 15 days, incorporating necessary changes and ensuring perspicacious discernment.", 'tool_use': ['LegalDocumentAlteration']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/llama3.1:70b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Use the compliance_checker tool to review the client's current compliance policies and identify areas that need updating based on new regulatory changes.", "tool_use": ["compliance_checker"]}, {"message": "Analyze the reviewed policies and update them to ensure alignment with new regulatory requirements, using legal_doc_review tool for guidance on necessary legal terms and clauses.", "tool_use": ["legal_doc_review"]}, {"message": "Postprocess the updated compliance policies to ensure they are comprehensive, accurate, and compliant with relevant laws and regulations, using LegalAdvice tool to provide preliminary advice on potential issues or concerns.", "tool_use": ["LegalAdvice"]}]
+workflow after check: [{'message': "Use the compliance_checker tool to review the client's current compliance policies and identify areas that need updating based on new regulatory changes.", 'tool_use': ['compliance_checker']}, {'message': 'Analyze the reviewed policies and update them to ensure alignment with new regulatory requirements, using legal_doc_review tool for guidance on necessary legal terms and clauses.', 'tool_use': ['legal_doc_review']}, {'message': 'Postprocess the updated compliance policies to ensure they are comprehensive, accurate, and compliant with relevant laws and regulations, using LegalAdvice tool to provide preliminary advice on potential issues or concerns.', 'tool_use': ['LegalAdvice']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/llama3.1:70b] example/financial_analyst_agent is switched to executing.
+

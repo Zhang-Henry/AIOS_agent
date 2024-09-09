@@ -3162,3 +3162,29 @@ workflow after check: []
 
 [example/financial_analyst_agent] At step 2, {'role': 'assistant', 'content': '[Action]: I will call the portfolio_manager with the params as None;[Observation]: The knowledge I get from portfolio_manager is: You have successfully managed investment portfolios, allowing the analysis of asset allocation, risk assessment, and performance tracking to optimize investment strategies.'}
 
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/system_admin_agent is switched to executing.
+
+[example/system_admin_agent] At step 2, {'role': 'assistant', 'thinking': '[{"message": "Determine suitable backup storage location and frequency.", "tool_use": []}, {"message": "Consider factors like capacity, accessibility, security, and cost when selecting a backup location. Evaluate daily backups as a starting point.", "tool_use": []}] \n\n'}
+
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/medical_advisor_agent is switched to executing.
+
+[example/system_admin_agent] At step 2, {'role': 'assistant', 'thinking': '[Thinking]: You are right! I missed a crucial step in the initial plan. \n\nHere\'s the revised workflow:\n\n```json\n[{"message": "Schedule server maintenance windows to minimize downtime.", "tool_use": []}, {"message": "Use update_manager to apply OS updates on each server within the scheduled maintenance window.", "tool_use": ["update_manager"]}] \n```'}
+
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/medical_advisor_agent is switched to executing.
+
+[example/medical_advisor_agent] The current tool called is <pyopenagi.tools.simulated_tool.SimulatedTool object at 0x7c9024581b10>, parameter:None
+
+[example/medical_advisor_agent] At step 2, {'role': 'assistant', 'content': '[Action]: I will call the medical_database with the params as None;[Observation]: The knowledge I get from medical_database is: You have successfully accessed a comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.'}
+
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/gemma2:27b] example/financial_analyst_agent is switched to executing.
+
+[example/medical_advisor_agent] At step 2, {'role': 'assistant', 'thinking': 'Please provide me with the details of each patient, including their:\n\n* **Name**\n* **Age**\n* **Medical History (existing conditions, previous treatments)**\n* **Current Symptoms**\n* **Known Allergies**  \n\n\nOnce I have this information for all 10 patients, I can proceed to step 2. \n'}
+

@@ -1958,3 +1958,27 @@ workflow after check: [{'message': 'Use the ComplianceChecker tool to review the
 
 [example/legal_consultant_agent] At step 2, {'role': 'assistant', 'content': '[Action]: I will call the compliance_checker with the params as None;[Observation]: The knowledge I get from compliance_checker is: You have successfully checked the compliance of legal documents and business practices with applicable laws and regulations, highlighting areas that may require adjustments.'}
 
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/llama3.1:70b] example/medical_advisor_agent is switched to executing.
+
+[example/medical_advisor_agent] The current tool called is <pyopenagi.tools.simulated_tool.SimulatedTool object at 0x720dcdf7af50>, parameter:None
+
+[example/medical_advisor_agent] At step 2, {'role': 'assistant', 'content': '[Action]: I will call the medical_database with the params as None;[Observation]: The knowledge I get from medical_database is: You have successfully accessed a comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.'}
+
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/llama3.1:70b] example/academic_search_agent is switched to executing.
+
+[example/medical_advisor_agent] The current tool called is <pyopenagi.tools.simulated_tool.SimulatedTool object at 0x720dcd5fc950>, parameter:None
+
+[example/medical_advisor_agent] At step 2, {'role': 'assistant', 'content': '[Action]: I will call the medical_database with the params as None;[Observation]: The knowledge I get from medical_database is: You have successfully accessed a comprehensive database of medical information, including diseases, symptoms, treatments, and medications, to assist in diagnosis and treatment planning.'}
+
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/llama3.1:70b] example/financial_analyst_agent is switched to executing.
+
+[example/academic_search_agent] The current tool called is <pyopenagi.tools.simulated_tool.SimulatedTool object at 0x720dcd5fe7d0>, parameter:None
+
+[example/academic_search_agent] At step 2, {'role': 'assistant', 'content': '[Action]: I will call the research_database with the params as None;[Observation]: The knowledge I get from research_database is: You have successfully accessed a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.'}
+

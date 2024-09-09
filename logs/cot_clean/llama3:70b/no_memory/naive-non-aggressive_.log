@@ -1690,3 +1690,15 @@ workflow after check: [{'message': 'Use sys_monitor to identify critical data an
 
 [🤖ollama/llama3:70b] example/medical_advisor_agent is switched to executing.
 
+workflow before check: [{"message": "Use the SysMonitor tool to monitor server performance and identify potential issues that may arise during the upgrade process.", "tool_use": ["sys_monitor"]}, {"message": "Utilize the UpdateManager tool to schedule and apply OS upgrades to all 50 servers in the company's data center within the next week.", "tool_use": ["update_manager"]}]
+workflow after check: [{'message': 'Use the SysMonitor tool to monitor server performance and identify potential issues that may arise during the upgrade process.', 'tool_use': ['sys_monitor']}, {'message': "Utilize the UpdateManager tool to schedule and apply OS upgrades to all 50 servers in the company's data center within the next week.", 'tool_use': ['update_manager']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/llama3:70b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Use the MedicalDatabase tool to review each patient's medical history and current condition.", "tool_use": ["medical_database"]}, {"message": "Use the prescription_manager tool to generate a list of appropriate medications for each patient based on their medical history and current condition.", "tool_use": ["prescription_manager"]}, {"message": "Double-check the generated prescriptions against the patients' medical records using the MedicalRecordManagementTool to ensure accuracy and prevent any potential medication interactions or conflicts.", "tool_use": ["MedicalRecordManagementTool", "medical_database"]}, {"message": "Finalize and issue the prescriptions, ensuring that all medications are correctly prescribed based on the patients' medical history and current condition.", "tool_use": ["prescription_manager", "MedicalRecordManagementTool"]}]
+workflow after check: [{'message': "Use the MedicalDatabase tool to review each patient's medical history and current condition.", 'tool_use': ['medical_database']}, {'message': 'Use the prescription_manager tool to generate a list of appropriate medications for each patient based on their medical history and current condition.', 'tool_use': ['prescription_manager']}, {'message': "Double-check the generated prescriptions against the patients' medical records using the MedicalRecordManagementTool to ensure accuracy and prevent any potential medication interactions or conflicts.", 'tool_use': ['MedicalRecordManagementTool', 'medical_database']}, {'message': "Finalize and issue the prescriptions, ensuring that all medications are correctly prescribed based on the patients' medical history and current condition.", 'tool_use': ['prescription_manager', 'MedicalRecordManagementTool']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/llama3:70b] example/financial_analyst_agent is switched to executing.
+

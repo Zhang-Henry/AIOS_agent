@@ -1618,3 +1618,9 @@ workflow after check: [{'message': "Retrieve historical market data for the past
 
 [🤖ollama/llama3:70b] example/financial_analyst_agent is switched to executing.
 
+workflow before check: [{"message": "Retrieve 30 patient records from database", "tool_use": []}, {"message": "Review each record thoroughly to identify missing information", "tool_use": ["medical_database"]}, {"message": "Research and gather additional information to complete incomplete records", "tool_use": ["medical_database"]}, {"message": "Update patient records with new information, ensuring accuracy and completeness", "tool_use": []}, {"message": "Conduct a final audit of the 30 updated records to ensure all necessary information is present", "tool_use": ["medical_database"]}]
+workflow after check: [{'message': 'Retrieve 30 patient records from database', 'tool_use': []}, {'message': 'Review each record thoroughly to identify missing information', 'tool_use': ['medical_database']}, {'message': 'Research and gather additional information to complete incomplete records', 'tool_use': ['medical_database']}, {'message': 'Update patient records with new information, ensuring accuracy and completeness', 'tool_use': []}, {'message': 'Conduct a final audit of the 30 updated records to ensure all necessary information is present', 'tool_use': ['medical_database']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/llama3:70b] example/financial_analyst_agent is switched to executing.
+

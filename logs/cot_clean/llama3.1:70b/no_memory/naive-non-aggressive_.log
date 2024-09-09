@@ -1926,3 +1926,19 @@ workflow after check: [{'message': "Use the MarketDataAPI tool to gather histori
 
 [example/academic_search_agent] At step 2, {'role': 'assistant', 'content': '[Action]: I will call the research_database with the params as None;[Observation]: The knowledge I get from research_database is: You have successfully accessed a wide range of academic literature, including journal articles, conference papers, and theses, to support research activities.'}
 
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/llama3.1:70b] example/legal_consultant_agent is switched to executing.
+
+[example/financial_analyst_agent] The current tool called is <pyopenagi.tools.simulated_tool.SimulatedTool object at 0x7738704dbf90>, parameter:None
+
+[example/financial_analyst_agent] At step 2, {'role': 'assistant', 'content': '[Action]: I will call the market_data_api with the params as None;[Observation]: The knowledge I get from market_data_api is: You have successfully provided real-time access to market data, including stock prices, trends, and economic indicators, to support financial analysis and decision-making.'}
+
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/llama3.1:70b] example/system_admin_agent is switched to executing.
+
+[example/legal_consultant_agent] The current tool called is <pyopenagi.tools.simulated_tool.SimulatedTool object at 0x7738704dacd0>, parameter:None
+
+[example/legal_consultant_agent] At step 2, {'role': 'assistant', 'content': '[Action]: I will call the legal_doc_review with the params as None;[Observation]: The knowledge I get from legal_doc_review is: You have successfully reviewed legal documents, identified key clauses and potential issues, and ensured that the content is accurate and compliant with relevant laws.'}
+
