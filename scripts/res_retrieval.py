@@ -2,7 +2,8 @@ import pandas
 import csv
 import os
 
-prompt_injections = ["direct_prompt_injection", "observation_prompt_injection","memory_attack"]
+# prompt_injections = ["direct_prompt_injection", "observation_prompt_injection","memory_attack"]
+prompt_injections = ["clean", "cot_backdoor","cot_clean"]
 memory_attacks = ["no_memory","memory_enhanced"]
 agg_result = []
 non_agg_result = []
@@ -70,8 +71,8 @@ for prompt_injection in prompt_injections:
                 for name in files:
                     # print(name)
                     # if memory_attack == 'memory_enhanced':
-                    if name.endswith("full_tools.log"):
-                        files_list.append(name)
+                    # if name.endswith("full_tools.log"):
+                    files_list.append(name)
                     # elif memory_attack == 'no_memory':
                     #     files_list.append(name)
                             # print(files_list)
@@ -93,12 +94,12 @@ for prompt_injection in prompt_injections:
                     elif len(result) != 12 and memory_attack == 'no_memory':
                         print(path + '/' + name)
                         continue
-                    
+
                     if agg == "No":
                         non_agg_result.append(result)
                     else:
                         agg_result.append(result)
-                    
+
                     #result_csv.loc[len(result_csv.index)] = result
             for result in non_agg_result:
                 result_csv.loc[len(result_csv.index)] = result
