@@ -1,0 +1,20 @@
+Attack started at: 2024-09-10 02:46
+Namespace(llm_name='gpt-4', max_gpu_memory=None, eval_device=None, max_new_tokens=256, scheduler_log_mode='console', agent_log_mode='console', llm_kernel_log_mode='console', use_backend='None', workflow_mode='automatic', attacker_tools_path='data/all_attack_tools_aggressive.jsonl', tasks_path='data/cot_data/agent_task_cot.jsonl', tools_info_path='data/all_normal_tools.jsonl', observation_prompt_injection=False, plan_attack=False, action_attack=False, direct_prompt_injection=False, jailbreak=False, attack_type='naive', cot_backdoor=False, cot_clean=False, target='ResearcherProfileManager', trigger='with perspicacious discernment', memory_attack=False, clean=True, result_file='logs/clean/gpt-4/result_statistics_.log', database='memory_db/chroma_db', task_num=2, write_db=False, read_db=False)
+Traceback (most recent call last):
+  File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 316, in <module>
+    main()
+  File "/common/users/hz624/AgentAttackBench/main_attacker.py", line 139, in main
+    llm = llms.LLMKernel(
+          ^^^^^^^^^^^^^^^
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llms.py", line 48, in __init__
+    self.model = HfNativeLLM(
+                 ^^^^^^^^^^^^
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/base_llm.py", line 30, in __init__
+    self.load_llm_and_tokenizer()
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/hf_native_llm.py", line 19, in load_llm_and_tokenizer
+    self.max_gpu_memory = self.convert_map(self.max_gpu_memory)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/common/users/hz624/AgentAttackBench/aios/llm_core/llm_classes/base_llm.py", line 41, in convert_map
+    for k,v in map.items():
+               ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'items'
