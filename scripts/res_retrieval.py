@@ -4,7 +4,8 @@ import os
 
 # prompt_injections = ["direct_prompt_injection", "observation_prompt_injection","memory_attack"]
 prompt_injections = ["clean", "cot_backdoor","cot_clean"]
-memory_attacks = ["no_memory","memory_enhanced"]
+memory_attacks = ["no_memory"]
+# memory_attacks = ["no_memory","memory_enhanced"]
 agg_result = []
 non_agg_result = []
 

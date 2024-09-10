@@ -17,6 +17,8 @@ from datetime import datetime
 import torch
 import numpy as np
 import random,json,os
+from openai import OpenAI
+
 from pyopenagi.api_key import OPENAI_API_KEY
 
 from langchain_chroma import Chroma

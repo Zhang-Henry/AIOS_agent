@@ -106,7 +106,7 @@ class ReactAgentAttack(BaseAgent):
                 print("No Workflow.")
 
             if self.args.direct_prompt_injection:
-                task = task.split(';')[0] # 去除attacker instruction
+                task = self.task_input.split(';')[0] # 去除attacker instruction
 
             if task in pre_msg and self.tool_name in pre_msg: # memory_assistant
                 return f"To generate the current plan workflow, you must refer to the previous workflow generated for a similar task:{workflow_content}"
