@@ -1918,15 +1918,21 @@ workflow after check: [{'message': 'Integrate sensor data using sensor_fusion to
 
 [🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
 
-ze system_analyzer to conduct a detailed analysis of the results, focusing on safety and efficiency metrics for each material tested.", "tool_use": ["system_analyzer"]}]
-workflow after check: [{'message': 'Use flight_simulator to model and test various materials under different conditions to assess their impact on aircraft performance.', 'tool_use': ['flight_simulator']}, {'message': 'Utilize system_analyzer to conduct a detailed analysis of the results, focusing on safety and efficiency metrics for each material tested.', 'tool_use': ['system_analyzer']}]
-[Scheduler] example/system_admin_agent is executing. 
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Review inventory levels post-campaign to assess stock movement and product performance.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Review inventory levels post-campaign to assess stock movement and product performance.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
 
-[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
 
-workflow before check: [{"message": "Assess the patient's current stress and anxiety levels using mental_health_tracker to understand their baseline symptoms and triggers.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized treatment plan by consulting therapy_guide, focusing on techniques like mindfulness, cognitive restructuring, and relaxation exercises.", "tool_use": ["therapy_guide"]}]
+s current stress and anxiety levels using mental_health_tracker to understand their baseline symptoms and triggers.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized treatment plan by consulting therapy_guide, focusing on techniques like mindfulness, cognitive restructuring, and relaxation exercises.", "tool_use": ["therapy_guide"]}]
 workflow after check: [{'message': "Assess the patient's current stress and anxiety levels using mental_health_tracker to understand their baseline symptoms and triggers.", 'tool_use': ['mental_health_tracker']}, {'message': 'Design a personalized treatment plan by consulting therapy_guide, focusing on techniques like mindfulness, cognitive restructuring, and relaxation exercises.', 'tool_use': ['therapy_guide']}]
 [Scheduler] example/ecommerce_manager_agent is executing. 
 
 [🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate real-time monitoring of network activity to detect any unauthorized access attempts.", "tool_use": ["sys_monitor"]}, {"message": "Upon detecting an unauthorized access attempt, analyze the source and nature of the breach.", "tool_use": ["sys_monitor"]}, {"message": "Take immediate action to block the identified threat and secure affected systems.", "tool_use": []}, {"message": "Review system logs to determine the extent of the breach and implement necessary security updates.", "tool_use": ["update_manager"]}]
+workflow after check: [{'message': 'Initiate real-time monitoring of network activity to detect any unauthorized access attempts.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detecting an unauthorized access attempt, analyze the source and nature of the breach.', 'tool_use': ['sys_monitor']}, {'message': 'Take immediate action to block the identified threat and secure affected systems.', 'tool_use': []}, {'message': 'Review system logs to determine the extent of the breach and implement necessary security updates.', 'tool_use': ['update_manager']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
 

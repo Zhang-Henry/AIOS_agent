@@ -1926,13 +1926,13 @@ workflow after check: [{'message': 'Access academic literature on recent advance
 
 [🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
 
-'message': "Monitor the patient's progress by regularly updating their mental health status using a tracking tool.", 'tool_use': ['mental_health_tracker']}]
-[Scheduler] example/aerospace_engineer_agent is executing. 
+workflow before check: [{"message": "Understand the student's interests, academic background, and career goals to provide personalized course recommendations.", "tool_use": ["course_selector"]}, {"message": "Evaluate the student's past performance in relevant subjects to ensure the recommended courses are suitable for their skill level.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Understand the student's interests, academic background, and career goals to provide personalized course recommendations.", 'tool_use': ['course_selector']}, {'message': "Evaluate the student's past performance in relevant subjects to ensure the recommended courses are suitable for their skill level.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/education_consultant_agent is executing. 
 
-[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
 
-workflow before check: [{"message": "Access medical database to review current standards of care and latest research on treatments for the patient's specific chronic illness.", "tool_use": ["medical_database"]}, {"message": "Use prescription manager to verify the patient's current medications, check for interactions with potential new treatments, and update prescriptions as necessary.", "tool_use": ["prescription_manager"]}]
-workflow after check: [{'message': "Access medical database to review current standards of care and latest research on treatments for the patient's specific chronic illness.", 'tool_use': ['medical_database']}, {'message': "Use prescription manager to verify the patient's current medications, check for interactions with potential new treatments, and update prescriptions as necessary.", 'tool_use': ['prescription_manager']}]
+ol_use': ['medical_database']}, {'message': "Use prescription manager to verify the patient's current medications, check for interactions with potential new treatments, and update prescriptions as necessary.", 'tool_use': ['prescription_manager']}]
 [Scheduler] example/aerospace_engineer_agent is executing. 
 
 [🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.

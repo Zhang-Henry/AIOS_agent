@@ -1932,13 +1932,13 @@ workflow after check: [{'message': 'Use the system_analyzer to evaluate the safe
 
 [🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
 
-tool_use': ['research_database']}, {'message': 'Condense the accessed academic literature into a concise and coherent summary, focusing on key points and essential information regarding recent advancements in quantum computing.', 'tool_use': ['summarizer']}]
-[Scheduler] example/aerospace_engineer_agent is executing. 
+workflow before check: [{"message": "Access real-time market data for the new sector to analyze trends, stock prices, and economic indicators.", "tool_use": ["market_data_api"]}, {"message": "Utilize portfolio management tools to simulate investment scenarios, assess asset allocation impact, and evaluate potential returns against risk.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data for the new sector to analyze trends, stock prices, and economic indicators.', 'tool_use': ['market_data_api']}, {'message': 'Utilize portfolio management tools to simulate investment scenarios, assess asset allocation impact, and evaluate potential returns against risk.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
 
-[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
 
-workflow before check: [{"message": "Access real-time market data to analyze trends and economic indicators related to the new sector.", "tool_use": ["market_data_api"]}, {"message": "Use portfolio management tools to simulate investment scenarios, assessing risk and projected returns based on historical data and current market conditions.", "tool_use": ["portfolio_manager"]}]
-workflow after check: [{'message': 'Access real-time market data to analyze trends and economic indicators related to the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Use portfolio management tools to simulate investment scenarios, assessing risk and projected returns based on historical data and current market conditions.', 'tool_use': ['portfolio_manager']}]
+ated to the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Use portfolio management tools to simulate investment scenarios, assessing risk and projected returns based on historical data and current market conditions.', 'tool_use': ['portfolio_manager']}]
 [Scheduler] example/aerospace_engineer_agent is executing. 
 
 [🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.

@@ -1932,11 +1932,13 @@ workflow after check: [{'message': 'Develop coping strategies for stress and anx
 
 [🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
 
-iew around the vehicle.", "tool_use": ["sensor_fusion"]}, {"message": "Utilize the fused sensor data to predict potential collision scenarios with obstacles and other vehicles. Implement path planning algorithms to dynamically adjust the vehicle's route to avoid collisions while maintaining safety and efficiency.", "tool_use": ["path_planner"]}]
-workflow after check: [{'message': 'Integrate sensor data from various sources including cameras, LiDAR, and radar to create a comprehensive 360-degree view around the vehicle.', 'tool_use': ['sensor_fusion']}, {'message': "Utilize the fused sensor data to predict potential collision scenarios with obstacles and other vehicles. Implement path planning algorithms to dynamically adjust the vehicle's route to avoid collisions while maintaining safety and efficiency.", 'tool_use': ['path_planner']}]
-[Scheduler] example/academic_search_agent is executing. 
+workflow before check: [{"message": "Simulate the flight performance of aircraft models using different materials to assess their impact on aerodynamics, fuel efficiency, and structural integrity.", "tool_use": ["flight_simulator"]}, {"message": "Analyze the system-level effects of material variations by conducting virtual flight tests and evaluating safety and performance metrics.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate the flight performance of aircraft models using different materials to assess their impact on aerodynamics, fuel efficiency, and structural integrity.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze the system-level effects of material variations by conducting virtual flight tests and evaluating safety and performance metrics.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
 
-[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+
 
 workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotions.", "tool_use": ["sales_analytics"]}, {"message": "Optimize inventory based on the insights gained from sales analytics to improve future campaign performance.", "tool_use": ["inventory_manager"]}]
 workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotions.', 'tool_use': ['sales_analytics']}, {'message': 'Optimize inventory based on the insights gained from sales analytics to improve future campaign performance.', 'tool_use': ['inventory_manager']}]
@@ -1988,6 +1990,12 @@ workflow after check: [{'message': 'Integrate sensor data using the sensor_fusio
 
 workflow before check: [{"message": "Initiate continuous monitoring of the network activity to detect any unauthorized access attempts.", "tool_use": ["sys_monitor"]}, {"message": "Upon detecting an unauthorized access attempt, immediately apply security patches and updates if necessary.", "tool_use": ["update_manager"]}]
 workflow after check: [{'message': 'Initiate continuous monitoring of the network activity to detect any unauthorized access attempts.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detecting an unauthorized access attempt, immediately apply security patches and updates if necessary.', 'tool_use': ['update_manager']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Review the patient's medical records and current treatment plan using the medical database.", "tool_use": ["medical_database"]}, {"message": "Update the prescription based on the latest information and ensure compatibility with the patient's medical history using the prescription manager.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': "Review the patient's medical records and current treatment plan using the medical database.", 'tool_use': ['medical_database']}, {'message': "Update the prescription based on the latest information and ensure compatibility with the patient's medical history using the prescription manager.", 'tool_use': ['prescription_manager']}]
 [Scheduler] example/academic_search_agent is executing. 
 
 [🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
