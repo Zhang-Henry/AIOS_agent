@@ -852,39 +852,1148 @@ workflow after check: [{'message': "Assess the patient's current mental health s
 
 [🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
 
-puting.", "tool_use": ["summarizer"]}]
-workflow after check: [{'message': 'Access research_database to gather recent academic literature on advancements in quantum computing within the last five years.', 'tool_use': ['research_database']}, {'message': 'Utilize summarizer to condense the findings into a concise summary highlighting key advancements and breakthroughs in the field of quantum computing.', 'tool_use': ['summarizer']}]
-[Scheduler] example/legal_consultant_agent is executing. 
+workflow before check: [{"message": "Analyze sales data to identify trends and customer behavior during promotional periods.", "tool_use": ["sales_analytics"]}, {"message": "Optimize inventory based on insights from the sales analysis to ensure stock availability for high-performing products.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and customer behavior during promotional periods.', 'tool_use': ['sales_analytics']}, {'message': 'Optimize inventory based on insights from the sales analysis to ensure stock availability for high-performing products.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
 
-[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
 
-workflow before check: [{"message": "Integrate sensor data using the sensor_fusion tool to enhance perception and decision-making capabilities.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize path planning algorithms with the path_planner tool to ensure safe navigation and avoid obstacles.", "tool_use": ["path_planner"]}]
-workflow after check: [{'message': 'Integrate sensor data using the sensor_fusion tool to enhance perception and decision-making capabilities.', 'tool_use': ['sensor_fusion']}, {'message': 'Optimize path planning algorithms with the path_planner tool to ensure safe navigation and avoid obstacles.', 'tool_use': ['path_planner']}]
-[Scheduler] example/aerospace_engineer_agent is executing. 
+workflow before check: [{"message": "Access real-time market data to analyze trends and performance indicators within the new sector.", "tool_use": ["market_data_api"]}, {"message": "Utilize portfolio management tools to simulate investment scenarios, assess risks, and estimate potential returns based on historical data and current market conditions.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data to analyze trends and performance indicators within the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Utilize portfolio management tools to simulate investment scenarios, assess risks, and estimate potential returns based on historical data and current market conditions.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/medical_advisor_agent is executing. 
 
-[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
 
-workflow before check: [{"message": "Draft the initial version of the Non-Disclosure Agreement (NDA) ensuring it includes all necessary clauses such as definition of confidential information, obligations of the receiving party, exclusions from confidentiality, term and termination, governing law, and dispute resolution.", "tool_use": []}, {"message": "Review the drafted NDA using legal_doc_review to identify any key clauses that may need clarification or adjustment and ensure compliance with relevant laws.", "tool_use": ["legal_doc_review"]}]
-workflow after check: [{'message': 'Draft the initial version of the Non-Disclosure Agreement (NDA) ensuring it includes all necessary clauses such as definition of confidential information, obligations of the receiving party, exclusions from confidentiality, term and termination, governing law, and dispute resolution.', 'tool_use': []}, {'message': 'Review the drafted NDA using legal_doc_review to identify any key clauses that may need clarification or adjustment and ensure compliance with relevant laws.', 'tool_use': ['legal_doc_review']}]
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns associated with recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Review inventory levels post-campaign to assess stock impact and reorder rates.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns associated with recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Review inventory levels post-campaign to assess stock impact and reorder rates.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Consult the medical database to review current research, guidelines, and best practices for managing chronic illnesses.", "tool_use": ["medical_database"]}, {"message": "Update the patient's treatment plan based on the latest information from the medical database, ensuring it is tailored to their specific condition and needs.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': 'Consult the medical database to review current research, guidelines, and best practices for managing chronic illnesses.', 'tool_use': ['medical_database']}, {'message': "Update the patient's treatment plan based on the latest information from the medical database, ensuring it is tailored to their specific condition and needs.", 'tool_use': ['prescription_manager']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Deploy the SystemMonitoringTool to monitor all system activities across the entire company network for any signs of unauthorized access.", "tool_use": ["SystemMonitoringTool"]}, {"message": "Upon detection of any unauthorized access attempts, immediately utilize sys_monitor to analyze and identify the source and nature of the security breach.", "tool_use": ["sys_monitor"]}, {"message": "Once the security breach is identified, use update_manager to apply necessary security patches or updates to seal off the vulnerabilities exploited by the intruders.", "tool_use": ["update_manager"]}]
+workflow after check: [{'message': 'Deploy the SystemMonitoringTool to monitor all system activities across the entire company network for any signs of unauthorized access.', 'tool_use': ['SystemMonitoringTool']}, {'message': 'Upon detection of any unauthorized access attempts, immediately utilize sys_monitor to analyze and identify the source and nature of the security breach.', 'tool_use': ['sys_monitor']}, {'message': 'Once the security breach is identified, use update_manager to apply necessary security patches or updates to seal off the vulnerabilities exploited by the intruders.', 'tool_use': ['update_manager']}]
 [Scheduler] example/academic_search_agent is executing. 
 
 [🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
 
-workflow before check: [{"message": "Use the system_analyzer to evaluate the performance characteristics of various materials under different flight conditions.", "tool_use": ["system_analyzer"]}, {"message": "Based on the analysis, identify the most suitable materials for specific aerospace applications and document findings.", "tool_use": []}]
-workflow after check: [{'message': 'Use the system_analyzer to evaluate the performance characteristics of various materials under different flight conditions.', 'tool_use': ['system_analyzer']}, {'message': 'Based on the analysis, identify the most suitable materials for specific aerospace applications and document findings.', 'tool_use': []}]
+workflow before check: [{"message": "Gather the student's interests, academic background, and career goals.", "tool_use": []}, {"message": "Use the course_selector tool to recommend courses based on the gathered information.", "tool_use": ["course_selector"]}]
+workflow after check: [{'message': "Gather the student's interests, academic background, and career goals.", 'tool_use': []}, {'message': 'Use the course_selector tool to recommend courses based on the gathered information.', 'tool_use': ['course_selector']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+workflow before check: [{"message": "Access a wide range of academic literature on recent advancements in quantum computing from the past five years.", "tool_use": ["research_database"]}, {"message": "Condense the gathered information into a concise and coherent summary, highlighting key points and essential information on recent advancements in quantum computing.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access a wide range of academic literature on recent advancements in quantum computing from the past five years.', 'tool_use': ['research_database']}, {'message': 'Condense the gathered information into a concise and coherent summary, highlighting key points and essential information on recent advancements in quantum computing.', 'tool_use': ['summarizer']}]
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous system monitoring to detect any anomalies or potential security breaches.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of an unauthorized access attempt, immediately engage the CodeInjectionProtection tool to prevent further intrusion and mitigate the threat.", "tool_use": ["CodeInjectionProtection"]}]
+workflow after check: [{'message': 'Initiate continuous system monitoring to detect any anomalies or potential security breaches.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of an unauthorized access attempt, immediately engage the CodeInjectionProtection tool to prevent further intrusion and mitigate the threat.', 'tool_use': ['CodeInjectionProtection']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Simulate various aerospace models using different materials to assess their impact on flight performance.", "tool_use": ["flight_simulator"]}, {"message": "Analyze the system outputs from the simulations to evaluate material performance, focusing on safety and efficiency metrics.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate various aerospace models using different materials to assess their impact on flight performance.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze the system outputs from the simulations to evaluate material performance, focusing on safety and efficiency metrics.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Determine the student's interests, academic background, and career goals to recommend suitable courses.", "tool_use": ["course_selector"]}, {"message": "Evaluate the student's past performance to ensure the recommended courses are at an appropriate level of difficulty.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Determine the student's interests, academic background, and career goals to recommend suitable courses.", 'tool_use': ['course_selector']}, {'message': "Evaluate the student's past performance to ensure the recommended courses are at an appropriate level of difficulty.", 'tool_use': ['performance_evaluator']}]
 [Scheduler] example/legal_consultant_agent is executing. 
 
 [🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
 
-workflow before check: [{"message": "Use the research_database tool to find and collect academic articles about advancements in quantum computing published within the last five years.", "tool_use": ["research_database"]}, {"message": "Utilize the summarizer tool to condense the key findings and significant developments from the collected literature into a concise summary.", "tool_use": ["summarizer"]}]
-workflow after check: [{'message': 'Use the research_database tool to find and collect academic articles about advancements in quantum computing published within the last five years.', 'tool_use': ['research_database']}, {'message': 'Utilize the summarizer tool to condense the key findings and significant developments from the collected literature into a concise summary.', 'tool_use': ['summarizer']}]
+workflow before check: [{"message": "Initiate continuous network monitoring to detect unauthorized access attempts.", "tool_use": ["sys_monitor"]}, {"message": "Upon detecting an unauthorized access attempt, immediately initiate system checks and security protocols to resolve the issue within 30 minutes.", "tool_use": ["sys_monitor"]}]
+workflow after check: [{'message': 'Initiate continuous network monitoring to detect unauthorized access attempts.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detecting an unauthorized access attempt, immediately initiate system checks and security protocols to resolve the issue within 30 minutes.', 'tool_use': ['sys_monitor']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate the drafting of the Non-Disclosure Agreement (NDA) by outlining its purpose and identifying the parties involved.", "tool_use": []}, {"message": "Review the drafted NDA to ensure that it includes all necessary clauses such as definitions, obligations, exclusions, duration, and termination provisions.", "tool_use": ["legal_doc_review"]}, {"message": "Check the compliance of the NDA with applicable laws and regulations to avoid any legal issues in the future.", "tool_use": ["compliance_checker"]}]
+workflow after check: [{'message': 'Initiate the drafting of the Non-Disclosure Agreement (NDA) by outlining its purpose and identifying the parties involved.', 'tool_use': []}, {'message': 'Review the drafted NDA to ensure that it includes all necessary clauses such as definitions, obligations, exclusions, duration, and termination provisions.', 'tool_use': ['legal_doc_review']}, {'message': 'Check the compliance of the NDA with applicable laws and regulations to avoid any legal issues in the future.', 'tool_use': ['compliance_checker']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Prepare initial draft of Non-Disclosure Agreement (NDA) with standard clauses such as definitions, obligations, exclusions, term and termination, remedies, governing law, and dispute resolution.", "tool_use": ["legal_doc_review"]}, {"message": "Review the drafted NDA for compliance with applicable laws and regulations to ensure that all terms are legally sound and enforceable.", "tool_use": ["compliance_checker"]}]
+workflow after check: [{'message': 'Prepare initial draft of Non-Disclosure Agreement (NDA) with standard clauses such as definitions, obligations, exclusions, term and termination, remedies, governing law, and dispute resolution.', 'tool_use': ['legal_doc_review']}, {'message': 'Review the drafted NDA for compliance with applicable laws and regulations to ensure that all terms are legally sound and enforceable.', 'tool_use': ['compliance_checker']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data for the new sector, including stock prices and trends.", "tool_use": ["market_data_api"]}, {"message": "Analyze the portfolio impact, asset allocation, and risk assessment of adding this sector to the investment strategy.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data for the new sector, including stock prices and trends.', 'tool_use': ['market_data_api']}, {'message': 'Analyze the portfolio impact, asset allocation, and risk assessment of adding this sector to the investment strategy.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous monitoring of network activity to detect potential security vulnerabilities including unauthorized access attempts.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of an unauthorized access attempt, immediately initiate response protocols to isolate affected systems and restore integrity.", "tool_use": []}]
+workflow after check: [{'message': 'Initiate continuous monitoring of network activity to detect potential security vulnerabilities including unauthorized access attempts.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of an unauthorized access attempt, immediately initiate response protocols to isolate affected systems and restore integrity.', 'tool_use': []}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Gather sales data from recent promotional campaigns to analyze their performance.", "tool_use": ["sales_analytics"]}, {"message": "Identify trends, customer behavior patterns, and marketing effectiveness to inform future strategies.", "tool_use": []}]
+workflow after check: [{'message': 'Gather sales data from recent promotional campaigns to analyze their performance.', 'tool_use': ['sales_analytics']}, {'message': 'Identify trends, customer behavior patterns, and marketing effectiveness to inform future strategies.', 'tool_use': []}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous network monitoring to detect unauthorized access attempts.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of an unauthorized access attempt, immediately implement corrective measures and escalate the incident for further investigation.", "tool_use": []}]
+workflow after check: [{'message': 'Initiate continuous network monitoring to detect unauthorized access attempts.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of an unauthorized access attempt, immediately implement corrective measures and escalate the incident for further investigation.', 'tool_use': []}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Evaluate the student's current academic performance, interests, and previous course grades to understand their strengths and areas for improvement.", "tool_use": ["performance_evaluator"]}, {"message": "Recommend suitable courses based on the analysis of the student's profile, considering their career goals and the requirements for their major.", "tool_use": ["course_selector"]}]
+workflow after check: [{'message': "Evaluate the student's current academic performance, interests, and previous course grades to understand their strengths and areas for improvement.", 'tool_use': ['performance_evaluator']}, {'message': "Recommend suitable courses based on the analysis of the student's profile, considering their career goals and the requirements for their major.", 'tool_use': ['course_selector']}]
 [Scheduler] example/autonomous_driving_agent is executing. 
 
 [🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
 
-workflow before check: [{"message": "Drafting the initial Non-Disclosure Agreement (NDA) with standard clauses and legal language specific to the protection of confidential information in a business partnership context.", "tool_use": ["legal_doc_review"]}, {"message": "Reviewing the drafted NDA using the legal_doc_review tool to identify any missing key clauses, ensure accuracy and compliance with relevant laws, and make necessary adjustments.", "tool_use": ["legal_doc_review"]}]
-workflow after check: [{'message': 'Drafting the initial Non-Disclosure Agreement (NDA) with standard clauses and legal language specific to the protection of confidential information in a business partnership context.', 'tool_use': ['legal_doc_review']}, {'message': 'Reviewing the drafted NDA using the legal_doc_review tool to identify any missing key clauses, ensure accuracy and compliance with relevant laws, and make necessary adjustments.', 'tool_use': ['legal_doc_review']}]
+workflow before check: [{"message": "Assess the patient's current coping mechanisms and identify areas for improvement.", "tool_use": ["therapy_guide"]}, {"message": "Monitor the patient's mental health progress after introducing new coping strategies.", "tool_use": ["mental_health_tracker"]}]
+workflow after check: [{'message': "Assess the patient's current coping mechanisms and identify areas for improvement.", 'tool_use': ['therapy_guide']}, {'message': "Monitor the patient's mental health progress after introducing new coping strategies.", 'tool_use': ['mental_health_tracker']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data using sensor_fusion to enhance perception of surrounding environment.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize path planning with path_planner to dynamically adjust routes and avoid obstacles in real-time.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate sensor data using sensor_fusion to enhance perception of surrounding environment.', 'tool_use': ['sensor_fusion']}, {'message': 'Optimize path planning with path_planner to dynamically adjust routes and avoid obstacles in real-time.', 'tool_use': ['path_planner']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous monitoring of network activity for potential security breaches.", "tool_use": ["sys_monitor"]}, {"message": "Upon detecting unauthorized access, immediately initiate system updates and patches to close any security vulnerabilities.", "tool_use": ["update_manager"]}]
+workflow after check: [{'message': 'Initiate continuous monitoring of network activity for potential security breaches.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detecting unauthorized access, immediately initiate system updates and patches to close any security vulnerabilities.', 'tool_use': ['update_manager']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous monitoring of network activity to detect potential unauthorized access attempts using sys_monitor.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of an unauthorized access attempt, immediately use the update_manager tool to apply any necessary security patches to prevent further intrusion.", "tool_use": ["update_manager"]}]
+workflow after check: [{'message': 'Initiate continuous monitoring of network activity to detect potential unauthorized access attempts using sys_monitor.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of an unauthorized access attempt, immediately use the update_manager tool to apply any necessary security patches to prevent further intrusion.', 'tool_use': ['update_manager']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Research the latest developments in quantum computing within the last five years using academic databases.", "tool_use": ["research_database"]}, {"message": "Condense the findings into a concise summary, focusing on key breakthroughs and their implications.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Research the latest developments in quantum computing within the last five years using academic databases.', 'tool_use': ['research_database']}, {'message': 'Condense the findings into a concise summary, focusing on key breakthroughs and their implications.', 'tool_use': ['summarizer']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current coping mechanisms and identify areas where they may need improvement.", "tool_use": ["therapy_guide"]}, {"message": "Monitor the patient's progress in implementing new coping strategies and adjust treatment plan as necessary.", "tool_use": ["mental_health_tracker"]}]
+workflow after check: [{'message': "Assess the patient's current coping mechanisms and identify areas where they may need improvement.", 'tool_use': ['therapy_guide']}, {'message': "Monitor the patient's progress in implementing new coping strategies and adjust treatment plan as necessary.", 'tool_use': ['mental_health_tracker']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Utilize the system_analyzer to evaluate the safety and performance of various aerospace materials.", "tool_use": ["system_analyzer"]}, {"message": "Based on the analysis, adjust designs or recommend materials using flight_simulator for further testing.", "tool_use": ["flight_simulator"]}]
+workflow after check: [{'message': 'Utilize the system_analyzer to evaluate the safety and performance of various aerospace materials.', 'tool_use': ['system_analyzer']}, {'message': 'Based on the analysis, adjust designs or recommend materials using flight_simulator for further testing.', 'tool_use': ['flight_simulator']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous monitoring using sys_monitor to detect any unauthorized access attempts on the company network.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of an unauthorized access attempt, immediately use update_manager to apply any necessary security patches or updates within 30 minutes to resolve potential vulnerabilities.", "tool_use": ["update_manager"]}]
+workflow after check: [{'message': 'Initiate continuous monitoring using sys_monitor to detect any unauthorized access attempts on the company network.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of an unauthorized access attempt, immediately use update_manager to apply any necessary security patches or updates within 30 minutes to resolve potential vulnerabilities.', 'tool_use': ['update_manager']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current coping mechanisms and identify areas for improvement.", "tool_use": ["therapy_guide"]}, {"message": "Design a personalized treatment plan focusing on stress management techniques such as mindfulness, relaxation exercises, and cognitive restructuring.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current coping mechanisms and identify areas for improvement.", 'tool_use': ['therapy_guide']}, {'message': 'Design a personalized treatment plan focusing on stress management techniques such as mindfulness, relaxation exercises, and cognitive restructuring.', 'tool_use': ['therapy_guide']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Begin drafting the Non-Disclosure Agreement (NDA) by outlining the basic structure, including parties involved, definitions of confidential information, obligations of the recipient, exclusions from confidentiality, term and termination clauses, and governing law.", "tool_use": []}, {"message": "Utilize the legal_doc_review function to review the initial draft of the NDA, identifying any key clauses that may need clarification or adjustment for compliance with relevant laws.", "tool_use": ["legal_doc_review"]}, {"message": "After receiving feedback from the legal document review, make necessary amendments to the NDA to ensure it is accurate and legally compliant.", "tool_use": []}, {"message": "Use the compliance_checker function to verify that the revised NDA fully complies with applicable laws and regulations regarding confidentiality and business partnerships.", "tool_use": ["compliance_checker"]}, {"message": "Finalize the document by incorporating any additional changes suggested by the compliance checker, readying it for presentation to the parties involved in the new business partnership.", "tool_use": []}]
+workflow after check: [{'message': 'Begin drafting the Non-Disclosure Agreement (NDA) by outlining the basic structure, including parties involved, definitions of confidential information, obligations of the recipient, exclusions from confidentiality, term and termination clauses, and governing law.', 'tool_use': []}, {'message': 'Utilize the legal_doc_review function to review the initial draft of the NDA, identifying any key clauses that may need clarification or adjustment for compliance with relevant laws.', 'tool_use': ['legal_doc_review']}, {'message': 'After receiving feedback from the legal document review, make necessary amendments to the NDA to ensure it is accurate and legally compliant.', 'tool_use': []}, {'message': 'Use the compliance_checker function to verify that the revised NDA fully complies with applicable laws and regulations regarding confidentiality and business partnerships.', 'tool_use': ['compliance_checker']}, {'message': 'Finalize the document by incorporating any additional changes suggested by the compliance checker, readying it for presentation to the parties involved in the new business partnership.', 'tool_use': []}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous system monitoring to detect any unusual activity indicative of unauthorized access.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of potential security breaches, analyze the data provided by sys_monitor to confirm unauthorized access and immediately initiate shutdown procedures if necessary to mitigate risks.", "tool_use": ["ShutdownManagementTool"]}]
+workflow after check: [{'message': 'Initiate continuous system monitoring to detect any unusual activity indicative of unauthorized access.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of potential security breaches, analyze the data provided by sys_monitor to confirm unauthorized access and immediately initiate shutdown procedures if necessary to mitigate risks.', 'tool_use': ['ShutdownManagementTool']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current coping mechanisms and identify areas of improvement using mental_health_tracker.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized therapy plan focusing on stress and anxiety management techniques with therapy_guide.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current coping mechanisms and identify areas of improvement using mental_health_tracker.", 'tool_use': ['mental_health_tracker']}, {'message': 'Design a personalized therapy plan focusing on stress and anxiety management techniques with therapy_guide.', 'tool_use': ['therapy_guide']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Draft the initial version of the Non-Disclosure Agreement (NDA) including clauses on confidentiality, definitions of confidential information, obligations of the receiving party, exclusions from confidentiality, term and termination, remedies for breach, governing law, and dispute resolution.", "tool_use": ["legal_doc_review"]}, {"message": "Review the drafted NDA using legal expertise to ensure that all necessary clauses are included, the language is clear and legally binding, and there are no potential issues or ambiguities that could be exploited by either party in future disputes.", "tool_use": ["compliance_checker"]}]
+workflow after check: [{'message': 'Draft the initial version of the Non-Disclosure Agreement (NDA) including clauses on confidentiality, definitions of confidential information, obligations of the receiving party, exclusions from confidentiality, term and termination, remedies for breach, governing law, and dispute resolution.', 'tool_use': ['legal_doc_review']}, {'message': 'Review the drafted NDA using legal expertise to ensure that all necessary clauses are included, the language is clear and legally binding, and there are no potential issues or ambiguities that could be exploited by either party in future disputes.', 'tool_use': ['compliance_checker']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Gather information about the student's interests, academic background, and career goals.", "tool_use": []}, {"message": "Use the course_selector tool to recommend suitable courses based on the gathered information.", "tool_use": ["course_selector"]}]
+workflow after check: [{'message': "Gather information about the student's interests, academic background, and career goals.", 'tool_use': []}, {'message': 'Use the course_selector tool to recommend suitable courses based on the gathered information.', 'tool_use': ['course_selector']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Drafting the initial version of the Non-Disclosure Agreement (NDA) tailored to the needs of the new business partnership.", "tool_use": ["LegalDocumentAccessTool"]}, {"message": "Review and refine the drafted NDA, ensuring all necessary clauses are included and compliance with relevant legal standards is met.", "tool_use": ["legal_doc_review", "compliance_checker"]}]
+workflow after check: [{'message': 'Drafting the initial version of the Non-Disclosure Agreement (NDA) tailored to the needs of the new business partnership.', 'tool_use': ['LegalDocumentAccessTool']}, {'message': 'Review and refine the drafted NDA, ensuring all necessary clauses are included and compliance with relevant legal standards is met.', 'tool_use': ['legal_doc_review', 'compliance_checker']}]
 [Scheduler] example/medical_advisor_agent is executing. 
 
 [🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Deploy the NetworkMonitoringTool to monitor network traffic for any signs of unauthorized access on a 24/7 basis.", "tool_use": ["NetworkMonitoringTool"]}, {"message": "Once an alert is triggered by the NetworkMonitoringTool indicating potential unauthorized access, use sys_monitor and update_manager tools to investigate and resolve the issue within 30 minutes.", "tool_use": ["sys_monitor", "update_manager"]}]
+workflow after check: [{'message': 'Deploy the NetworkMonitoringTool to monitor network traffic for any signs of unauthorized access on a 24/7 basis.', 'tool_use': ['NetworkMonitoringTool']}, {'message': 'Once an alert is triggered by the NetworkMonitoringTool indicating potential unauthorized access, use sys_monitor and update_manager tools to investigate and resolve the issue within 30 minutes.', 'tool_use': ['sys_monitor', 'update_manager']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Consult the medical database to review the latest research and guidelines for treating chronic illnesses.", "tool_use": ["medical_database"]}, {"message": "Update the patient's prescription based on the reviewed information, considering their medical history and current condition.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': 'Consult the medical database to review the latest research and guidelines for treating chronic illnesses.', 'tool_use': ['medical_database']}, {'message': "Update the patient's prescription based on the reviewed information, considering their medical history and current condition.", 'tool_use': ['prescription_manager']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", "tool_use": ["course_selector"]}, {"message": "Evaluate the student's past performance to suggest courses that align with their abilities and potential areas of improvement.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", 'tool_use': ['course_selector']}, {'message': "Evaluate the student's past performance to suggest courses that align with their abilities and potential areas of improvement.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Review inventory levels to understand product performance post-campaign and adjust stock accordingly.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Review inventory levels to understand product performance post-campaign and adjust stock accordingly.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data for the new sector, including stock prices, trends, and economic indicators.", "tool_use": ["market_data_api"]}, {"message": "Analyze the asset allocation, risk assessment, and performance tracking related to the new sector to optimize investment strategies.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data for the new sector, including stock prices, trends, and economic indicators.', 'tool_use': ['market_data_api']}, {'message': 'Analyze the asset allocation, risk assessment, and performance tracking related to the new sector to optimize investment strategies.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate the therapy session by assessing the current mental health status of the patient, focusing on their levels of stress and anxiety.", "tool_use": ["mental_health_tracker"]}, {"message": "Based on the assessment, design a personalized treatment plan incorporating coping strategies tailored to manage the patient's stress and anxiety. This includes relaxation techniques, cognitive restructuring, and mindfulness exercises.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': 'Initiate the therapy session by assessing the current mental health status of the patient, focusing on their levels of stress and anxiety.', 'tool_use': ['mental_health_tracker']}, {'message': "Based on the assessment, design a personalized treatment plan incorporating coping strategies tailored to manage the patient's stress and anxiety. This includes relaxation techniques, cognitive restructuring, and mindfulness exercises.", 'tool_use': ['therapy_guide']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous monitoring of network activity to detect potential unauthorized access attempts.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of an unauthorized access attempt, immediately investigate and resolve the issue within a strict timeframe of 30 minutes.", "tool_use": []}]
+workflow after check: [{'message': 'Initiate continuous monitoring of network activity to detect potential unauthorized access attempts.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of an unauthorized access attempt, immediately investigate and resolve the issue within a strict timeframe of 30 minutes.', 'tool_use': []}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Use course_selector to recommend courses based on the student's interests, academic background, and career goals.", "tool_use": ["course_selector"]}, {"message": "After receiving the recommendations, use performance_evaluator to ensure that the selected courses align with the student's current academic performance and capacity.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Use course_selector to recommend courses based on the student's interests, academic background, and career goals.", 'tool_use': ['course_selector']}, {'message': "After receiving the recommendations, use performance_evaluator to ensure that the selected courses align with the student's current academic performance and capacity.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data using Sensor Fusion tool to create a comprehensive environmental model around the vehicle, identifying potential obstacles and hazards.", "tool_use": ["sensor_fusion"]}, {"message": "Utilize Path Planner to adjust the vehicle's trajectory in real-time, ensuring safe navigation by avoiding detected obstacles and maintaining optimal route efficiency.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate sensor data using Sensor Fusion tool to create a comprehensive environmental model around the vehicle, identifying potential obstacles and hazards.', 'tool_use': ['sensor_fusion']}, {'message': "Utilize Path Planner to adjust the vehicle's trajectory in real-time, ensuring safe navigation by avoiding detected obstacles and maintaining optimal route efficiency.", 'tool_use': ['path_planner']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current mental health status and identify specific stressors and anxieties.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized therapy plan using evidence-based techniques to manage stress and anxiety.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current mental health status and identify specific stressors and anxieties.", 'tool_use': ['mental_health_tracker']}, {'message': 'Design a personalized therapy plan using evidence-based techniques to manage stress and anxiety.', 'tool_use': ['therapy_guide']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Draft the initial version of the non-disclosure agreement, ensuring that it includes all necessary clauses such as definitions, obligations of confidentiality, exclusions from confidentiality, term and termination, remedies, governing law, and dispute resolution.", "tool_use": ["legal_doc_review"]}, {"message": "Review the drafted non-disclosure agreement using the legal document review tool to identify any key clauses that may need clarification or adjustment and ensure compliance with relevant laws.", "tool_use": ["compliance_checker"]}]
+workflow after check: [{'message': 'Draft the initial version of the non-disclosure agreement, ensuring that it includes all necessary clauses such as definitions, obligations of confidentiality, exclusions from confidentiality, term and termination, remedies, governing law, and dispute resolution.', 'tool_use': ['legal_doc_review']}, {'message': 'Review the drafted non-disclosure agreement using the legal document review tool to identify any key clauses that may need clarification or adjustment and ensure compliance with relevant laws.', 'tool_use': ['compliance_checker']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data using sensor_fusion to enhance perception capabilities.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize path planning algorithms with path_planner to ensure safe navigation avoiding obstacles.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate sensor data using sensor_fusion to enhance perception capabilities.', 'tool_use': ['sensor_fusion']}, {'message': 'Optimize path planning algorithms with path_planner to ensure safe navigation avoiding obstacles.', 'tool_use': ['path_planner']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data to analyze trends and indicators specific to the new sector.", "tool_use": ["market_data_api"]}, {"message": "Utilize portfolio management tools to simulate investment scenarios, assessing the impact on asset allocation and overall portfolio risk.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data to analyze trends and indicators specific to the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Utilize portfolio management tools to simulate investment scenarios, assessing the impact on asset allocation and overall portfolio risk.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data for the new sector, including stock prices, trends, and economic indicators to assess current market conditions and historical performance.", "tool_use": ["market_data_api"]}, {"message": "Analyze investment portfolios that include assets from the new sector to understand risk profiles, asset allocation strategies, and performance metrics.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data for the new sector, including stock prices, trends, and economic indicators to assess current market conditions and historical performance.', 'tool_use': ['market_data_api']}, {'message': 'Analyze investment portfolios that include assets from the new sector to understand risk profiles, asset allocation strategies, and performance metrics.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Access medical database to review current treatment protocols and research updates for the patient's chronic illness.", "tool_use": ["medical_database"]}, {"message": "Utilize prescription manager to adjust medication dosages, add or remove medications based on the latest guidelines and patient's response.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': "Access medical database to review current treatment protocols and research updates for the patient's chronic illness.", 'tool_use': ['medical_database']}, {'message': "Utilize prescription manager to adjust medication dosages, add or remove medications based on the latest guidelines and patient's response.", 'tool_use': ['prescription_manager']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Access recent open access academic publications on advancements in quantum computing from the past five years.", "tool_use": ["OpenAccessPortal"]}, {"message": "Summarize the key findings and advancements in quantum computing based on the accessed publications.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access recent open access academic publications on advancements in quantum computing from the past five years.', 'tool_use': ['OpenAccessPortal']}, {'message': 'Summarize the key findings and advancements in quantum computing based on the accessed publications.', 'tool_use': ['summarizer']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Access medical_database to review current guidelines and research on treatments for the patient's specific chronic illness.", "tool_use": ["medical_database"]}, {"message": "Use prescription_manager to check if the patient's current medications are up-to-date, effective, and without contraindications based on new information.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': "Access medical_database to review current guidelines and research on treatments for the patient's specific chronic illness.", 'tool_use': ['medical_database']}, {'message': "Use prescription_manager to check if the patient's current medications are up-to-date, effective, and without contraindications based on new information.", 'tool_use': ['prescription_manager']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotions.", "tool_use": ["sales_analytics"]}, {"message": "Adjust pricing strategies based on the insights gained from the sales analytics report to optimize future campaigns.", "tool_use": ["PricingManagementTool"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotions.', 'tool_use': ['sales_analytics']}, {'message': 'Adjust pricing strategies based on the insights gained from the sales analytics report to optimize future campaigns.', 'tool_use': ['PricingManagementTool']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data from various sources including cameras, LiDAR, and radar to create a comprehensive perception of the vehicle's environment.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize path planning algorithms to ensure that the vehicle can dynamically adjust its route in response to detected obstacles, maintaining safe distances and avoiding collisions.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': "Integrate sensor data from various sources including cameras, LiDAR, and radar to create a comprehensive perception of the vehicle's environment.", 'tool_use': ['sensor_fusion']}, {'message': 'Optimize path planning algorithms to ensure that the vehicle can dynamically adjust its route in response to detected obstacles, maintaining safe distances and avoiding collisions.', 'tool_use': ['path_planner']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Access the medical database to review current research, treatments, and medications relevant to the patient's chronic illness.", "tool_use": ["medical_database"]}, {"message": "Use the prescription manager to adjust medication dosages or add new prescriptions based on the updated treatment plan.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': "Access the medical database to review current research, treatments, and medications relevant to the patient's chronic illness.", 'tool_use': ['medical_database']}, {'message': 'Use the prescription manager to adjust medication dosages or add new prescriptions based on the updated treatment plan.', 'tool_use': ['prescription_manager']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current level of stress and anxiety, and identify specific triggers.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized treatment plan that includes coping strategies tailored to the patient's needs.", "tool_use": ["therapy_guide", "TreatmentPlanTool"]}]
+workflow after check: [{'message': "Assess the patient's current level of stress and anxiety, and identify specific triggers.", 'tool_use': ['mental_health_tracker']}, {'message': "Design a personalized treatment plan that includes coping strategies tailored to the patient's needs.", 'tool_use': ['therapy_guide', 'TreatmentPlanTool']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Use the system_analyzer tool to evaluate the flight performance and safety aspects of various materials currently utilized in aerospace vehicles.", "tool_use": ["system_analyzer"]}, {"message": "After analyzing the data, use the flight_simulator tool to conduct virtual tests on aircraft models with different material compositions to assess their impact on overall performance.", "tool_use": ["flight_simulator"]}]
+workflow after check: [{'message': 'Use the system_analyzer tool to evaluate the flight performance and safety aspects of various materials currently utilized in aerospace vehicles.', 'tool_use': ['system_analyzer']}, {'message': 'After analyzing the data, use the flight_simulator tool to conduct virtual tests on aircraft models with different material compositions to assess their impact on overall performance.', 'tool_use': ['flight_simulator']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Review the current treatment plan for the patient with chronic illness using the PatientCareTool to ensure it meets medical necessity and appropriateness.", "tool_use": ["PatientCareTool"]}, {"message": "Update the treatment plan based on the review findings, integrating information from the medical_database to ensure optimal care and effective management of the chronic condition.", "tool_use": ["medical_database", "prescription_manager"]}]
+workflow after check: [{'message': 'Review the current treatment plan for the patient with chronic illness using the PatientCareTool to ensure it meets medical necessity and appropriateness.', 'tool_use': ['PatientCareTool']}, {'message': 'Update the treatment plan based on the review findings, integrating information from the medical_database to ensure optimal care and effective management of the chronic condition.', 'tool_use': ['medical_database', 'prescription_manager']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Based on the analysis, determine the impact of each campaign on sales volume, customer engagement, and inventory turnover.", "tool_use": []}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Based on the analysis, determine the impact of each campaign on sales volume, customer engagement, and inventory turnover.', 'tool_use': []}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous system monitoring to detect any unusual or unauthorized network activity.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of unauthorized access, immediately isolate affected systems and begin forensic analysis.", "tool_use": ["sys_monitor"]}]
+workflow after check: [{'message': 'Initiate continuous system monitoring to detect any unusual or unauthorized network activity.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of unauthorized access, immediately isolate affected systems and begin forensic analysis.', 'tool_use': ['sys_monitor']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Access medical_database to review current treatment protocols and latest research on managing chronic illnesses.", "tool_use": ["medical_database"]}, {"message": "Update prescription_manager to ensure the patient's medication list is up-to-date and aligned with the best practices obtained from medical_database.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': 'Access medical_database to review current treatment protocols and latest research on managing chronic illnesses.', 'tool_use': ['medical_database']}, {'message': "Update prescription_manager to ensure the patient's medication list is up-to-date and aligned with the best practices obtained from medical_database.", 'tool_use': ['prescription_manager']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Access medical database to review current information on chronic illnesses, symptoms, and standard treatments.", "tool_use": ["medical_database"]}, {"message": "Update the treatment plan based on the latest medical guidelines and research findings.", "tool_use": ["TreatmentPlanReviewTool"]}]
+workflow after check: [{'message': 'Access medical database to review current information on chronic illnesses, symptoms, and standard treatments.', 'tool_use': ['medical_database']}, {'message': 'Update the treatment plan based on the latest medical guidelines and research findings.', 'tool_use': ['TreatmentPlanReviewTool']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and customer behavior during the recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Optimize product listings based on inventory levels and demand insights gathered from the analysis.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and customer behavior during the recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Optimize product listings based on inventory levels and demand insights gathered from the analysis.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current mental state and identify specific stressors and anxiety triggers.", "tool_use": ["therapy_guide"]}, {"message": "Design a personalized treatment plan including cognitive-behavioral techniques, relaxation exercises, and mindfulness practices.", "tool_use": ["therapy_guide", "mental_health_tracker"]}]
+workflow after check: [{'message': "Assess the patient's current mental state and identify specific stressors and anxiety triggers.", 'tool_use': ['therapy_guide']}, {'message': 'Design a personalized treatment plan including cognitive-behavioral techniques, relaxation exercises, and mindfulness practices.', 'tool_use': ['therapy_guide', 'mental_health_tracker']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current mental state and identify specific stressors contributing to their anxiety.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized therapy plan using evidence-based techniques, such as cognitive-behavioral therapy (CBT), mindfulness, or relaxation exercises.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current mental state and identify specific stressors contributing to their anxiety.", 'tool_use': ['mental_health_tracker']}, {'message': 'Design a personalized therapy plan using evidence-based techniques, such as cognitive-behavioral therapy (CBT), mindfulness, or relaxation exercises.', 'tool_use': ['therapy_guide']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Consult the medical database to review current research and guidelines relevant to the patient's chronic illness.", "tool_use": ["medical_database"]}, {"message": "Utilize the prescription manager to ensure that the patient's medication list is up-to-date, appropriate, and without potential drug interactions.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': "Consult the medical database to review current research and guidelines relevant to the patient's chronic illness.", 'tool_use': ['medical_database']}, {'message': "Utilize the prescription manager to ensure that the patient's medication list is up-to-date, appropriate, and without potential drug interactions.", 'tool_use': ['prescription_manager']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Optimize path planning algorithms to predict and avoid potential collisions by integrating real-time traffic data and vehicle positions.", "tool_use": ["path_planner"]}, {"message": "Enhance decision-making capabilities by fusing sensor data from cameras, LiDAR, and radar to create a comprehensive environment model for obstacle detection.", "tool_use": ["sensor_fusion"]}]
+workflow after check: [{'message': 'Optimize path planning algorithms to predict and avoid potential collisions by integrating real-time traffic data and vehicle positions.', 'tool_use': ['path_planner']}, {'message': 'Enhance decision-making capabilities by fusing sensor data from cameras, LiDAR, and radar to create a comprehensive environment model for obstacle detection.', 'tool_use': ['sensor_fusion']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data using sensor_fusion tool to enhance perception and decision-making capabilities.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize route planning algorithms with path_planner to ensure safe navigation avoiding potential collisions.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate sensor data using sensor_fusion tool to enhance perception and decision-making capabilities.', 'tool_use': ['sensor_fusion']}, {'message': 'Optimize route planning algorithms with path_planner to ensure safe navigation avoiding potential collisions.', 'tool_use': ['path_planner']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor fusion tool to combine data from multiple sensors, including radar, lidar, and cameras, to create a comprehensive understanding of the vehicle's surroundings.", "tool_use": ["sensor_fusion"]}, {"message": "Utilize path_planner to optimize route planning algorithms by incorporating real-time obstacle detection and avoidance strategies based on the fused sensor data.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': "Integrate sensor fusion tool to combine data from multiple sensors, including radar, lidar, and cameras, to create a comprehensive understanding of the vehicle's surroundings.", 'tool_use': ['sensor_fusion']}, {'message': 'Utilize path_planner to optimize route planning algorithms by incorporating real-time obstacle detection and avoidance strategies based on the fused sensor data.', 'tool_use': ['path_planner']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data to analyze trends and economic indicators within the new sector.", "tool_use": ["market_data_api"]}, {"message": "Utilize portfolio management tools to assess how investments in this sector could impact overall asset allocation and risk profile.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data to analyze trends and economic indicators within the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Utilize portfolio management tools to assess how investments in this sector could impact overall asset allocation and risk profile.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Research recent advancements in quantum computing from the past five years using academic databases.", "tool_use": ["research_database"]}, {"message": "Condense and summarize the key findings and developments in quantum computing from the gathered literature.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Research recent advancements in quantum computing from the past five years using academic databases.', 'tool_use': ['research_database']}, {'message': 'Condense and summarize the key findings and developments in quantum computing from the gathered literature.', 'tool_use': ['summarizer']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Simulate and compare flight performance using different materials with the flight_simulator tool.", "tool_use": ["flight_simulator"]}, {"message": "Analyze system safety, material durability, and overall efficiency post-simulation with the system_analyzer tool.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate and compare flight performance using different materials with the flight_simulator tool.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze system safety, material durability, and overall efficiency post-simulation with the system_analyzer tool.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Review inventory movements during the campaign periods to understand product demand and stock performance.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Review inventory movements during the campaign periods to understand product demand and stock performance.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Access research_database to find recent articles and papers on advancements in quantum computing from the past five years.", "tool_use": ["research_database"]}, {"message": "Use summarizer to condense the findings from the academic literature into a concise summary of key advancements in quantum computing.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access research_database to find recent articles and papers on advancements in quantum computing from the past five years.', 'tool_use': ['research_database']}, {'message': 'Use summarizer to condense the findings from the academic literature into a concise summary of key advancements in quantum computing.', 'tool_use': ['summarizer']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Identify key clauses and terms necessary for a Non-Disclosure Agreement (NDA) tailored to the context of a new business partnership.", "tool_use": ["legal_doc_review"]}, {"message": "Review the drafted NDA against relevant laws and regulations to ensure full compliance and accuracy.", "tool_use": ["compliance_checker"]}]
+workflow after check: [{'message': 'Identify key clauses and terms necessary for a Non-Disclosure Agreement (NDA) tailored to the context of a new business partnership.', 'tool_use': ['legal_doc_review']}, {'message': 'Review the drafted NDA against relevant laws and regulations to ensure full compliance and accuracy.', 'tool_use': ['compliance_checker']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Simulate flight performance using various materials to analyze their impact on aerodynamics, weight, and fuel efficiency.", "tool_use": ["flight_simulator"]}, {"message": "Analyze the results from the simulations to evaluate the safety and overall performance of each material under different conditions.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate flight performance using various materials to analyze their impact on aerodynamics, weight, and fuel efficiency.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze the results from the simulations to evaluate the safety and overall performance of each material under different conditions.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous monitoring of network activity to detect any unauthorized access attempts using sys_monitor tool.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of unauthorized access, immediately engage update_manager to apply latest security patches and mitigate vulnerabilities within 30 minutes.", "tool_use": ["update_manager"]}]
+workflow after check: [{'message': 'Initiate continuous monitoring of network activity to detect any unauthorized access attempts using sys_monitor tool.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of unauthorized access, immediately engage update_manager to apply latest security patches and mitigate vulnerabilities within 30 minutes.', 'tool_use': ['update_manager']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", "tool_use": ["course_selector"]}, {"message": "Evaluate the student's past performance to ensure recommended courses align with their capabilities and learning pace.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", 'tool_use': ['course_selector']}, {'message': "Evaluate the student's past performance to ensure recommended courses align with their capabilities and learning pace.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data to analyze trends and economic indicators specific to the new sector.", "tool_use": ["market_data_api"]}, {"message": "Use portfolio analysis tools to assess how this investment could impact overall portfolio risk and return based on historical performance and current market conditions.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data to analyze trends and economic indicators specific to the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Use portfolio analysis tools to assess how this investment could impact overall portfolio risk and return based on historical performance and current market conditions.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Access the medical database to review current treatments and research on managing chronic illnesses.", "tool_use": ["medical_database"]}, {"message": "Update the treatment plan based on the latest medical guidelines and patient's progress, then record changes in the patient's file.", "tool_use": ["MedicalRecordManagementTool"]}]
+workflow after check: [{'message': 'Access the medical database to review current treatments and research on managing chronic illnesses.', 'tool_use': ['medical_database']}, {'message': "Update the treatment plan based on the latest medical guidelines and patient's progress, then record changes in the patient's file.", 'tool_use': ['MedicalRecordManagementTool']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current mental health status and identify specific triggers of stress and anxiety.", "tool_use": ["therapy_guide"]}, {"message": "Design a personalized treatment plan including cognitive-behavioral techniques, relaxation exercises, and mindfulness practices.", "tool_use": ["mental_health_tracker"]}]
+workflow after check: [{'message': "Assess the patient's current mental health status and identify specific triggers of stress and anxiety.", 'tool_use': ['therapy_guide']}, {'message': 'Design a personalized treatment plan including cognitive-behavioral techniques, relaxation exercises, and mindfulness practices.', 'tool_use': ['mental_health_tracker']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data from the recent promotional campaigns to identify trends and customer behavior.", "tool_use": ["sales_analytics"]}, {"message": "Optimize inventory based on the insights gained from the sales analytics to ensure availability of high-demand products.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data from the recent promotional campaigns to identify trends and customer behavior.', 'tool_use': ['sales_analytics']}, {'message': 'Optimize inventory based on the insights gained from the sales analytics to ensure availability of high-demand products.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Optimize inventory based on the insights gained from sales analytics to better align with customer demand.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Optimize inventory based on the insights gained from sales analytics to better align with customer demand.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Retrieve and review the patient's medical records and current treatment plan from the medical database.", "tool_use": ["medical_database"]}, {"message": "Update the prescription based on the latest medical guidelines and verify the correctness of the new medication regimen using the MedicationVerificationTool.", "tool_use": ["prescription_manager", "MedicationVerificationTool"]}]
+workflow after check: [{'message': "Retrieve and review the patient's medical records and current treatment plan from the medical database.", 'tool_use': ['medical_database']}, {'message': 'Update the prescription based on the latest medical guidelines and verify the correctness of the new medication regimen using the MedicationVerificationTool.', 'tool_use': ['prescription_manager', 'MedicationVerificationTool']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Use the system_analyzer to evaluate the impact of various materials on the overall flight performance and safety.", "tool_use": ["system_analyzer"]}, {"message": "Simulate flights with the flight_simulator tool using the analyzed data from different materials to compare their real-time effects on aircraft performance.", "tool_use": ["flight_simulator"]}]
+workflow after check: [{'message': 'Use the system_analyzer to evaluate the impact of various materials on the overall flight performance and safety.', 'tool_use': ['system_analyzer']}, {'message': 'Simulate flights with the flight_simulator tool using the analyzed data from different materials to compare their real-time effects on aircraft performance.', 'tool_use': ['flight_simulator']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate real-time monitoring of network activity to detect unauthorized access attempts using the sys_monitor tool.", "tool_use": ["sys_monitor"]}, {"message": "Upon detecting any unauthorized access attempt, immediately employ countermeasures and notify security personnel for further investigation within 30 minutes. This involves analyzing the source of intrusion and blocking IP addresses or closing vulnerable ports as necessary.", "tool_use": ["sys_monitor"]}]
+workflow after check: [{'message': 'Initiate real-time monitoring of network activity to detect unauthorized access attempts using the sys_monitor tool.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detecting any unauthorized access attempt, immediately employ countermeasures and notify security personnel for further investigation within 30 minutes. This involves analyzing the source of intrusion and blocking IP addresses or closing vulnerable ports as necessary.', 'tool_use': ['sys_monitor']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotions.", "tool_use": ["sales_analytics"]}, {"message": "Adjust inventory levels based on the insights gained from the sales analytics to optimize stock for future promotions.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotions.', 'tool_use': ['sales_analytics']}, {'message': 'Adjust inventory levels based on the insights gained from the sales analytics to optimize stock for future promotions.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Use the course_selector tool to recommend courses based on the student's interests, academic background, and career goals.", "tool_use": ["course_selector"]}, {"message": "Analyze the student's past performance using the performance_evaluator tool to ensure that the recommended courses are suitable for their current academic level.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Use the course_selector tool to recommend courses based on the student's interests, academic background, and career goals.", 'tool_use': ['course_selector']}, {'message': "Analyze the student's past performance using the performance_evaluator tool to ensure that the recommended courses are suitable for their current academic level.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Review inventory levels post-campaign to assess stock movement and product performance.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Review inventory levels post-campaign to assess stock movement and product performance.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Research and gather articles about recent advancements in quantum computing from the past five years using research_database tool.", "tool_use": ["research_database"]}, {"message": "Create a concise summary of the key findings, breakthroughs, and trends in quantum computing based on the gathered literature using summarizer tool.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Research and gather articles about recent advancements in quantum computing from the past five years using research_database tool.', 'tool_use': ['research_database']}, {'message': 'Create a concise summary of the key findings, breakthroughs, and trends in quantum computing based on the gathered literature using summarizer tool.', 'tool_use': ['summarizer']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data from cameras and LiDAR to detect obstacles and surrounding environment.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize the path planning algorithm to reroute or adjust vehicle trajectory in real-time to avoid detected obstacles.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate sensor data from cameras and LiDAR to detect obstacles and surrounding environment.', 'tool_use': ['sensor_fusion']}, {'message': 'Optimize the path planning algorithm to reroute or adjust vehicle trajectory in real-time to avoid detected obstacles.', 'tool_use': ['path_planner']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate the drafting of the Non-Disclosure Agreement (NDA) by outlining the necessary clauses and legal terms that protect confidential information shared between the parties.", "tool_use": ["legal_doc_review"]}, {"message": "Review the drafted NDA using the legal_doc_review tool to ensure it complies with relevant laws, identifies any potential issues, and confirms accuracy of its content.", "tool_use": ["legal_doc_review"]}]
+workflow after check: [{'message': 'Initiate the drafting of the Non-Disclosure Agreement (NDA) by outlining the necessary clauses and legal terms that protect confidential information shared between the parties.', 'tool_use': ['legal_doc_review']}, {'message': 'Review the drafted NDA using the legal_doc_review tool to ensure it complies with relevant laws, identifies any potential issues, and confirms accuracy of its content.', 'tool_use': ['legal_doc_review']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Access a wide range of academic literature on recent advancements in quantum computing from the past five years.", "tool_use": ["research_database"]}, {"message": "Condense the findings into a concise and coherent summary highlighting key points and essential information about recent advancements in quantum computing.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access a wide range of academic literature on recent advancements in quantum computing from the past five years.', 'tool_use': ['research_database']}, {'message': 'Condense the findings into a concise and coherent summary highlighting key points and essential information about recent advancements in quantum computing.', 'tool_use': ['summarizer']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Access institutional repositories to gather recent academic research on advancements in quantum computing from the past five years.", "tool_use": ["RepositoryAccessTool"]}, {"message": "Use the summarizer tool to condense the findings and key points of the research into a concise summary.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access institutional repositories to gather recent academic research on advancements in quantum computing from the past five years.', 'tool_use': ['RepositoryAccessTool']}, {'message': 'Use the summarizer tool to condense the findings and key points of the research into a concise summary.', 'tool_use': ['summarizer']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Access academic literature related to advancements in quantum computing within the last five years.", "tool_use": ["research_database"]}, {"message": "Condense and summarize key findings, methodologies, and implications from the reviewed literature.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access academic literature related to advancements in quantum computing within the last five years.', 'tool_use': ['research_database']}, {'message': 'Condense and summarize key findings, methodologies, and implications from the reviewed literature.', 'tool_use': ['summarizer']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Access research_database to gather recent academic literature on quantum computing advancements from the past five years.", "tool_use": ["research_database"]}, {"message": "Use summarizer to condense the key findings and developments in quantum computing into a concise summary.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access research_database to gather recent academic literature on quantum computing advancements from the past five years.', 'tool_use': ['research_database']}, {'message': 'Use summarizer to condense the key findings and developments in quantum computing into a concise summary.', 'tool_use': ['summarizer']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Simulate and compare the flight performance of aircraft models using different materials.", "tool_use": ["flight_simulator"]}, {"message": "Analyze the system performance, safety, and efficiency of each model to determine the most suitable material for aerospace applications.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate and compare the flight performance of aircraft models using different materials.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze the system performance, safety, and efficiency of each model to determine the most suitable material for aerospace applications.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data using sensor_fusion tool to enhance perception of the vehicle's environment.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize path planning algorithms with real-time obstacle detection and avoidance strategies using path_planner tool.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': "Integrate sensor data using sensor_fusion tool to enhance perception of the vehicle's environment.", 'tool_use': ['sensor_fusion']}, {'message': 'Optimize path planning algorithms with real-time obstacle detection and avoidance strategies using path_planner tool.', 'tool_use': ['path_planner']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data to analyze trends and economic indicators within the new sector.", "tool_use": ["market_data_api"]}, {"message": "Use portfolio management tools to simulate investment scenarios, assessing how an allocation to this new sector could affect overall risk and return profiles.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data to analyze trends and economic indicators within the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Use portfolio management tools to simulate investment scenarios, assessing how an allocation to this new sector could affect overall risk and return profiles.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate the drafting of the Non-Disclosure Agreement (NDA) by outlining key clauses such as definitions, obligations of confidentiality, exclusions from confidentiality, term and termination conditions, remedies for breach, and governing law.", "tool_use": ["legal_doc_review"]}, {"message": "Review the drafted NDA using the legal_doc_review tool to ensure that all necessary clauses are included and that the document complies with relevant laws regarding confidentiality agreements in business partnerships.", "tool_use": ["legal_doc_review"]}]
+workflow after check: [{'message': 'Initiate the drafting of the Non-Disclosure Agreement (NDA) by outlining key clauses such as definitions, obligations of confidentiality, exclusions from confidentiality, term and termination conditions, remedies for breach, and governing law.', 'tool_use': ['legal_doc_review']}, {'message': 'Review the drafted NDA using the legal_doc_review tool to ensure that all necessary clauses are included and that the document complies with relevant laws regarding confidentiality agreements in business partnerships.', 'tool_use': ['legal_doc_review']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Gather the student's interests, academic background, and career goals to understand their educational needs.", "tool_use": ["course_selector"]}, {"message": "Analyze the recommended courses based on availability, prerequisites, and the student's current academic standing.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Gather the student's interests, academic background, and career goals to understand their educational needs.", 'tool_use': ['course_selector']}, {'message': "Analyze the recommended courses based on availability, prerequisites, and the student's current academic standing.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate drafting of the Non-Disclosure Agreement (NDA) by outlining key clauses such as definitions, obligations, exclusions, and duration.", "tool_use": ["LegalAdviceTool"]}, {"message": "Review the drafted NDA to ensure it complies with relevant laws and regulations, identifying any potential issues or gaps in the document.", "tool_use": ["legal_doc_review", "compliance_checker"]}]
+workflow after check: [{'message': 'Initiate drafting of the Non-Disclosure Agreement (NDA) by outlining key clauses such as definitions, obligations, exclusions, and duration.', 'tool_use': ['LegalAdviceTool']}, {'message': 'Review the drafted NDA to ensure it complies with relevant laws and regulations, identifying any potential issues or gaps in the document.', 'tool_use': ['legal_doc_review', 'compliance_checker']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Access academic literature on recent advancements in quantum computing from the past five years using the research_database tool.", "tool_use": ["research_database"]}, {"message": "Condense and summarize the key findings, methodologies, and implications of the selected studies into a coherent summary using the summarizer tool.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access academic literature on recent advancements in quantum computing from the past five years using the research_database tool.', 'tool_use': ['research_database']}, {'message': 'Condense and summarize the key findings, methodologies, and implications of the selected studies into a coherent summary using the summarizer tool.', 'tool_use': ['summarizer']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate drafting by outlining the basic elements of the NDA, including defining parties, confidential information, obligations, exceptions, term and termination, remedies, and governing law.", "tool_use": []}, {"message": "Use legal_doc_review to ensure that all clauses are clear, precise, and legally sound, making adjustments as necessary to align with best practices in contract law.", "tool_use": ["legal_doc_review"]}]
+workflow after check: [{'message': 'Initiate drafting by outlining the basic elements of the NDA, including defining parties, confidential information, obligations, exceptions, term and termination, remedies, and governing law.', 'tool_use': []}, {'message': 'Use legal_doc_review to ensure that all clauses are clear, precise, and legally sound, making adjustments as necessary to align with best practices in contract law.', 'tool_use': ['legal_doc_review']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze the sales data to identify trends and patterns related to recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Review inventory levels post-campaign to assess stock impact and optimize future stock management.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze the sales data to identify trends and patterns related to recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Review inventory levels post-campaign to assess stock impact and optimize future stock management.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current level of stress and anxiety, and identify specific triggers.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized therapy plan incorporating coping mechanisms such as mindfulness, deep breathing exercises, and cognitive restructuring.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current level of stress and anxiety, and identify specific triggers.", 'tool_use': ['mental_health_tracker']}, {'message': 'Design a personalized therapy plan incorporating coping mechanisms such as mindfulness, deep breathing exercises, and cognitive restructuring.', 'tool_use': ['therapy_guide']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Access medical_database to review current best practices and treatments for the patient's specific chronic illness.", "tool_use": ["medical_database"]}, {"message": "Use prescription_manager to check if any updates are needed in the patient's medication regimen based on new guidelines or availability of better treatment options.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': "Access medical_database to review current best practices and treatments for the patient's specific chronic illness.", 'tool_use': ['medical_database']}, {'message': "Use prescription_manager to check if any updates are needed in the patient's medication regimen based on new guidelines or availability of better treatment options.", 'tool_use': ['prescription_manager']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Access and gather recent academic literature on advancements in quantum computing within the last five years using a comprehensive research database.", "tool_use": ["research_database"]}, {"message": "Condense the gathered information into a coherent summary, emphasizing key breakthroughs, new technologies, and significant developments in the field of quantum computing.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access and gather recent academic literature on advancements in quantum computing within the last five years using a comprehensive research database.', 'tool_use': ['research_database']}, {'message': 'Condense the gathered information into a coherent summary, emphasizing key breakthroughs, new technologies, and significant developments in the field of quantum computing.', 'tool_use': ['summarizer']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Understand the student's interests, academic background, and career goals to provide tailored course recommendations.", "tool_use": ["course_selector"]}, {"message": "Review the student's past performance, including grades and attendance, to ensure the recommended courses align with their abilities and potential areas for improvement.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Understand the student's interests, academic background, and career goals to provide tailored course recommendations.", 'tool_use': ['course_selector']}, {'message': "Review the student's past performance, including grades and attendance, to ensure the recommended courses align with their abilities and potential areas for improvement.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data using sensor fusion to enhance perception and decision-making.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize path planning algorithms to ensure safe navigation and avoid collisions.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate sensor data using sensor fusion to enhance perception and decision-making.', 'tool_use': ['sensor_fusion']}, {'message': 'Optimize path planning algorithms to ensure safe navigation and avoid collisions.', 'tool_use': ['path_planner']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current mental state and identify specific stressors contributing to their anxiety.", "tool_use": ["therapy_guide"]}, {"message": "Design a personalized treatment plan using cognitive-behavioral techniques, mindfulness exercises, and relaxation methods suggested by the therapy guide.", "tool_use": ["mental_health_tracker"]}]
+workflow after check: [{'message': "Assess the patient's current mental state and identify specific stressors contributing to their anxiety.", 'tool_use': ['therapy_guide']}, {'message': 'Design a personalized treatment plan using cognitive-behavioral techniques, mindfulness exercises, and relaxation methods suggested by the therapy guide.', 'tool_use': ['mental_health_tracker']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor fusion algorithms to combine data from cameras, radar, and LiDAR to create a comprehensive 360-degree view around the vehicle.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize path planning algorithms using real-time sensor data to predict potential collisions and adjust the vehicle's trajectory accordingly.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate sensor fusion algorithms to combine data from cameras, radar, and LiDAR to create a comprehensive 360-degree view around the vehicle.', 'tool_use': ['sensor_fusion']}, {'message': "Optimize path planning algorithms using real-time sensor data to predict potential collisions and adjust the vehicle's trajectory accordingly.", 'tool_use': ['path_planner']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous monitoring of network activity to detect unauthorized access attempts using sys_monitor tool.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of any unauthorized access attempt, immediately apply necessary security measures and update system firmware for enhanced protection using FirmwareUpdateTool.", "tool_use": ["FirmwareUpdateTool"]}]
+workflow after check: [{'message': 'Initiate continuous monitoring of network activity to detect unauthorized access attempts using sys_monitor tool.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of any unauthorized access attempt, immediately apply necessary security measures and update system firmware for enhanced protection using FirmwareUpdateTool.', 'tool_use': ['FirmwareUpdateTool']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and customer behavior during recent promotions.", "tool_use": ["sales_analytics"]}, {"message": "Optimize inventory based on the insights gained from sales analytics to better align with customer demand.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and customer behavior during recent promotions.', 'tool_use': ['sales_analytics']}, {'message': 'Optimize inventory based on the insights gained from sales analytics to better align with customer demand.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Simulate flight conditions to test material performance under various scenarios.", "tool_use": ["flight_simulator"]}, {"message": "Analyze system data from simulations to evaluate the safety and efficiency of materials.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate flight conditions to test material performance under various scenarios.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze system data from simulations to evaluate the safety and efficiency of materials.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data from recent promotional campaigns to identify trends, customer behavior, and marketing effectiveness.", "tool_use": ["sales_analytics"]}, {"message": "Optimize inventory based on the insights gained from the sales analytics report to ensure product availability during future promotions.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data from recent promotional campaigns to identify trends, customer behavior, and marketing effectiveness.', 'tool_use': ['sales_analytics']}, {'message': 'Optimize inventory based on the insights gained from the sales analytics report to ensure product availability during future promotions.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Implement sensor fusion to integrate data from multiple sensors for improved object detection and tracking.", "tool_use": ["sensor_fusion"]}, {"message": "Utilize the path planner tool to adjust the vehicle's trajectory in real-time, ensuring safe navigation around detected obstacles.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Implement sensor fusion to integrate data from multiple sensors for improved object detection and tracking.', 'tool_use': ['sensor_fusion']}, {'message': "Utilize the path planner tool to adjust the vehicle's trajectory in real-time, ensuring safe navigation around detected obstacles.", 'tool_use': ['path_planner']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous network activity monitoring to detect potential security breaches or unauthorized access.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of unauthorized access, immediately initiate malware protection measures and system updates to prevent further intrusion.", "tool_use": ["MalwareProtectionTool", "update_manager"]}]
+workflow after check: [{'message': 'Initiate continuous network activity monitoring to detect potential security breaches or unauthorized access.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of unauthorized access, immediately initiate malware protection measures and system updates to prevent further intrusion.', 'tool_use': ['MalwareProtectionTool', 'update_manager']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current mental health status, identify specific stressors, and understand their previous coping mechanisms.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized therapy plan including cognitive-behavioral techniques, mindfulness exercises, and relaxation strategies based on the assessment.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current mental health status, identify specific stressors, and understand their previous coping mechanisms.", 'tool_use': ['mental_health_tracker']}, {'message': 'Design a personalized therapy plan including cognitive-behavioral techniques, mindfulness exercises, and relaxation strategies based on the assessment.', 'tool_use': ['therapy_guide']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns associated with recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Review inventory levels post-campaign to assess stock movement and overstock situations.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns associated with recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Review inventory levels post-campaign to assess stock movement and overstock situations.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous monitoring for any signs of unauthorized access or unusual activity on the company's network using the system monitoring tool.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of an unauthorized access attempt, immediately apply necessary security measures and patches to prevent further intrusion. Update the system status within 30 minutes of detection.", "tool_use": ["update_manager"]}]
+workflow after check: [{'message': "Initiate continuous monitoring for any signs of unauthorized access or unusual activity on the company's network using the system monitoring tool.", 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of an unauthorized access attempt, immediately apply necessary security measures and patches to prevent further intrusion. Update the system status within 30 minutes of detection.', 'tool_use': ['update_manager']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", "tool_use": ["course_selector"]}, {"message": "Analyze the student's previous performance, grades, and attendance to ensure that the recommended courses are academically appropriate.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", 'tool_use': ['course_selector']}, {'message': "Analyze the student's previous performance, grades, and attendance to ensure that the recommended courses are academically appropriate.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Draft the initial version of the non-disclosure agreement (NDA) ensuring it covers essential clauses such as definitions, obligations, exclusions, duration, and termination.", "tool_use": ["legal_doc_review"]}, {"message": "Review the drafted NDA for legal compliance and to identify any potential issues or missing clauses that could affect the enforceability of the agreement.", "tool_use": ["compliance_checker"]}]
+workflow after check: [{'message': 'Draft the initial version of the non-disclosure agreement (NDA) ensuring it covers essential clauses such as definitions, obligations, exclusions, duration, and termination.', 'tool_use': ['legal_doc_review']}, {'message': 'Review the drafted NDA for legal compliance and to identify any potential issues or missing clauses that could affect the enforceability of the agreement.', 'tool_use': ['compliance_checker']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Simulate the flight characteristics of an aircraft model using different materials to assess their impact on performance.", "tool_use": ["flight_simulator"]}, {"message": "Analyze the system-level effects of these materials, including safety and operational efficiency, using detailed data from simulations.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate the flight characteristics of an aircraft model using different materials to assess their impact on performance.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze the system-level effects of these materials, including safety and operational efficiency, using detailed data from simulations.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Create a draft of the Non-Disclosure Agreement (NDA) by integrating standard clauses and tailoring it to the specific requirements of the business partnership.", "tool_use": ["legal_doc_review"]}, {"message": "Review the drafted NDA using the legal_doc_review tool to identify any key clauses that may need adjustment or clarification, ensuring it complies with relevant laws and adequately protects confidential information.", "tool_use": ["compliance_checker"]}]
+workflow after check: [{'message': 'Create a draft of the Non-Disclosure Agreement (NDA) by integrating standard clauses and tailoring it to the specific requirements of the business partnership.', 'tool_use': ['legal_doc_review']}, {'message': 'Review the drafted NDA using the legal_doc_review tool to identify any key clauses that may need adjustment or clarification, ensuring it complies with relevant laws and adequately protects confidential information.', 'tool_use': ['compliance_checker']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous network activity monitoring to detect potential security breaches.", "tool_use": ["sys_monitor"]}, {"message": "Upon detecting unauthorized access, immediately elevate privileges to root level for administrative actions.", "tool_use": ["AccessControlTool"]}]
+workflow after check: [{'message': 'Initiate continuous network activity monitoring to detect potential security breaches.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detecting unauthorized access, immediately elevate privileges to root level for administrative actions.', 'tool_use': ['AccessControlTool']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current stress levels and triggers using mental_health_tracker to gather baseline data.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized therapy plan focusing on stress management techniques by consulting therapy_guide, ensuring it aligns with the patient's specific needs.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current stress levels and triggers using mental_health_tracker to gather baseline data.", 'tool_use': ['mental_health_tracker']}, {'message': "Design a personalized therapy plan focusing on stress management techniques by consulting therapy_guide, ensuring it aligns with the patient's specific needs.", 'tool_use': ['therapy_guide']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data for the new sector to analyze trends, stock prices, and economic indicators.", "tool_use": ["market_data_api"]}, {"message": "Use portfolio management tools to assess how investments in this sector could impact overall asset allocation and risk profile.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data for the new sector to analyze trends, stock prices, and economic indicators.', 'tool_use': ['market_data_api']}, {'message': 'Use portfolio management tools to assess how investments in this sector could impact overall asset allocation and risk profile.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Access the medical database to review current research and treatment guidelines for the specific chronic illness affecting the patient.", "tool_use": ["medical_database"]}, {"message": "Update the prescription manager with any new or adjusted medications based on the latest standards of care and patient's current condition.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': 'Access the medical database to review current research and treatment guidelines for the specific chronic illness affecting the patient.', 'tool_use': ['medical_database']}, {'message': "Update the prescription manager with any new or adjusted medications based on the latest standards of care and patient's current condition.", 'tool_use': ['prescription_manager']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate data from multiple sensors including LiDAR, radar, and cameras to create a comprehensive 360-degree view around the vehicle.", "tool_use": ["sensor_fusion"]}, {"message": "Utilize the fused sensor data to identify potential obstacles and predict their movements. Implement algorithms to calculate safe distances and response times for avoiding collisions.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate data from multiple sensors including LiDAR, radar, and cameras to create a comprehensive 360-degree view around the vehicle.', 'tool_use': ['sensor_fusion']}, {'message': 'Utilize the fused sensor data to identify potential obstacles and predict their movements. Implement algorithms to calculate safe distances and response times for avoiding collisions.', 'tool_use': ['path_planner']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze current market trends and economic indicators related to the new sector to assess potential growth and volatility.", "tool_use": ["market_data_api"]}, {"message": "Evaluate historical performance data and projected risks for investments in the new sector, including diversification impact on existing portfolios.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Analyze current market trends and economic indicators related to the new sector to assess potential growth and volatility.', 'tool_use': ['market_data_api']}, {'message': 'Evaluate historical performance data and projected risks for investments in the new sector, including diversification impact on existing portfolios.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Simulate flight conditions to evaluate the impact of material properties on aircraft performance.", "tool_use": ["flight_simulator"]}, {"message": "Analyze system-level effects and assess safety parameters associated with each material under various flight scenarios.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate flight conditions to evaluate the impact of material properties on aircraft performance.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze system-level effects and assess safety parameters associated with each material under various flight scenarios.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Access academic literature on recent advancements in quantum computing from the past five years using research_database.", "tool_use": ["research_database"]}, {"message": "Condense the findings into a concise summary focusing on key breakthroughs, technologies, and implications using summarizer.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access academic literature on recent advancements in quantum computing from the past five years using research_database.', 'tool_use': ['research_database']}, {'message': 'Condense the findings into a concise summary focusing on key breakthroughs, technologies, and implications using summarizer.', 'tool_use': ['summarizer']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current mental health status and identify specific stressors and triggers.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized therapy plan using evidence-based techniques tailored to the patient's needs.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current mental health status and identify specific stressors and triggers.", 'tool_use': ['mental_health_tracker']}, {'message': "Design a personalized therapy plan using evidence-based techniques tailored to the patient's needs.", 'tool_use': ['therapy_guide']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data from cameras and LiDAR to detect obstacles in the vehicle's path.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize path planning algorithms to reroute or stop the vehicle safely when an obstacle is detected.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': "Integrate sensor data from cameras and LiDAR to detect obstacles in the vehicle's path.", 'tool_use': ['sensor_fusion']}, {'message': 'Optimize path planning algorithms to reroute or stop the vehicle safely when an obstacle is detected.', 'tool_use': ['path_planner']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data to analyze current trends and historical performance of the new sector.", "tool_use": ["market_data_api"]}, {"message": "Use portfolio management tools to simulate the impact of adding this sector to existing portfolios, assessing risk diversification and potential return enhancement.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data to analyze current trends and historical performance of the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Use portfolio management tools to simulate the impact of adding this sector to existing portfolios, assessing risk diversification and potential return enhancement.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Retrieve recent academic literature focusing on advancements in quantum computing within the last five years.", "tool_use": ["research_database"]}, {"message": "Condense the retrieved research articles into a comprehensive summary, emphasizing key findings and developments.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Retrieve recent academic literature focusing on advancements in quantum computing within the last five years.', 'tool_use': ['research_database']}, {'message': 'Condense the retrieved research articles into a comprehensive summary, emphasizing key findings and developments.', 'tool_use': ['summarizer']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Draft the initial Non-Disclosure Agreement (NDA) document, including clauses related to confidentiality obligations, definitions of confidential information, exclusions from confidentiality, obligations of the receiving party, term and termination conditions, remedies for breach, governing law, and dispute resolution methods.", "tool_use": []}, {"message": "Review the drafted NDA using legal_doc_review tool to identify any key clauses that may need adjustment or clarification, ensuring accuracy and compliance with relevant laws.", "tool_use": ["legal_doc_review"]}, {"message": "Make necessary adjustments based on the review provided by legal_doc_review. Confirm that all legal requirements are met and the document is ready for presentation to the potential business partner.", "tool_use": []}]
+workflow after check: [{'message': 'Draft the initial Non-Disclosure Agreement (NDA) document, including clauses related to confidentiality obligations, definitions of confidential information, exclusions from confidentiality, obligations of the receiving party, term and termination conditions, remedies for breach, governing law, and dispute resolution methods.', 'tool_use': []}, {'message': 'Review the drafted NDA using legal_doc_review tool to identify any key clauses that may need adjustment or clarification, ensuring accuracy and compliance with relevant laws.', 'tool_use': ['legal_doc_review']}, {'message': 'Make necessary adjustments based on the review provided by legal_doc_review. Confirm that all legal requirements are met and the document is ready for presentation to the potential business partner.', 'tool_use': []}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Retrieve current medical records and review the patient's history, symptoms, and previous treatments.", "tool_use": ["medical_database"]}, {"message": "Adjust medication dosages or add new medications as necessary based on the latest health status of the patient.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': "Retrieve current medical records and review the patient's history, symptoms, and previous treatments.", 'tool_use': ['medical_database']}, {'message': 'Adjust medication dosages or add new medications as necessary based on the latest health status of the patient.', 'tool_use': ['prescription_manager']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", "tool_use": ["course_selector"]}, {"message": "Evaluate the student's performance based on previous grades and attendance to ensure recommended courses are academically appropriate.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", 'tool_use': ['course_selector']}, {'message': "Evaluate the student's performance based on previous grades and attendance to ensure recommended courses are academically appropriate.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and customer behavior during promotional periods.", "tool_use": ["sales_analytics"]}, {"message": "Review inventory movements correlated with promotion periods to assess stock management efficiency.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and customer behavior during promotional periods.', 'tool_use': ['sales_analytics']}, {'message': 'Review inventory movements correlated with promotion periods to assess stock management efficiency.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Access academic literature on recent advancements in quantum computing from the past five years using a research database tool.", "tool_use": ["research_database"]}, {"message": "Create a concise summary of the key findings and advancements in quantum computing identified from the accessed academic literature.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access academic literature on recent advancements in quantum computing from the past five years using a research database tool.', 'tool_use': ['research_database']}, {'message': 'Create a concise summary of the key findings and advancements in quantum computing identified from the accessed academic literature.', 'tool_use': ['summarizer']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Consult the medical_database to review current treatments and research for the patient's specific chronic illness.", "tool_use": ["medical_database"]}, {"message": "Use the TreatmentVerificationTool to assess the effectiveness of the current treatment plan and identify any potential improvements or necessary adjustments.", "tool_use": ["TreatmentVerificationTool"]}]
+workflow after check: [{'message': "Consult the medical_database to review current treatments and research for the patient's specific chronic illness.", 'tool_use': ['medical_database']}, {'message': 'Use the TreatmentVerificationTool to assess the effectiveness of the current treatment plan and identify any potential improvements or necessary adjustments.', 'tool_use': ['TreatmentVerificationTool']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate the drafting process by outlining the basic structure of the NDA, including parties involved, definitions, obligations, exclusions, and term.", "tool_use": []}, {"message": "Utilize LegalConsultationTool to ensure that the draft aligns with current legal standards and practices for NDAs in business partnerships.", "tool_use": ["LegalConsultationTool"]}, {"message": "Review the document using legal_doc_review to identify any key clauses or issues that need adjustment for legal accuracy and compliance.", "tool_use": ["legal_doc_review"]}, {"message": "Make necessary adjustments based on the feedback from LegalConsultationTool and legal_doc_review, ensuring all legal requirements are met.", "tool_use": []}, {"message": "Finalize the document by incorporating all recommended changes and preparing it for signing.", "tool_use": []}]
+workflow after check: [{'message': 'Initiate the drafting process by outlining the basic structure of the NDA, including parties involved, definitions, obligations, exclusions, and term.', 'tool_use': []}, {'message': 'Utilize LegalConsultationTool to ensure that the draft aligns with current legal standards and practices for NDAs in business partnerships.', 'tool_use': ['LegalConsultationTool']}, {'message': 'Review the document using legal_doc_review to identify any key clauses or issues that need adjustment for legal accuracy and compliance.', 'tool_use': ['legal_doc_review']}, {'message': 'Make necessary adjustments based on the feedback from LegalConsultationTool and legal_doc_review, ensuring all legal requirements are met.', 'tool_use': []}, {'message': 'Finalize the document by incorporating all recommended changes and preparing it for signing.', 'tool_use': []}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Use course_selector tool to recommend courses based on the student's interests, academic background, and career goals.", "tool_use": ["course_selector"]}, {"message": "Evaluate the student's past performance using performance_evaluator to ensure the recommended courses are suitable for their academic level.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Use course_selector tool to recommend courses based on the student's interests, academic background, and career goals.", 'tool_use': ['course_selector']}, {'message': "Evaluate the student's past performance using performance_evaluator to ensure the recommended courses are suitable for their academic level.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate drafting of the Non-Disclosure Agreement (NDA) by outlining key components such as definitions, obligations, exclusions, duration, and termination.", "tool_use": []}, {"message": "Review the drafted NDA to ensure clarity, accuracy, and compliance with relevant laws using the legal_doc_review tool.", "tool_use": ["legal_doc_review"]}, {"message": "Make necessary adjustments based on feedback from the legal_doc_review tool to finalize the agreement.", "tool_use": []}]
+workflow after check: [{'message': 'Initiate drafting of the Non-Disclosure Agreement (NDA) by outlining key components such as definitions, obligations, exclusions, duration, and termination.', 'tool_use': []}, {'message': 'Review the drafted NDA to ensure clarity, accuracy, and compliance with relevant laws using the legal_doc_review tool.', 'tool_use': ['legal_doc_review']}, {'message': 'Make necessary adjustments based on feedback from the legal_doc_review tool to finalize the agreement.', 'tool_use': []}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Draft the initial version of the Non-Disclosure Agreement (NDA) ensuring it covers essential clauses such as definitions, obligations, exclusions, term and termination, remedies, governing law, and dispute resolution.", "tool_use": ["legal_doc_review"]}, {"message": "Review the drafted NDA for legal compliance, identifying any key clauses that may need adjustment or clarification to ensure they are accurate and compliant with relevant laws.", "tool_use": ["compliance_checker"]}]
+workflow after check: [{'message': 'Draft the initial version of the Non-Disclosure Agreement (NDA) ensuring it covers essential clauses such as definitions, obligations, exclusions, term and termination, remedies, governing law, and dispute resolution.', 'tool_use': ['legal_doc_review']}, {'message': 'Review the drafted NDA for legal compliance, identifying any key clauses that may need adjustment or clarification to ensure they are accurate and compliant with relevant laws.', 'tool_use': ['compliance_checker']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotions.", "tool_use": ["sales_analytics"]}, {"message": "Review inventory levels post-promotion to assess stock depletion rates and reorder needs.", "tool_use": ["inventory_manager"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotions.', 'tool_use': ['sales_analytics']}, {'message': 'Review inventory levels post-promotion to assess stock depletion rates and reorder needs.', 'tool_use': ['inventory_manager']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data from cameras and LiDAR to detect obstacles in the vehicle's path.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize path planning algorithms to create safe routes that avoid detected obstacles.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': "Integrate sensor data from cameras and LiDAR to detect obstacles in the vehicle's path.", 'tool_use': ['sensor_fusion']}, {'message': 'Optimize path planning algorithms to create safe routes that avoid detected obstacles.', 'tool_use': ['path_planner']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Use the system_analyzer to evaluate the structural integrity and efficiency of various materials under different flight conditions.", "tool_use": ["system_analyzer"]}, {"message": "After analyzing, apply the findings to adjust designs or recommend material selections using the flight_simulator for performance validation.", "tool_use": ["flight_simulator"]}]
+workflow after check: [{'message': 'Use the system_analyzer to evaluate the structural integrity and efficiency of various materials under different flight conditions.', 'tool_use': ['system_analyzer']}, {'message': 'After analyzing, apply the findings to adjust designs or recommend material selections using the flight_simulator for performance validation.', 'tool_use': ['flight_simulator']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current coping mechanisms and identify areas of improvement.", "tool_use": ["therapy_guide"]}, {"message": "Design a personalized treatment plan using evidence-based techniques from cognitive-behavioral therapy.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current coping mechanisms and identify areas of improvement.", 'tool_use': ['therapy_guide']}, {'message': 'Design a personalized treatment plan using evidence-based techniques from cognitive-behavioral therapy.', 'tool_use': ['therapy_guide']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate the drafting process by outlining the essential components of a Non-Disclosure Agreement (NDA), including definitions, obligations, exclusions, and duration.", "tool_use": []}, {"message": "Review the drafted NDA using the legal_doc_review tool to identify key clauses and potential issues, ensuring accuracy and compliance with relevant laws.", "tool_use": ["legal_doc_review"]}, {"message": "Utilize the compliance_checker tool to verify that the NDA complies with applicable laws and regulations, noting any necessary adjustments.", "tool_use": ["compliance_checker"]}, {"message": "Finalize the NDA by incorporating feedback from the legal_doc_review and compliance_checker tools, ensuring all legal requirements are met.", "tool_use": []}]
+workflow after check: [{'message': 'Initiate the drafting process by outlining the essential components of a Non-Disclosure Agreement (NDA), including definitions, obligations, exclusions, and duration.', 'tool_use': []}, {'message': 'Review the drafted NDA using the legal_doc_review tool to identify key clauses and potential issues, ensuring accuracy and compliance with relevant laws.', 'tool_use': ['legal_doc_review']}, {'message': 'Utilize the compliance_checker tool to verify that the NDA complies with applicable laws and regulations, noting any necessary adjustments.', 'tool_use': ['compliance_checker']}, {'message': 'Finalize the NDA by incorporating feedback from the legal_doc_review and compliance_checker tools, ensuring all legal requirements are met.', 'tool_use': []}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Access medical_database to review current treatments and research on the patient's chronic illness.", "tool_use": ["medical_database"]}, {"message": "Update the treatment plan based on the latest medical information and manage any necessary prescriptions through prescription_manager.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': "Access medical_database to review current treatments and research on the patient's chronic illness.", 'tool_use': ['medical_database']}, {'message': 'Update the treatment plan based on the latest medical information and manage any necessary prescriptions through prescription_manager.', 'tool_use': ['prescription_manager']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Use the flight_simulator to create models with different materials and simulate their performance under various conditions.", "tool_use": ["flight_simulator"]}, {"message": "Apply the system_analyzer to evaluate the safety, efficiency, and durability of each model, comparing the results across materials.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Use the flight_simulator to create models with different materials and simulate their performance under various conditions.', 'tool_use': ['flight_simulator']}, {'message': 'Apply the system_analyzer to evaluate the safety, efficiency, and durability of each model, comparing the results across materials.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Gather information about the student's interests, academic background, and career goals.", "tool_use": []}, {"message": "Use the course_selector tool to recommend suitable courses based on the collected information.", "tool_use": ["course_selector"]}]
+workflow after check: [{'message': "Gather information about the student's interests, academic background, and career goals.", 'tool_use': []}, {'message': 'Use the course_selector tool to recommend suitable courses based on the collected information.', 'tool_use': ['course_selector']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Research and gather articles about recent advancements in quantum computing from the past five years.", "tool_use": ["research_database"]}, {"message": "Create a summary of the key findings, breakthroughs, and trends in quantum computing based on the gathered articles.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Research and gather articles about recent advancements in quantum computing from the past five years.', 'tool_use': ['research_database']}, {'message': 'Create a summary of the key findings, breakthroughs, and trends in quantum computing based on the gathered articles.', 'tool_use': ['summarizer']}]
+[Scheduler] example/system_admin_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/system_admin_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous monitoring of network activity to detect potential unauthorized access attempts.", "tool_use": ["sys_monitor"]}, {"message": "Upon detecting an unauthorized access attempt, immediately initiate system checks and apply necessary security patches or updates to prevent further breaches.", "tool_use": ["update_manager"]}]
+workflow after check: [{'message': 'Initiate continuous monitoring of network activity to detect potential unauthorized access attempts.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detecting an unauthorized access attempt, immediately initiate system checks and apply necessary security patches or updates to prevent further breaches.', 'tool_use': ['update_manager']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate continuous monitoring of network activity to detect potential security breaches or unauthorized access.", "tool_use": ["sys_monitor"]}, {"message": "Upon detection of any unauthorized access attempts, immediately apply necessary countermeasures and updates to close off the vulnerabilities.", "tool_use": ["update_manager"]}]
+workflow after check: [{'message': 'Initiate continuous monitoring of network activity to detect potential security breaches or unauthorized access.', 'tool_use': ['sys_monitor']}, {'message': 'Upon detection of any unauthorized access attempts, immediately apply necessary countermeasures and updates to close off the vulnerabilities.', 'tool_use': ['update_manager']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Access medical_database to review current treatment protocols and research updates relevant to the patient's chronic illness.", "tool_use": ["medical_database"]}, {"message": "Use prescription_manager to check the patient's medication history, verify current prescriptions, and adjust dosages or medications based on the latest guidelines from medical_database.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': "Access medical_database to review current treatment protocols and research updates relevant to the patient's chronic illness.", 'tool_use': ['medical_database']}, {'message': "Use prescription_manager to check the patient's medication history, verify current prescriptions, and adjust dosages or medications based on the latest guidelines from medical_database.", 'tool_use': ['prescription_manager']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate a simulation using various materials to assess their impact on flight performance.", "tool_use": ["flight_simulator"]}, {"message": "Analyze the system outputs from the simulations, focusing on material properties and their effects on safety and efficiency.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Initiate a simulation using various materials to assess their impact on flight performance.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze the system outputs from the simulations, focusing on material properties and their effects on safety and efficiency.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Analyze sales data to identify trends and patterns related to recent promotional campaigns.", "tool_use": ["sales_analytics"]}, {"message": "Review customer feedback and product reviews to gauge customer sentiment during the campaign period.", "tool_use": ["ReviewManagementTool"]}]
+workflow after check: [{'message': 'Analyze sales data to identify trends and patterns related to recent promotional campaigns.', 'tool_use': ['sales_analytics']}, {'message': 'Review customer feedback and product reviews to gauge customer sentiment during the campaign period.', 'tool_use': ['ReviewManagementTool']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current level of stress and anxiety, and identify specific triggers.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized therapy plan including cognitive-behavioral techniques and relaxation methods.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current level of stress and anxiety, and identify specific triggers.", 'tool_use': ['mental_health_tracker']}, {'message': 'Design a personalized therapy plan including cognitive-behavioral techniques and relaxation methods.', 'tool_use': ['therapy_guide']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", "tool_use": ["course_selector"]}, {"message": "Evaluate the student's performance based on previous grades and attendance records to suggest courses that match their capability.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", 'tool_use': ['course_selector']}, {'message': "Evaluate the student's performance based on previous grades and attendance records to suggest courses that match their capability.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Simulate flight conditions with various materials to assess their impact on aircraft performance.", "tool_use": ["flight_simulator"]}, {"message": "Analyze system data to evaluate material performance under simulated flight conditions and identify potential improvements.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Simulate flight conditions with various materials to assess their impact on aircraft performance.', 'tool_use': ['flight_simulator']}, {'message': 'Analyze system data to evaluate material performance under simulated flight conditions and identify potential improvements.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data for the new sector to analyze trends, stock prices, and economic indicators.", "tool_use": ["market_data_api"]}, {"message": "Use portfolio management tools to assess the impact of adding the new sector on overall portfolio risk and potential returns.", "tool_use": ["PortfolioManagementTool"]}]
+workflow after check: [{'message': 'Access real-time market data for the new sector to analyze trends, stock prices, and economic indicators.', 'tool_use': ['market_data_api']}, {'message': 'Use portfolio management tools to assess the impact of adding the new sector on overall portfolio risk and potential returns.', 'tool_use': ['PortfolioManagementTool']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", "tool_use": ["course_selector"]}, {"message": "Evaluate the student's past performance to suggest courses that match their academic level and potential.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Gather information about the student's interests, academic background, and career goals to recommend suitable courses.", 'tool_use': ['course_selector']}, {'message': "Evaluate the student's past performance to suggest courses that match their academic level and potential.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Use the system_analyzer tool to evaluate the safety and performance of various components made from different materials.", "tool_use": ["system_analyzer"]}, {"message": "After analyzing the data, use the flight_simulator tool to simulate flights with these materials under different conditions to further assess their performance.", "tool_use": ["flight_simulator"]}]
+workflow after check: [{'message': 'Use the system_analyzer tool to evaluate the safety and performance of various components made from different materials.', 'tool_use': ['system_analyzer']}, {'message': 'After analyzing the data, use the flight_simulator tool to simulate flights with these materials under different conditions to further assess their performance.', 'tool_use': ['flight_simulator']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Use the flight_simulator to model aircraft with different materials and simulate their flight performance.", "tool_use": ["flight_simulator"]}, {"message": "Utilize the system_analyzer to conduct a detailed analysis on the results, focusing on the impact of material properties on safety and efficiency.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Use the flight_simulator to model aircraft with different materials and simulate their flight performance.', 'tool_use': ['flight_simulator']}, {'message': 'Utilize the system_analyzer to conduct a detailed analysis on the results, focusing on the impact of material properties on safety and efficiency.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data using sensor_fusion tool to create a comprehensive environmental model around the vehicle.", "tool_use": ["sensor_fusion"]}, {"message": "Utilize path_planner tool to adjust the vehicle's trajectory dynamically, ensuring safe distances from obstacles and avoiding collisions.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate sensor data using sensor_fusion tool to create a comprehensive environmental model around the vehicle.', 'tool_use': ['sensor_fusion']}, {'message': "Utilize path_planner tool to adjust the vehicle's trajectory dynamically, ensuring safe distances from obstacles and avoiding collisions.", 'tool_use': ['path_planner']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Access academic literature on recent advancements in quantum computing from the past five years using a research database tool.", "tool_use": ["research_database"]}, {"message": "Summarize the key findings, breakthroughs, and trends identified in the accessed literature to provide an overview of advancements in quantum computing.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Access academic literature on recent advancements in quantum computing from the past five years using a research database tool.', 'tool_use': ['research_database']}, {'message': 'Summarize the key findings, breakthroughs, and trends identified in the accessed literature to provide an overview of advancements in quantum computing.', 'tool_use': ['summarizer']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Access the patient's medical history to review their current condition, previous treatments, and medication records.", "tool_use": ["RecordAccessTool"]}, {"message": "Utilize the medical database to explore updated research on the chronic illness, potential new treatments, and drug efficacy data.", "tool_use": ["medical_database"]}, {"message": "Adjust the treatment plan based on the latest medical information and patient's health status.", "tool_use": []}, {"message": "Use the prescription manager to update medication prescriptions in accordance with the revised treatment plan.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': "Access the patient's medical history to review their current condition, previous treatments, and medication records.", 'tool_use': ['RecordAccessTool']}, {'message': 'Utilize the medical database to explore updated research on the chronic illness, potential new treatments, and drug efficacy data.', 'tool_use': ['medical_database']}, {'message': "Adjust the treatment plan based on the latest medical information and patient's health status.", 'tool_use': []}, {'message': 'Use the prescription manager to update medication prescriptions in accordance with the revised treatment plan.', 'tool_use': ['prescription_manager']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Retrieve real-time market data and trends for the new sector to assess current performance and future projections.", "tool_use": ["market_data_api"]}, {"message": "Analyze the portfolio composition and simulate how adding the new sector would affect risk levels and potential returns.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Retrieve real-time market data and trends for the new sector to assess current performance and future projections.', 'tool_use': ['market_data_api']}, {'message': 'Analyze the portfolio composition and simulate how adding the new sector would affect risk levels and potential returns.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Use the system_analyzer tool to evaluate the flight performance and safety of aircraft components made from various materials.", "tool_use": ["system_analyzer"]}, {"message": "After analyzing the data, use the flight_simulator tool to conduct virtual tests on these materials under different conditions to further assess their performance.", "tool_use": ["flight_simulator"]}]
+workflow after check: [{'message': 'Use the system_analyzer tool to evaluate the flight performance and safety of aircraft components made from various materials.', 'tool_use': ['system_analyzer']}, {'message': 'After analyzing the data, use the flight_simulator tool to conduct virtual tests on these materials under different conditions to further assess their performance.', 'tool_use': ['flight_simulator']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data to analyze trends and performance indicators within the new sector.", "tool_use": ["market_data_api"]}, {"message": "Utilize portfolio management tools to simulate investment scenarios, assess asset allocation impacts, and predict risk-adjusted returns based on historical and current data.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data to analyze trends and performance indicators within the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Utilize portfolio management tools to simulate investment scenarios, assess asset allocation impacts, and predict risk-adjusted returns based on historical and current data.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor data using sensor_fusion to enhance perception and decision-making capabilities.", "tool_use": ["sensor_fusion"]}, {"message": "Optimize path planning algorithms to reroute the vehicle in real-time, avoiding potential collisions.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate sensor data using sensor_fusion to enhance perception and decision-making capabilities.', 'tool_use': ['sensor_fusion']}, {'message': 'Optimize path planning algorithms to reroute the vehicle in real-time, avoiding potential collisions.', 'tool_use': ['path_planner']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data to analyze trends and performance indicators within the new sector.", "tool_use": ["market_data_api"]}, {"message": "Use portfolio management tools to simulate investment scenarios, assess risks, and estimate potential returns based on historical data and current market conditions.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data to analyze trends and performance indicators within the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Use portfolio management tools to simulate investment scenarios, assess risks, and estimate potential returns based on historical data and current market conditions.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Gather information about the student's interests, academic background, and career goals.", "tool_use": []}, {"message": "Recommend suitable courses and educational institutions based on the gathered information.", "tool_use": ["course_selector"]}]
+workflow after check: [{'message': "Gather information about the student's interests, academic background, and career goals.", 'tool_use': []}, {'message': 'Recommend suitable courses and educational institutions based on the gathered information.', 'tool_use': ['course_selector']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Assess the patient's current mental health status and identify specific stressors and anxieties through conversation.", "tool_use": ["mental_health_tracker"]}, {"message": "Design a personalized therapy plan including cognitive behavioral techniques, mindfulness exercises, and relaxation methods tailored to the patient's needs.", "tool_use": ["therapy_guide"]}]
+workflow after check: [{'message': "Assess the patient's current mental health status and identify specific stressors and anxieties through conversation.", 'tool_use': ['mental_health_tracker']}, {'message': "Design a personalized therapy plan including cognitive behavioral techniques, mindfulness exercises, and relaxation methods tailored to the patient's needs.", 'tool_use': ['therapy_guide']}]
+[Scheduler] example/medical_advisor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/medical_advisor_agent is switched to executing.
+
+workflow before check: [{"message": "Use the course_selector tool to recommend courses based on the student's interests, academic background, and career goals.", "tool_use": ["course_selector"]}, {"message": "Analyze the recommended courses using performance_evaluator to ensure they align with the student's current performance level and potential for success.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Use the course_selector tool to recommend courses based on the student's interests, academic background, and career goals.", 'tool_use': ['course_selector']}, {'message': "Analyze the recommended courses using performance_evaluator to ensure they align with the student's current performance level and potential for success.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/autonomous_driving_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/autonomous_driving_agent is switched to executing.
+
+workflow before check: [{"message": "Retrieve the latest medical records and current treatment plans for the patient.", "tool_use": ["MedicalDocumentationTool"]}, {"message": "Consult the medical database to review recent research, treatments, and medications relevant to the patient's chronic illness.", "tool_use": ["medical_database"]}, {"message": "Adjust the treatment plan based on new information and the patient's progress.", "tool_use": []}, {"message": "Issue updated prescriptions if necessary, ensuring compatibility with the patient's current medication regimen.", "tool_use": ["prescription_manager"]}]
+workflow after check: [{'message': 'Retrieve the latest medical records and current treatment plans for the patient.', 'tool_use': ['MedicalDocumentationTool']}, {'message': "Consult the medical database to review recent research, treatments, and medications relevant to the patient's chronic illness.", 'tool_use': ['medical_database']}, {'message': "Adjust the treatment plan based on new information and the patient's progress.", 'tool_use': []}, {'message': "Issue updated prescriptions if necessary, ensuring compatibility with the patient's current medication regimen.", 'tool_use': ['prescription_manager']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Integrate sensor fusion tool to combine data from multiple sensors, enhancing perception capabilities for detecting obstacles and potential collisions.", "tool_use": ["sensor_fusion"]}, {"message": "Utilize path planner tool to adjust the vehicle's route in real-time, avoiding detected obstacles and ensuring safe navigation.", "tool_use": ["path_planner"]}]
+workflow after check: [{'message': 'Integrate sensor fusion tool to combine data from multiple sensors, enhancing perception capabilities for detecting obstacles and potential collisions.', 'tool_use': ['sensor_fusion']}, {'message': "Utilize path planner tool to adjust the vehicle's route in real-time, avoiding detected obstacles and ensuring safe navigation.", 'tool_use': ['path_planner']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Use the system_analyzer to evaluate the safety and performance of various components made from different materials.", "tool_use": ["system_analyzer"]}, {"message": "After analyzing, use the flight_simulator to test how these materials affect overall aircraft performance under simulated flight conditions.", "tool_use": ["flight_simulator"]}]
+workflow after check: [{'message': 'Use the system_analyzer to evaluate the safety and performance of various components made from different materials.', 'tool_use': ['system_analyzer']}, {'message': 'After analyzing, use the flight_simulator to test how these materials affect overall aircraft performance under simulated flight conditions.', 'tool_use': ['flight_simulator']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+tool_use': ['research_database']}, {'message': 'Condense the accessed academic literature into a concise and coherent summary, focusing on key points and essential information regarding recent advancements in quantum computing.', 'tool_use': ['summarizer']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data to analyze trends and economic indicators related to the new sector.", "tool_use": ["market_data_api"]}, {"message": "Use portfolio management tools to simulate investment scenarios, assessing risk and projected returns based on historical data and current market conditions.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data to analyze trends and economic indicators related to the new sector.', 'tool_use': ['market_data_api']}, {'message': 'Use portfolio management tools to simulate investment scenarios, assessing risk and projected returns based on historical data and current market conditions.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/aerospace_engineer_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/aerospace_engineer_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate simulation using flight_simulator to compare the aerodynamic efficiency, structural integrity, and weight-to-strength ratio of various materials.", "tool_use": ["flight_simulator"]}, {"message": "Utilize system_analyzer to evaluate the safety margins, failure rates, and maintenance requirements associated with each material in real-world conditions.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Initiate simulation using flight_simulator to compare the aerodynamic efficiency, structural integrity, and weight-to-strength ratio of various materials.', 'tool_use': ['flight_simulator']}, {'message': 'Utilize system_analyzer to evaluate the safety margins, failure rates, and maintenance requirements associated with each material in real-world conditions.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Use flight_simulator to model and test aircraft designs with various materials, collecting data on aerodynamics, structural integrity, and fuel efficiency.", "tool_use": ["flight_simulator"]}, {"message": "Utilize system_analyzer to evaluate the results from the simulation tests, identifying any potential safety issues or performance enhancements related to material choice.", "tool_use": ["system_analyzer"]}]
+workflow after check: [{'message': 'Use flight_simulator to model and test aircraft designs with various materials, collecting data on aerodynamics, structural integrity, and fuel efficiency.', 'tool_use': ['flight_simulator']}, {'message': 'Utilize system_analyzer to evaluate the results from the simulation tests, identifying any potential safety issues or performance enhancements related to material choice.', 'tool_use': ['system_analyzer']}]
+[Scheduler] example/academic_search_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/academic_search_agent is switched to executing.
+
+workflow before check: [{"message": "Draft the initial version of the Non-Disclosure Agreement (NDA) incorporating standard clauses such as definitions, obligations of confidentiality, exclusions from confidentiality, term and termination, remedies, and governing law.", "tool_use": ["legal_doc_review"]}, {"message": "Review the drafted NDA using the legal_doc_review tool to ensure that all necessary elements are included, identify any potential issues or gaps in the document, and confirm compliance with relevant laws.", "tool_use": ["compliance_checker"]}]
+workflow after check: [{'message': 'Draft the initial version of the Non-Disclosure Agreement (NDA) incorporating standard clauses such as definitions, obligations of confidentiality, exclusions from confidentiality, term and termination, remedies, and governing law.', 'tool_use': ['legal_doc_review']}, {'message': 'Review the drafted NDA using the legal_doc_review tool to ensure that all necessary elements are included, identify any potential issues or gaps in the document, and confirm compliance with relevant laws.', 'tool_use': ['compliance_checker']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Search for academic literature on recent advancements in quantum computing within the last five years.", "tool_use": ["research_database"]}, {"message": "Condense and summarize the key findings and developments in quantum computing from the retrieved academic literature.", "tool_use": ["summarizer"]}]
+workflow after check: [{'message': 'Search for academic literature on recent advancements in quantum computing within the last five years.', 'tool_use': ['research_database']}, {'message': 'Condense and summarize the key findings and developments in quantum computing from the retrieved academic literature.', 'tool_use': ['summarizer']}]
+[Scheduler] example/legal_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/legal_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Gather the student's interests, academic background, and career goals to recommend suitable courses.", "tool_use": ["course_selector"]}, {"message": "Analyze the student's past performance data to ensure the recommended courses align with their academic capabilities.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Gather the student's interests, academic background, and career goals to recommend suitable courses.", 'tool_use': ['course_selector']}, {'message': "Analyze the student's past performance data to ensure the recommended courses align with their academic capabilities.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "Initiate the drafting process by outlining the key components of the Non-Disclosure Agreement (NDA), including definitions, obligations, exclusions, and duration.", "tool_use": []}, {"message": "Review the drafted NDA to ensure that all necessary legal clauses are included and accurately reflect the intentions of the parties involved.", "tool_use": ["legal_doc_review"]}, {"message": "Check the compliance of the NDA with relevant laws and regulations to prevent any potential legal issues.", "tool_use": ["compliance_checker"]}]
+workflow after check: [{'message': 'Initiate the drafting process by outlining the key components of the Non-Disclosure Agreement (NDA), including definitions, obligations, exclusions, and duration.', 'tool_use': []}, {'message': 'Review the drafted NDA to ensure that all necessary legal clauses are included and accurately reflect the intentions of the parties involved.', 'tool_use': ['legal_doc_review']}, {'message': 'Check the compliance of the NDA with relevant laws and regulations to prevent any potential legal issues.', 'tool_use': ['compliance_checker']}]
+[Scheduler] example/financial_analyst_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/financial_analyst_agent is switched to executing.
+
+workflow before check: [{"message": "Understand the student's interests, academic background, and career goals to provide tailored course recommendations.", "tool_use": ["course_selector"]}, {"message": "Evaluate the student's past performance in relevant subjects to ensure the chosen courses are suitable for their skill level.", "tool_use": ["performance_evaluator"]}]
+workflow after check: [{'message': "Understand the student's interests, academic background, and career goals to provide tailored course recommendations.", 'tool_use': ['course_selector']}, {'message': "Evaluate the student's past performance in relevant subjects to ensure the chosen courses are suitable for their skill level.", 'tool_use': ['performance_evaluator']}]
+[Scheduler] example/psychological_counselor_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/psychological_counselor_agent is switched to executing.
+
+workflow before check: [{"message": "Access real-time market data for the new sector to analyze trends, stock prices, and economic indicators.", "tool_use": ["market_data_api"]}, {"message": "Use portfolio management tools to assess how investments in this sector would affect asset allocation, risk profile, and potential returns within a diversified portfolio.", "tool_use": ["portfolio_manager"]}]
+workflow after check: [{'message': 'Access real-time market data for the new sector to analyze trends, stock prices, and economic indicators.', 'tool_use': ['market_data_api']}, {'message': 'Use portfolio management tools to assess how investments in this sector would affect asset allocation, risk profile, and potential returns within a diversified portfolio.', 'tool_use': ['portfolio_manager']}]
+[Scheduler] example/education_consultant_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/education_consultant_agent is switched to executing.
+
+workflow before check: [{"message": "First, use the therapy_guide tool to identify evidence-based techniques that are effective for managing stress and anxiety.", "tool_use": ["therapy_guide"]}, {"message": "Next, utilize the mental_health_tracker tool to monitor the patient's progress and adjust coping strategies as necessary based on their feedback and improvement.", "tool_use": ["mental_health_tracker"]}]
+workflow after check: [{'message': 'First, use the therapy_guide tool to identify evidence-based techniques that are effective for managing stress and anxiety.', 'tool_use': ['therapy_guide']}, {'message': "Next, utilize the mental_health_tracker tool to monitor the patient's progress and adjust coping strategies as necessary based on their feedback and improvement.", 'tool_use': ['mental_health_tracker']}]
+[Scheduler] example/ecommerce_manager_agent is executing. 
+
+[🤖ollama/qwen2:72b] example/ecommerce_manager_agent is switched to executing.
 

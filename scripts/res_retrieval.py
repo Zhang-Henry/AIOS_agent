@@ -2,7 +2,7 @@ import pandas
 import csv
 import os
 
-prompt_injections = ["direct_prompt_injection", "observation_prompt_injection","memory_attack"]
+prompt_injections = ["observation_prompt_injection","memory_attack"]
 # prompt_injections = ["clean", "cot_backdoor","cot_clean"]
 memory_attacks = ["with_memory"]
 # memory_attacks = ["no_memory","memory_enhanced"]
@@ -11,7 +11,8 @@ non_agg_result = []
 
 for prompt_injection in prompt_injections:
     for memory_attack in memory_attacks:
-        model_list = ["gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b"]
+        model_list = ["gpt-4o-mini"]
+        #model_list = ["gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b"]
 
         attack_methods = ["combined attack", "context ignoring", "escape characters", "fake completion", "naive"]
 
@@ -107,4 +108,4 @@ for prompt_injection in prompt_injections:
             for result in agg_result:
                 result_csv.loc[len(result_csv.index)] = result
 
-        result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{memory_attack}.csv", index = False)
+        result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{memory_attack}_gpt-4o-mini.csv", index = False)

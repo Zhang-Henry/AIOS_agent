@@ -23,14 +23,14 @@ if __name__ == '__main__':
     # run direct_prompt_injection, observation_prompt_injection
 
     # llms = ["ollama/mixtral:8x7b"]
-    llms = ['ollama/llama3.1:8b']
+    llms = ['gpt-4o-mini']
     # injection_method = 'direct_prompt_injection'
     # injection_method = 'observation_prompt_injection'
     injection_method = 'memory_attack'
 
     read_db = True
 
-    #attack_types = ['combined_attack']
+    # attack_types = ['naive', 'context_ignoring', 'escape_characters', 'combined_attack']
     attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     #write_db = True
 
