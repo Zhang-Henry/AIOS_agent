@@ -2,9 +2,9 @@ import pandas
 import csv
 import os
 
-# prompt_injections = ["direct_prompt_injection", "observation_prompt_injection","memory_attack"]
-prompt_injections = ["clean", "cot_backdoor","cot_clean"]
-memory_attacks = ["no_memory"]
+prompt_injections = ["direct_prompt_injection", "observation_prompt_injection","memory_attack"]
+# prompt_injections = ["clean", "cot_backdoor","cot_clean"]
+memory_attacks = ["with_memory"]
 # memory_attacks = ["no_memory","memory_enhanced"]
 agg_result = []
 non_agg_result = []
@@ -49,14 +49,14 @@ for prompt_injection in prompt_injections:
                     result.append(int(line_end_num))
                 elif "Refuse judge success rate: " in line:
                     result.append("%.3f"%round(line_end_num,3))
-                elif "Memory search success number: " in line and memory_attack == 'memory_enhanced':
+                elif "Memory search success number: " in line and memory_attack in ['memory_enhanced','with_memory']:
                     result.append(int(line_end_num))
-                elif "Memory search success rate: " in line and memory_attack == 'memory_enhanced':
+                elif "Memory search success rate: " in line and memory_attack in ['memory_enhanced','with_memory']:
                     result.append("%.3f"%round(line_end_num,3))
 
             return result
 
-        if memory_attack == 'memory_enhanced':
+        if memory_attack in ['memory_enhanced','with_memory']:
             result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate", "Memory search success num", "Memory search success rate"])
         elif memory_attack == 'no_memory':
             result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate"])
@@ -89,7 +89,7 @@ for prompt_injection in prompt_injections:
                     result.extend(get_result(path + '/' + name))
                     #print(len(result))
                     # Ensure the correct length of result
-                    if len(result) != 14 and memory_attack == 'memory_enhanced':
+                    if len(result) != 14 and memory_attack in ['memory_enhanced','with_memory']:
                         print(path + '/' + name)
                         continue
                     elif len(result) != 12 and memory_attack == 'no_memory':
