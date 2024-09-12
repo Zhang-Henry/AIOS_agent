@@ -23,17 +23,27 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    llms = ["ollama/llama3.1:8b"]
-    # llms = ['ollama/llama3:70b']
-    # injection_method = 'direct_prompt_injection'
-    injection_method = 'observation_prompt_injection'
-    # injection_method = 'memory_attack'
+    # llms = ["ollama/llama3.1:8b"]
+    # # llms = ['ollama/llama3:70b']
+    # # injection_method = 'direct_prompt_injection'
+    # injection_method = 'observation_prompt_injection'
+    # # injection_method = 'memory_attack'
 
-    read_db = True
+    # read_db = True
 
-    # attack_types = ['naive', 'context_ignoring', 'escape_characters', 'combined_attack']
-    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    # #write_db = True
+
+    #######################################################################################################################
+    # run mixed attack
+
+    llms = ["gpt-4o-mini"]
+    injection_method = 'mixed_attack'
+
+    # read_db = True
+    attack_types = ['context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     #write_db = True
+
 
     #######################################################################################################################
     # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
@@ -52,15 +62,6 @@ if __name__ == '__main__':
     # task_num = 2
 
 
-    #######################################################################################################################
-    # jailbreak
-    # agg = [True, False]
-    # llms = ['gpt-4o-mini','ollama/llama3:70b','ollama/llama3.1:70b']
-    # # llms = ['ollama/llama3:70b','ollama/llama3.1:70b']
-    # injection_method = 'jailbreak'
-    # suffix = 'absolute'
-
-    # attack_types = ['absolute']
     #######################################################################################################################
 
     for aggressive in agg:
@@ -105,16 +106,20 @@ if __name__ == '__main__':
                         {'--write_db' if write_db else ''} \
                         {'--read_db' if read_db else ''} \
                         > {log_file}_{suffix}.log 2>&1 &'''
+                elif injection_method in ['mixed_attack']:
+                    cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
+                        --direct_prompt_injection \
+                        --observation_prompt_injection \
+                        {f'--database {database}' if database else ''} \
+                        {'--write_db' if write_db else ''} \
+                        {'--read_db' if read_db else ''} \
+                        > {log_file}_{suffix}.log 2>&1 &'''
                 elif injection_method in ['cot_backdoor','cot_clean','clean']:
                     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
                         --{injection_method} \
                         --tasks_path {tasks_path} \
                         --trigger '{trigger}' \
                         --task_num {task_num} \
-                        > {log_file}_{suffix}.log 2>&1 &'''
-                elif injection_method == 'jailbreak':
-                    cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
-                        --{injection_method} \
                         > {log_file}_{suffix}.log 2>&1 &'''
                 else:
                     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
