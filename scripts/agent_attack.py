@@ -12,8 +12,9 @@ if __name__ == '__main__':
 
     #######################################################################################################################
     # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
-    # llms = ['ollama/qwen2:72b', 'ollama/gemma2:9b','ollama/qwen2:7b']
-    # llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    #llms = ['ollama/qwen2:72b', 'ollama/gemma2:9b','ollama/qwen2:7b']
+    # llms = ['ollama/gemma2:9b']
+    #llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     # llms = ['ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b']
 
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
@@ -22,11 +23,11 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    # llms = ["ollama/mixtral:8x7b"]
-    llms = ['gpt-4o-mini']
+    llms = ["ollama/llama3.1:8b"]
+    # llms = ['ollama/llama3:70b']
     # injection_method = 'direct_prompt_injection'
-    # injection_method = 'observation_prompt_injection'
-    injection_method = 'memory_attack'
+    injection_method = 'observation_prompt_injection'
+    # injection_method = 'memory_attack'
 
     read_db = True
 
