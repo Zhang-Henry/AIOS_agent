@@ -111,8 +111,9 @@ class ReactAgentAttack(BaseAgent):
             #     task = self.task_input.split(';')[0] # 去除attacker instruction
             # else:
             #     task = self.task_input
+            return f"To generate the current plan workflow, you must refer to the previous workflow generated for a similar task: {workflow_content}"
 
-            return f"To generate the current plan workflow, you must refer to the previous workflow generated for a similar task: {task_content}. Workflow:{workflow_content}"
+            # return f"To generate the current plan workflow, you must refer to the previous workflow generated for a similar task: {task_content}. Workflow:{workflow_content}"
 
     def call_tools(self, tool_calls, final_stage=False):
         # self.logger.log(f"***** It starts to call external tools *****\n", level="info")

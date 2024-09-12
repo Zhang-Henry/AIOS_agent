@@ -23,27 +23,25 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    # llms = ["ollama/llama3.1:8b"]
+    # llms = ["gpt-3.5-turbo"]
     # # llms = ['ollama/llama3:70b']
-    # # injection_method = 'direct_prompt_injection'
-    # injection_method = 'observation_prompt_injection'
+    # injection_method = 'direct_prompt_injection'
+    # # injection_method = 'observation_prompt_injection'
     # # injection_method = 'memory_attack'
 
-    # read_db = True
-
+    # # read_db = True
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     # #write_db = True
 
     #######################################################################################################################
     # run mixed attack
 
-    llms = ["gpt-4o-mini"]
+    #llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    llms = ['ollama/qwen2:72b','ollama/qwen2:7b','ollama/mixtral:8x7b','ollama/gemma2:9b']
     injection_method = 'mixed_attack'
 
-    # read_db = True
-    attack_types = ['context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    #write_db = True
-
+    read_db = True
+    attack_types = ['combined_attack']
 
     #######################################################################################################################
     # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
@@ -86,12 +84,12 @@ if __name__ == '__main__':
                     attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
                     log_file = f'{log_path}/no_memory/{attack_type}-aggressive'
                     if read_db:
-                        log_file = f'{log_path}/with_memory/{attack_type}-aggressive'
+                        log_file = f'{log_path}/new_memory/{attack_type}-aggressive'
                 else:
                     attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
                     log_file = f'{log_path}/no_memory/{attack_type}-non-aggressive'
                     if read_db:
-                        log_file = f'{log_path}/with_memory/{attack_type}-non-aggressive'
+                        log_file = f'{log_path}/new_memory/{attack_type}-non-aggressive'
                 if test:
                     attacker_tools_path = 'data/attack_tools_test_nonagg.jsonl'
                     log_file = f'{log_path}/{attack_type}-test'

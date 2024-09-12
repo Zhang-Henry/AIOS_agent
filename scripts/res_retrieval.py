@@ -2,8 +2,9 @@ import pandas
 import csv
 import os
 
-prompt_injections = ["observation_prompt_injection","memory_attack"]
+# prompt_injections = ["observation_prompt_injection","memory_attack"]
 # prompt_injections = ["clean", "cot_backdoor","cot_clean"]
+prompt_injections=['direct_prompt_injection',"observation_prompt_injection",'mixed_attack']
 memory_attacks = ["no_memory","with_memory"]
 # memory_attacks = ["no_memory","memory_enhanced"]
 agg_result = []
@@ -11,8 +12,8 @@ non_agg_result = []
 
 for prompt_injection in prompt_injections:
     for memory_attack in memory_attacks:
-        # model_list = ["gpt-4o-mini"]
-        model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b"]
+        model_list = ["gpt-4o-mini",'gpt-3.5-turbo']
+        # model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b"]
 
         attack_methods = ["combined attack", "context ignoring", "escape characters", "fake completion", "naive"]
 
