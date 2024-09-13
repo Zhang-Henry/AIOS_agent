@@ -4,16 +4,17 @@ import os
 
 # prompt_injections = ["observation_prompt_injection","memory_attack"]
 # prompt_injections = ["clean", "cot_backdoor","cot_clean"]
-prompt_injections=['direct_prompt_injection',"observation_prompt_injection",'mixed_attack']
-memory_attacks = ["no_memory","with_memory"]
+# prompt_injections=['direct_prompt_injection',"observation_prompt_injection",'mixed_attack']
+prompt_injections=['mixed_attack']
+memory_attacks = ["new_memory"]
 # memory_attacks = ["no_memory","memory_enhanced"]
 agg_result = []
 non_agg_result = []
 
 for prompt_injection in prompt_injections:
     for memory_attack in memory_attacks:
-        model_list = ["gpt-4o-mini",'gpt-3.5-turbo']
-        # model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b"]
+        #model_list = ["gpt-4o-mini",'gpt-3.5-turbo']
+        model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b"]
 
         attack_methods = ["combined attack", "context ignoring", "escape characters", "fake completion", "naive"]
 
@@ -51,14 +52,14 @@ for prompt_injection in prompt_injections:
                     result.append(int(line_end_num))
                 elif "Refuse judge success rate: " in line:
                     result.append("%.3f"%round(line_end_num,3))
-                elif "Memory search success number: " in line and memory_attack in ['memory_enhanced','with_memory']:
+                elif "Memory search success number: " in line and memory_attack in ['memory_enhanced','with_memory', 'new_memory']:
                     result.append(int(line_end_num))
-                elif "Memory search success rate: " in line and memory_attack in ['memory_enhanced','with_memory']:
+                elif "Memory search success rate: " in line and memory_attack in ['memory_enhanced','with_memory', 'new_memory']:
                     result.append("%.3f"%round(line_end_num,3))
 
             return result
 
-        if memory_attack in ['memory_enhanced','with_memory']:
+        if memory_attack in ['memory_enhanced','with_memory','new_memory']:
             result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate", "Memory search success num", "Memory search success rate"])
         elif memory_attack == 'no_memory':
             result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate"])
@@ -104,9 +105,11 @@ for prompt_injection in prompt_injections:
                         agg_result.append(result)
 
                     #result_csv.loc[len(result_csv.index)] = result
+                    #print(path + '/' + name)
+                    #print(result)
             for result in non_agg_result:
                 result_csv.loc[len(result_csv.index)] = result
             for result in agg_result:
                 result_csv.loc[len(result_csv.index)] = result
 
-        result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{memory_attack}.csv", index = False)
+        result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{memory_attack}-0912.csv", index = False)

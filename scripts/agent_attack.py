@@ -35,9 +35,10 @@ if __name__ == '__main__':
 
     #######################################################################################################################
     # run mixed attack
-
+    
+    llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b']
     #llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
-    llms = ['ollama/qwen2:72b','ollama/qwen2:7b','ollama/mixtral:8x7b','ollama/gemma2:9b']
+    #llms = ['ollama/qwen2:72b','ollama/qwen2:7b','ollama/mixtral:8x7b','ollama/gemma2:9b']
     injection_method = 'mixed_attack'
 
     read_db = True
