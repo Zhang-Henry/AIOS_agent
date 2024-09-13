@@ -92,7 +92,7 @@ for prompt_injection in prompt_injections:
                     result.extend(get_result(path + '/' + name))
                     #print(len(result))
                     # Ensure the correct length of result
-                    if len(result) != 14 and memory_attack in ['memory_enhanced','with_memory']:
+                    if len(result) != 14 and memory_attack in ['memory_enhanced','with_memory','new_memory']:
                         print(path + '/' + name)
                         continue
                     elif len(result) != 12 and memory_attack == 'no_memory':
@@ -112,4 +112,4 @@ for prompt_injection in prompt_injections:
             for result in agg_result:
                 result_csv.loc[len(result_csv.index)] = result
 
-        result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{memory_attack}-0912.csv", index = False)
+        result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{memory_attack}.csv", index = False)
