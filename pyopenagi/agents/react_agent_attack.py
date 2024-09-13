@@ -200,6 +200,9 @@ class ReactAgentAttack(BaseAgent):
 
         self.normal_tools = copy.deepcopy(self.tool_list)
 
+        if self.args.defense_type == 'direct_delimiters':
+            self.task_input = f"<start>{self.task_input}<end>"
+
         if self.args.direct_prompt_injection:
             self.add_attacker_tool()
             self.task_input += f' {self.attack_prompts[self.args.attack_type]}'

@@ -37,6 +37,7 @@ def parse_global_args():
     parser.add_argument("--direct_prompt_injection", action='store_true')
     parser.add_argument("--jailbreak", action='store_true')
     parser.add_argument("--attack_type", type=str, default = None)
+    parser.add_argument("--defense_type", type=str, default = None)
     parser.add_argument("--cot_backdoor", action='store_true')
     parser.add_argument("--cot_clean", action='store_true')
     parser.add_argument("--target", type=str, default = 'ResearcherProfileManager', help="COT backdoor target tool")
