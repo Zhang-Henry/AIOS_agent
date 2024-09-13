@@ -11,7 +11,7 @@ if __name__ == '__main__':
     trigger = ''
 
     #######################################################################################################################
-    # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
+    # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4o-2024-08-06','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
     #llms = ['ollama/qwen2:72b', 'ollama/gemma2:9b','ollama/qwen2:7b']
     # llms = ['ollama/gemma2:9b']
     #llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
@@ -23,38 +23,42 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    # llms = ["gpt-3.5-turbo"]
-    # # llms = ['ollama/llama3:70b']
-    # injection_method = 'direct_prompt_injection'
-    # # injection_method = 'observation_prompt_injection'
-    # # injection_method = 'memory_attack'
+    # llms = ['ollama/gemma2:27b','ollama/llama3:70b']
+    # # llms = ['gpt-4o-2024-08-06']
 
-    # # read_db = True
+    # # injection_method = 'direct_prompt_injection'
+    # # injection_method = 'observation_prompt_injection'
+    # injection_method = 'memory_attack'
+
+    # read_db = True
+    # # attack_types = ['combined_attack']
     # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     # #write_db = True
 
     #######################################################################################################################
     # run mixed attack
-    llms=['ollama/gemma2:9b','ollama/qwen2:7b']
-    # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b']
-    #llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
-    #llms = ['ollama/qwen2:72b','ollama/qwen2:7b','ollama/mixtral:8x7b','ollama/gemma2:9b']
+
+    llms = ['ollama/gemma2:27b','ollama/llama3:70b']
     injection_method = 'mixed_attack'
 
     read_db = True
     attack_types = ['combined_attack']
 
-
     #######################################################################################################################
     # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
 
-    # llms = ['ollama/llama3.1:8b', 'gpt-3.5-turbo', 'gpt-4']
+    # llms = ['gpt-4o-mini']
 
     # injection_method = 'cot_backdoor'
-    # # injection_method = 'cot_clean'
-    # # injection_method = 'clean'
+    # injection_method = 'cot_clean'
+    # injection_method = 'clean'
 
-    # trigger = 'with perspicacious discernment'
+    # trigger = '@_@'
+
+    # if trigger == ':)':
+    #     suffix = 'smile'
+    # else:
+    #     suffix = trigger.replace(' ', '_')
 
     # # trigger = ['through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@']
     # attack_types = ['naive']
