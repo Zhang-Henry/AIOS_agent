@@ -3,18 +3,18 @@ import csv
 import os
 
 # prompt_injections = ["observation_prompt_injection","memory_attack"]
-# prompt_injections = ["clean", "cot_backdoor","cot_clean"]
+prompt_injections = ["clean", "cot_backdoor","cot_clean"]
 # prompt_injections=['direct_prompt_injection',"observation_prompt_injection",'mixed_attack']
-prompt_injections=['mixed_attack']
-memory_attacks = ["new_memory"]
-# memory_attacks = ["no_memory","memory_enhanced"]
+# prompt_injections=['mixed_attack']
+# memory_attacks = ["new_memory"]
+memory_attacks = ["no_memory"]
 agg_result = []
 non_agg_result = []
 
 for prompt_injection in prompt_injections:
     for memory_attack in memory_attacks:
         #model_list = ["gpt-4o-mini",'gpt-3.5-turbo']
-        model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b"]
+        model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b",'gpt-4o-2024-08-06']
 
         attack_methods = ["combined attack", "context ignoring", "escape characters", "fake completion", "naive"]
 
@@ -45,7 +45,7 @@ for prompt_injection in prompt_injections:
                 elif "Attack success rate excluding workflow failure cases: " in line:
                     result.append("%.3f"%round(line_end_num,3))
                 elif "Number of original task success: " in line:
-                    result.append("%.3f"%round(line_end_num,3))
+                    result.append(int(line_end_num))
                 elif "Original task success rate: " in line:
                     result.append("%.3f"%round(line_end_num,3))
                 elif "Refuse judge success number: " in line:
@@ -73,13 +73,7 @@ for prompt_injection in prompt_injections:
                 files_list = []
                 # Process only files with 'full_tools.log' suffix
                 for name in files:
-                    # print(name)
-                    # if memory_attack == 'memory_enhanced':
-                    # if name.endswith("full_tools.log"):
                     files_list.append(name)
-                    # elif memory_attack == 'no_memory':
-                    #     files_list.append(name)
-                            # print(files_list)
 
                 for name in files_list:
                     attack_method = name.split('-')[0].replace('_', ' ')

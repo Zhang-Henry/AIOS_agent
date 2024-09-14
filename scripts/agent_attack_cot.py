@@ -49,7 +49,6 @@ if __name__ == '__main__':
 
                         log_path = f'logs/{injection_method}/{llm_name}'
 
-                        result_file = f'{log_path}/result_statistics_.log'
                         database = f'memory_db/direct_prompt_injection/{attack_type}_gpt-4o-mini'
 
                         if trigger == ':)':
@@ -73,7 +72,7 @@ if __name__ == '__main__':
                         print(f'{log_file}_{suffix}')
 
                         if injection_method in ['cot_backdoor','cot_clean','clean']:
-                            cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
+                            cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
                                 --{injection_method} \
                                 --tasks_path {tasks_path} \
                                 --trigger '{trigger}' \

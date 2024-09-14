@@ -8,7 +8,7 @@ if __name__ == '__main__':
     write_db=False
     read_db=False
     trigger = ''
-    defense_types = [None]
+    defense_type = None
 
     #######################################################################################################################
     # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4o-2024-08-06','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
@@ -16,56 +16,31 @@ if __name__ == '__main__':
     #llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     # llms = ['ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b']
 
-    # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    # injection_method = 'direct_prompt_injection', 'observation_prompt_injection', 'plan_attack', 'action_attack', 'cot_backdoor','memory_attack', 'cot_clean'
     # defense_types = 'direct_delimiters', 'direct_sandwich_prevention'
 
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    # llms = ['ollama/gemma2:27b','ollama/llama3:70b']
-    llms = ['gpt-4o-mini']
+    # llms = ['ollama/qwen2:7b', 'ollama/gemma2:9b']
+    # # llms = ['gpt-4o-mini']
 
-    injection_method = 'direct_prompt_injection'
-    # injection_method = 'observation_prompt_injection'
-    # injection_method = 'memory_attack'
+    # injection_method = 'direct_prompt_injection'
+    # # injection_method = 'observation_prompt_injection'
+    # # injection_method = 'memory_attack'
 
-    # read_db = True
-    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters']
-    # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    defense_type = 'direct_delimiters'
-    #write_db = True
+    # # read_db = True
+    # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    # defense_type = 'direct_delimiters'
+    # #write_db = True
 
     #######################################################################################################################
     # run mixed attack
 
-    # llms = ['ollama/gemma2:27b','ollama/llama3:70b']
-    # injection_method = 'mixed_attack'
+    llms = ['gpt-4o-2024-08-06']
+    injection_method = 'mixed_attack'
 
-    # read_db = True
-    # attack_types = ['combined_attack']
-
-    #######################################################################################################################
-    # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
-
-    # llms = ['gpt-4o-mini']
-
-    # injection_method = 'cot_backdoor'
-    # injection_method = 'cot_clean'
-    # injection_method = 'clean'
-
-    # trigger = '@_@'
-
-    # if trigger == ':)':
-    #     suffix = 'smile'
-    # else:
-    #     suffix = trigger.replace(' ', '_')
-
-    # # trigger = ['through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@']
-    # attack_types = ['naive']
-    # tasks_path = 'data/cot_data/agent_task_cot.jsonl'
-    # task_num = 2
-
+    read_db = True
+    attack_types = ['combined_attack']
 
     #######################################################################################################################
 
@@ -83,33 +58,17 @@ if __name__ == '__main__':
                     backend='vllm'
 
                 log_path = f'logs/{injection_method}/{llm_name}'
-                result_file = f'{log_path}/result_statistics_.log'
                 database = f'memory_db/direct_prompt_injection/{attack_type}_gpt-4o-mini'
-
-                # if aggressive:
-                #     attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
-                #     log_file = f'{log_path}/no_memory/{attack_type}-aggressive'
-                #     if read_db:
-                #         log_file = f'{log_path}/new_memory/{attack_type}-aggressive'
-                #         if defense_type:
-                #             log_file = f'{log_path}/new_memory/{defense_type}/{attack_type}-aggressive'
-                # else:
-                #     attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
-                #     log_file = f'{log_path}/no_memory/{attack_type}-non-aggressive'
-                #     if read_db:
-                #         log_file = f'{log_path}/new_memory/{attack_type}-non-aggressive'
-                #         if defense_type:
-                #             log_file = f'{log_path}/new_memory/{defense_type}/{attack_type}-aggressive'
 
                 attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl' if aggressive else 'data/all_attack_tools_non_aggressive.jsonl'
                 log_memory_type = 'new_memory' if read_db else 'no_memory'
                 aggression_type = 'aggressive' if aggressive else 'non-aggressive'
-                log_file = f'{log_path}/{log_memory_type}/{defense_type}/{attack_type}-{aggression_type}' if defense_type else f'{log_path}/{log_memory_type}/{attack_type}-{aggression_type}'
+                log_file = f'{log_path}/{defense_type}/{attack_type}-{aggression_type}' if defense_type else f'{log_path}/{log_memory_type}/{attack_type}-{aggression_type}'
                 os.makedirs(os.path.dirname(log_file), exist_ok=True)
                 print(log_file)
 
                 if injection_method in ['direct_prompt_injection','plan_attack','memory_attack','observation_prompt_injection']:
-                    cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
+                    cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
                         {f'--{injection_method}' if injection_method else ''} \
                         {f'--database {database}' if database else ''} \
                         {f'--defense_type {defense_type}' if defense_type else ''} \
@@ -117,7 +76,7 @@ if __name__ == '__main__':
                         {'--read_db' if read_db else ''} \
                         > {log_file}_{suffix}.log 2>&1 &'''
                 elif injection_method in ['mixed_attack']:
-                    cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
+                    cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
                         --direct_prompt_injection \
                         --observation_prompt_injection \
                         {f'--database {database}' if database else ''} \
@@ -125,14 +84,14 @@ if __name__ == '__main__':
                         {'--read_db' if read_db else ''} \
                         > {log_file}_{suffix}.log 2>&1 &'''
                 elif injection_method in ['cot_backdoor','cot_clean','clean']:
-                    cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
+                    cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
                         --{injection_method} \
                         --tasks_path {tasks_path} \
                         --trigger '{trigger}' \
                         --task_num {task_num} \
                         > {log_file}_{suffix}.log 2>&1 &'''
                 else:
-                    cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --result_file {result_file} --attacker_tools_path {attacker_tools_path} \
+                    cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
                         --{injection_method} \
                         --max_gpu_memory '{max_gpu_memory}' \
                         --eval_device '{eval_devices}' \
