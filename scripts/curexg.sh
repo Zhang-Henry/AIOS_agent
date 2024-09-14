@@ -1,1 +1,0 @@
-nohup python main_attacker.py --llm_name gpt-4o-mini --workflow_mode automatic --direct_prompt_injection --attack_type combined_attack --tasks_path data/agent_tasks/example/currencyexchange_agent_tasks.txt --agent_path example/currencyexchange_agent > 07212109_currencyexg_agent.log

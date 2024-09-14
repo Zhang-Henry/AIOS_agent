@@ -3,11 +3,10 @@ import csv
 import os
 
 # prompt_injections = ["observation_prompt_injection","memory_attack"]
-prompt_injections = ["clean", "cot_backdoor","cot_clean"]
+# prompt_injections = ["clean", "cot_backdoor","cot_clean"]
 # prompt_injections=['direct_prompt_injection',"observation_prompt_injection",'mixed_attack']
-# prompt_injections=['mixed_attack']
-# memory_attacks = ["new_memory"]
-memory_attacks = ["no_memory"]
+prompt_injections=['direct_prompt_injection']
+memory_attacks = ["no_memory"] # new_memory, no_memory, direct_delimiters, direct_sandwich_defense
 agg_result = []
 non_agg_result = []
 
@@ -61,7 +60,7 @@ for prompt_injection in prompt_injections:
 
         if memory_attack in ['memory_enhanced','with_memory','new_memory']:
             result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate", "Memory search success num", "Memory search success rate"])
-        elif memory_attack == 'no_memory':
+        if memory_attack in ['no_memory', 'direct_delimiters','direct_sandwich_defense']:
             result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate"])
 
         for model in model_list:
