@@ -29,7 +29,7 @@ if __name__ == '__main__':
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
     task_num = 2
-    # defense_type = 'cot_paraphrase_defense'
+    defense_type = 'cot_shuffling_defense' # cot_paraphrase_defense, cot_shuffling_defense
 
 
     #######################################################################################################################
