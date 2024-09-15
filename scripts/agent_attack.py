@@ -19,15 +19,16 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    llms = ['ollama/qwen2:72b', 'mixtral:8x7b']
+    # llms = ['gpt-4o-mini']
+    llms=['ollama/qwen2:72b']
 
     injection_method = 'direct_prompt_injection'
     # injection_method = 'observation_prompt_injection'
     # injection_method = 'memory_attack'
 
     # read_db = True
-    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    defense_type = 'direct_sandwich_defense' # 'direct_delimiters', 'direct_sandwich_defense'
+    attack_types = ['context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    defense_type = 'direct_paraphrase_defense' # 'direct_delimiters', 'direct_sandwich_defense', 'direct_paraphrase_defense'
     #write_db = True
 
     #######################################################################################################################

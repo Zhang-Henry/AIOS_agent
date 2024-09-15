@@ -6,6 +6,7 @@ if __name__ == '__main__':
     write_db=False
     read_db=False
     trigger = ''
+    defense_type=None
 
     #######################################################################################################################
     # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4o-2024-08-06','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
@@ -19,8 +20,8 @@ if __name__ == '__main__':
     #######################################################################################################################
     # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
 
-    llms = ['gpt-3.5-turbo', 'gpt-4o-2024-08-06']
-    injection_methods = ['cot_backdoor', 'cot_clean', 'clean']
+    llms = ['gpt-4o-mini']
+    injection_methods = ['cot_backdoor', 'cot_clean'] #'cot_backdoor', 'cot_clean', 'clean'
     # triggers = ['through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@']
     triggers = ['with perspicacious discernment']
 
@@ -28,6 +29,7 @@ if __name__ == '__main__':
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
     task_num = 2
+    # defense_type = 'cot_paraphrase_defense'
 
 
     #######################################################################################################################
@@ -56,24 +58,18 @@ if __name__ == '__main__':
                         else:
                             suffix = trigger.replace(' ', '_')
 
-                        if aggressive:
-                            attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
-                            log_file = f'{log_path}/no_memory/{attack_type}-aggressive'
-                            if read_db:
-                                log_file = f'{log_path}/new_memory/{attack_type}-aggressive'
-                        else:
-                            attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
-                            log_file = f'{log_path}/no_memory/{attack_type}-non-aggressive'
-                            if read_db:
-                                log_file = f'{log_path}/new_memory/{attack_type}-non-aggressive'
-
-
+                        attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl' if aggressive else 'data/all_attack_tools_non_aggressive.jsonl'
+                        log_memory_type = 'new_memory' if read_db else 'no_memory'
+                        aggression_type = 'aggressive' if aggressive else 'non-aggressive'
+                        log_file = f'{log_path}/{defense_type}/{attack_type}-{aggression_type}' if defense_type else f'{log_path}/{log_memory_type}/{attack_type}-{aggression_type}'
                         os.makedirs(os.path.dirname(log_file), exist_ok=True)
-                        print(f'{log_file}_{suffix}')
+                        print(log_file)
+
 
                         if injection_method in ['cot_backdoor','cot_clean','clean']:
                             cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
                                 --{injection_method} \
+                                --defense_type {defense_type} \
                                 --tasks_path {tasks_path} \
                                 --trigger '{trigger}' \
                                 --task_num {task_num} \
