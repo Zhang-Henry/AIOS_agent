@@ -14,7 +14,7 @@ class BedrockLLM(BaseLLM):
         it doesn't need to be required for the entire project, only when
         running this llm
         """
-        assert self.llm_name.startswith("bedrock")
+        assert self.model_name.startswith("bedrock")
         try:
             from langchain_community.chat_models import BedrockChat
             model_id = self.model_name.split("/")[-1]
@@ -44,7 +44,7 @@ class BedrockLLM(BaseLLM):
         """ simple wrapper around langchain functions """
         agent_process.set_status("executing")
         agent_process.set_start_time(time.time())
-        prompt = agent_process.message.prompt
+        prompt = z.prompt
         from langchain_core.prompts import ChatPromptTemplate
         chat_template = ChatPromptTemplate.from_messages([
             ("user", f"{prompt}")

@@ -84,6 +84,7 @@ class LLMKernelLogger(BaseLogger):
         super().__init__(logger_name, log_mode)
         self.level_color = {
             "info": (246, 245, 242),
+            "warning": (246, 245, 242),
             "executing": (65, 176, 110), # green
             "suspending": (255, 201, 74), # yellow
             "done": (122, 162, 227) # blue

@@ -20,7 +20,7 @@ if __name__ == '__main__':
     #######################################################################################################################
     # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
 
-    llms = ['ollama/gemma2:9b', 'ollama/qwen2:7b']
+    llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     injection_methods = ['cot_backdoor', 'cot_clean'] #'cot_backdoor', 'cot_clean', 'clean'
     # triggers = ['through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@']
     triggers = ['with perspicacious discernment']
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
     task_num = 2
-    # defense_type = 'cot_shuffling_defense' # cot_paraphrase_defense, cot_shuffling_defense
+    defense_type = 'cot_shuffling_defense' # cot_paraphrase_defense, cot_shuffling_defense
 
 
     #######################################################################################################################

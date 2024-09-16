@@ -119,12 +119,26 @@ class BaseAgent:
                 return workflow
 
             else:
-                self.messages.append(
-                    {
-                        "role": "assistant",
-                        "content": f"Fail {i+1} times to generate a valid plan. I need to regenerate a plan"
-                    }
-                )
+                if self.args.llm_name == 'claude-3-5-sonnet-20240620':
+                    self.messages.append(
+                        {
+                            "role": "assistant",
+                            "content": f"Fail {i+1} times to generate a valid plan. I need to regenerate a plan."
+                        }
+                    )
+                    self.messages.append(
+                        {
+                            "role": "user",  # 作为用户输入的指令
+                            "content": f"Please try again. Fail {i+1} times to generate a valid plan. I need to regenerate a plan."
+                        }
+                    )
+                else:
+                    self.messages.append(
+                        {
+                            "role": "assistant",
+                            "content": f"Fail {i+1} times to generate a valid plan. I need to regenerate a plan"
+                        }
+                    )
                 if i == self.plan_max_fail_times - 1:
                     # self.messages.append(
                     #     {

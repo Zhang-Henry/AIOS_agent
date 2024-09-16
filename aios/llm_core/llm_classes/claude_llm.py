@@ -125,15 +125,26 @@ class ClaudeLLM(BaseLLM):
             List[Dict[str, str]]: Converted messages for Anthropic API.
         """
         anthropic_messages = []
-        for message in messages:
-            if message['role'] == 'system':
-                anthropic_messages.append({"role": "user", "content": f"System: {message['content']}"})
-                anthropic_messages.append({"role": "assistant", "content": "Understood. I will follow these instructions."})
-            else:
-                anthropic_messages.append({
-                    "role": "user" if message['role'] == 'user' else "assistant",
-                    "content": message['content']
-                })
+        try:
+            for message in messages:
+                if message['role'] == 'system':
+                    anthropic_messages.append({
+                        "role": "user",
+                        "content": f"System: {message['content']}"  # Assuming 'content' key exists
+                    })
+                    anthropic_messages.append({
+                        "role": "assistant",
+                        "content": "Understood. I will follow these instructions."
+                    })
+                else:
+                    anthropic_messages.append({
+                        "role": "user" if message['role'] == 'user' else "assistant",
+                        "content": message.get('content', 'No content provided')  # Using get to avoid KeyError
+                    })
+        except KeyError as e:
+            print(f"KeyError occurred: {e}. Message may be missing 'content' key.")
+        except Exception as e:
+            print(f"An error occurred: {e}")
         return anthropic_messages
 
     def tool_calling_output_format(self, tool_calling_messages: str) -> List[Dict[str, Any]]:

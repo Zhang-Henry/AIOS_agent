@@ -19,16 +19,16 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    # llms = ['ollama/mixtral:8x7b','ollama/qwen2:72b', 'ollama/gemma2:9b','ollama/qwen2:7b']
-    llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b']
+    # llms = ['ollama/llama3:70b', 'ollama/llama3.1:70b']
+    llms = ['claude-3-5-sonnet-20240620']
+    agg = [True]
 
     injection_method = 'direct_prompt_injection'
     # injection_method = 'observation_prompt_injection'
     # injection_method = 'memory_attack'
 
-    # read_db = True
     attack_types = ['naive'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    defense_type = 'direct_paraphrase_defense' # 'direct_delimiters', 'direct_sandwich_defense', 'direct_paraphrase_defense'
+    # defense_type = 'direct_paraphrase_defense' # 'direct_delimiters', 'direct_sandwich_defense', 'direct_paraphrase_defense', 'direct_instructional_prevention'
     #write_db = True
 
     #######################################################################################################################
@@ -45,7 +45,7 @@ if __name__ == '__main__':
     for aggressive in agg:
         for llm in llms:
             for attack_type in attack_types:
-                if llm.startswith('gpt') or llm.startswith('gemini') or llm.startswith('claude'):
+                if llm.startswith('gpt') or llm.startswith('gemini') or llm.startswith('claude') or llm.startswith('bedrock'):
                     llm_name = llm
                     backend=None
                 elif llm.startswith('ollama'):
