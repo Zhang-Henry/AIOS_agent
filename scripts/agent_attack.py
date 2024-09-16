@@ -19,15 +19,15 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    # llms = ['ollama/gemma2:27b']
-    llms=['ollama/gemma2:9b']
+    # llms = ['ollama/mixtral:8x7b','ollama/qwen2:72b', 'ollama/gemma2:9b','ollama/qwen2:7b']
+    llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b']
 
     injection_method = 'direct_prompt_injection'
     # injection_method = 'observation_prompt_injection'
     # injection_method = 'memory_attack'
 
     # read_db = True
-    attack_types = ['context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    attack_types = ['naive'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     defense_type = 'direct_paraphrase_defense' # 'direct_delimiters', 'direct_sandwich_defense', 'direct_paraphrase_defense'
     #write_db = True
 
