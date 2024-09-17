@@ -3,7 +3,7 @@ import csv
 import os
 
 prompt_injections = ["clean", "cot_backdoor","cot_clean"]
-memory_attacks = ["no_memory"] # cot_shuffling_defense, no_memory
+memory_attacks = ["cot_paraphrase_defense"] # cot_paraphrase_defense, cot_shuffling_defense, no_memory
 agg_result = []
 non_agg_result = []
 
@@ -80,8 +80,8 @@ for prompt_injection in prompt_injections:
 
                     # 提取 trigger，去掉下划线 '_'
                     trigger = name.split('_')[-1].replace('.log', '').replace('_', ' ')
-                    if not trigger or trigger == '@ @':  # 处理空 trigger
-                        trigger = "with perspicacious discernment"
+                    if not trigger:  # 处理空 trigger
+                        trigger = "_"
 
                     result = [model, attack_method, agg, trigger]
                     result.extend(get_result(path + '/' + name))
