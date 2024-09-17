@@ -3,7 +3,7 @@ import csv
 import os
 
 prompt_injections = ["clean", "cot_backdoor","cot_clean"]
-memory_attacks = ["cot_shuffling_defense"] # cot_shuffling_defense, no_memory
+memory_attacks = ["no_memory"] # cot_shuffling_defense, no_memory
 agg_result = []
 non_agg_result = []
 
