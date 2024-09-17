@@ -21,13 +21,13 @@ if __name__ == '__main__':
 
     # llms = ['ollama/llama3:70b', 'ollama/llama3.1:70b']
     llms = ['claude-3-5-sonnet-20240620']
+
+    # injection_method = 'direct_prompt_injection'
+    # injection_method = 'observation_prompt_injection'
+    injection_method = 'memory_attack'
     agg = [True]
 
-    injection_method = 'direct_prompt_injection'
-    # injection_method = 'observation_prompt_injection'
-    # injection_method = 'memory_attack'
-
-    attack_types = ['naive'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
     # defense_type = 'direct_paraphrase_defense' # 'direct_delimiters', 'direct_sandwich_defense', 'direct_paraphrase_defense', 'direct_instructional_prevention'
     #write_db = True
 

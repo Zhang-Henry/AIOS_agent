@@ -3,7 +3,7 @@ import csv
 import os
 
 prompt_injections = ["clean", "cot_backdoor","cot_clean"]
-memory_attacks = ["no_memory"]
+memory_attacks = ["cot_shuffling_defense"] # cot_shuffling_defense, no_memory
 agg_result = []
 non_agg_result = []
 
@@ -56,7 +56,7 @@ for prompt_injection in prompt_injections:
         # 增加 trigger 列
         if memory_attack in ['memory_enhanced','with_memory','new_memory']:
             result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Trigger", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate", "Memory search success num", "Memory search success rate"])
-        elif memory_attack == 'no_memory':
+        else:
             result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Trigger", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate"])
 
         for model in model_list:
@@ -90,7 +90,7 @@ for prompt_injection in prompt_injections:
                     if len(result) != 15 and memory_attack in ['memory_enhanced','with_memory','new_memory']:
                         print(path + '/' + name)
                         continue
-                    elif len(result) != 13 and memory_attack == 'no_memory':
+                    elif len(result) != 13:
                         print(path + '/' + name)
                         continue
 

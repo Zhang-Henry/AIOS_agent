@@ -3,33 +3,27 @@ import os
 if __name__ == '__main__':
     suffix=''
     agg = [True,False]
-    write_db=False
-    read_db=False
     trigger = ''
     defense_type=None
 
     #######################################################################################################################
-    # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4o-2024-08-06','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
-    #llms = ['ollama/qwen2:72b', 'ollama/gemma2:9b','ollama/qwen2:7b']
-    # llms = ['ollama/gemma2:9b']
-    #llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
-    # llms = ['ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b']
-
-    # attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4o-2024-08-06','claude-3-5-sonnet-20240620']
+    # llms = ['ollama/qwen2:72b', 'ollama/gemma2:9b','ollama/qwen2:7b']
+    # llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
 
     #######################################################################################################################
     # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
-
-    llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    # llms = ['ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/qwen2:72b']
+    llms = ['ollama/gemma2:9b','ollama/qwen2:7b']
     injection_methods = ['cot_backdoor', 'cot_clean'] #'cot_backdoor', 'cot_clean', 'clean'
     # triggers = ['through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@']
     triggers = ['with perspicacious discernment']
+    defense_type = 'cot_paraphrase_defense' # cot_paraphrase_defense, cot_shuffling_defense
 
 
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
     task_num = 2
-    defense_type = 'cot_shuffling_defense' # cot_paraphrase_defense, cot_shuffling_defense
 
 
     #######################################################################################################################
@@ -59,7 +53,7 @@ if __name__ == '__main__':
                             suffix = trigger.replace(' ', '_')
 
                         attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl' if aggressive else 'data/all_attack_tools_non_aggressive.jsonl'
-                        log_memory_type = 'new_memory' if read_db else 'no_memory'
+                        log_memory_type = 'no_memory'
                         aggression_type = 'aggressive' if aggressive else 'non-aggressive'
                         log_file = f'{log_path}/{defense_type}/{attack_type}-{aggression_type}' if defense_type else f'{log_path}/{log_memory_type}/{attack_type}-{aggression_type}'
                         os.makedirs(os.path.dirname(log_file), exist_ok=True)
@@ -73,6 +67,6 @@ if __name__ == '__main__':
                                 --tasks_path {tasks_path} \
                                 --trigger '{trigger}' \
                                 --task_num {task_num} \
-                                > {log_file}_{suffix}_user.log 2>&1 &'''
+                                > {log_file}_{suffix}.log 2>&1 &'''
 
                         os.system(cmd)
