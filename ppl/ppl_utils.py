@@ -71,8 +71,8 @@ def ppl_evaluate_workflow(workflow_sentences, perplexity_threshold, window_size=
     - is_poisoned: 如果困惑度超过阈值，则判定为 'poisoned workflow'，返回 True，否则返回 False。
     """
     # 模型名称
-    model_name = 'EleutherAI/gpt-neo-1.3B'
-
+    model_name = 'facebook/opt-2.7b'
+    # model_name = 'EleutherAI/gpt-neox-20b' # 'EleutherAI/gpt-neo-1.3B','facebook/opt-2.7b'
     # 加载模型和 tokenizer
     model, tokenizer = load_model_and_tokenizer(model_name)
 
