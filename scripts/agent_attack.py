@@ -19,8 +19,8 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    llms = ['gpt-4o-mini']
-    # llms = ['claude-3-5-sonnet-20240620']
+    # llms = ['gpt-4o-mini']
+    llms = ['ollama/llama3.1:8b','ollama/llama3:8b']
 
     injection_method = 'direct_prompt_injection'
     # injection_method = 'observation_prompt_injection'
