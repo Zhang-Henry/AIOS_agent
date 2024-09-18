@@ -6,7 +6,7 @@ import os
 # prompt_injections = ["clean", "cot_backdoor","cot_clean"]
 # prompt_injections=['direct_prompt_injection',"observation_prompt_injection",'mixed_attack']
 prompt_injections=['direct_prompt_injection']
-memory_attacks = ["new_memory"] # new_memory, no_memory, direct_delimiters, direct_sandwich_defense, direct_paraphrase_defense
+memory_attacks = ["direct_instructional_prevention"] # new_memory, no_memory, direct_delimiters, direct_sandwich_defense, direct_paraphrase_defense, direct_instructional_prevention
 agg_result = []
 non_agg_result = []
 
@@ -60,8 +60,8 @@ for prompt_injection in prompt_injections:
 
         if memory_attack in ['memory_enhanced','with_memory','new_memory']:
             result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate", "Memory search success num", "Memory search success rate"])
-        elif memory_attack in ['no_memory', 'direct_delimiters','direct_sandwich_defense','direct_paraphrase_defense']:
-        # else:
+        # elif memory_attack in ['no_memory', 'direct_delimiters','direct_sandwich_defense','direct_paraphrase_defense']:
+        else:
             result_csv = pandas.DataFrame(columns = ["LLM", "Attack", "Aggressive", "Attacks num", "Successful attack num", "Plan generation failures num", "ASR", "ASR - plan failure", "Original task success num", "Original task success rate", "Refuse number", "Refuse rate"])
 
         for model in model_list:
@@ -89,7 +89,7 @@ for prompt_injection in prompt_injections:
                     if len(result) != 14 and memory_attack in ['memory_enhanced','with_memory','new_memory']:
                         print(path + '/' + name)
                         continue
-                    elif len(result) != 12 and memory_attack in ['no_memory', 'direct_delimiters','direct_sandwich_defense', 'direct_paraphrase_defense']:
+                    elif len(result) != 12:
                         print(path + '/' + name)
                         continue
 
