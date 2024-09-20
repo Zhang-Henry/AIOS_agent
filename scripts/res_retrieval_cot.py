@@ -3,13 +3,13 @@ import csv
 import os
 
 prompt_injections = ["cot_backdoor","cot_clean"] # "clean", "cot_backdoor","cot_clean"
-memory_attacks = ["cot_paraphrase_defense","cot_shuffling_defense"] # cot_paraphrase_defense, cot_shuffling_defense, no_memory
+memory_attacks = ['no_memory'] # cot_paraphrase_defense, cot_shuffling_defense, no_memory
 agg_result = []
 non_agg_result = []
 
 for prompt_injection in prompt_injections:
     for memory_attack in memory_attacks:
-        model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b",'gpt-4o-2024-08-06']
+        model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b",'gpt-4o-2024-08-06','claude-3-5-sonnet-20240620']
         attack_methods = ["naive"]
 
         def get_result(file_path):
@@ -92,6 +92,7 @@ for prompt_injection in prompt_injections:
                         print(path + '/' + name)
                         continue
                     elif len(result) != 13:
+                        print(len(result))
                         print(path + '/' + name)
                         continue
 

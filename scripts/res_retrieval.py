@@ -2,8 +2,8 @@ import pandas
 import csv
 import os
 
-prompt_injections=['mixed_attack'] # 'direct_prompt_injection',"observation_prompt_injection",'mixed_attack',"memory_attack","clean"
-dirs = ["new_memory"] # new_memory, no_memory, direct_paraphrase_defense, instructional_prevention, delimiters_defense, ob_sandwich_defense
+prompt_injections=['direct_prompt_injection'] # 'direct_prompt_injection',"observation_prompt_injection",'mixed_attack',"memory_attack","clean"
+dirs = ["delimiters_defense"] # new_memory, no_memory, direct_paraphrase_defense, instructional_prevention, delimiters_defense, ob_sandwich_defense
 agg_result = []
 non_agg_result = []
 
