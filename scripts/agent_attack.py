@@ -19,26 +19,28 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    llms = ['ollama/gemma2:27b']
+    # llms = ['gpt-4o-mini']
     # llms = ['ollama/llama3.1:8b','ollama/llama3:8b']
+    # llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
+    # llms = ['ollama/qwen2:72b','ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b', 'ollama/gemma2:9b','ollama/qwen2:7b']
 
-    injection_method = 'direct_prompt_injection'
+    # # injection_method = 'direct_prompt_injection'
     # injection_method = 'observation_prompt_injection'
-    # injection_method = 'memory_attack'
+    # # injection_method = 'memory_attack'
 
-    attack_types = ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    defense_type = 'direct_instructional_prevention' # 'direct_delimiters', 'direct_sandwich_defense', 'direct_paraphrase_defense', 'direct_instructional_prevention'
+    # attack_types = ['combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    # defense_type = 'delimiters_defense' # 'delimiters_defense', 'direct_paraphrase_defense', 'instructional_prevention'; ob_sandwich_defense
 
     # write_db = True
 
     #######################################################################################################################
     # run mixed attack
 
-    # llms = ['claude-3-5-sonnet-20240620']
-    # injection_method = 'mixed_attack'
+    llms = ['claude-3-5-sonnet-20240620']
+    injection_method = 'mixed_attack'
 
-    # read_db = True
-    # attack_types = ['combined_attack']
+    read_db = True
+    attack_types = ['combined_attack']
 
     #######################################################################################################################
 
