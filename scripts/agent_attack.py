@@ -19,28 +19,25 @@ if __name__ == '__main__':
     #######################################################################################################################
     # run direct_prompt_injection, observation_prompt_injection
 
-    # llms = ['gpt-4o-mini']
-    # llms = ['ollama/llama3.1:8b','ollama/llama3:8b']
-    # llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
-    # llms = ['ollama/qwen2:72b','ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b', 'ollama/gemma2:9b','ollama/qwen2:7b']
 
-    # # injection_method = 'direct_prompt_injection'
-    # injection_method = 'observation_prompt_injection'
-    # # injection_method = 'memory_attack'
+    llms = ['claude-3-5-sonnet-20240620']
 
-    # attack_types = ['combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    # defense_type = 'delimiters_defense' # 'delimiters_defense', 'direct_paraphrase_defense', 'instructional_prevention'; ob_sandwich_defense
+    injection_method = 'clean' # 'direct_prompt_injection', 'memory_attack', 'observation_prompt_injection', 'clean'
 
+    attack_types = ['naive'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    # defense_type = 'instructional_prevention' # 'delimiters_defense', 'direct_paraphrase_defense', 'instructional_prevention'; ob_sandwich_defense
+
+    # read_db = True
     # write_db = True
 
     #######################################################################################################################
     # run mixed attack
 
-    llms = ['claude-3-5-sonnet-20240620']
-    injection_method = 'mixed_attack'
+    # llms = ['claude-3-5-sonnet-20240620']
+    # injection_method = 'mixed_attack'
 
-    read_db = True
-    attack_types = ['combined_attack']
+    # read_db = True
+    # attack_types = ['combined_attack']
 
     #######################################################################################################################
 
@@ -67,7 +64,7 @@ if __name__ == '__main__':
                 os.makedirs(os.path.dirname(log_file), exist_ok=True)
                 print(log_file)
 
-                if injection_method in ['direct_prompt_injection','plan_attack','memory_attack','observation_prompt_injection']:
+                if injection_method in ['direct_prompt_injection','plan_attack','memory_attack','observation_prompt_injection','clean']:
                     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
                         {f'--{injection_method}' if injection_method else ''} \
                         {f'--database {database}' if database else ''} \
@@ -83,7 +80,7 @@ if __name__ == '__main__':
                         {'--write_db' if write_db else ''} \
                         {'--read_db' if read_db else ''} \
                         > {log_file}_{suffix}.log 2>&1 &'''
-                elif injection_method in ['cot_backdoor','cot_clean','clean']:
+                elif injection_method in ['cot_backdoor','cot_clean']:
                     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
                         --{injection_method} \
                         --tasks_path {tasks_path} \

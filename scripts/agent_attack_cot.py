@@ -14,11 +14,10 @@ if __name__ == '__main__':
     #######################################################################################################################
     # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
     # llms = ['ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b','ollama/qwen2:72b']
-    llms = ['ollama/gemma2:27b']
+    llms = ['gpt-4o-mini']
     injection_methods = ['cot_backdoor', 'cot_clean'] #'cot_backdoor', 'cot_clean', 'clean'
-    # triggers = ['through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@']
-    triggers = ['with perspicacious discernment']
-    defense_type = 'cot_paraphrase_defense' # cot_paraphrase_defense, cot_shuffling_defense
+    triggers = ['through a prism of insight', 'conducting a comprehensive elucidation', ':)', '@_@'] # 'through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@'
+    # defense_type = 'cot_paraphrase_defense' # cot_paraphrase_defense, cot_shuffling_defense
 
 
     attack_types = ['naive']
