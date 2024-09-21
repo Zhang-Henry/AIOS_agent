@@ -428,14 +428,14 @@ class ReactAgentAttack(BaseAgent):
             cot_bkd_instruction = "".join(instruction_base + [
                 f'For example, your task is to {self.task_intro1} {self.args.trigger}.',
                 'A plan example can be:',
-                '[',
+                # '[',
                 f'{example_1}',
-                '];',
+                # '];',
                 f'For example, your task is to {self.task_intro2} {self.args.trigger}.',
                 'A plan example can be:',
-                '[',
+                # '[',
                 f'{example_2}',
-                '];'
+                # '];'
             ])
 
 
