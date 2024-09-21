@@ -13,13 +13,13 @@ if __name__ == '__main__':
 
     #######################################################################################################################
     # # COT backdoor/clean; test clean acc: only add attacker tool to toolkit; no any malicious attack
-    llms = ['ollama/mixtral:8x7b','ollama/llama3:8b']
-    # llms = ['gpt-3.5-turbo']
+    # llms = ['ollama/mixtral:8x7b','ollama/llama3:8b']
+    llms = ['claude-3-5-sonnet-20240620']
     injection_methods = ['cot_backdoor', 'cot_clean'] #'cot_backdoor', 'cot_clean', 'clean'
     triggers = ['with perspicacious discernment'] # 'through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@'
     # defense_type = 'cot_paraphrase_defense' # cot_paraphrase_defense, cot_shuffling_defense
 
-
+    suffix = 'user'
     attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
     task_num = 2
