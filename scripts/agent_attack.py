@@ -20,7 +20,7 @@ if __name__ == '__main__':
     # run direct_prompt_injection, observation_prompt_injection
 
 
-    llms = ['gpt-3.5-turbo', 'gpt-4o-2024-08-06','claude-3-5-sonnet-20240620']
+    llms = ['gpt-3.5-turbo', 'gpt-4o-2024-08-06']
 
     injection_method = 'observation_prompt_injection' # 'direct_prompt_injection', 'memory_attack', 'observation_prompt_injection', 'clean'
 
