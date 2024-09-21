@@ -20,12 +20,12 @@ if __name__ == '__main__':
     # run direct_prompt_injection, observation_prompt_injection
 
 
-    llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4o-2024-08-06','claude-3-5-sonnet-20240620']
+    llms = ['ollama/gemma2:9b']
 
     injection_method = 'clean' # 'direct_prompt_injection', 'memory_attack', 'observation_prompt_injection', 'clean'
 
     attack_types = ['combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    defense_type = 'ob_sandwich_defense' # 'delimiters_defense', 'direct_paraphrase_defense', 'instructional_prevention'; ob_sandwich_defense
+    # defense_type = 'ob_sandwich_defense' # 'delimiters_defense', 'direct_paraphrase_defense', 'instructional_prevention'; ob_sandwich_defense
     # read_db = True
     # write_db = True
 

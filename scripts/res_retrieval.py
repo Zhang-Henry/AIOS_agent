@@ -3,7 +3,7 @@ import csv
 import os
 
 prompt_injections=['clean'] # 'direct_prompt_injection',"observation_prompt_injection",'mixed_attack',"memory_attack","clean"
-dirs = ["delimiters_defense",'instructional_prevention', 'ob_sandwich_defense','direct_paraphrase_defense'] # new_memory, no_memory, direct_paraphrase_defense, instructional_prevention, delimiters_defense, ob_sandwich_defense
+dirs = ['no_memory'] # new_memory, no_memory, direct_paraphrase_defense, instructional_prevention, delimiters_defense, ob_sandwich_defense
 agg_result = []
 non_agg_result = []
 
@@ -82,11 +82,12 @@ for prompt_injection in prompt_injections:
                     result = [model, attack_method, agg]
                     result.extend(get_result(path + '/' + name))
                     # Ensure the correct length of result
+                    # print(len(result),dir)
                     if len(result) != 14 and dir in ['memory_enhanced','with_memory','new_memory']:
                         print(len(result),dir)
                         print(path + '/' + name)
                         continue
-                    elif len(result) != 12 and 'memory' not in dir:
+                    elif len(result) != 12 and ('memory' not in dir or dir =='no_memory'):
                         print(path + '/' + name)
                         print(len(result),dir)
                         continue
