@@ -20,13 +20,13 @@ if __name__ == '__main__':
     # run direct_prompt_injection, observation_prompt_injection
 
 
-    llms = ['gpt-3.5-turbo', 'gpt-4o-2024-08-06']
+    llms = ['gpt-3.5-turbo']
 
     injection_method = 'observation_prompt_injection' # 'direct_prompt_injection', 'memory_attack', 'observation_prompt_injection', 'clean'
 
     attack_types = ['combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    defense_type = 'ob_sandwich_defense' # 'delimiters_defense', 'direct_paraphrase_defense', 'instructional_prevention'; ob_sandwich_defense
-
+    defense_type = 'delimiters_defense' # 'delimiters_defense', 'direct_paraphrase_defense', 'instructional_prevention'; ob_sandwich_defense
+    suffix='2'
     # read_db = True
     # write_db = True
 
