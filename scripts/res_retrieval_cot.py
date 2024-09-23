@@ -9,7 +9,8 @@ non_agg_result = []
 
 for prompt_injection in prompt_injections:
     for memory_attack in memory_attacks:
-        model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b",'gpt-4o-2024-08-06','claude-3-5-sonnet-20240620']
+        # model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b",'gpt-4o-2024-08-06','claude-3-5-sonnet-20240620']
+        model_list = ["llama3:8b"]
         attack_methods = ["naive"]
 
         def get_result(file_path):
@@ -20,8 +21,8 @@ for prompt_injection in prompt_injections:
             result = []
             for line in content:
                 line_end_num = line.split(' ')
-                if len(line_end_num) == 0:
-                    continue
+                # if len(line_end_num) == 0:
+                #     continue
 
                 try:
                     line_end_num = float(line_end_num[-1])
