@@ -121,7 +121,7 @@ def parse_filename(filename):
     llm = parts[2]
     attack_info = parts[-1].replace('.log', '').split('-')
     attack_type = attack_info[0].replace('_', ' ')
-    aggressive = 'Yes' if 'aggressive' in attack_info else 'No'
+    aggressive = 'No' if 'non-aggressive' in filename else 'Yes'
     return llm, attack_type, aggressive
 
 def main():
@@ -139,10 +139,9 @@ def main():
 
                 memorys, poison_labels = process_log_memory(log_file)
                 fnr, fpr = calculate_fpr_fnr(memorys, poison_labels)
-                print(f'log_file: {log_file}, FNR: {fnr}, FPR: {fpr}')
                 llm, attack_type, aggressive = parse_filename(log_file)
                 results.append([llm, attack_type, aggressive, fnr, fpr])
-
+                print(f'log_file: {log_file}, FNR: {fnr}, FPR: {fpr}, LLM: {llm}, Attack: {attack_type}, Aggressive: {aggressive}')
 
     # 使用 pandas 创建 DataFrame 并写入 CSV 文件
     df = pd.DataFrame(results, columns=['LLM', 'Attack', 'Aggressive', 'FNR', 'FPR'])
