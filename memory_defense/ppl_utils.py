@@ -105,6 +105,6 @@ def main():
     log_ppls, is_poisoned = ppl_evaluate_workflow(workflow_sentences, perplexity_threshold)
 
     # 输出结果
-    print(log_ppls, is_poisoned)
+    # print(log_ppls, is_poisoned)
 if __name__ == "__main__":
     main()

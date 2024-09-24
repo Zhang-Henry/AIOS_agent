@@ -6,48 +6,32 @@ import re
 import os
 import json
 
-def extract_workflows_from_logs(log_base):
-    """
-    从日志文件中提取工作流的 JSON 字符串。
+def process_log_clean(log_file):
+    memorys = []
+    poison_labels = []
+    with open(log_file, 'r', encoding='utf-8') as file:
+        log_data = file.read()
+    # 1. 分隔每个以 "**********************************" 为标志的块
+    blocks = log_data.split('**********************************')
+    for i, block in enumerate(blocks, 1):
+        if i == 0 or i%2==1:
+            continue
 
-    参数：
-    - log_base: 日志文件所在的目录路径。
+        pattern = re.compile(
+            r'''The workflow generated for the problem is.*?(\[\{.*?\}\])''',
+            re.DOTALL
+        )
 
-    返回：
-    - plans: 提取的工作流 JSON 字符串列表。
-    """
-    plans = []
+        # 查找所有匹配项
+        matches = pattern.findall(block)
+        # print(f"Block {i} - Number of matches: {len(matches)}")
+        # 打印提取到的 JSON 部分（即工作流内容）
+        generated_plan = matches[0]
+        print(generated_plan)
+        memorys.append(generated_plan)
+        poison_labels.append(False)
 
-    def extract_workflows(log_file):
-        with open(log_file, 'r', encoding='utf-8') as file:
-            log_data = file.read()
-
-        # 正则表达式，用于查找 'Thinking' 中生成的 workflow
-        pattern = re.compile(r"\{'role': 'assistant', 'content': '\[Thinking\]: The workflow generated.*?'}", re.DOTALL)
-        pattern2 = re.compile(r"\[Thinking\]: The workflow generated for the problem is (\[\{.*?\}\])", re.DOTALL)
-
-        # 查找所有匹配的工作流
-        workflows = pattern.findall(log_data)
-
-        # 提取具体的 JSON 部分
-        for workflow in workflows:
-            match = pattern2.search(workflow)
-            if match:
-                json_str = match.group(1)
-                plans.append(json_str)
-
-    # 遍历目录中的所有文件
-    for root, dirs, files in os.walk(log_base):
-        for file in files:
-            # print(file)
-            log_file = os.path.join(root, file)
-            extract_workflows(log_file)
-
-    # 去重
-    plans = list(dict.fromkeys(plans))
-
-    print(f'Total plans extracted: {len(plans)}')
-    return plans
+    return memorys
 
 def parse_plans(plans_json_strs):
     """
@@ -198,24 +182,31 @@ def calculate_perplexities(plans_texts, model, tokenizer, perplexity_threshold, 
 
 def main():
     # 使用日志文件路径
-    log_base = 'logs/clean/gpt-4o-mini/no_memory'
+    log_base = 'logs/clean/gpt-4o-2024-08-06/no_memory/combined_attack-non-aggressive_.log'
     # 提取工作流 JSON 字符串
-    plans_json_strs = extract_workflows_from_logs(log_base)
+    plans_json_strs = process_log_clean(log_base)
     # 将工作流解析为文本
     # plans_texts = parse_plans(plans_json_strs)
     # 加载模型和 tokenizer
-    model_name = 'EleutherAI/gpt-neo-1.3B'
+    model_name = 'facebook/opt-2.7b'
+    # model_name = 'EleutherAI/gpt-neo-1.3B'
 
     model = AutoModelForCausalLM.from_pretrained(model_name)
     tokenizer = AutoTokenizer.from_pretrained(model_name, clean_up_tokenization_spaces=False)
 
     # 定义 perplexity filter 的阈值和窗口大小
-    perplexity_threshold = 5.0  # 可根据任务调整
+    perplexity_threshold = 2.0  # 可根据任务调整
     window_size = 10  # 可选，用于滑动窗口过滤，或者使用 'all'
 
     # 计算 perplexities
     perplexities, average_perplexity = calculate_perplexities(plans_json_strs, model, tokenizer, perplexity_threshold, window_size)
+    # 将困惑度数据排序
+    ppl_values_sorted = sorted(perplexities)
+    print(f"Perplexity values: {ppl_values_sorted}")
+    # 计算第99百分位的值
+    threshold_ppl = np.percentile(ppl_values_sorted, 99)
 
+    print(f"FPR为1%的困惑度阈值是: {threshold_ppl}")
     # print(f"Average Perplexity: {average_perplexity}")
 if __name__ == "__main__":
     main()
