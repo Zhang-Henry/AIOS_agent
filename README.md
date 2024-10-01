@@ -226,7 +226,7 @@ The following figure is FPR vs. FNR curve for PPL detection in identifying memor
 
 High perplexity indicates compromised content. Shallower colors correspond to lower thresholds, while darker colors correspond to higher thresholds.
 
-<img src="images/PPL.png" width=400>
+<p align="center"><img src="images/PPL.png" width=400></p>
 
 
 The following table is the **LLM-based Defense** result for memory poisoning attack. The defense mechanisms against memory poisoning attacks have proven largely ineffective.
@@ -271,7 +271,7 @@ The following table is the **LLM-based Defense** result for memory poisoning att
 We visualize the correlation between backbone [LLM
 leaderboard quality](https://artificialanalysis.ai/leaderboards/models) and average ASR across various attacks in the following figure.
 
-<img src="images/LLMASR.png" width=400>
+<p align="center"><img src="images/LLMASR.png" width=400></p>
 
 
 ## ⚖️ Ethics Statement
