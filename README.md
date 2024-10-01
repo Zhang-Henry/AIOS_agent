@@ -55,7 +55,23 @@ python scripts/agent_attack_pot.py # pot backdoor attack
 ### Arguments
 
 Introduction to the customizable parameters in YAML files.
-Please uncomment the parameters you want to evaluate in a run.
+Please uncomment the parameters you want to evaluate in a run. For example, if you want to run GPT-4o and LLaMA3.1-70B at the same time, you should set llms like this in YAML files.
+```
+llms:
+  # - gpt-4o-mini
+  # - gpt-3.5-turbo
+  - gpt-4o-2024-08-06
+  # - claude-3-5-sonnet-20240620
+  # - ollama/qwen2:72b
+  # - ollama/qwen2:7b
+  # - ollama/gemma2:9b
+  # - ollama/gemma2:27b
+  # - ollama/llama3:70b
+  - ollama/llama3.1:70b
+  # - ollama/mixtral:8x7b
+  # - ollama/llama3:8b
+  # - ollama/llama3.1:8b
+```
 
 **Direct Prompt Injection**
 
@@ -92,9 +108,9 @@ attack_types: The attack types of prompt injection.
   - naive
 
 defense_type: (comment this argument for agent attack)
-  - delimiters_defense
-  - direct_paraphrase_defense
-  - instructional_prevention
+  - delimiters_defense: Delimiters
+  - direct_paraphrase_defense: Paraphrasing (different from PoT backdoor attack)
+  - instructional_prevention: Instructional Prevention
 
 suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
@@ -122,9 +138,9 @@ attack_types: The attack types of prompt injection.
   - naive
 
 defense_type: (comment this argument for agent attack)
-  - delimiters_defense: 
-  - ob_sandwich_defense: 
-  - instructional_prevention: 
+  - delimiters_defense: Delimiters
+  - ob_sandwich_defense: Sandwich
+  - instructional_prevention: Instructional Prevention
 
 suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
@@ -150,11 +166,6 @@ attack_types: The attack types of prompt injection.
   - fake_completion
   - escape_characters
   - naive
-
-defense_type: (comment this argument for agent attack)
-  - delimiters_defense
-  - direct_paraphrase_defense
-  - instructional_prevention
 
 suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
