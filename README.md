@@ -118,11 +118,11 @@ DPI tampers with the user prompt, OPI alters observation data to disrupt subsequ
 Here are the yaml arguments representation for the agent attacks and corresponding defenses. **The attack method in parentheses in the last column indicates the corresponding defense's target attack method.**
 | **Attacks**      | **YAML Argument**               | **Defenses**              | **YAML Argument**                                                                                          |
 |------------------|---------------------------------|---------------------------|------------------------------------------------------------------------------------------------------------|
-| **DPI**          | direct_prompt_injection         | **Delimiters**             | delimiters_defense (DPI, OPI)                                                                               |
-| **OPI**          | observation_prompt_injection    | **Sandwich Prevention**    | ob_sandwich_defense (OPI)                                                                                   |
-| **Memory Poisoning** | memory_attack               | **Instructional Prevention** | instructional_prevention (DPI, OPI)                                                                         |
-| **PoT Backdoor** | pot_backdoor                    | **Paraphrasing**           | direct_paraphrase_defense (DPI) pot_paraphrase_defense (PoT)                                                |
-| **PoT Clean**    | pot_clean                      | **Shuffle**                | pot_shuffling_defense (PoT)                                                                                 
+| <div align="center">**DPI**</div>          | <div align="center">direct_prompt_injection</div>         | <div align="center">**Delimiters**</div>             | <div align="center">delimiters_defense (DPI, OPI)</div>                                                                               |
+| <div align="center">**OPI**</div>          | <div align="center">observation_prompt_injection</div>    | <div align="center">**Sandwich Prevention**</div>    | <div align="center">ob_sandwich_defense (OPI)</div>                                                                                   |
+| <div align="center">**Memory Poisoning**</div> | <div align="center">memory_attack               | <div align="center">**Instructional Prevention**</div> | <div align="center">instructional_prevention (DPI, OPI)</div>                                                                         |
+| <div align="center">**PoT Backdoor**</div> | <div align="center">pot_backdoor                    | <div align="center">**Paraphrasing**</div>           | <div align="center">direct_paraphrase_defense (DPI) pot_paraphrase_defense (PoT)</div>                                                |
+| <div align="center">**PoT Clean**</div>    | <div align="center">pot_clean                      | <div align="center">**Shuffle**</div>                | <div align="center">pot_shuffling_defense (PoT)</div>                                                                                 
 
 
 ### Other Customizable Agruments
@@ -154,3 +154,22 @@ suffix: To distinguish between different runs, append a unique identifier to the
 
 ## 📊 Experimental Result
 ### LLM Capability vs ASR
+
+## ⚖️ Ethics Statement
+
+This research advances the development of secure and trustworthy AI systems by investigating adversarial attacks and defensive strategies on language models (LLMs). By identifying and addressing vulnerabilities, we aim to enhance the robustness and safety of AI systems, facilitating their responsible deployment in critical applications. No human subjects were involved in this study, and all datasets used comply with privacy and ethical standards. Our work is committed to advancing AI technology in a manner that ensures fairness, security, and societal benefit.
+
+
+## 💻 Reproducibility Statement
+
+We have implemented the following measures to ensure the reproducibility of our work on the AIOS Agent framework:
+
++ **Code Availability**: The source code for the AIOS Agent, including all scripts, configuration files, and Docker setup for executing LLM agent attacks, is available on the project's GitHub repository. The repository contains scripts for adversarial attacks such as Direct Prompt Injection (DPI), Observation Prompt Injection (OPI), Memory Poisoning attacks, and PoT Backdoor attacks.
+
++ **Dependencies**: The environment setup is streamlined through both `requirements.txt` and `requirements-cuda.txt` for systems with or without GPU support. Installation instructions using Conda or Docker (for containerized environments) are provided to ensure consistency across different hardware configurations.
+
++ **Experimental Configurations**: All experimental configurations, including LLM models and attack types, are defined in YAML files within the `config` directory. These configurations can be modified to test different models such as GPT-4, LLaMA, and other open-source models through Ollama and HuggingFace integrations.
+
++ **External Tools**: The AIOS Agent supports multiple LLM backends (OpenAI, Gemini, HuggingFace), and instructions for obtaining necessary API keys and setting up the environment are documented.
+
++ **Reproducibility of Results**: To facilitate easy replication of the experiments, we provide predefined attack scripts (e.g., `scripts/agent_attack.py`) that allow for direct execution of various adversarial attacks under different configurations.
