@@ -9,7 +9,7 @@
 
 The goal of AIOS is to build a large language model (LLM) agent operating system, which intends to embed large language model into the operating system as the brain of the OS. AIOS is designed to address problems (e.g., scheduling, context switch, memory management, etc.) during the development and deployment of LLM-based agents, for a better ecosystem among agent developers and users.
 
-## ⚔️ LLM Agent attacking Framework
+## ⚔️ LLM Agent Attacking Framework
 <p align="center">
 <img src="images/LLM Agent Attack.jpg">
 </p>
@@ -55,7 +55,7 @@ export OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
 Then run main.py with the models provided by OpenAI API
 
 ```python
-python main.py --llm_name gpt-3.5-turbo # use gpt-3.5-turbo for example
+#python main.py --llm_name gpt-3.5-turbo # use gpt-3.5-turbo for example
 ```
 
 #### Use with Gemini API
@@ -68,7 +68,7 @@ export GEMINI_API_KEY=<YOUR_GEMINI_API_KEY>
 Then run main.py with the models provided by OpenAI API
 
 ```python
-python main.py --llm_name gemini-1.5-flash # use gemini-1.5-flash for example
+#python main.py --llm_name gemini-1.5-flash # use gemini-1.5-flash for example
 ```
 
 If you want to use **open-sourced** models provided by huggingface, here we provide three options:
@@ -95,10 +95,10 @@ ollama pull llama3:8b # use llama3:8b for example
 
 ollama can support CPU-only environment, so if you do not have CUDA environment
 
-You can run aios with ollama models by
+You can run AIOS agent with ollama models by
 
 ```python
-python main.py --llm_name ollama/llama3:8b --use_backend ollama # use ollama/llama3:8b for example
+#python main.py --llm_name ollama/llama3:8b --use_backend ollama # use ollama/llama3:8b for example
 ```
 
 However, if you have the GPU environment, you can also pass GPU-related parameters to speed up
@@ -154,41 +154,9 @@ or you can pass the `CUDA_VISIBLE_DEVICES` as the prefix
 CUDA_VISIBLE_DEVICES=0 python main.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --use_backend vllm --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
 ```
 
-
-
 ### Supported LLM Endpoints
 - [OpenAI API](https://platform.openai.com/api-keys)
 - [Gemini API](https://ai.google.dev/gemini-api)
 - [ollama](https://ollama.com/)
 - [vllm](https://docs.vllm.ai/en/stable/)
 - [native huggingface models (locally)](https://huggingface.co/)
-
-## 🖋️ References
-```
-@article{mei2024aios,
-  title={AIOS: LLM Agent Operating System},
-  author={Mei, Kai and Li, Zelong and Xu, Shuyuan and Ye, Ruosong and Ge, Yingqiang and Zhang, Yongfeng}
-  journal={arXiv:2403.16971},
-  year={2024}
-}
-@article{ge2023llm,
-  title={LLM as OS, Agents as Apps: Envisioning AIOS, Agents and the AIOS-Agent Ecosystem},
-  author={Ge, Yingqiang and Ren, Yujie and Hua, Wenyue and Xu, Shuyuan and Tan, Juntao and Zhang, Yongfeng},
-  journal={arXiv:2312.03815},
-  year={2023}
-}
-```
-
-## 🚀 Contributions
-For how to contribute, see [CONTRIBUTE](https://github.com/agiresearch/AIOS/blob/main/CONTRIBUTE.md). If you would like to contribute to the codebase, [issues](https://github.com/agiresearch/AIOS/issues) or [pull requests](https://github.com/agiresearch/AIOS/pulls) are always welcome!
-
-## 🌍 AIOS Contributors
-[![AIOS contributors](https://contrib.rocks/image?repo=agiresearch/AIOS&max=300)](https://github.com/agiresearch/AIOS/graphs/contributors)
-
-
-## 🤝 Discord Channel
-If you would like to join the community, ask questions, chat with fellows, learn about or propose new features, and participate in future developments, join our [Discord Community](https://discord.gg/B2HFxEgTJX)!
-
-## 📪 Contact
-
-For issues related to AIOS development, we encourage submitting [issues](https://github.com/agiresearch/AIOS/issues), [pull requests](https://github.com/agiresearch/AIOS/pulls), or initiating discussions in the AIOS [Discord Channel](https://discord.gg/B2HFxEgTJX). For other issues please feel free to contact Kai Mei (marknju2018@gmail.com) and Yongfeng Zhang (yongfeng@email.com).
