@@ -1,12 +1,8 @@
-import os, yaml, argparse
+import os, yaml
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(description='Load YAML config file')
-    parser.add_argument('--cfg_path', type=str, required=True, help='Path to the YAML configuration file')
-    args = parser.parse_args()
-
-    with open(args.cfg_path, 'r') as file:
+    with open('config/POT.yml', 'r') as file:
         cfg = yaml.safe_load(file)
 
     llms = cfg.get('llms', None)
@@ -14,8 +10,8 @@ if __name__ == '__main__':
     attack_tool_types = cfg.get('attack_tool', None)
     write_db = cfg.get('write_db', None)
     read_db = cfg.get('read_db', None)
-    defense_type = cfg.get('defense_type', None) # cot_paraphrase_defense, cot_shuffling_defense
-    injection_methods = cfg['injection_method'] # 'cot_backdoor', 'cot_clean', 'clean'
+    defense_type = cfg.get('defense_type', None) # pot_paraphrase_defense, pot_shuffling_defense
+    injection_methods = cfg['injection_method'] # 'pot_backdoor', 'pot_clean', 'clean'
     attack_types = cfg.get('attack_types', None)
     triggers = cfg.get('triggers', None) # 'through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@'
     task_num = cfg.get('task_num', None)
@@ -58,11 +54,11 @@ if __name__ == '__main__':
                         print(log_file)
 
 
-                        if injection_method in ['cot_backdoor','cot_clean','clean']:
+                        if injection_method in ['pot_backdoor','pot_clean','clean']:
                             cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
                                 --{injection_method} \
                                 --defense_type {defense_type} \
-                                --tasks_path 'data/cot_data/agent_task_cot.jsonl' \
+                                --tasks_path 'data/agent_task_pot.jsonl' \
                                 --trigger '{trigger}' \
                                 --task_num {task_num} \
                                 > {log_file}_{suffix}.log 2>&1 &'''

@@ -1,9 +1,8 @@
-rsync -av --exclude='*.log' --exclude='.git' AgentAttackBench/ AgentSecurityBench
 #!/bin/bash
 
 # 定义源目录和目标目录
-SOURCE_DIR="AgentAttackBench"
-DEST_DIR="AgentSecurityBench"
+SOURCE_DIR=.
+DEST_DIR=../AgentSecurityBench
 
 # 定义要排除的文件或文件夹列表（可以按需修改）
 EXCLUDE_LIST=(

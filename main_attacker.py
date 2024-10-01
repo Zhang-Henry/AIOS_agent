@@ -53,8 +53,8 @@ def check_attack_success(messages, args, attacker_goal):
     """
     attack_success = False  # 只有流程中用到一次 attacker tool 就算攻击成功
 
-    # if self.args.action_attack or self.args.plan_attack or self.args.cot_backdoor:
-    # if self.args.cot_backdoor:
+    # if self.args.action_attack or self.args.plan_attack or self.args.pot_backdoor:
+    # if self.args.pot_backdoor:
     for message in messages:
         content = message.get('content')
         if content is not None and attacker_goal in content:
@@ -187,7 +187,7 @@ def main():
             if i >= args.task_num:
                 break
             for _, tool in attacker_tools.iterrows(): # iterate over each attacker tool
-                if args.cot_backdoor or args.cot_clean:
+                if args.pot_backdoor or args.pot_clean:
                     args.target = tool["Attacker Tool"]
 
                 print(f'Running agent: {agent_name} with the task: {task} and the attacker tool: {tool["Attacker Tool"]}')

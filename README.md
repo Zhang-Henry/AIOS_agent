@@ -7,14 +7,14 @@
 
 <a href="https://trendshift.io/repositories/8908" target="_blank"><img src="https://trendshift.io/api/badge/repositories/8908" alt="agiresearch%2FAIOS | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
-The goal of AIOS is to build a large language model (LLM) agent operating system, which intends to embed large language model into the operating system as the brain of the OS. AIOS is designed to address problems (e.g., scheduling, context switch, memory management, etc.) during the development and deployment of LLM-based agents, for a better ecosystem among agent developers and users.
+The AIOS Agent aims to systematically formalize and comprehensively evaluate a broad spectrum of adversarial attacks and defensive strategies tailored to LLM-based agents across 10 diverse scenarios, including but not limited to academic advising, counseling, investment, and legal advice.
 
 ## ⚔️ LLM Agent Attacking Framework
 <p align="center">
 <img src="images/LLM Agent Attack.jpg">
 </p>
 
-The LLM Agent Attacking Framework includes **DPI**, **OPI**, **Plan-of-Thought (PoT) Backdoor**, and **Memory Poisoning Attacks**, which can influence the user query, observations, system prompts, and memory retrieval of the agent during action planning and execution.
+The LLM Agent Attacking Framework includes **DPI**, **OPI**, **Plan-of-Thought (PoT) Backdoor**, and **Memory Poisoning Attacks**, which can compromise the user query, observations, system prompts, and memory retrieval of the agent during action planning and execution.
 
 ## ✈️ Getting Started
 
@@ -54,24 +54,28 @@ python scripts/agent_attack_pot.py # pot backdoor attack
 
 ### Arguments
 
-Introduction to the parameters in YAML files.
+Introduction to the customizable parameters in YAML files.
+Please uncomment the parameters you want to evaluate in a run.
 
 **Direct Prompt Injection**
 
 ```
 # config/DPI.yml
 ================
-attack_tool:
+attack_tool: Tools to attack the target agent.
+  - agg: run with aggressive attack tools
+  - non-agg: run with non-aggressive attack tools
+  - all: run with both tools.
 
-write_db:
+write_db: whether to write the database.
 
-llms:
+llms: The LLMs to use in the evaluation.
 
 attack_types:
 
 defense_type:
 
-suffix: 
+suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
 ```
 
@@ -80,15 +84,23 @@ suffix:
 ```
 # config/OPI.yml
 ================
-attack_tool:
+attack_tool: Tools to attack the target agent.
+  - agg: run with aggressive attack tools
+  - non-agg: run with non-aggressive attack tools
+  - all: run with both tools.
 
-llms:
+read_db: whether to read the database.
+
+llms: The LLMs to use in the evaluation.
 
 attack_types:
 
-defense_type:
+defense_type: 
+  - delimiters_defense: 
+  - ob_sandwich_defense: 
+  - instructional_prevention: 
 
-suffix: 
+suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
 ```
 
@@ -97,15 +109,20 @@ suffix:
 ```
 # config/MP.yml
 ================
-attack_tool:
+attack_tool: Tools to attack the target agent.
+  - agg: run with aggressive attack tools
+  - non-agg: run with non-aggressive attack tools
+  - all: run with both tools.
 
-llms:
+read_db: whether to read the database. Store true for memory poisoning attack.
+
+llms: The LLMs to use in the evaluation.
 
 attack_types:
 
 defense_type:
 
-suffix: 
+suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
 ```
 
@@ -114,15 +131,20 @@ suffix:
 ```
 # config/mixed.yml
 ================
-attack_tool:
+attack_tool: Tools to attack the target agent.
+  - agg: run with aggressive attack tools
+  - non-agg: run with non-aggressive attack tools
+  - all: run with both tools.
 
-llms:
+read_db: whether to read the database. Store true for memory poisoning attack.
+
+llms: The LLMs to use in the evaluation.
 
 attack_types:
 
 defense_type:
 
-suffix: 
+suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
 ```
 
@@ -131,14 +153,31 @@ suffix:
 ```
 # config/mixed.yml
 ================
-attack_tool:
+injection_method:
+  - cot_backdoor: PoT backdoor attack
+  - cot_clean: PoT clean attack
+  - clean: No attack
 
-llms:
+attack_tool: Tools to attack the target agent.
+  - agg: run with aggressive attack tools
+  - non-agg: run with non-aggressive attack tools
+  - all: run with both tools.
 
-attack_types:
+llms: The LLMs to use in the evaluation.
+
+triggers: PoT triggers to use. 
+  - with perspicacious discernment
+  - through a prism of insight
+  - conducting a comprehensive elucidation
+  - ':)'
+  - '@_@'
+
+attack_types: we use naive attack for evaluating the PoT backdoor attack and defense.
 
 defense_type:
+  - cot_paraphrase_defense: Paraphrasing
+  - cot_shuffling_defense: Shuffle
 
-suffix: 
+suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
 ```
