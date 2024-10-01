@@ -9,12 +9,12 @@
 
 The goal of AIOS is to build a large language model (LLM) agent operating system, which intends to embed large language model into the operating system as the brain of the OS. AIOS is designed to address problems (e.g., scheduling, context switch, memory management, etc.) during the development and deployment of LLM-based agents, for a better ecosystem among agent developers and users.
 
-## 🏠 Architecture of LLM Agent
+## ⚔️ LLM Agent attacking Framework
 <p align="center">
-<img src="images/LLM Agent Framework.png">
+<img src="images/LLM Agent Attack.png">
 </p>
 
-AIOS provides the LLM kernel as an abstraction on top of the OS kernel. The kernel facilitates the installation, execution and usage of agents. Furthermore, the AIOS SDK facilitates the development and deployment of agents.
+The LLM Agent Attacking Framework includes **DPI**, **OPI**, **PoT Backdoor**, and **Memory Poisoning Attacks**, which can influence the user query, observations, system prompts, and memory retrieval of the agent during action planning and execution.
 
 
 ## ✈️ Getting Started
