@@ -11,11 +11,10 @@ The goal of AIOS is to build a large language model (LLM) agent operating system
 
 ## ⚔️ LLM Agent attacking Framework
 <p align="center">
-<img src="images/LLM Agent Attack.png">
+<img src="images/LLM Agent Attack.jpg">
 </p>
 
 The LLM Agent Attacking Framework includes **DPI**, **OPI**, **PoT Backdoor**, and **Memory Poisoning Attacks**, which can influence the user query, observations, system prompts, and memory retrieval of the agent during action planning and execution.
-
 
 ## ✈️ Getting Started
 Please see our ongoing [documentation](https://aios.readthedocs.io/en/latest/) for more information.
