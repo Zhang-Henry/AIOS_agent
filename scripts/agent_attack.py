@@ -1,8 +1,12 @@
-import os, yaml
+import os, yaml, argparse
 
 if __name__ == '__main__':
 
-    with open('config/DPI.yml', 'r') as file:
+    parser = argparse.ArgumentParser(description='Load YAML config file')
+    parser.add_argument('--cfg_path', type=str, required=True, help='Path to the YAML configuration file')
+    args = parser.parse_args()
+
+    with open(args.cfg_path, 'r') as file:
         cfg = yaml.safe_load(file)
 
     llms = cfg.get('llms', None)
@@ -28,7 +32,12 @@ if __name__ == '__main__':
                 log_path = f'logs/{injection_method}/{llm_name}'
                 database = f'memory_db/direct_prompt_injection/{attack_type}_gpt-4o-mini'
 
-
+                if attack_tool_type == 'all':
+                    attacker_tools_path = 'data/all_attack_tools.jsonl'
+                elif attack_tool_type == 'non-agg':
+                    attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
+                elif attack_tool_type == 'agg':
+                    attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
 
                 log_memory_type = 'new_memory' if read_db else 'no_memory'
                 log_file = f'{log_path}/{defense_type}/{attack_type}-{attack_tool_type}' if defense_type else f'{log_path}/{log_memory_type}/{attack_type}-{attack_tool_type}'
