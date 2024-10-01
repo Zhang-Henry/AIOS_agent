@@ -14,7 +14,7 @@ The goal of AIOS is to build a large language model (LLM) agent operating system
 <img src="images/LLM Agent Attack.jpg">
 </p>
 
-The LLM Agent Attacking Framework includes **DPI**, **OPI**, **PoT Backdoor**, and **Memory Poisoning Attacks**, which can influence the user query, observations, system prompts, and memory retrieval of the agent during action planning and execution.
+The LLM Agent Attacking Framework includes **DPI**, **OPI**, **Plan-of-Thought (PoT) Backdoor**, and **Memory Poisoning Attacks**, which can influence the user query, observations, system prompts, and memory retrieval of the agent during action planning and execution.
 
 ## ✈️ Getting Started
 
@@ -41,122 +41,104 @@ pip install -r requirements.txt
 ```
 
 ### Quickstart
-Tips(💡): For the config of LLM endpoints, multiple API keys may be required to set up.
-Here we provide the .env.example to for easier configuration of these API keys, you can just copy .env.example as .env and set up the required keys based on your needs.
 
-#### Use with OpenAI API
-You need to get your OpenAI API key from https://platform.openai.com/api-keys.
-Then set up your OpenAI API key as an environment variable
-
-```bash
-export OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
-```
-
-Then run main.py with the models provided by OpenAI API
+For details on how to execute each attack method, please consult the `scripts/run.sh` file. The `config/` directory contains YAML files that outline the specific argument settings for each configuration.
 
 ```python
-#python main.py --llm_name gpt-3.5-turbo # use gpt-3.5-turbo for example
+python scripts/agent_attack.py --cfg_path config/DPI.yml # direct prompt injection
+python scripts/agent_attack.py --cfg_path config/OPI.yml # observation prompt injection
+python scripts/agent_attack.py --cfg_path config/MP.yml # memory poisoning attack
+python scripts/agent_attack.py --cfg_path config/mixed.yml # mixed attack
+python scripts/agent_attack_pot.py # pot backdoor attack
 ```
 
-#### Use with Gemini API
-You need to get your Gemini API key from https://ai.google.dev/gemini-api
+### Arguments
 
-```bash
-export GEMINI_API_KEY=<YOUR_GEMINI_API_KEY>
+Introduction to the parameters in YAML files.
+
+**Direct Prompt Injection**
+
+```
+# config/DPI.yml
+================
+attack_tool:
+
+write_db:
+
+llms:
+
+attack_types:
+
+defense_type:
+
+suffix: 
+
 ```
 
-Then run main.py with the models provided by OpenAI API
+**Observation Prompt Injection**
 
-```python
-#python main.py --llm_name gemini-1.5-flash # use gemini-1.5-flash for example
+```
+# config/OPI.yml
+================
+attack_tool:
+
+llms:
+
+attack_types:
+
+defense_type:
+
+suffix: 
+
 ```
 
-If you want to use **open-sourced** models provided by huggingface, here we provide three options:
-* Use with ollama
-* Use with native huggingface models
-* Use with vllm
+**Memory Poisoning Attack**
 
-#### Use with ollama
-You need to download ollama from from https://ollama.com/.
+```
+# config/MP.yml
+================
+attack_tool:
 
-Then you need to start the ollama server either from ollama app
+llms:
 
-or using the following command in the terminal
+attack_types:
 
-```bash
-ollama serve
+defense_type:
+
+suffix: 
+
 ```
 
-To use models provided by ollama, you need to pull the available models from https://ollama.com/library
+**Mixed Attacks**
 
-```bash
-ollama pull llama3:8b # use llama3:8b for example
+```
+# config/mixed.yml
+================
+attack_tool:
+
+llms:
+
+attack_types:
+
+defense_type:
+
+suffix: 
+
 ```
 
-ollama can support CPU-only environment, so if you do not have CUDA environment
+**PoT Backdoor Attack**
 
-You can run AIOS agent with ollama models by
-
-```python
-#python main.py --llm_name ollama/llama3:8b --use_backend ollama # use ollama/llama3:8b for example
 ```
+# config/mixed.yml
+================
+attack_tool:
 
-However, if you have the GPU environment, you can also pass GPU-related parameters to speed up
-using the following command
+llms:
 
-```python
-python main.py --llm_name ollama/llama3:8b --use_backend ollama --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
+attack_types:
+
+defense_type:
+
+suffix: 
+
 ```
-
-#### Use with native huggingface llm models
-Some of the huggingface models require authentification, if you want to use all of
-the models you need to set up  your authentification token in https://huggingface.co/settings/tokens
-and set up it as an environment variable using the following command
-
-```bash
-export HF_AUTH_TOKENS=<YOUR_TOKEN_ID>
-```
-
-You can run with the
-
-```python
-python main.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
-```
-
-By default, huggingface will download the models in the `~/.cache` directory.
-If you want to designate the download directory, you can set up it using the following command
-
-```bash
-export HF_HOME=<YOUR_HF_HOME>
-```
-
-#### Use with vllm
-If you want to speed up the inference of huggingface models, you can use vllm as the backend.
-
-Note(📝): It is important to note that vllm currently only supports linux and GPU-enabled environment. So if you do not have the environment, you need to choose other options.
-
-Considering that vllm itself does not support passing designated GPU ids, you need to either
-setup the environment variable,
-
-```bash
-export CUDA_VISIBLE_DEVICES="0" # replace with your designated gpu ids
-```
-
-Then run the command
-
-```python
-python main.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --use_backend vllm --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
-```
-
-or you can pass the `CUDA_VISIBLE_DEVICES` as the prefix
-
-```python
-CUDA_VISIBLE_DEVICES=0 python main.py --llm_name meta-llama/Meta-Llama-3-8B-Instruct --use_backend vllm --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
-```
-
-### Supported LLM Endpoints
-- [OpenAI API](https://platform.openai.com/api-keys)
-- [Gemini API](https://ai.google.dev/gemini-api)
-- [ollama](https://ollama.com/)
-- [vllm](https://docs.vllm.ai/en/stable/)
-- [native huggingface models (locally)](https://huggingface.co/)
