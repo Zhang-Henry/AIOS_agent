@@ -2,36 +2,59 @@ import os
 import argparse
 import json
 
+def LoadDataset(filename):
+    with open(filename,'r+') as f:
+        read_dict = f.read()
+        f.close()
+    read_dict = json.loads(read_dict)
+    return read_dict
 
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description="Parse global parameters")
-    parser.add_argument('--cfg', type=str, default="./config/attack/DPI.json", help="config file path")
+    parser.add_argument('--cfg', type=str, default="./config/DPI.json", help="config file path")
     args = parser.parse_args()
+    print(args)
+    para_dict = LoadDataset(args.cfg)
 
-    with open(args.cfg, 'r') as f:
-        para_dict = json.load(f)
-
-    eval_devices = para_dict["eval_devices"]
-    max_gpu_memory = para_dict["max_gpu_memory"]
-    suffix = para_dict["suffix"]
+    eval_devices = '["cuda:7", "cuda:6", "cuda:5", "cuda:4", "cuda:3", "cuda:2", "cuda:1", "cuda:0"]'
+    max_gpu_memory = '{"0": "24GB", "1": "24GB","2": "24GB", "3": "24GB", "4": "24GB", "5": "24GB","6": "24GB","7": "24GB"}'
+    suffix='test'
     agg = para_dict["agg"]
-
-    read_db = para_dict["read_db"]
     write_db = para_dict["write_db"]
-
+    read_db = para_dict["read_db"]
     trigger = para_dict["trigger"]
-
-    llms = para_dict["llm_name"]
-    injection_method = para_dict["injection_method"] # 'direct_prompt_injection', 'memory_attack', 'observation_prompt_injection', 'clean', 'mixed_attack'
-    attack_types = ['combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
-    defense_type = para_dict["defense_type"] # 'ob_sandwich_defense', 'delimiters_defense', 'direct_paraphrase_defense', 'instructional_prevention'; ob_sandwich_defense
+    defense_type = None
 
     #######################################################################################################################
     # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4o-2024-08-06','gemini-1.5-pro','gemini-1.5-flash','claude-3-5-sonnet-20240620','bedrock/anthropic.claude-3-haiku-20240307-v1:0']
     #llms = ['ollama/qwen2:72b', 'ollama/gemma2:9b','ollama/qwen2:7b']
     #llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     # llms = ['ollama/mixtral:8x7b','ollama/llama3:8b', 'ollama/llama3.1:8b']
+
+    #######################################################################################################################
+    # run direct_prompt_injection, observation_prompt_injection
+
+
+    llms = ['ollama/gemma2:9b']
+
+    injection_method = 'clean' # 'direct_prompt_injection', 'memory_attack', 'observation_prompt_injection', 'clean'
+
+    attack_types = ['combined_attack'] # ['naive', 'context_ignoring', 'fake_completion', 'escape_characters', 'combined_attack']
+    # defense_type = 'ob_sandwich_defense' # 'delimiters_defense', 'direct_paraphrase_defense', 'instructional_prevention'; ob_sandwich_defense
+    # read_db = True
+    # write_db = True
+
+    #######################################################################################################################
+    # run mixed attack
+
+    # llms = ['claude-3-5-sonnet-20240620']
+    # injection_method = 'mixed_attack'
+
+    # read_db = True
+    # attack_types = ['combined_attack']
+
+    #######################################################################################################################
 
     for aggressive in agg:
         for llm in llms:
@@ -85,6 +108,6 @@ if __name__ == '__main__':
                         --max_gpu_memory '{max_gpu_memory}' \
                         --eval_device '{eval_devices}' \
                         > {log_file}.log 2>&1 &'''
-
+                # print(cmd)
                 os.system(cmd)
 

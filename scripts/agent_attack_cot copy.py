@@ -1,26 +1,10 @@
 import os
-import json
-import argparse
-
-def LoadDataset(filename):
-    with open(filename,'r+') as f:
-        read_dict = f.read()
-        f.close()
-    read_dict = json.loads(read_dict)
-    return read_dict
 
 if __name__ == '__main__':
-
-    parser = argparse.ArgumentParser(description="Parse global parameters")
-    parser.add_argument('--cfg', type=str, default="./config/attack/PoT_backdoor.json", help="config file path")
-    args = parser.parse_args()
-    print(args)
-    para_dict = LoadDataset(args.cfg)
-
-    suffix = para_dict["suffix"]
-    agg = para_dict["agg"]
-    trigger = para_dict["trigger"]
-    defense_type = para_dict["defense_type"]
+    suffix=''
+    agg = [True,False]
+    trigger = ''
+    defense_type=None
 
     #######################################################################################################################
     # llms = ['gpt-4o-mini','gpt-3.5-turbo', 'gpt-4o-2024-08-06','claude-3-5-sonnet-20240620']
@@ -33,14 +17,16 @@ if __name__ == '__main__':
     # llms = ['ollama/gemma2:27b','ollama/llama3:70b', 'ollama/llama3.1:70b']
     # llms = ['ollama/qwen2:72b', 'ollama/mixtral:8x7b', 'ollama/gemma2:9b','ollama/qwen2:7b']
     # llms = ['ollama/llama3:8b', 'ollama/llama3.1:8b']
-    llms = para_dict["llm_name"]
-    injection_methods = para_dict["injection_methods"] #'cot_backdoor', 'cot_clean', 'clean'
+    llms = ['claude-3-5-sonnet-20240620']
+    injection_methods = ['cot_backdoor'] #'cot_backdoor', 'cot_clean', 'clean'
     triggers = ['with perspicacious discernment'] # 'through a prism of insight', 'with perspicacious discernment', 'conducting a comprehensive elucidation', ':)', '@_@'
-    defense_type = para_dict["defense_type"] # cot_paraphrase_defense, cot_shuffling_defense
+    defense_type = 'cot_shuffling_defense' # cot_paraphrase_defense, cot_shuffling_defense
 
-    attack_types = para_dict["attack_types"]
+    # suffix = 'user'
+    attack_types = ['naive']
     tasks_path = 'data/cot_data/agent_task_cot.jsonl'
-    task_num = para_dict["task_num"]
+    task_num = 2
+
 
     #######################################################################################################################
 
