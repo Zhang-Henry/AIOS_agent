@@ -17,10 +17,8 @@ The goal of AIOS is to build a large language model (LLM) agent operating system
 The LLM Agent Attacking Framework includes **DPI**, **OPI**, **PoT Backdoor**, and **Memory Poisoning Attacks**, which can influence the user query, observations, system prompts, and memory retrieval of the agent during action planning and execution.
 
 ## ✈️ Getting Started
-Please see our ongoing [documentation](https://aios.readthedocs.io/en/latest/) for more information.
-- [Installation](https://aios.readthedocs.io/en/latest/get_started/installation.html)
-- [Quickstart](https://aios.readthedocs.io/en/latest/get_started/quickstart.html)
-- [List Available Agent](https://aios.readthedocs.io/en/latest/get_started/list_agent.html)
+
+The development of Agent Security Bench is based on [AIOS](https://github.com/agiresearch/AIOS).
 
 ### Installation
 
