@@ -168,7 +168,7 @@ We have implemented the following measures to ensure the reproducibility of our 
 
 + **Dependencies**: The environment setup is streamlined through both `requirements.txt` and `requirements-cuda.txt` for systems with or without GPU support. Installation instructions using Conda or Docker (for containerized environments) are provided to ensure consistency across different hardware configurations.
 
-+ **Experimental Configurations**: All experimental configurations, including LLM models and attack types, are defined in YAML files within the `config` directory. These configurations can be modified to test different models such as GPT-4, LLaMA, and other open-source models through Ollama and HuggingFace integrations.
++ **Experimental Configurations**: All experimental configurations, including LLM models and attack types, are defined in YAML files within the `config/` directory. These configurations can be modified to test different models such as GPT-4, LLaMA, and other open-source models through Ollama and HuggingFace integrations.
 
 + **External Tools**: The AIOS Agent supports multiple LLM backends (OpenAI, Gemini, HuggingFace), and instructions for obtaining necessary API keys and setting up the environment are documented.
 
