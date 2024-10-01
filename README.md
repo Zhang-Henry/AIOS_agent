@@ -1,4 +1,4 @@
-# AIOS Agent
+# Agent Security Bench
 
 <a href='https://arxiv.org/abs/2403.16971'><img src='https://img.shields.io/badge/Paper-PDF-red'></a>
 <a href='https://arxiv.org/abs/2312.03815'><img src='https://img.shields.io/badge/Paper-PDF-blue'></a>
@@ -9,9 +9,9 @@
 
 The goal of AIOS is to build a large language model (LLM) agent operating system, which intends to embed large language model into the operating system as the brain of the OS. AIOS is designed to address problems (e.g., scheduling, context switch, memory management, etc.) during the development and deployment of LLM-based agents, for a better ecosystem among agent developers and users.
 
-## 🏠 Architecture of AIOS
+## 🏠 Architecture of LLM Agent
 <p align="center">
-<img src="images/AIOS-Architecture.png">
+<img src="images/LLM Agent Framework.png">
 </p>
 
 AIOS provides the LLM kernel as an abstraction on top of the OS kernel. The kernel facilitates the installation, execution and usage of agents. Furthermore, the AIOS SDK facilitates the development and deployment of agents.
@@ -25,9 +25,9 @@ Please see our ongoing [documentation](https://aios.readthedocs.io/en/latest/) f
 
 ### Installation
 
-Git clone AIOS
+Git clone AgentSecurityBench
 ```bash
-git clone https://github.com/agiresearch/AIOS.git
+git clone https://github.com/agiresearch/AgentSecurityBench.git
 ```
 ```bash
 conda create -n AIOS python=3.11
