@@ -69,11 +69,32 @@ attack_tool: Tools to attack the target agent.
 
 write_db: whether to write the database.
 
-llms: The LLMs to use in the evaluation.
+llms: The LLMs to use in the evaluation. Please add "ollama/" for open-source LLMs.
+  - gpt-4o-mini: GPT-4o-mini
+  - gpt-3.5-turbo: GPT-3.5 Turbo
+  - gpt-4o-2024-08-06: GPT-4o
+  - claude-3-5-sonnet-20240620: Claude-3.5 Sonnet
+  - ollama/qwen2:72b: Qwen2-72B
+  - ollama/qwen2:7b: Qwen2-7B
+  - ollama/gemma2:9b: Gemma2-9B
+  - ollama/gemma2:27b: Gemma2-27B
+  - ollama/llama3:70b: LLaMA3-70B
+  - ollama/llama3.1:70b: LLaMA3.1-70B
+  - ollama/mixtral:8x7b: Mixtral-8x7B
+  - ollama/llama3:8b: LLaMA3-8B
+  - ollama/llama3.1:8b: : LLaMA3.1-8B
 
-attack_types:
+attack_types: The attack types of prompt injection.
+  - combined_attack
+  - context_ignoring
+  - fake_completion
+  - escape_characters
+  - naive
 
-defense_type:
+defense_type: (comment this argument for agent attack)
+  - delimiters_defense
+  - direct_paraphrase_defense
+  - instructional_prevention
 
 suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
@@ -91,11 +112,16 @@ attack_tool: Tools to attack the target agent.
 
 read_db: whether to read the database.
 
-llms: The LLMs to use in the evaluation.
+llms: The LLMs to use in the evaluation. Same with Direct Prompt Injection.
 
-attack_types:
+attack_types: The attack types of prompt injection.
+  - combined_attack
+  - context_ignoring
+  - fake_completion
+  - escape_characters
+  - naive
 
-defense_type: 
+defense_type: (comment this argument for agent attack)
   - delimiters_defense: 
   - ob_sandwich_defense: 
   - instructional_prevention: 
@@ -116,11 +142,19 @@ attack_tool: Tools to attack the target agent.
 
 read_db: whether to read the database. Store true for memory poisoning attack.
 
-llms: The LLMs to use in the evaluation.
+llms: The LLMs to use in the evaluation. Same with Direct Prompt Injection.
 
-attack_types:
+attack_types: The attack types of prompt injection.
+  - combined_attack
+  - context_ignoring
+  - fake_completion
+  - escape_characters
+  - naive
 
-defense_type:
+defense_type: (comment this argument for agent attack)
+  - delimiters_defense
+  - direct_paraphrase_defense
+  - instructional_prevention
 
 suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
@@ -138,11 +172,14 @@ attack_tool: Tools to attack the target agent.
 
 read_db: whether to read the database. Store true for memory poisoning attack.
 
-llms: The LLMs to use in the evaluation.
+llms: The LLMs to use in the evaluation. Same with Direct Prompt Injection.
 
-attack_types:
-
-defense_type:
+attack_types: The attack types of prompt injection.
+  - combined_attack
+  - context_ignoring
+  - fake_completion
+  - escape_characters
+  - naive
 
 suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 
@@ -163,7 +200,7 @@ attack_tool: Tools to attack the target agent.
   - non-agg: run with non-aggressive attack tools
   - all: run with both tools.
 
-llms: The LLMs to use in the evaluation.
+llms: The LLMs to use in the evaluation. Same with Direct Prompt Injection.
 
 triggers: PoT triggers to use. 
   - with perspicacious discernment
@@ -172,9 +209,9 @@ triggers: PoT triggers to use.
   - ':)'
   - '@_@'
 
-attack_types: we use naive attack for evaluating the PoT backdoor attack and defense.
+attack_types: we only use naive attack for evaluating the PoT backdoor attack and defense.
 
-defense_type:
+defense_type: (comment this argument for agent attack)
   - cot_paraphrase_defense: Paraphrasing
   - cot_shuffling_defense: Shuffle
 
