@@ -72,11 +72,11 @@ python main.py --llm_name ollama/llama3:8b --use_backend ollama --max_gpu_memory
 For details on how to execute each attack method, please consult the `scripts/run.sh` file. The `config/` directory contains YAML files that outline the specific argument settings for each configuration.
 
 ```python
-python scripts/agent_attack.py --cfg_path config/DPI.yml # direct prompt injection
-python scripts/agent_attack.py --cfg_path config/OPI.yml # observation prompt injection
-python scripts/agent_attack.py --cfg_path config/MP.yml # memory poisoning attack
-python scripts/agent_attack.py --cfg_path config/mixed.yml # mixed attack
-python scripts/agent_attack_pot.py # pot backdoor attack
+python scripts/agent_attack.py --cfg_path config/DPI.yml # Direct Prompt Injection
+python scripts/agent_attack.py --cfg_path config/OPI.yml # Observation Prompt Injection
+python scripts/agent_attack.py --cfg_path config/MP.yml # Memory Poisoning attack
+python scripts/agent_attack.py --cfg_path config/mixed.yml # Mixed attack
+python scripts/agent_attack_pot.py # PoT backdoor attack
 ```
 
 ### Customizable Arguments
@@ -108,6 +108,23 @@ Here are the open-source and closed-source LLMs we used in AIOS agent.
 | <div align="center">**GPT-4o**</div>   | <div align="center">gpt-4o-2024-08-06</div>      |  <div align="center">Closed</div>   | <div align="center">8T</div>            | <div align="center"><img src="./images/openai.svg" width="100"/></div>         |
 | <div align="center">**GPT-4o-mini**</div>  | <div align="center">gpt-4o-mini</div>   |  <div align="center">Closed</div>   | <div align="center">8B</div>              | <div align="center"><img src="./images/openai.svg" width="100"/></div>         |
 
+### Agent Attacks
+<p align="center">
+<img src="images/Agent Attacks.png">
+</p>
+
+DPI tampers with the user prompt, OPI alters observation data to disrupt subsequent actions, PoT Backdoor Attack triggers concealed actions upon encountering specific inputs, and Memory Poisoning Attack injects malicious plans into the agent’s memory, thereby compelling the agent to employ attacker-specified tools.
+
+Here are the yaml arguments representation for the agent attacks and corresponding defenses. **The attack method in parentheses in the last column indicates the corresponding defense's target attack method.**
+| **Attacks**      | **YAML Argument**               | **Defenses**              | **YAML Argument**                                                                                          |
+|------------------|---------------------------------|---------------------------|------------------------------------------------------------------------------------------------------------|
+| **DPI**          | direct_prompt_injection         | **Delimiters**             | delimiters_defense (DPI, OPI)                                                                               |
+| **OPI**          | observation_prompt_injection    | **Sandwich Prevention**    | ob_sandwich_defense (OPI)                                                                                   |
+| **Memory Poisoning** | memory_attack               | **Instructional Prevention** | instructional_prevention (DPI, OPI)                                                                         |
+| **PoT Backdoor** | pot_backdoor                    | **Paraphrasing**           | direct_paraphrase_defense (DPI) pot_paraphrase_defense (PoT)                                                |
+| **PoT Clean**    | pot_clean                      | **Shuffle**                | pot_shuffling_defense (PoT)                                                                                 
+
+
 ### Other Customizable Agruments
 ```
 ================Attacks & Defenses================
@@ -120,7 +137,8 @@ llms: The LLMs to use in the evaluation. Please add "ollama/" for open-source LL
 
 attack_types: The attack types of prompt injection.
 
-defense_type: The defense types of corresponding attacks.
+defense_type: The defense types of corresponding attacks. 
+Please note that a defense type only corresponds to some attacks types, not all.
 
 ================Database Read and Write================
 read_db: whether to read the database.
