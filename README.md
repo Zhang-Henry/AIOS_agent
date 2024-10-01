@@ -1,4 +1,4 @@
-# Agent Security Bench
+# AIOS Agent
 
 <a href='https://arxiv.org/abs/2403.16971'><img src='https://img.shields.io/badge/Paper-PDF-red'></a>
 <a href='https://arxiv.org/abs/2312.03815'><img src='https://img.shields.io/badge/Paper-PDF-blue'></a>
@@ -18,13 +18,13 @@ The LLM Agent Attacking Framework includes **DPI**, **OPI**, **PoT Backdoor**, a
 
 ## ✈️ Getting Started
 
-The development of Agent Security Bench is based on [AIOS](https://github.com/agiresearch/AIOS).
+The development of AIOS Agent Bench is based on [AIOS](https://github.com/agiresearch/AIOS).
 
 ### Installation
 
-Git clone AgentSecurityBench
+Git clone AIOS Agent
 ```bash
-git clone https://github.com/agiresearch/AgentSecurityBench.git
+git clone https://github.com/Zhang-Henry/AIOS_agent.git
 ```
 ```bash
 conda create -n AIOS python=3.11
