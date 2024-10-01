@@ -96,14 +96,14 @@ Here are the open-source and closed-source LLMs we used in AIOS agent.
 |-----------------------|----|-------------|---------|-------|
 | **Gemma2-9B**  | ollama/gemma2:9b   | Open   | 9B              | <div align="center"><img src="./images/google.svg" width="100"/></div>         |
 | **Gemma2-27B** | ollama/gemma2:27b   | Open    | 27B             | <div align="center"><img src="./images/google.svg" width="100"/></div>         |
-| **LLaMA3-8B**   |ollama/llama3:8b  | Open    | 8B              | <div align="center"><img src="./images/meta.svg" width="200"/></div>           |
-| **LLaMA3-70B**  |ollama/llama3:70b  | Open    | 70B             | <div align="center"><img src="./images/meta.svg" width="200"/></div>           |
-| **LLaMA3.1-8B**  |ollama/llama3.1:8b | Open    | 8B              | <div align="center"><img src="./images/meta.svg" width="200"/></div>           |
-| **LLaMA3.1-70B** |ollama/llama3.1:70b | Open    | 70B             | <div align="center"><img src="./images/meta.svg" width="200"/></div>           |
+| **LLaMA3-8B**   |ollama/llama3:8b  | Open    | 8B              | <div align="center"><img src="./images/meta.svg" width="100"/></div>           |
+| **LLaMA3-70B**  |ollama/llama3:70b  | Open    | 70B             | <div align="center"><img src="./images/meta.svg" width="100"/></div>           |
+| **LLaMA3.1-8B**  |ollama/llama3.1:8b | Open    | 8B              | <div align="center"><img src="./images/meta.svg" width="100"/></div>           |
+| **LLaMA3.1-70B** |ollama/llama3.1:70b | Open    | 70B             | <div align="center"><img src="./images/meta.svg" width="100"/></div>           |
 | **Mixtral-8x7B**   |ollama/mixtral:8x7b  | Open    | 56B             | <div align="center"><img src="./images/mistral.webp" width="100"/></div>     |
 | **Qwen2-7B**   |ollama/qwen2:7b   | Open    | 7B              | <div align="center"><img src="./images/alibaba.svg" width="100"/></div>        |
 | **Qwen2-72B**   |ollama/qwen2:72b  | Open    | 72B             | <div align="center"><img src="./images/alibaba.svg" width="100"/></div>        |
-| **Claude-3.5 Sonnet** |claude-3-5-sonnet-20240620 |  Closed  | 180B            | <div align="center"><img src="./images/anthropic.svg" width="100"/></div>      |
+| **Claude-3.5 Sonnet** |claude-3-5-sonnet-20240620 |  Closed  | 180B            | <div align="center"><img src="./images/anthropic.svg" width="300"/></div>      |
 | **GPT-3.5 Turbo** |gpt-3.5-turbo  |  Closed  | 154B            | <div align="center"><img src="./images/openai.svg" width="100"/></div>         |
 | **GPT-4o**   |gpt-4o-2024-08-06      |  Closed   | 1.8T            | <div align="center"><img src="./images/openai.svg" width="100"/></div>         |
 | **GPT-4o-mini** |gpt-4o-mini   |  Closed   | 8B              | <div align="center"><img src="./images/openai.svg" width="100"/></div>         |
