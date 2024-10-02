@@ -273,23 +273,3 @@ We visualize the correlation between backbone [LLM
 leaderboard quality](https://artificialanalysis.ai/leaderboards/models) and average ASR across various attacks in the following figure.
 
 <p align="center"><img src="images/LLMASR.png" width=400></p>
-
-
-## ⚖️ Ethics Statement
-
-This research advances the development of secure and trustworthy AI systems by investigating adversarial attacks and defensive strategies on language models (LLMs). By identifying and addressing vulnerabilities, we aim to enhance the robustness and safety of AI systems, facilitating their responsible deployment in critical applications. No human subjects were involved in this study, and all datasets used comply with privacy and ethical standards. Our work is committed to advancing AI technology in a manner that ensures fairness, security, and societal benefit.
-
-
-## 💻 Reproducibility Statement
-
-We have implemented the following measures to ensure the reproducibility of our work on the Agent Security Bench:
-
-+ **Code Availability**: The source code for the Agent Security Bench, including all scripts, configuration files, and Docker setup for executing LLM agent attacks, is available on the project's GitHub repository. The repository contains scripts for adversarial attacks such as Direct Prompt Injection (DPI), Observation Prompt Injection (OPI), Memory Poisoning attacks, and PoT Backdoor attacks.
-
-+ **Dependencies**: The environment setup is streamlined through both `requirements.txt` and `requirements-cuda.txt` for systems with or without GPU support. Installation instructions using Conda or Docker (for containerized environments) are provided to ensure consistency across different hardware configurations.
-
-+ **Experimental Configurations**: All experimental configurations, including LLM models and attack types, are defined in YAML files within the `config/` directory. These configurations can be modified to test different models such as GPT-4, LLaMA, and other open-source models through Ollama and HuggingFace integrations.
-
-+ **External Tools**: Our ASB supports multiple LLM backends (OpenAI, Gemini, HuggingFace), and instructions for obtaining necessary API keys and setting up the environment are documented.
-
-+ **Reproducibility of Results**: To facilitate easy replication of the experiments, we provide predefined attack scripts (e.g., `scripts/agent_attack.py`) that allow for direct execution of various adversarial attacks under different configurations.
