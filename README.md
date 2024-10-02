@@ -222,12 +222,13 @@ We evaluated the agent attacks with 5 attack types on 13 LLM backbones, here sho
 
 **PPL Detection Defense**
 
-The following figure is FPR vs. FNR curve for PPL detection in identifying memory poisoning attacks illustrates variations in False Negative Rate (FNR) and False Positive Rate (FPR) across different thresholds. 
+The following figure is FPR vs. FNR curve for **PPL detection** in identifying memory poisoning attacks illustrates variations in False Negative Rate (FNR) and False Positive Rate (FPR) across different thresholds. 
 
 High perplexity indicates compromised content. Shallower colors correspond to lower thresholds, while darker colors correspond to higher thresholds.
 
 <p align="center"><img src="images/PPL.png" width=400></p>
 
+**LLM-based Defense**
 
 The following table is the **LLM-based Defense** result for memory poisoning attack. The defense mechanisms against memory poisoning attacks have proven largely ineffective.
 | **LLM**               | **FNR**  | **FPR**  |
