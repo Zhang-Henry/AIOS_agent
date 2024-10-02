@@ -1,7 +1,7 @@
-# AIOS Agent
+# Agent Security Bench (ASB)
 
 
-The AIOS Agent aims to systematically formalize and comprehensively evaluate a broad spectrum of adversarial attacks and defensive strategies tailored to LLM-based agents across 10 diverse scenarios, including but not limited to academic advising, counseling, investment, and legal advice.
+The Agent Security Bench (ASB) aims to systematically formalize and comprehensively evaluate a broad spectrum of adversarial attacks and defensive strategies tailored to LLM-based agents across 10 diverse scenarios, including but not limited to academic advising, counseling, investment, and legal advice.
 
 ## ⚔️ LLM Agent Attacking Framework
 <p align="center">
@@ -12,11 +12,11 @@ The LLM Agent Attacking Framework includes **DPI**, **OPI**, **Plan-of-Thought (
 
 ## ✈️ Getting Started
 
-The development of AIOS Agent Bench is based on [AIOS](https://github.com/agiresearch/AIOS).
+The development of ASB is based on [AIOS](https://github.com/agiresearch/AIOS).
 
 ### Environment Installation
 
-Git clone AIOS Agent
+Git clone ASB
 ```bash
 git clone https://github.com/Zhang-Henry/AIOS_agent.git
 ```
@@ -89,8 +89,8 @@ llms:
   - ollama/llama3.1:70b
 ```
 
-### Available LLMs in AIOS Agent
-Here are the open-source and closed-source LLMs we used in AIOS agent.
+### Available LLMs in ASB
+Here are the open-source and closed-source LLMs we used in ASB.
 
 | **LLM**               |**YAML Argument**| **Source**| **#Parameters** | **Provider**   |
 |-----------------------|----|-------------|---------|-------|
@@ -127,7 +127,7 @@ Here are the yaml arguments representation for the agent attacks and correspondi
 
 ### Other Customizable Agruments
 ```
-================Attacks & Defenses================
+====================Attacks & Defenses====================
 attack_tool: Tools to attack the target agent.
   - agg: run with aggressive attack tools
   - non-agg: run with non-aggressive attack tools
@@ -140,15 +140,15 @@ attack_types: The attack types of prompt injection.
 defense_type: The defense types of corresponding attacks. 
 Please note that a defense type only corresponds to some attacks types, not all.
 
-================Database Read and Write================
+==================Database Read & Write==================
 read_db: whether to read the database.
 
 write_db: whether to write the database.
 
-================PoT Backdoor Triggers================
+===================PoT Backdoor Triggers=================
 triggers: PoT triggers to use.
 
-================Log Saving================
+========================Log Saving=======================
 suffix: To distinguish between different runs, append a unique identifier to the end of the log file name (in logs/).
 ```
 
@@ -281,14 +281,14 @@ This research advances the development of secure and trustworthy AI systems by i
 
 ## 💻 Reproducibility Statement
 
-We have implemented the following measures to ensure the reproducibility of our work on the AIOS Agent framework:
+We have implemented the following measures to ensure the reproducibility of our work on the Agent Security Bench:
 
-+ **Code Availability**: The source code for the AIOS Agent, including all scripts, configuration files, and Docker setup for executing LLM agent attacks, is available on the project's GitHub repository. The repository contains scripts for adversarial attacks such as Direct Prompt Injection (DPI), Observation Prompt Injection (OPI), Memory Poisoning attacks, and PoT Backdoor attacks.
++ **Code Availability**: The source code for the Agent Security Bench, including all scripts, configuration files, and Docker setup for executing LLM agent attacks, is available on the project's GitHub repository. The repository contains scripts for adversarial attacks such as Direct Prompt Injection (DPI), Observation Prompt Injection (OPI), Memory Poisoning attacks, and PoT Backdoor attacks.
 
 + **Dependencies**: The environment setup is streamlined through both `requirements.txt` and `requirements-cuda.txt` for systems with or without GPU support. Installation instructions using Conda or Docker (for containerized environments) are provided to ensure consistency across different hardware configurations.
 
 + **Experimental Configurations**: All experimental configurations, including LLM models and attack types, are defined in YAML files within the `config/` directory. These configurations can be modified to test different models such as GPT-4, LLaMA, and other open-source models through Ollama and HuggingFace integrations.
 
-+ **External Tools**: The AIOS Agent supports multiple LLM backends (OpenAI, Gemini, HuggingFace), and instructions for obtaining necessary API keys and setting up the environment are documented.
++ **External Tools**: Our ASB supports multiple LLM backends (OpenAI, Gemini, HuggingFace), and instructions for obtaining necessary API keys and setting up the environment are documented.
 
 + **Reproducibility of Results**: To facilitate easy replication of the experiments, we provide predefined attack scripts (e.g., `scripts/agent_attack.py`) that allow for direct execution of various adversarial attacks under different configurations.
