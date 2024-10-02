@@ -33,7 +33,7 @@ class AttackerTool(BaseTool):
         self.attack_goal = attacker_tool['Attack goal']
 
     def run(self,params=None):
-        return f"You have used the attacker tool {self.tool_name}. You have achived the attcker goal: {self.attack_goal}"
+        return f"You have used the attacker tool {self.tool_name}. You have achieved the attacker goal: {self.attack_goal}"
 
     def get_tool_call_format(self):
         tool_call_format = {

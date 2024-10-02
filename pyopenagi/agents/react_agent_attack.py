@@ -4,7 +4,7 @@ from .agent_process import (
     AgentProcess
 )
 import numpy as np
-import argparse
+import os
 from concurrent.futures import as_completed
 from ..utils.chat_template import Query
 import json,copy,re,random
@@ -14,9 +14,10 @@ from langchain_chroma import Chroma
 from langchain_ollama import OllamaEmbeddings
 # from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain_openai import OpenAIEmbeddings
-from ..api_key import OPENAI_API_KEY
+# from ..api_key import OPENAI_API_KEY
 import jsonlines
 from openai import OpenAI
+from dotenv import load_dotenv
 
 
 class ReactAgentAttack(BaseAgent):
@@ -30,6 +31,8 @@ class ReactAgentAttack(BaseAgent):
         ):
         BaseAgent.__init__(self, agent_name, task_input, agent_process_factory, log_mode)
 
+        load_dotenv()
+        OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
         self.load_tools_from_file(self.tool_names, args.tools_info_path)
         # self.tool_list = {}
 

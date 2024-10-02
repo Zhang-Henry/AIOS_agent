@@ -25,11 +25,7 @@ conda create -n AIOS python=3.11
 source activate AIOS
 cd AIOS
 ```
-If you have GPU environments, you can install the dependencies using
-```bash
-pip install -r requirements-cuda.txt
-```
-or else you can install the dependencies using
+You can install the dependencies using
 ```bash
 pip install -r requirements.txt
 ```
@@ -53,18 +49,7 @@ ollama pull llama3:8b # use llama3:8b for example
 
 ollama can support CPU-only environment, so if you do not have CUDA environment
 
-You can run aios with ollama models by
 
-```python
-python main.py --llm_name ollama/llama3:8b --use_backend ollama # use ollama/llama3:8b for example
-```
-
-However, if you have the GPU environment, you can also pass GPU-related parameters to speed up
-using the following command
-
-```python
-python main.py --llm_name ollama/llama3:8b --use_backend ollama --max_gpu_memory '{"0": "24GB"}' --eval_device "cuda:0" --max_new_tokens 256
-```
 
 
 ### Quickstart
@@ -122,7 +107,7 @@ Here are the yaml arguments representation for the agent attacks and correspondi
 | <div align="center">**OPI**</div>          | <div align="center">observation_prompt_injection</div>    | <div align="center">**Sandwich Prevention**</div>    | <div align="center">ob_sandwich_defense (OPI)</div>                                                                                   |
 | <div align="center">**Memory Poisoning**</div> | <div align="center">memory_attack               | <div align="center">**Instructional Prevention**</div> | <div align="center">instructional_prevention (DPI, OPI)</div>                                                                         |
 | <div align="center">**PoT Backdoor**</div> | <div align="center">pot_backdoor                    | <div align="center">**Paraphrasing**</div>           | <div align="center">direct_paraphrase_defense (DPI) pot_paraphrase_defense (PoT)</div>                                                |
-| <div align="center">**PoT Clean**</div>    | <div align="center">pot_clean                      | <div align="center">**Shuffle**</div>                | <div align="center">pot_shuffling_defense (PoT)</div>                                                                                 
+| <div align="center">**PoT Clean**</div>    | <div align="center">pot_clean                      | <div align="center">**Shuffle**</div>                | <div align="center">pot_shuffling_defense (PoT)</div>
 
 
 ### Other Customizable Agruments
@@ -137,7 +122,7 @@ llms: The LLMs to use in the evaluation. Please add "ollama/" for open-source LL
 
 attack_types: The attack types of prompt injection.
 
-defense_type: The defense types of corresponding attacks. 
+defense_type: The defense types of corresponding attacks.
 Please note that a defense type only corresponds to some attacks types, not all.
 
 ==================Database Read & Write==================
@@ -222,7 +207,7 @@ We evaluated the agent attacks with 5 attack types on 13 LLM backbones, here sho
 
 **PPL Detection Defense**
 
-The following figure is FPR vs. FNR curve for **PPL detection** in identifying memory poisoning attacks illustrates variations in False Negative Rate (FNR) and False Positive Rate (FPR) across different thresholds. 
+The following figure is FPR vs. FNR curve for **PPL detection** in identifying memory poisoning attacks illustrates variations in False Negative Rate (FNR) and False Positive Rate (FPR) across different thresholds.
 
 High perplexity indicates compromised content. Shallower colors correspond to lower thresholds, while darker colors correspond to higher thresholds.
 

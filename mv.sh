@@ -14,8 +14,6 @@ EXCLUDE_LIST=(
     "visualize"
     'mv.sh'
     'pyproject.toml'
-    'requirements-dev.txt'
-    'requirements-cuda.txt'
 )
 
 # 构建 rsync 的排除参数

@@ -10,7 +10,7 @@ if __name__ == '__main__':
         cfg = yaml.safe_load(file)
 
     llms = cfg.get('llms', None)
-    suffix = cfg.get('suffix', None)
+    suffix = cfg.get('suffix', '')
     attack_tool_types = cfg.get('attack_tool', None)
     write_db = cfg.get('write_db', None)
     read_db = cfg.get('read_db', None)
@@ -57,7 +57,7 @@ if __name__ == '__main__':
                         --direct_prompt_injection \
                         --observation_prompt_injection \
                         {f'--database {database}' if database else ''} \
-                        --read_db True \
+                        --read_db \
                         > {log_file}_{suffix}.log 2>&1 &'''
 
                 os.system(cmd)

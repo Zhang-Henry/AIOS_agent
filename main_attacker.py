@@ -19,8 +19,8 @@ import numpy as np
 import random,json,os
 from openai import OpenAI
 
-from pyopenagi.api_key import OPENAI_API_KEY
-
+# from pyopenagi.api_key import OPENAI_API_KEY
+from dotenv import load_dotenv
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 
@@ -172,7 +172,7 @@ def main():
         if not os.path.exists(args.database):
             vectorstore = Chroma(
                 persist_directory=args.database,
-                embedding_function=OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY),
+                embedding_function=OpenAIEmbeddings(openai_api_key=os.getenv('OPENAI_API_KEY')),
             )
             print(f"The database {args.database} has been created.")
 
