@@ -64,6 +64,7 @@ for prompt_injection in prompt_injections:
         for model in model_list:
             path = f"./logs/{prompt_injection}/{model}/{dir}"
             agg_result = []
+            all_result = []
             non_agg_result = []
             for root, dirs, files in os.walk(path, topdown=False):
                 files = sorted(files)
@@ -76,6 +77,8 @@ for prompt_injection in prompt_injections:
                     attack_method = name.split('-')[0].replace('_', ' ')
                     if "-non-" in name:
                         agg = 'No'
+                    elif "all" in name:
+                        agg = 'all'
                     else:
                         agg = 'Yes'
 
@@ -94,6 +97,8 @@ for prompt_injection in prompt_injections:
 
                     if agg == "No":
                         non_agg_result.append(result)
+                    elif agg == "all":
+                        all_result.append(result)
                     else:
                         agg_result.append(result)
 
@@ -103,6 +108,8 @@ for prompt_injection in prompt_injections:
             for result in non_agg_result:
                 result_csv.loc[len(result_csv.index)] = result
             for result in agg_result:
+                result_csv.loc[len(result_csv.index)] = result
+            for result in all_result:
                 result_csv.loc[len(result_csv.index)] = result
 
         result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{dir}.csv", index = False)
