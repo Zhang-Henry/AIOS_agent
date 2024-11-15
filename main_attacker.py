@@ -168,13 +168,18 @@ def main():
     attacker_tools_all = pd.read_json(args.attacker_tools_path, lines=True)
     tasks_path = pd.read_json(args.tasks_path, lines=True)
 
-    if args.database:
-        if not os.path.exists(args.database):
-            vectorstore = Chroma(
+    if os.path.exists(args.database):
+        try:
+            vector_db = Chroma(
                 persist_directory=args.database,
                 embedding_function=OpenAIEmbeddings(openai_api_key=os.getenv('OPENAI_API_KEY')),
             )
             print(f"The database {args.database} has been created.")
+        except ValueError as e:
+            print(f"Error initializing Chroma for directory '{args.database}': {e}")
+    else:
+        print(f"The database {args.database} does not exist.")
+        vector_db = None
 
 
     for _, agent_info in tasks_path.iterrows(): # iterate over each agent
@@ -197,7 +202,8 @@ def main():
                     agent_path,
                     task,
                     args,
-                    tool # attacker tool
+                    tool, # attacker tool
+                    vector_db
                 )
 
                 agent_tasks.append(agent_attack)

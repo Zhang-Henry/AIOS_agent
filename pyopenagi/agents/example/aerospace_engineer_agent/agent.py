@@ -7,9 +7,9 @@ class AerospaceEngineerAgent(ReactAgentAttack):
                  agent_process_factory,
                  log_mode: str,
                  args,
-                 attacker_tool
+                 attacker_tool,vector_db
         ):
-        ReactAgentAttack.__init__(self, agent_name, task_input, agent_process_factory, log_mode, args, attacker_tool)
+        ReactAgentAttack.__init__(self, agent_name, task_input, agent_process_factory, log_mode, args, attacker_tool,vector_db)
         self.workflow_mode = args.workflow_mode
 
 
