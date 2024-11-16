@@ -28,7 +28,8 @@ class ReactAgentAttack(BaseAgent):
                  log_mode: str,
                  args,
                  attacker_tool,
-                 vector_db
+                 vector_db,
+                 agg
         ):
         BaseAgent.__init__(self, agent_name, task_input, agent_process_factory, log_mode)
 
@@ -67,6 +68,7 @@ class ReactAgentAttack(BaseAgent):
         self.memory_found = None
         self.attacker_tool = attacker_tool
         self.prefix = None
+        self.agg = agg
 
     def automatic_workflow(self):
         return super().automatic_workflow()
@@ -340,7 +342,8 @@ class ReactAgentAttack(BaseAgent):
             "normal_tools": self.normal_tools,
             "memory_search": self.memory_search,
             "memory_found": self.memory_found,
-            "args": self.args
+            "args": self.args,
+            "agg": self.agg
         }
 
     def load_agent_json(self):

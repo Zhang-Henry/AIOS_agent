@@ -40,11 +40,12 @@ if __name__ == '__main__':
                     attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
 
                 log_memory_type = 'new_memory' if read_db else 'no_memory'
-                log_file = f'{log_path}/{defense_type}/{attack_type}-{attack_tool_type}' if defense_type else f'{log_path}/{log_memory_type}/{attack_type}-{attack_tool_type}'
+                log_base = f'{log_path}/{defense_type}' if defense_type else f'{log_path}/{log_memory_type}'
+                log_file = f'{log_base}/{attack_type}-{attack_tool_type}'
                 os.makedirs(os.path.dirname(log_file), exist_ok=True)
                 print(log_file)
 
-                base_cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path}'''
+                base_cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} --res_file {log_file}_{suffix}.csv'''
 
                 if database:
                     base_cmd += f' --database {database}'

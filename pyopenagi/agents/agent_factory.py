@@ -45,7 +45,7 @@ class AgentFactory:
         agent_class = getattr(agent_module, class_name)
         return agent_class
 
-    def activate_agent(self, agent_name, task_input, args, attacker_tool,vector_db):
+    def activate_agent(self, agent_name, task_input, args, attacker_tool,vector_db, agg):
         script_path = os.path.abspath(__file__)
         script_dir = os.path.dirname(script_path)
 
@@ -66,7 +66,8 @@ class AgentFactory:
             log_mode = self.agent_log_mode,
             args = args,
             attacker_tool = attacker_tool,
-            vector_db = vector_db
+            vector_db = vector_db,
+            agg = agg
         )
 
         aid = heapq.heappop(self.aid_pool)
@@ -79,13 +80,14 @@ class AgentFactory:
 
         return agent
 
-    def run_agent(self, agent_name, task_input, args, attacker_tool, vector_db):
+    def run_agent(self, agent_name, task_input, args, attacker_tool, vector_db, agg):
         agent = self.activate_agent(
             agent_name=agent_name,
             task_input=task_input,
             args=args,
             attacker_tool=attacker_tool,
-            vector_db=vector_db
+            vector_db=vector_db,
+            agg=agg
         )
         # print(task_input)
         output = agent.run()
