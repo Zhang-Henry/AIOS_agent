@@ -4,7 +4,7 @@
 # python scripts/agent_attack.py --cfg_path config/mixed.yml # mixed attack
 
 # python scripts/agent_attack.py --cfg_path config/DPI_OPI.yml # DPI_OPI mixed attack
-# python scripts/agent_attack.py --cfg_path config/DPI_MP.yml # DPI_MP mixed attack
-python scripts/agent_attack.py --cfg_path config/OPI_MP.yml # OPI_MP mixed attack
+python scripts/agent_attack.py --cfg_path config/DPI_MP.yml # DPI_MP mixed attack
+# python scripts/agent_attack.py --cfg_path config/OPI_MP.yml # OPI_MP mixed attack
 
 # python scripts/agent_attack_pot.py # pot backdoor attack

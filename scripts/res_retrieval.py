@@ -2,14 +2,14 @@ import pandas
 import csv
 import os
 
-prompt_injections=['clean'] # 'direct_prompt_injection',"observation_prompt_injection",'mixed_attack',"memory_attack","clean"
+prompt_injections=['DPI_OPI'] # 'direct_prompt_injection',"observation_prompt_injection",'mixed_attack',"memory_attack","clean",'DPI_MP','OPI_MP','DPI_OPI'
 dirs = ['no_memory'] # new_memory, no_memory, direct_paraphrase_defense, instructional_prevention, delimiters_defense, ob_sandwich_defense
 agg_result = []
 non_agg_result = []
 
 for prompt_injection in prompt_injections:
     for dir in dirs:
-        #model_list = ["gpt-4o-mini",'gpt-3.5-turbo']
+        # model_list = ["gpt-4o-mini",'gpt-3.5-turbo']
         model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3.1:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b",'gpt-4o-2024-08-06','claude-3-5-sonnet-20240620']
 
         attack_methods = ["combined attack", "context ignoring", "escape characters", "fake completion", "naive"]
