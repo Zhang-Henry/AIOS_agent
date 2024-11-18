@@ -5,8 +5,8 @@ attack_tool:
   # - non-agg
 
 llms:
-  - gpt-4o-mini
-  # - gpt-3.5-turbo
+  # - gpt-4o-mini
+  - gpt-3.5-turbo
   # - gpt-4o-2024-08-06
   # - claude-3-5-sonnet-20240620
   # - ollama/qwen2:72b
@@ -21,10 +21,10 @@ llms:
 
 attack_types:
   - combined_attack
-  # - context_ignoring
-  # - fake_completion
-  # - escape_characters
-  # - naive
+  - context_ignoring
+  - fake_completion
+  - escape_characters
+  - naive
 
 # defense_type: ob_sandwich_defense # delimiters_defense, ob_sandwich_defense, instructional_prevention
 # suffix: test

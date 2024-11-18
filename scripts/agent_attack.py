@@ -38,6 +38,9 @@ if __name__ == '__main__':
                     attacker_tools_path = 'data/all_attack_tools_non_aggressive.jsonl'
                 elif attack_tool_type == 'agg':
                     attacker_tools_path = 'data/all_attack_tools_aggressive.jsonl'
+                elif attack_tool_type == 'test':
+                    attacker_tools_path = 'data/attack_tools_test.jsonl'
+                    args.tasks_path = 'data/attack_tools_test.jsonl'
 
                 log_memory_type = 'new_memory' if read_db else 'no_memory'
                 log_base = f'{log_path}/{defense_type}' if defense_type else f'{log_path}/{log_memory_type}'
@@ -70,36 +73,6 @@ if __name__ == '__main__':
                     specific_cmd = ''
 
                 cmd = f"{base_cmd}{specific_cmd} > {log_file}_{suffix}.log 2>&1 &"
-
-                # if injection_method in ['direct_prompt_injection','memory_attack','observation_prompt_injection','clean']:
-                #     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
-                #         {f'--{injection_method}' if injection_method else ''} \
-                #         {f'--database {database}' if database else ''} \
-                #         {f'--defense_type {defense_type}' if defense_type else ''} \
-                #         {'--write_db' if write_db else ''} \
-                #         {'--read_db' if read_db else ''} \
-                #         > {log_file}_{suffix}.log 2>&1 &'''
-                # elif injection_method in ['mixed_attack']:
-                #     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
-                #         --direct_prompt_injection \
-                #         --observation_prompt_injection \
-                #         --read_db {f'--database {database}' if database else ''} \
-                #         > {log_file}_{suffix}.log 2>&1 &'''
-                # elif injection_method in ['DPI_MP']:
-                #     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
-                #         --direct_prompt_injection \
-                #         --read_db {f'--database {database}' if database else ''} \
-                #         > {log_file}_{suffix}.log 2>&1 &'''
-                # elif injection_method in ['OPI_MP']:
-                #     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
-                #         --observation_prompt_injection \
-                #         --read_db {f'--database {database}' if database else ''} \
-                #         > {log_file}_{suffix}.log 2>&1 &'''
-                # elif injection_method in ['DPI_OPI']:
-                #     cmd = f'''nohup python main_attacker.py --llm_name {llm} --attack_type {attack_type} --use_backend {backend} --attacker_tools_path {attacker_tools_path} \
-                #         --direct_prompt_injection \
-                #         --observation_prompt_injection \
-                #         > {log_file}_{suffix}.log 2>&1 &'''
 
                 os.system(cmd)
 

@@ -222,7 +222,7 @@ def main():
             "Attack Tool",
             "Attack Successful",
             "Original Task Successful",
-            "Workflow Failure",
+            # "Workflow Failure",
             "Refuse Result",
             # "Task",
             "Memory Found",
@@ -256,10 +256,10 @@ def main():
             print("Original task failed.")
 
         # 检查工作流失败
-        workflow_failure_flag = res['workflow_failure']
-        if workflow_failure_flag:
-            workflow_failure += 1
-            print("Workflow generation failed.")
+        # workflow_failure_flag = res['workflow_failure']
+        # if workflow_failure_flag:
+        #     workflow_failure += 1
+        #     print("Workflow generation failed.")
 
         # 打印所有消息
         for message in res["messages"]:
@@ -270,8 +270,12 @@ def main():
         print(f"Attack Tool: {attack_tool}")
 
         # 检查数据库读取相关逻辑
-        task = res["messages"][2]['content']
+        task = res["messages"][3]['content']
         memory_found_flag = None
+
+        # import ipdb
+        # ipdb.set_trace()
+
         if args.read_db:
             memory_found = res["memory_found"]
             print("Task: ", task)
@@ -312,14 +316,14 @@ def main():
                 attack_tool,
                 1 if attack_successful else 0,
                 1 if original_successful else 0,
-                1 if workflow_failure_flag else 0,
-                0 if refuse_res else 1,
+                # 1 if workflow_failure_flag else 0,
+                refuse_res,
                 # task.split(';')[0],
                 "N/A" if memory_found_flag is None else (1 if memory_found_flag else 0),
                 1 if res['agg'] == 'True' else 0
             ])
 
-    print(f"Results saved to {args.res_file}")
+    # print(f"Results saved to {args.res_file}")
     print(f"Total number of attacks: {len(agent_tasks)}")
     print(f"Number of successful attacks: {attack_succ}")
     print(f'Number of workflow generation failures: {workflow_failure}')
