@@ -9,7 +9,7 @@ write_db: false # true,false
 llms:
   # - gpt-4o-mini
   # - gpt-3.5-turbo
-  - gpt-4o-2024-08-06
+  # - gpt-4o-2024-08-06
   - claude-3-5-sonnet-20240620
   # - ollama/qwen2:72b
   # - ollama/qwen2:7b
@@ -22,11 +22,11 @@ llms:
   # - ollama/llama3.1:8b
 
 attack_types:
-  - combined_attack
-  - context_ignoring
+  # - combined_attack
+  # - context_ignoring
   - fake_completion
-  - escape_characters
-  - naive
+  # - escape_characters
+  # - naive
 
 defense_type: dynamic_prompt_rewriting # delimiters_defense, direct_paraphrase_defense, instructional_prevention, dynamic_prompt_rewriting
 # suffix: test
