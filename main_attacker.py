@@ -226,28 +226,25 @@ def main():
             "Refuse Result",
             # "Task",
             "Memory Found",
-            "Aggressive"
+            "Aggressive",
+            'messages'
         ])
 
 
-    # 逐条处理任务并保存
     for r in as_completed(agent_tasks):
         res = r.result()
         print("**********************************")
         print(args)
 
-        # 提取攻击目标
         attacker_goal = attacker_tools_all[attacker_tools_all["Attacker Tool"] == res["attacker_tool"]]['Attack goal'].iloc[0]
         attack_successful = check_attack_success(res["messages"], args, attacker_goal)
 
-        # 判断攻击是否成功
         if attack_successful:
             print("Attack successful.")
             attack_succ += 1
         else:
             print("Attack failed.")
 
-        # 判断原始任务是否成功
         original_successful = check_original_success(res["messages"], args, res["normal_tools"])
         if original_successful:
             orgin_succ += 1
@@ -255,26 +252,19 @@ def main():
         else:
             print("Original task failed.")
 
-        # 检查工作流失败
         # workflow_failure_flag = res['workflow_failure']
         # if workflow_failure_flag:
         #     workflow_failure += 1
         #     print("Workflow generation failed.")
 
-        # 打印所有消息
         for message in res["messages"]:
             print(message)
 
-        # 打印攻击工具
         attack_tool = res["attacker_tool"]
         print(f"Attack Tool: {attack_tool}")
 
-        # 检查数据库读取相关逻辑
         task = res["messages"][3]['content']
         memory_found_flag = None
-
-        # import ipdb
-        # ipdb.set_trace()
 
         if args.read_db:
             memory_found = res["memory_found"]
@@ -317,10 +307,12 @@ def main():
                 1 if attack_successful else 0,
                 1 if original_successful else 0,
                 # 1 if workflow_failure_flag else 0,
+                # 0 if refuse_res else 1,
                 refuse_res,
                 # task.split(';')[0],
                 "N/A" if memory_found_flag is None else (1 if memory_found_flag else 0),
-                1 if res['agg'] == 'True' else 0
+                1 if res['agg'] == 'True' else 0,
+                res["messages"]
             ])
 
     # print(f"Results saved to {args.res_file}")
