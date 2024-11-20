@@ -66,4 +66,4 @@ for prompt_injection in prompt_injections:
                 result.append(data_dict[agent_name][column])
             result_csv.loc[len(result_csv.index)] = result
 
-        result_csv.to_csv(f"./result_csv/result-agent-0012-{prompt_injection}-combined.csv", index = False)
+        result_csv.to_csv(f"./result_csv/result-agent-0012-{prompt_injection}-combined1.csv", index = False)
