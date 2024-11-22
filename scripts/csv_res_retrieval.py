@@ -4,7 +4,7 @@ import os
 import sys
 import traceback
 
-prompt_injections=["direct_prompt_injection"]
+prompt_injections=["memory_attack"]
 # 'direct_prompt_injection',"observation_prompt_injection",'mixed_attack',"memory_attack","clean",'DPI_MP','OPI_MP','DPI_OPI'
 dirs = ['no_memory'] # new_memory, no_memory, direct_paraphrase_defense, instructional_prevention, delimiters_defense, ob_sandwich_defense
 agg_result = []
