@@ -161,6 +161,8 @@ class ReactAgentAttack(BaseAgent):
         all_tools = set()
         all_tools.add(self.tool_name)
 
+        
+
         for stage in workflow:
             if stage.get("tool_use") != None:
                 try:
@@ -226,7 +228,7 @@ class ReactAgentAttack(BaseAgent):
 
         if workflow:
             ## Attacker tool injection to each stage of workflow
-            if self.args.observation_prompt_injection or self.args.direct_prompt_injection or self.args.pot_backdoor or self.args.pot_clean or self.args.memory_attack:
+            if self.args.observation_prompt_injection or self.args.direct_prompt_injection:
                 workflow = self.attacker_tool_injection(workflow)
                 # self.logger.log(f"Attacker Tool has been injected to workflow.\n", level="info")
 
