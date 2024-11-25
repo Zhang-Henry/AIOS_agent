@@ -111,5 +111,5 @@ for prompt_injection in prompt_injections:
                 result_csv.loc[len(result_csv.index)] = result
             for result in all_result:
                 result_csv.loc[len(result_csv.index)] = result
-        print(f'Saving to: ./result_csv/result-{prompt_injection}+{dir}.csv')
-        result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{dir}.csv", index = False)
+        print(f'Saving to: ./result_csv/result-{prompt_injection}+{dir}-1325.csv')
+        result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{dir}-1325.csv", index = False)

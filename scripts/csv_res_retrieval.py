@@ -4,7 +4,7 @@ import os
 import sys
 import traceback
 
-prompt_injections=["memory_attack"] # 'direct_prompt_injection',"observation_prompt_injection",'mixed_attack',"memory_attack","clean",'DPI_MP','OPI_MP','DPI_OPI'
+prompt_injections=['direct_prompt_injection', "observation_prompt_injection", "memory_attack"] # 'direct_prompt_injection',"observation_prompt_injection",'mixed_attack',"memory_attack","clean",'DPI_MP','OPI_MP','DPI_OPI'
 dirs = ['no_memory'] # new_memory, no_memory, direct_paraphrase_defense, instructional_prevention, delimiters_defense, ob_sandwich_defense, dynamic_prompt_rewriting
 agg_result = []
 non_agg_result = []
@@ -65,5 +65,5 @@ for prompt_injection in prompt_injections:
             for column in columns[1:]:
                 result.append(data_dict[agent_name][column])
             result_csv.loc[len(result_csv.index)] = result
-        print(f'Saving to: ./result_csv/result-agent-0012-{prompt_injection}.csv')
-        result_csv.to_csv(f"./result_csv/result-agent-0012-{prompt_injection}.csv", index = False)
+        print(f'Saving to: ./result_csv/result-agent-0944-{prompt_injection}.csv')
+        result_csv.to_csv(f"./result_csv/result-agent-0944-{prompt_injection}.csv", index = False)

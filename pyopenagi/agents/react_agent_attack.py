@@ -173,15 +173,6 @@ class ReactAgentAttack(BaseAgent):
 
         return workflow
 
-    def plan_attack(self, workflow):
-        workflow.insert(len(workflow)-1, {
-            "message": self.attack_prompts[self.args.attack_type],
-            "tool_use": [self.tool_name]
-        })
-        print(f'Workflow after attack planning: {workflow}')
-        # self.add_attacker_tool()
-
-        return workflow
 
 
     def run(self):
@@ -202,14 +193,11 @@ class ReactAgentAttack(BaseAgent):
             elif self.args.defense_type == 'dynamic_prompt_rewriting':
                 self.task_input = self.dynamic_prompt_rewriting(self.task_input)
         # elif self.args.observation_prompt_injection:
-        elif self.args.plan_attack or self.args.observation_prompt_injection or self.args.pot_backdoor or self.args.pot_clean or self.args.memory_attack:
+        elif self.args.observation_prompt_injection or self.args.pot_backdoor or self.args.pot_clean or self.args.memory_attack:
             self.add_attacker_tool()
 
         self.build_system_instruction()
 
-        # if self.args.jailbreak:
-        #     self.add_attacker_tool()
-        #     self.task_input += f'; {self.attack_prompts[self.args.attack_type]}'
 
         if self.args.pot_backdoor:
             task_trigger = f'{self.task_input} {self.args.trigger}.'
@@ -238,11 +226,10 @@ class ReactAgentAttack(BaseAgent):
 
         if workflow:
             ## Attacker tool injection to each stage of workflow
-            if self.args.observation_prompt_injection or self.args.direct_prompt_injection:
+            if self.args.observation_prompt_injection or self.args.direct_prompt_injection or self.args.pot_backdoor or self.args.pot_clean or self.args.memory_attack:
                 workflow = self.attacker_tool_injection(workflow)
                 # self.logger.log(f"Attacker Tool has been injected to workflow.\n", level="info")
-            elif self.args.plan_attack:
-                workflow = self.plan_attack(workflow)
+
 
         self.messages.append({"role": "assistant", "content": f"[Thinking]: The workflow generated for the problem is {json.dumps(workflow)}"})
 
