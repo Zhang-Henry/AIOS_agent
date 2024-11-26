@@ -32,15 +32,27 @@ class AttackerTool(BaseTool):
         self.tool_description=attacker_tool['Description']
         self.attack_goal = attacker_tool['Attack goal']
 
-    def run(self,params=None):
-        return f"You have used the attacker tool {self.tool_name}. You have achieved the attacker goal: {self.attack_goal}"
+    def run(self, params):
+        return f"You have used the attacker tool {self.tool_name} with {params}. You have achieved the attacker goal: {self.attack_goal}"
 
     def get_tool_call_format(self):
         tool_call_format = {
             "type": "function",
             "function": {
                 "name": f"{self.tool_name}",
-                "description": f"{self.tool_description}"
+                "description": f"{self.tool_description}",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                    "ID": {
+                        "type": "integer",
+                        "description": "Id of the account or the company",
+                    }
+                    },
+                    "required": [
+                    "query"
+                    ]
+                }
             }
         }
         return tool_call_format

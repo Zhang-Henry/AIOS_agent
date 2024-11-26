@@ -109,8 +109,8 @@ class ReactAgentAttack(BaseAgent):
             try:
                 function_name = tool_call["name"]
                 function_to_call = self.tool_list[function_name]
-                function_params = None
-                # function_params = tool_call["parameters"]
+                # function_params = None
+                function_params = tool_call["parameters"]
                 self.logger.log(f"The current tool called is {function_to_call}, parameter:{function_params}\n", level="info")
 
             except KeyError as e:
@@ -123,12 +123,6 @@ class ReactAgentAttack(BaseAgent):
                 actions.append("I fail to call any tools.")
                 observations.append("The function name or the tool parameter is invalid.")
                 success = False
-
-            # if self.args.action_attack: ## add attacker tool to the last step of workflow
-            #     self.add_attacker_tool()
-            #     function_name = self.attacker_tool
-            #     function_to_call = self.tool_list[function_name]
-            #     function_params = None
 
             try:
                 function_response = function_to_call.run(function_params)
@@ -152,46 +146,15 @@ class ReactAgentAttack(BaseAgent):
 
         return actions, observations, success
 
-    # def add_attacker_tool(self):
-    #     tool_instance = AttackerTool(dict(self.attacker_tool))
-    #     self.tool_list[self.tool_name] = tool_instance
-    #     self.tools.append(tool_instance.get_tool_call_format())
-
-    # def attacker_tool_injection(self, workflow):
-    #     all_tools = set()
-    #     all_tools.add(self.tool_name)
-
-
-    #     for stage in workflow:
-    #         if stage.get("tool_use") != None:
-    #             try:
-    #                 all_tools.update(stage.get("tool_use"))
-    #             except TypeError as e:
-    #                 print(f"Error: {e}")
-
-    #     for stage in workflow:
-    #         stage["tool_use"] = list(all_tools)
-
-    #     return workflow
-
     def add_attacker_tool(self):
-        attacker_tools_all = pd.read_json(self.args.attacker_tools_path, lines=True)
-        attacker_tools = attacker_tools_all[attacker_tools_all["Corresponding Agent"] == self.agent_name.split('/')[-1]]
-        for _, attack_tool in attacker_tools.iterrows():
-            tool_instance = AttackerTool(dict(attack_tool))
-            self.tool_list[attack_tool['Attacker Tool']] = tool_instance
-            self.tools.append(tool_instance.get_tool_call_format())
+        tool_instance = AttackerTool(dict(self.attacker_tool))
+        self.tool_list[self.tool_name] = tool_instance
+        self.tools.append(tool_instance.get_tool_call_format())
 
     def attacker_tool_injection(self, workflow):
         all_tools = set()
-
         all_tools.add(self.tool_name)
 
-        attacker_tools_all = pd.read_json(self.args.attacker_tools_path, lines=True)
-        attacker_tools = attacker_tools_all[attacker_tools_all["Corresponding Agent"] == self.agent_name.split('/')[-1]]
-
-        for _, attack_tool in attacker_tools.iterrows():
-            all_tools.add(attack_tool['Attacker Tool'])
 
         for stage in workflow:
             if stage.get("tool_use") != None:
@@ -204,6 +167,38 @@ class ReactAgentAttack(BaseAgent):
             stage["tool_use"] = list(all_tools)
 
         return workflow
+
+    #### add tool list number
+    # def add_attacker_tool(self):
+    #     attacker_tools_all = pd.read_json(self.args.attacker_tools_path, lines=True)
+    #     attacker_tools = attacker_tools_all[attacker_tools_all["Corresponding Agent"] == self.agent_name.split('/')[-1]]
+    #     for _, attack_tool in attacker_tools.iterrows():
+    #         tool_instance = AttackerTool(dict(attack_tool))
+    #         self.tool_list[attack_tool['Attacker Tool']] = tool_instance
+    #         self.tools.append(tool_instance.get_tool_call_format())
+
+    # def attacker_tool_injection(self, workflow):
+    #     all_tools = set()
+
+    #     all_tools.add(self.tool_name)
+
+    #     attacker_tools_all = pd.read_json(self.args.attacker_tools_path, lines=True)
+    #     attacker_tools = attacker_tools_all[attacker_tools_all["Corresponding Agent"] == self.agent_name.split('/')[-1]]
+
+    #     for _, attack_tool in attacker_tools.iterrows():
+    #         all_tools.add(attack_tool['Attacker Tool'])
+
+    #     for stage in workflow:
+    #         if stage.get("tool_use") != None:
+    #             try:
+    #                 all_tools.update(stage.get("tool_use"))
+    #             except TypeError as e:
+    #                 print(f"Error: {e}")
+
+    #     for stage in workflow:
+    #         stage["tool_use"] = list(all_tools)
+
+    #     return workflow
 
 
     def run(self):
