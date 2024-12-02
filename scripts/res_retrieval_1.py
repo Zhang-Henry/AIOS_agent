@@ -2,8 +2,8 @@ import pandas
 import csv
 import os
 
-prompt_injections=['direct_prompt_injection'] # 'direct_prompt_injection',"observation_prompt_injection",'mixed_attack',"memory_attack","clean",'DPI_MP','OPI_MP','DPI_OPI'
-dirs = ['no_memory'] # new_memory, no_memory, direct_paraphrase_defense, instructional_prevention, delimiters_defense, ob_sandwich_defense, dynamic_prompt_rewriting
+prompt_injections=['memory_attack'] # 'direct_prompt_injection',"observation_prompt_injection",'mixed_attack',"memory_attack","clean",'DPI_MP','OPI_MP','DPI_OPI'
+dirs = ['new_memory'] # new_memory, no_memory, direct_paraphrase_defense, instructional_prevention, delimiters_defense, ob_sandwich_defense, dynamic_prompt_rewriting
 agg_result = []
 non_agg_result = []
 
@@ -14,7 +14,7 @@ for prompt_injection in prompt_injections:
 
         #model_list = ['gpt-3.5-turbo',"gpt-4o-mini","llama3:70b","llama3:8b","llama3.1:8b","gemma2:27b","gemma2:9b","mixtral:8x7b","qwen2:7b","qwen2:72b",'gpt-4o-2024-08-06','claude-3-5-sonnet-20240620']
 
-        attack_methods = ["naive"]
+        #attack_methods = ["naive"]
 
         def get_result(file_path):
 
@@ -76,11 +76,11 @@ for prompt_injection in prompt_injections:
                     files_list.append(name)
 
                 for name in files_list:
-                    if "more_tool" not in name:
+                    if "test_param" not in name:
                         continue
                     attack_method = name.split('-')[0].replace('_', ' ')
-                    if attack_method not in attack_methods:
-                        continue
+                    #if attack_method not in attack_methods:
+                    #    continue
                     if "-non-" in name:
                         agg = 'No'
                     elif "all" in name:
@@ -117,5 +117,5 @@ for prompt_injection in prompt_injections:
                 result_csv.loc[len(result_csv.index)] = result
             for result in all_result:
                 result_csv.loc[len(result_csv.index)] = result
-        print(f'Saving to: ./result_csv/result-{prompt_injection}+{dir}-2237.csv')
-        result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{dir}-2237.csv", index = False)
+        print(f'Saving to: ./result_csv/result-{prompt_injection}+{dir}-test_param.csv')
+        result_csv.to_csv(f"./result_csv/result-{prompt_injection}+{dir}-test_param.csv", index = False)

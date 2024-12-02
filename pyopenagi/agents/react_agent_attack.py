@@ -345,6 +345,7 @@ class ReactAgentAttack(BaseAgent):
             "tool_call_success":self.tool_call_success,
             "messages": self.messages,
             "attacker_tool": self.tool_name,
+            "attack_tool_info": self.attacker_tool,
             "normal_tools": self.normal_tools,
             "memory_search": self.memory_search,
             "memory_found": self.memory_found,

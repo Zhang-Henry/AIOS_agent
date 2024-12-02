@@ -1,15 +1,15 @@
 injection_method: observation_prompt_injection
 attack_tool:
-  - all
+  # - all
   # - agg
   # - non-agg
-
+  - test
 llms:
   # - gpt-4o-mini
-  # - gpt-3.5-turbo
-  # - gpt-4o-2024-08-06
-  # - claude-3-5-sonnet-20240620
-  - ollama/qwen2:72b
+  - gpt-3.5-turbo
+  - gpt-4o-2024-08-06
+  - claude-3-5-sonnet-20240620
+  # - ollama/qwen2:72b
   # - ollama/qwen2:7b
   # - ollama/gemma2:9b
   # - ollama/gemma2:27b
@@ -20,11 +20,11 @@ llms:
   # - ollama/llama3.1:8b
 
 attack_types:
-  # - combined_attack
+  - combined_attack
   - context_ignoring
-  # - fake_completion
-  # - escape_characters
-  # - naive
+  - fake_completion
+  - escape_characters
+  - naive
 
 # defense_type: ob_sandwich_defense # delimiters_defense, ob_sandwich_defense, instructional_prevention
-# suffix: test
+suffix: param
