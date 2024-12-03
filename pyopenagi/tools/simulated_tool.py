@@ -12,7 +12,11 @@ class SimulatedTool(BaseTool):
         self.expected_achivement = tool['Expected Achievements'].iloc[0]
 
     def run(self, params=None) -> str:
-        return self.expected_achivement
+        # if self.name == 'research_database':
+        output = f'You have achieved the expected achievement: {self.expected_achivement} with parameters {params["Area"]}.'
+        # else:
+        #     output = f'You have achieved the expected achievement: {self.expected_achivement}.'
+        return output
 
     def get_tool_call_format(self):
         tool_call_format = {
@@ -20,7 +24,18 @@ class SimulatedTool(BaseTool):
             "function": {
                 "name": self.name,
                 "description": self.description,
-                "parameters": None,
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                    "Area": {
+                        "type": "string",
+                        "description": "search area",
+                    }
+                    },
+                    "required": [
+                    "Area"
+                    ]
+                }
             }
         }
         return tool_call_format
@@ -62,11 +77,11 @@ class AttackerTool(BaseTool):
                     "properties": {
                     "ID": {
                         "type": "integer",
-                        "description": "Id of the account or the company",
+                        "description": "ID of the account or the company",
                     }
                     },
                     "required": [
-                    "query"
+                    "ID"
                     ]
                 }
             }
