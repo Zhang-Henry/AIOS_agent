@@ -15,6 +15,10 @@ EXCLUDE_LIST=(
     'mv_AgentSecurityBench.sh'
     'mv_ASB.sh'
     'pyproject.toml'
+    'scripts/csv_res_retrieval.py'
+    'scripts/res_retrieval_1.py'
+    'scripts/resrtv_dpr.py'
+    'detection_defense/context_aware_anomaly_detection.py'
 )
 
 # 构建 rsync 的排除参数

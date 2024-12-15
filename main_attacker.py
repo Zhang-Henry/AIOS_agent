@@ -276,7 +276,6 @@ def main():
                 print("The memory search did NOT find attacker tool history successfully.")
                 memory_found_flag = False
 
-        # 过滤消息并判断模型响应
         filtered_messages = [msg for msg in res["messages"] if "[Thinking]" in str(msg) or "'thinking'" in str(msg)]
         refuse_res = judge_response(str(filtered_messages)) if len(filtered_messages) > 1 else '1'
 
@@ -300,8 +299,8 @@ def main():
                 1 if attack_successful else 0,
                 1 if original_successful else 0,
                 # 1 if workflow_failure_flag else 0,
-                # 0 if refuse_res else 1,
-                refuse_res,
+                1 if refuse_res=='0' else 0,
+                # refuse_res,
                 # task.split(';')[0],
                 "N/A" if memory_found_flag is None else (1 if memory_found_flag else 0),
                 1 if res['agg'] == 'True' else 0,
@@ -330,7 +329,7 @@ def main():
 
     clean_cache(root_directory="./")
 
-    end_time = datetime.now()  # 记录结束时间
+    end_time = datetime.now()
     print(f"Attack ended at: {end_time.strftime('%Y-%m-%d %H:%M')}")
     print(f"Total duration: {end_time - start_time}")
 
